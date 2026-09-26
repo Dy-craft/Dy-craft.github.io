@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>DyCraft: An Agentic System for Long-Horizon 4D Scene Generation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+<style>
+/* ---- Nerfies-style page shell (Bulma look, no external CSS required) ---- */
+body{margin:0;background:#fff;color:#4a4a4a;
+  font-family:'Noto Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:#3273dc;text-decoration:none}
+a:hover{color:#363636}
+.hero-body{padding:3rem 1.5rem 1.5rem;text-align:center}
+.container{margin:0 auto;padding:0 1.5rem}
+.is-max-desktop{max-width:960px}
+.is-wide{max-width:1560px}
+.publication-title{font-family:'Google Sans',sans-serif;font-size:3rem;font-weight:600;
+  line-height:1.125;color:#363636;margin:0 0 1.5rem;letter-spacing:0}
+.publication-authors{font-family:'Google Sans',sans-serif;font-size:1.25rem;color:#4a4a4a;margin:0 0 .35rem}
+.publication-venue{font-family:'Google Sans',sans-serif;font-size:1.05rem;color:#7a7a7a;margin:0}
+.publication-links{margin-top:1.25rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
+.link-block a{display:inline-flex;align-items:center;gap:.5em;height:2.5em;padding:0 1.25em;
+  border-radius:290486px;background:#363636;color:#fff;font-size:1rem;
+  font-family:'Google Sans','Noto Sans',sans-serif;white-space:nowrap}
+.link-block a:hover{background:#2f2f2f;color:#fff}
+.link-block a svg{width:1em;height:1em}
+.link-block a.is-disabled{opacity:.55;cursor:default;pointer-events:none}
+.teaser{padding:0 1.5rem 1.5rem}
+.teaser video{width:100%;border-radius:8px;background:#000;display:block}
+.teaser .subtitle{text-align:center;font-size:1.1rem;color:#4a4a4a;margin:1rem 0 0}
+.teaser .subtitle .dnerf{font-variant:small-caps}
+.section{padding:3rem 1.5rem}
+.section + .section{padding-top:1rem}
+.title.is-3{font-family:'Google Sans',sans-serif;font-size:2rem;font-weight:600;color:#363636;
+  text-align:center;margin:0 0 1.5rem;line-height:1.125}
+.content{text-align:justify;color:#4a4a4a}
+.content p{margin:0 0 1em}
+.gallery-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:#4a4a4a}
+.gallery-intro p{margin:0 0 .75em}
+.site-footer{background:#fafafa;padding:3rem 1.5rem 4rem;margin-top:2rem;
+  font-size:.9rem;color:#4a4a4a;text-align:center}
+.site-footer p{max-width:720px;margin:0 auto .5em}
+
+/* ---- Video gallery (identical to index.html) ---- */
+
+:root{
+  --bg:#ffffff; --fg:#1a1a1a; --fg2:#6b6b6b; --fg3:#909090; --line:#e4e4e4;
+  --card:#fafafa; --accent:#3273dc; --chip:#f0f0f0; --miss:#f4f4f4;
+  --ours:#15803d; --ours-bd:#15803d;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+kbd{font:inherit;font-size:13px;background:var(--chip);border:1px solid var(--line);border-radius:4px;padding:0 5px}
+
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  margin:0 0 26px;position:sticky;top:0;z-index:30;
+  background:var(--bg);padding:14px 0;border-bottom:1px solid var(--line)}
+input[type=search]{flex:1;min-width:170px;height:36px;padding:0 12px;
+  border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--fg);
+  font-size:15px;font-family:inherit}
+input[type=search]:focus{outline:none;border-color:var(--accent)}
+button{height:36px;padding:0 14px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--fg);font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap}
+button:hover{border-color:var(--fg2)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{height:36px;padding:0 13px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--fg2);font-size:14px;cursor:pointer;font-family:inherit}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
+.chip .n{opacity:.65;margin-left:5px;font-variant-numeric:tabular-nums}
+#toggleAll[aria-pressed=true]{background:var(--chip)}
+.speed{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.speed button{height:34px;border:none;border-radius:0;padding:0 12px;font-variant-numeric:tabular-nums}
+.speed button + button{border-inline-start:1px solid var(--line)}
+.speed button[aria-pressed=true]{background:var(--accent);color:#fff;font-weight:500}
+.count{color:var(--fg2);font-size:14px;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.scene{border:1px solid var(--line);border-radius:12px;background:var(--card);
+  padding:18px 18px 20px;margin:0 0 26px}
+.scene.hide{display:none}
+.shead{display:flex;gap:14px;align-items:flex-start;margin:0 0 14px}
+.sid{font:500 13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+  background:var(--chip);color:var(--fg2);padding:3px 8px;border-radius:5px;flex-shrink:0;margin-top:3px}
+.sbody{flex:1;min-width:0}
+.prompt{font-size:18px;font-weight:500;margin:0 0 5px;letter-spacing:-.005em}
+.objs{font-size:14px;color:var(--fg2);margin:0}
+.sctl{display:flex;gap:7px;align-items:center;flex-shrink:0;margin-top:1px}
+.sctl button{height:32px;padding:0 12px;font-size:13px}
+.bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden;margin:0 0 13px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .1s linear}
+
+.cols{display:grid;gap:14px}
+.cell{min-width:0}
+.clabel{display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
+.cname{font-size:15px;font-weight:500}
+.cname.is-ours{color:var(--ours);font-weight:600}
+.chip.is-ours[aria-pressed=true]{background:var(--ours-bd);border-color:var(--ours-bd);color:#fff}
+.lb .title .m-ours{color:var(--ours);font-weight:600}
+.cdur{font-size:13px;color:var(--fg3);font-variant-numeric:tabular-nums}
+.vwrap{position:relative;background:#000;aspect-ratio:16/9;border-radius:8px;overflow:hidden;cursor:zoom-in}
+.vwrap video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+.ended{position:absolute;inset:auto 0 0 0;z-index:2;background:rgba(0,0,0,.72);color:#fff;
+  font-size:12px;padding:5px 9px;display:none}
+.vwrap.is-ended .ended{display:block}
+.expand{position:absolute;right:7px;top:7px;z-index:3;opacity:0;transition:opacity .15s;
+  background:rgba(0,0,0,.66);color:#fff;border:none;height:25px;padding:0 9px;
+  border-radius:4px;font-size:13px;cursor:pointer}
+.vwrap:hover .expand{opacity:1}
+.missing{aspect-ratio:16/9;border:1px dashed var(--line);border-radius:8px;background:var(--miss);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  color:var(--fg3);font-size:14px;text-align:center;padding:12px}
+.missing b{font-weight:500;color:var(--fg2);font-size:14px}
+
+dialog{border:none;border-radius:12px;padding:0;max-width:96vw;max-height:96vh;background:var(--bg);color:var(--fg)}
+dialog::backdrop{background:rgba(0,0,0,.84)}
+.lb video{display:block;max-width:92vw;max-height:74vh;background:#000}
+.lb .meta{padding:13px 16px 15px;display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
+.lb .nav{display:flex;gap:8px;flex-shrink:0}
+.lb .title{font-size:16px;font-weight:500;margin:0 0 3px}
+.lb .cap{font-size:14px;color:var(--fg2);margin:0}
+
+#pm{max-width:760px;width:calc(100vw - 48px)}
+.pm-in{padding:22px 26px 24px}
+.pm-head{display:flex;gap:12px;align-items:flex-start;margin:0 0 4px}
+.pm-title{font-size:20px;font-weight:500;margin:0;flex:1}
+.pm-objs{font-size:14px;color:var(--fg2);margin:0 0 16px}
+.pm-label{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--fg3);margin:0 0 7px}
+.pm-body{font-size:16px;line-height:1.75;margin:0;white-space:pre-wrap;
+  max-height:52vh;overflow-y:auto;padding-inline-end:6px}
+.pm-none{color:var(--fg3);font-style:italic}
+.pm-foot{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
+
+.empty{color:var(--fg2);padding:48px 0;text-align:center}
+@media (max-width:900px){ .shead{flex-wrap:wrap} }
+
+.toolbar{border-top:1px solid var(--line)}
+.prompt{font-family:'Google Sans','Noto Sans',sans-serif;color:#363636}
+@media (max-width:768px){ .publication-title{font-size:2rem} }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h1 class="publication-title">DyCraft: An Agentic System for Long-Horizon 4D Scene Generation</h1>
+      <p class="publication-authors">Anonymous Authors</p>
+      <p class="publication-venue">Paper under double-blind review</p>
+    </div>
+  </div>
+</section>
+
+<section class="teaser">
+  <div class="container is-max-desktop">
+    <video id="teaser" autoplay muted loop playsinline preload="auto"
+           poster="_posters/ours_gpt6/14_drawbridge_opens_for_boat.jpg">
+      <source src="ours_gpt6/14_drawbridge_opens_for_boat.mp4" type="video/mp4">
+    </video>
+    <p class="subtitle"><strong>DyCraft</strong> is an end-to-end agentic system that generates long-horizon 4D (3D + time) scenes from text prompts.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content">
+      <p>While frontier coding agents can generate high-quality 3D scenes and articulated assets, they struggle to create coherent long-horizon animations. When equipped with general-purpose harnesses, they frequently produce outputs that are physically implausible, generating objects that lack physical support, interpenetrate, or move unnaturally. Such bare agents struggle to repair these errors because they default to scripting the full animation in one pass, making it difficult to disentangle interdependent temporal and spatial constraints.</p>
+      <p>Drawing on the practice of human animators, we introduce <strong>DyCraft</strong>, a system for 4D scene generation that breaks animation into steps that coding agents can more reliably solve. DyCraft first expands the user&rsquo;s prompt into a detailed plan and builds a static scene. It then creates a 3D storyboard of key animation poses, where each frame is a static 3D scene that the agent can build and debug in isolation. The storyboard decomposes the problem into pairs of verified start and end states, allowing the agent to author local motion between them with a collection of motion authoring tools.</p>
+      <p>We evaluate DyCraft on 16 long-horizon, multi-shot animation tasks covering humanoid robots, human and animal characters, and physical mechanisms. Compared with a native GPT-6 agent in Codex and prior agentic baselines, DyCraft substantially reduces physical violations and generates higher-quality 4D scenes that are more often preferred by human raters.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="container is-wide">
+    <h2 class="title is-3">Video Gallery</h2>
+    <div class="gallery-intro">
+      <p>Every benchmark prompt with each method&rsquo;s result side by side. Use the buttons below to hide a method, or type to filter prompts. <strong>Full prompt</strong> opens the complete brief the methods were given.</p>
+      <p>Within a block all clips start together and are aligned to the longest one; a clip that finishes early holds on its last frame and is marked <em>ended</em>, so differing lengths stay visible rather than being hidden by looping. Playback speed applies to every clip at once. Click any clip to open it larger with playback controls; <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> step through, <kbd>Esc</kbd> closes.</p>
+    </div>
+<div class="toolbar">
+  <div class="chips" id="chips"></div>
+  <div class="speed" id="speed"></div>
+  <input type="search" id="q" placeholder="Filter prompts…" autocomplete="off">
+  <button id="toggleAll" aria-pressed="true">Autoplay: on</button>
+  <span class="count" id="count"></span>
+</div>
+
+<div id="scenes"></div>
+<div class="empty" id="empty" hidden>No scenes match the current filter.</div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>Anonymous submission &mdash; supplementary material.</p>
+  <p>This page is adapted from the <a href="https://github.com/nerfies/nerfies.github.io" rel="noreferrer">Nerfies</a> project page template, licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="noreferrer">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+</footer>
+
+<dialog id="lb">
+  <div class="lb">
+    <video id="lbv" controls loop playsinline></video>
+    <div class="meta">
+      <div>
+        <p class="title" id="lbt"></p>
+        <p class="cap" id="lbc"></p>
+      </div>
+      <div class="nav">
+        <button id="prev">&larr; Prev</button>
+        <button id="next">Next &rarr;</button>
+        <button id="close">Close</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="pm">
+  <div class="pm-in">
+    <div class="pm-head">
+      <span class="sid" id="pmid"></span>
+      <p class="pm-title" id="pmtitle"></p>
+    </div>
+    <p class="pm-objs" id="pmobjs"></p>
+    <p class="pm-label">Full prompt</p>
+    <p class="pm-body" id="pmbody"></p>
+    <div class="pm-foot">
+      <button id="pmcopy">Copy</button>
+      <button id="pmclose">Close</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const SCENES = [
+ {
+  "id": "02",
+  "prompt": "Sort mail and handle delivery exceptions",
+  "objects": "G1, envelopes, parcel, trays, bands",
+  "full": "A Unitree G1 humanoid robot sorts a mixed bundle of mail at a mailroom sorting station. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. A counter holds a stack of envelopes addressed to six clearly labelled departments, an exception tray, rubber bands, and one small parcel. A bank of matching pigeonholes stands within reach, with a parcel shelf below. The robot squares the bundle, picks up the first envelope, turns its address toward its head, and places it into the corresponding pigeonhole. It continues through several envelopes at a steady pace until it finds one addressed to another building, pauses to inspect it, and sets it in the exception tray. It resumes sorting, then reaches the parcel and checks it against the intended pigeonhole. Finding it too large, it withdraws the parcel and places it on the lower shelf. It works through the remaining envelopes, sets aside a second misdirected item, and checks the now-empty input area. Finally, it gathers the mail from three occupied pigeonholes into separate bundles, secures each with a rubber band, and places them in a collection tray, leaving the exceptions separate.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/02_g1_sorts_mailroom_post.mp4",
+    "poster": "_posters/ours_gpt6/02_g1_sorts_mailroom_post.jpg",
+    "duration": 81.4
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/02_g1_sorts_mailroom_post.mp4",
+    "poster": "_posters/bare_gpt6/02_g1_sorts_mailroom_post.jpg",
+    "duration": 100.8
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/02_g1_sorts_mailroom_post.mp4",
+    "poster": "_posters/viga_gpt6/02_g1_sorts_mailroom_post.jpg",
+    "duration": 175.0
+   }
+  }
+ },
+ {
+  "id": "14",
+  "prompt": "Open a drawbridge for a boat and reset",
+  "objects": "Bridge, boat, barriers, gears, buoys",
+  "full": "An automated canal drawbridge opens for an unoccupied motorboat and closes again after it passes. No people, animals, or robot characters appear. The bridge begins horizontal and locked across the canal, with raised road barriers and the boat approaching slowly along the water. As the boat reaches an approach marker, warning lamps flash and the road barriers lower. Once both barriers reach their stops, locking bolts retract from the bridge deck. A geared drive turns the lifting shafts, raising the two bridge leaves while their counterweights descend into side housings. The boat slows near the opening and waits until the leaves reach their fully raised positions and the canal signal changes. It then travels between the piers, leaving a small wake that rocks two moored buoys. After its stern clears the far marker, the drive reverses and lowers both leaves toward the center. They settle onto their supports, the locking bolts slide into place, and the road barriers rise. The warning lamps go dark as the boat continues down the canal and the disturbed water gradually settles.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/14_drawbridge_opens_for_boat.mp4",
+    "poster": "_posters/ours_gpt6/14_drawbridge_opens_for_boat.jpg",
+    "duration": 54.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/14_drawbridge_opens_for_boat.mp4",
+    "poster": "_posters/bare_gpt6/14_drawbridge_opens_for_boat.jpg",
+    "duration": 32.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/14_drawbridge_opens_for_boat.mp4",
+    "poster": "_posters/viga_gpt6/14_drawbridge_opens_for_boat.jpg",
+    "duration": 36.0
+   }
+  }
+ },
+ {
+  "id": "03",
+  "prompt": "Carry and serve drinks despite interruptions",
+  "objects": "G1, people, glasses, tray, chairs",
+  "full": "A Unitree G1 humanoid robot carries a tray of drinks from a service counter to a collection table across a busy office lounge. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. Six partially filled glasses stand beside a rigid serving tray on the counter. Several people sit at tables along the route, leaving an aisle with one narrow gap between chairs. The robot places the glasses onto the tray, lifts it with both hands, and turns toward the collection table. It walks between the occupied tables until a seated person pushes a chair backward into its path. The robot stops, lets the glasses settle, and waits while the person notices it and pulls the chair inward. It resumes, turns its body sideways to pass through the narrow gap, and brings the tray through at a steady height. Beyond the gap, a passing person lightly bumps its upper arm. The robot pauses, bends its knees slightly, adjusts its stance, and steadies the tray before continuing. At the collection table, it lowers the tray onto the surface, releases its grip, and arranges the six glasses one by one on coasters. It then picks up the empty tray and returns toward the service counter.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/03_g1_carries_drinks_tray.mp4",
+    "poster": "_posters/ours_gpt6/03_g1_carries_drinks_tray.jpg",
+    "duration": 75.1
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/03_g1_carries_drinks_tray.mp4",
+    "poster": "_posters/bare_gpt6/03_g1_carries_drinks_tray.jpg",
+    "duration": 84.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/03_g1_carries_drinks_tray.mp4",
+    "poster": "_posters/viga_gpt6/03_g1_carries_drinks_tray.jpg",
+    "duration": 105.0
+   }
+  }
+ },
+ {
+  "id": "04",
+  "prompt": "Prepare a coffee order and hand it over",
+  "objects": "Barista, customer, coffee machine, cups",
+  "full": "A barista serves a customer from ordering to collecting a takeaway coffee in a small café. The counter contains a till, paper cups, a marker, an espresso machine, a grinder, a milk pitcher, lids, sleeves, and a cleaning cloth. The customer approaches the till, orders a milk coffee, and gives their name. The barista marks a cup, repeats the order, and takes payment while the customer moves to the collection end of the counter and looks at their phone. The barista grinds and tamps the coffee, locks the portafilter into the machine, and starts the shot. While it extracts, they pour milk into the pitcher and steam it, then remove the cup and pour in the milk. They press on a lid, fit a sleeve, and call the customer’s name. The customer does not respond. The barista glances toward them and calls again, raising the cup slightly. The customer looks up, puts away their phone, and approaches. The barista places the drink within reach, the customer takes it and leaves, and the barista wipes the steam wand and counter before returning the pitcher to its place.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/04_barista_serves_takeaway_coffee.mp4",
+    "poster": "_posters/ours_gpt6/04_barista_serves_takeaway_coffee.jpg",
+    "duration": 77.8
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/04_barista_serves_takeaway_coffee.mp4",
+    "poster": "_posters/bare_gpt6/04_barista_serves_takeaway_coffee.jpg",
+    "duration": 78.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/04_barista_serves_takeaway_coffee.mp4",
+    "poster": "_posters/viga_gpt6/04_barista_serves_takeaway_coffee.jpg",
+    "duration": 10.0
+   }
+  }
+ },
+ {
+  "id": "06",
+  "prompt": "Remove a peg to open a puzzle feeder",
+  "objects": "Crow, feeder, peg, hatch, food",
+  "full": "A crow works out how to open a puzzle feeder on a low outdoor table. Food is visible behind a transparent sliding hatch, but a removable peg blocks the hatch from opening. A perch stands beside the table. The crow lands near the feeder, walks around it, and tilts its head to inspect the food through the clear panel. It pecks the panel several times, then catches the edge of the hatch with its bill and pushes it sideways. The hatch moves a little and stops against the peg. The crow steps back, looks along the hatch edge, and pecks at the protruding peg. It grips the peg with its bill and pulls, but loses its grip. It changes position, braces beside the feeder, hooks one foot around the peg, and draws it out of the retaining hole. The peg drops onto the table. The crow returns its bill to the hatch edge and slides the hatch far enough to expose the food. It reaches inside, takes a piece, withdraws its head, and hops onto the nearby perch to eat, leaving the hatch open and the peg on the table.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/06_crow_opens_puzzle_feeder.mp4",
+    "poster": "_posters/ours_gpt6/06_crow_opens_puzzle_feeder.jpg",
+    "duration": 45.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/06_crow_opens_puzzle_feeder.mp4",
+    "poster": "_posters/bare_gpt6/06_crow_opens_puzzle_feeder.jpg",
+    "duration": 30.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/06_crow_opens_puzzle_feeder.mp4",
+    "poster": "_posters/viga_gpt6/06_crow_opens_puzzle_feeder.jpg",
+    "duration": 15.0
+   }
+  }
+ },
+ {
+  "id": "12",
+  "prompt": "Repeat bucket tipping until a tank is full",
+  "objects": "Water, tanks, bucket, wheel, float",
+  "full": "A tabletop water mechanism transfers water from an elevated reservoir through a tipping bucket into a lower collection tank. No people, animals, or robot characters appear. The reservoir begins full, the bucket rests upright on a pivot, and the collection tank is empty. A spring-driven timer opens the reservoir valve, sending a narrow stream into the bucket. As the water rises, the bucket’s changing center of mass carries it past its tipping point, and it rotates forward to discharge into a broad funnel. A small counterweight returns the empty bucket upright, where it begins filling again. Water from the funnel turns a paddle wheel before draining into the lower tank. The bucket completes several fill-and-tip cycles, and the wheel starts with each discharge and slows between them. A float in the collection tank rises as water accumulates. Near the final level, the float pulls a linkage that closes the reservoir valve. The remaining water in the feed channel drains into the bucket, leaving it partly filled below its tipping threshold. The paddle wheel coasts to a stop, and the system settles with the upper valve closed and the lower tank full.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/12_tipping_bucket_fills_tank.mp4",
+    "poster": "_posters/ours_gpt6/12_tipping_bucket_fills_tank.jpg",
+    "duration": 44.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/12_tipping_bucket_fills_tank.mp4",
+    "poster": "_posters/bare_gpt6/12_tipping_bucket_fills_tank.jpg",
+    "duration": 18.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/12_tipping_bucket_fills_tank.mp4",
+    "poster": "_posters/viga_gpt6/12_tipping_bucket_fills_tank.jpg",
+    "duration": 30.0
+   }
+  }
+ },
+ {
+  "id": "01",
+  "prompt": "Turn a wide panel through a narrow doorway",
+  "objects": "G1, panel, doorway, trestles",
+  "full": "A Unitree G1 humanoid robot carries a wide rectangular panel from a workshop into an adjoining room through a narrow doorway. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. A lightweight panel rests horizontally on two waist-high trestles. It is too wide to pass through the doorway broadside but can fit when turned edge-on. A second pair of trestles stands in the destination room, and the door is secured open. The robot approaches the panel, grips its two accessible edges, lifts it clear of the supports, and rotates it into an upright carrying position. It adjusts its stance and walks toward the doorway with short steps, stopping before the frame to turn the panel edge-on. It guides the leading edge through, sidesteps across the threshold while turning its torso, and brings the trailing edge clear of the frame. Once inside, it turns toward the empty trestles, pauses to align the panel, rotates it back to horizontal, and lowers it onto both supports. It releases its grips, steps back, and checks the panel’s placement before returning to a relaxed standing posture.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/01_g1_carries_panel_through_doorway.mp4",
+    "poster": "_posters/ours_gpt6/01_g1_carries_panel_through_doorway.jpg",
+    "duration": 73.9
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/01_g1_carries_panel_through_doorway.mp4",
+    "poster": "_posters/bare_gpt6/01_g1_carries_panel_through_doorway.jpg",
+    "duration": 36.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/01_g1_carries_panel_through_doorway.mp4",
+    "poster": "_posters/viga_gpt6/01_g1_carries_panel_through_doorway.jpg",
+    "duration": 47.0
+   }
+  }
+ },
+ {
+  "id": "11",
+  "prompt": "Sort six parcels and recover from a jam",
+  "objects": "Parcels, rollers, diverter, paddle",
+  "full": "A gravity-fed sorting machine processes six rigid parcels from a sloped loading rack into three collection lanes. No people, animals, or robot characters appear. The parcels have equal width but three different heights, with two parcels of each height mixed in the queue. A motor-driven escapement releases one parcel at a time onto a roller track. Each parcel passes beneath a height-sensing lever that positions a downstream diverter through a mechanical linkage, routing short, medium, and tall parcels into separate chutes. After the first two parcels have been sorted, the third turns slightly and catches between the guide rails. The drive continues through a slipping clutch until a cam-operated side paddle pushes the parcel square with the track. It moves forward, passes the height lever, and enters its collection lane. The remaining parcels follow through the same release and sorting cycle. Each lane’s end stop holds its two parcels in a short queue. When the loading rack becomes empty, a follower drops into the vacant feed position and disengages the drive clutch, leaving the escapement stopped and all six parcels sorted.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/11_parcel_sorter_sorts_six.mp4",
+    "poster": "_posters/ours_gpt6/11_parcel_sorter_sorts_six.jpg",
+    "duration": 48.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/11_parcel_sorter_sorts_six.mp4",
+    "poster": "_posters/bare_gpt6/11_parcel_sorter_sorts_six.jpg",
+    "duration": 32.5
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/11_parcel_sorter_sorts_six.mp4",
+    "poster": "_posters/viga_gpt6/11_parcel_sorter_sorts_six.jpg",
+    "duration": 48.0
+   }
+  }
+ },
+ {
+  "id": "08",
+  "prompt": "Retry nut cracking with a heavier stone",
+  "objects": "Macaque, nuts, cobble, anvil stones",
+  "full": "A young macaque attempts to crack a hard-shelled nut on a flat stone in a forest clearing. Several nuts lie beside the stone, with a small cobble nearby and a larger, heavier stone a short distance away. The macaque picks up a nut, places it on the flat surface, and lifts the small cobble in one hand. It strikes the nut, but the nut rolls off the stone without opening. The macaque follows it, retrieves it, and places it back near the center. A second strike sends the nut skidding to the edge, still intact. It retrieves the nut again, sets down the small cobble, and moves to the heavier stone. It lifts that stone with both hands, brings it over the nut, and strikes, but misses to one side. The macaque lowers the stone, repositions the nut, widens its stance, and adjusts its grip. It raises the stone again and strikes squarely, cracking the shell. It sets the stone down beside the anvil, separates the shell pieces with its fingers, picks out the kernel, and sits beside the scattered fragments to eat.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/08_macaque_cracks_nut.mp4",
+    "poster": "_posters/ours_gpt6/08_macaque_cracks_nut.jpg",
+    "duration": 58.5
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/08_macaque_cracks_nut.mp4",
+    "poster": "_posters/bare_gpt6/08_macaque_cracks_nut.jpg",
+    "duration": 40.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/08_macaque_cracks_nut.mp4",
+    "poster": "_posters/viga_gpt6/08_macaque_cracks_nut.jpg",
+    "duration": 66.0
+   }
+  }
+ },
+ {
+  "id": "13",
+  "prompt": "Fill, cap and label bottles with a label feed repair",
+  "objects": "Bottles, liquid, caps, labels, conveyor",
+  "full": "An automatic production line fills, caps, and labels a batch of six transparent bottles. No people, animals, or robot characters appear. Empty bottles queue on an infeed conveyor beside a liquid reservoir, a cap chute, and a label reel. A rotating star wheel separates the bottles and brings the first beneath a filling nozzle. The bottle stops, the nozzle lowers, and a measured portion of colored liquid enters before the nozzle rises and the star wheel advances. At the next station, a cap drops from the chute into a holder and a rotating head presses and tightens it onto the bottle. The bottle then passes between powered rollers that turn it against a dispensed label, wrapping the label around its body. As more bottles enter, filling, capping, and labelling occur simultaneously at different stations. One label feeds slightly short, causing the label station to pause while a tension arm takes up slack and advances the reel to the next registration mark. Processing resumes, and the last bottles pass through. All six collect behind an outfeed stop, the empty infeed sensor halts the indexing wheel, and the remaining stations finish their cycles before stopping.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/13_bottling_line_fills_six.mp4",
+    "poster": "_posters/ours_gpt6/13_bottling_line_fills_six.jpg",
+    "duration": 51.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/13_bottling_line_fills_six.mp4",
+    "poster": "_posters/bare_gpt6/13_bottling_line_fills_six.jpg",
+    "duration": 30.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/13_bottling_line_fills_six.mp4",
+    "poster": "_posters/viga_gpt6/13_bottling_line_fills_six.jpg",
+    "duration": 55.0
+   }
+  }
+ },
+ {
+  "id": "07",
+  "prompt": "Practice sit and stay with a failed trial",
+  "objects": "Trainer, dog, treats, treat pouch",
+  "full": "A trainer teaches a young dog to sit and stay in a quiet fenced garden. The trainer wears a treat pouch, and the dog begins standing in front of them on a clear patch of grass. The trainer holds a treat above the dog’s nose and moves it backward until the dog sits, marks the response with a short word, and gives the treat. They repeat the sit with a raised-hand signal, reward it, and then introduce an open-palm stay signal. The trainer steps backward one pace, pauses, returns to the dog, and rewards it while it remains seated. On the next attempt, the trainer takes two steps back, but the dog stands and follows. The trainer stops, guides the dog back to its original place, and asks it to sit again. They repeat the easier one-step stay and reward it, then try two steps again. This time the dog holds its position until the trainer returns. Finally, the trainer backs away three paces and briefly turns sideways before facing the dog again. The dog remains seated. The trainer returns, gives a release cue, and rewards the dog as it gets up and approaches.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/07_trainer_teaches_dog_to_stay.mp4",
+    "poster": "_posters/ours_gpt6/07_trainer_teaches_dog_to_stay.jpg",
+    "duration": 68.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/07_trainer_teaches_dog_to_stay.mp4",
+    "poster": "_posters/bare_gpt6/07_trainer_teaches_dog_to_stay.jpg",
+    "duration": 57.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/07_trainer_teaches_dog_to_stay.mp4",
+    "poster": "_posters/viga_gpt6/07_trainer_teaches_dog_to_stay.jpg",
+    "duration": 11.7
+   }
+  }
+ },
+ {
+  "id": "10",
+  "prompt": "Merge domino branches into a flag finish",
+  "objects": "Dominoes, ball, gate, levers, flag",
+  "full": "A branching domino circuit unfolds across a large tabletop, combining falling tiles with levers, sliding gates, and a weighted final platform. No people, animals, or robot characters appear. A wound clockwork striker releases and knocks over the first domino, starting a line that divides into two routes. The left branch climbs a series of shallow steps and ends by pushing a lever that withdraws a locking pin from a sliding gate. The right branch follows a longer curved path around a tower of wooden blocks and ends by tipping a small cup containing a steel ball. The ball rolls toward the gate, reaches it after the pin has been withdrawn, and pushes through onto a descending track. At the bottom, it strikes a paddle connected to a second domino line on a lower level. This line crosses a narrow bridge and knocks a hinged support away from beneath a weighted platform. The platform lowers slowly through a damped linkage, pulling a cord that raises a small flag. The final dominoes settle, the ball comes to rest in a pocket, and the raised flag remains visible above the completed circuit.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/10_domino_circuit_falls.mp4",
+    "poster": "_posters/ours_gpt6/10_domino_circuit_falls.jpg",
+    "duration": 25.4
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/10_domino_circuit_falls.mp4",
+    "poster": "_posters/bare_gpt6/10_domino_circuit_falls.jpg",
+    "duration": 25.4
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/10_domino_circuit_falls.mp4",
+    "poster": "_posters/viga_gpt6/10_domino_circuit_falls.jpg",
+    "duration": 42.0
+   }
+  }
+ },
+ {
+  "id": "15",
+  "prompt": "Drive a spring cart through linked obstacles",
+  "objects": "Cart, spring, ball, gate, ramps",
+  "full": "A spring-powered cart travels through a mechanical obstacle course on a tabletop track. No people, animals, or robot characters appear. The cart starts behind a retaining latch with its drive spring wound, carrying a steel ball in a shallow cradle. A timer releases the latch, and the cart rolls forward, climbs a gentle ramp, and passes over a hinged platform that tilts under its weight. As it descends the far side, a fixed guide engages a lever on the cart and opens the cradle. The ball drops into a chute and rolls ahead to a locked crossing gate. It lands in a weighted cup, lowering the cup and pulling the gate upward by a cord. The cart reaches the crossing, passes beneath the raised gate, and enters a curved section that turns it back toward the start. It crosses a rough strip that slows its wheels, then climbs a final short incline using the remaining spring energy. At the top, it rolls into a padded docking stop and engages a catch. The drive spring unwinds the last fraction through a slipping clutch, leaving the cart parked and the ball held in the lowered gate cup.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/15_spring_cart_runs_course.mp4",
+    "poster": "_posters/ours_gpt6/15_spring_cart_runs_course.jpg",
+    "duration": 53.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/15_spring_cart_runs_course.mp4",
+    "poster": "_posters/bare_gpt6/15_spring_cart_runs_course.jpg",
+    "duration": 36.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/15_spring_cart_runs_course.mp4",
+    "poster": "_posters/viga_gpt6/15_spring_cart_runs_course.jpg",
+    "duration": 30.0
+   }
+  }
+ },
+ {
+  "id": "16",
+  "prompt": "Strike four times while the clock keeps running",
+  "objects": "Clock, weights, gears, pendulum, bell",
+  "full": "A weight-driven clock with exposed gears advances to the hour, strikes four times, and returns to normal running. No people, animals, or robot characters appear. The clock begins a short interval before four o’clock, with its pendulum swinging, its driving weights raised, and the hour-striking mechanism held by a latch. The escapement releases the gear train tooth by tooth as the minute hand approaches twelve. A cam on the motion works gradually lifts the striking release lever. At the hour, the lever clears its stop and releases a separate striking train, whose weight begins descending as a fly governor spins up. A pinned wheel lifts a hammer and lets it fall against a bell four times, with the hammer withdrawing after each impact. A counting mechanism advances with each strike and, after the fourth, allows the locking lever to drop into its stop. The striking train halts and the governor settles, while the main escapement and pendulum continue running. End with the hands showing just after four, the hammer at rest, and the timekeeping gears still advancing.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/16_clock_strikes_four.mp4",
+    "poster": "_posters/ours_gpt6/16_clock_strikes_four.jpg",
+    "duration": 34.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/16_clock_strikes_four.mp4",
+    "poster": "_posters/bare_gpt6/16_clock_strikes_four.jpg",
+    "duration": 17.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/16_clock_strikes_four.mp4",
+    "poster": "_posters/viga_gpt6/16_clock_strikes_four.jpg",
+    "duration": 20.0
+   }
+  }
+ },
+ {
+  "id": "09",
+  "prompt": "Route two marbles through a lift to a cup",
+  "objects": "Marbles, ramps, seesaw, lift, cup",
+  "full": "A mechanical marble course runs on a freestanding wooden frame with ramps, a spiral funnel, a seesaw, a counterweight lift, and a finishing cup. No people, animals, or robot characters appear. At the start, a steel marble rests behind a closed gate at the top, a second marble sits in a pocket on the raised end of the seesaw, and the lift platform waits at the bottom of its guide rails. A clockwork cam opens the starting gate, releasing the first marble down a curved ramp and into the funnel. It circles inward, drops through the center, and lands on the lowered end of the seesaw, tipping it and releasing the second marble onto a separate track. The first marble rolls off the seesaw onto the lift platform and depresses a latch. A suspended counterweight descends, raising the platform until its edge meets an upper exit ramp. The marble rolls out, crosses a short jump onto a catch ramp, and enters the finishing cup. Meanwhile, the second marble follows a longer zigzag route and arrives in the same cup a moment later. The cup tips under their combined weight, drops both marbles into a collection tray, and returns against its stop.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/09_marble_course_runs.mp4",
+    "poster": "_posters/ours_gpt6/09_marble_course_runs.jpg",
+    "duration": 21.7
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/09_marble_course_runs.mp4",
+    "poster": "_posters/bare_gpt6/09_marble_course_runs.jpg",
+    "duration": 26.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/09_marble_course_runs.mp4",
+    "poster": "_posters/viga_gpt6/09_marble_course_runs.jpg",
+    "duration": 32.0
+   }
+  }
+ },
+ {
+  "id": "05",
+  "prompt": "Fetch a newspaper and deliver it to the owner",
+  "objects": "Dog, owner, newspaper, porch, chair",
+  "full": "A dog retrieves a rolled newspaper from the front garden and delivers it to its owner on the porch. The owner sits beside the front door, and a newspaper secured with a paper band lies near the garden gate at the end of a short path. The dog rests beside the chair until the owner gives a verbal cue and points toward the gate. It raises its head, stands, walks to the porch steps, and trots down onto the path. Near the gate, it slows, lowers its nose, and locates the newspaper beside a plant pot. It grips the middle of the roll in its mouth, lifts it, turns, and trots back toward the house. At the steps, it slows and climbs while carrying the newspaper. On reaching the porch, it pauses to adjust its grip, then approaches the owner and raises its muzzle toward the waiting hand. The owner takes hold of the newspaper before the dog releases it. The dog sits beside the chair, the owner places the newspaper on their lap and strokes its head, and the dog settles at their feet.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/05_dog_fetches_newspaper.mp4",
+    "poster": "_posters/ours_gpt6/05_dog_fetches_newspaper.jpg",
+    "duration": 43.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/05_dog_fetches_newspaper.mp4",
+    "poster": "_posters/bare_gpt6/05_dog_fetches_newspaper.jpg",
+    "duration": 32.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/05_dog_fetches_newspaper.mp4",
+    "poster": "_posters/viga_gpt6/05_dog_fetches_newspaper.jpg",
+    "duration": 7.5
+   }
+  }
+ }
+];
+const METHODS = [{"key": "ours_gpt6", "label": "Ours", "count": 16}, {"key": "bare_gpt6", "label": "Bare LLM", "count": 16}, {"key": "viga_gpt6", "label": "VIGA", "count": 16}];
+const SHOW_IDS = false;
+const HIGHLIGHT = "ours_gpt6";
+const SPEEDS = [1, 2, 3];
+
+const host = document.getElementById('scenes');
+const empty = document.getElementById('empty');
+const countEl = document.getElementById('count');
+const chipBox = document.getElementById('chips');
+const speedBox = document.getElementById('speed');
+let autoplay = true;
+let rate = 2;
+const active = new Set(METHODS.map(m => m.key));
+const rows = [];
+const flat = [];
+
+function fmt(s) {
+  if (s == null) return '';
+  const m = Math.floor(s / 60), r = Math.round(s % 60);
+  return m ? m + ':' + String(r).padStart(2, '0') : r.toFixed(0) + 's';
+}
+
+SPEEDS.forEach(sp => {
+  const b = document.createElement('button');
+  b.textContent = sp + '×';
+  b.setAttribute('aria-pressed', String(sp === rate));
+  b.setAttribute('aria-label', 'Play at ' + sp + ' times speed');
+  b.addEventListener('click', () => {
+    rate = sp;
+    [...speedBox.children].forEach((c, i) =>
+      c.setAttribute('aria-pressed', String(SPEEDS[i] === rate)));
+    applyRate();
+  });
+  speedBox.appendChild(b);
+});
+
+function applyRate() {
+  document.querySelectorAll('video').forEach(v => {
+    try { v.playbackRate = rate; } catch (e) {}
+  });
+}
+
+METHODS.forEach(m => {
+  const b = document.createElement('button');
+  b.className = 'chip' + (m.key === HIGHLIGHT ? ' is-ours' : '');
+  b.setAttribute('aria-pressed', 'true');
+  b.appendChild(document.createTextNode(m.label));
+  const n = document.createElement('span');
+  n.className = 'n'; n.textContent = m.count;
+  b.appendChild(n);
+  b.addEventListener('click', () => {
+    if (active.has(m.key)) active.delete(m.key); else active.add(m.key);
+    if (active.size === 0) METHODS.forEach(x => active.add(x.key));
+    [...chipBox.children].forEach((c, i) =>
+      c.setAttribute('aria-pressed', String(active.has(METHODS[i].key))));
+    relayout();
+    applyFilter();
+  });
+  chipBox.appendChild(b);
+});
+
+SCENES.forEach(sc => {
+  const sec = document.createElement('section');
+  sec.className = 'scene';
+  sec.dataset.hay = [sc.id, sc.prompt, sc.objects, sc.full].join(' ').toLowerCase();
+
+  const head = document.createElement('div');
+  head.className = 'shead';
+
+  if (SHOW_IDS) {
+    const sid = document.createElement('span');
+    sid.className = 'sid'; sid.textContent = sc.id;
+    head.appendChild(sid);
+  }
+
+  const body = document.createElement('div');
+  body.className = 'sbody';
+  const p = document.createElement('p');
+  p.className = 'prompt'; p.textContent = sc.prompt || sc.id;
+  body.appendChild(p);
+  if (sc.objects) {
+    const o = document.createElement('p');
+    o.className = 'objs'; o.textContent = sc.objects;
+    body.appendChild(o);
+  }
+  head.appendChild(body);
+
+  const ctl = document.createElement('div');
+  ctl.className = 'sctl';
+  const fullBtn = document.createElement('button');
+  fullBtn.textContent = 'Full prompt';
+  fullBtn.setAttribute('aria-label', 'Show the full prompt for "' + (sc.prompt || sc.id) + '"');
+  fullBtn.addEventListener('click', () => openPrompt(sc));
+  ctl.appendChild(fullBtn);
+  const replay = document.createElement('button');
+  replay.textContent = 'Replay';
+  ctl.appendChild(replay);
+  head.appendChild(ctl);
+  sec.appendChild(head);
+
+  const bar = document.createElement('div');
+  bar.className = 'bar';
+  const fill = document.createElement('i');
+  bar.appendChild(fill);
+  sec.appendChild(bar);
+
+  const cols = document.createElement('div');
+  cols.className = 'cols';
+  sec.appendChild(cols);
+
+  const cells = [];
+  METHODS.forEach(m => {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.dataset.method = m.key;
+
+    const lab = document.createElement('div');
+    lab.className = 'clabel';
+    const nm = document.createElement('span');
+    nm.className = 'cname' + (m.key === HIGHLIGHT ? ' is-ours' : '');
+    nm.textContent = m.label;
+    lab.appendChild(nm);
+
+    const clip = sc.clips[m.key];
+    if (clip) {
+      const du = document.createElement('span');
+      du.className = 'cdur'; du.textContent = fmt(clip.duration);
+      lab.appendChild(du);
+    }
+    cell.appendChild(lab);
+
+    if (!clip) {
+      const miss = document.createElement('div');
+      miss.className = 'missing';
+      const b1 = document.createElement('b');
+      b1.textContent = 'No result';
+      miss.appendChild(b1);
+      const b2 = document.createElement('span');
+      b2.textContent = m.label + ' produced no clip for this prompt';
+      miss.appendChild(b2);
+      cell.appendChild(miss);
+      cols.appendChild(cell);
+      return;
+    }
+
+    const vw = document.createElement('div');
+    vw.className = 'vwrap';
+
+    const exp = document.createElement('button');
+    exp.className = 'expand';
+    exp.textContent = 'Expand';
+    exp.setAttribute('aria-label',
+      'Open ' + m.label + ' result for "' + (sc.prompt || sc.id) + '" larger');
+    vw.appendChild(exp);
+
+    const v = document.createElement('video');
+    v.src = clip.src;
+    if (clip.poster) v.poster = clip.poster;
+    v.muted = true; v.playsInline = true; v.preload = 'none';
+    v.setAttribute('muted', '');
+    vw.appendChild(v);
+
+    const endTag = document.createElement('span');
+    endTag.className = 'ended';
+    endTag.textContent = 'ended · ' + fmt(clip.duration);
+    vw.appendChild(endTag);
+
+    cell.appendChild(vw);
+    cols.appendChild(cell);
+
+    const fi = flat.length;
+    flat.push({ src: clip.src, poster: clip.poster, method: m.label, methodKey: m.key,
+                scene: sc.id, prompt: sc.prompt, duration: clip.duration, el: v });
+
+    v.addEventListener('ended', () => vw.classList.add('is-ended'));
+    v.addEventListener('play', () => { vw.classList.remove('is-ended'); v.playbackRate = rate; });
+    v.addEventListener('loadedmetadata', () => { v.playbackRate = rate; });
+    vw.addEventListener('click', e => { if (e.target !== exp) openLightbox(fi); });
+    exp.addEventListener('click', e => { e.stopPropagation(); openLightbox(fi); });
+
+    cells.push({ v, vw, duration: clip.duration || 0 });
+  });
+
+  host.appendChild(sec);
+
+  const row = { sec, cells, fill, longest: Math.max(0, ...cells.map(c => c.duration)),
+                timer: null, playing: false };
+  rows.push(row);
+
+  replay.addEventListener('click', () => startRow(row, true));
+});
+
+function visibleCells(row) {
+  return row.cells.filter(c => active.has(c.v.closest('.cell').dataset.method));
+}
+
+function startRow(row, force) {
+  const cs = visibleCells(row);
+  if (!cs.length) return;
+  cs.forEach(c => {
+    c.v.preload = 'auto';
+    try { c.v.currentTime = 0; } catch (e) {}
+    c.v.playbackRate = rate;
+    c.vw.classList.remove('is-ended');
+    if (autoplay || force) c.v.play().catch(() => {});
+  });
+  row.playing = true;
+  tick(row);
+}
+
+function stopRow(row) {
+  row.cells.forEach(c => c.v.pause());
+  row.playing = false;
+  if (row.timer) { clearInterval(row.timer); row.timer = null; }
+}
+
+function tick(row) {
+  if (row.timer) clearInterval(row.timer);
+  row.timer = setInterval(() => {
+    const cs = visibleCells(row);
+    if (!cs.length) return;
+    const t = Math.max(0, ...cs.map(c => c.v.currentTime || 0));
+    const span = Math.max(...cs.map(c => c.duration)) || row.longest || 1;
+    row.fill.style.width = Math.min(100, (t / span) * 100) + '%';
+    const allDone = cs.every(c => c.v.ended || c.v.currentTime >= c.duration - 0.15);
+    if (allDone && row.playing) {
+      clearInterval(row.timer); row.timer = null;
+      setTimeout(() => { if (row.playing && autoplay) startRow(row); }, 900);
+    }
+  }, 100);
+}
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    const row = rows[+en.target.dataset.row];
+    if (!row) return;
+    if (en.isIntersecting) { if (autoplay) startRow(row); }
+    else stopRow(row);
+  });
+}, { rootMargin: '120px 0px', threshold: 0.12 });
+rows.forEach((r, i) => { r.sec.dataset.row = i; io.observe(r.sec); });
+
+function relayout() {
+  const n = Math.max(1, active.size);
+  rows.forEach(r => {
+    r.sec.querySelector('.cols').style.gridTemplateColumns = 'repeat(' + n + ', minmax(0,1fr))';
+    [...r.sec.querySelectorAll('.cell')].forEach(c => {
+      const on = active.has(c.dataset.method);
+      c.style.display = on ? '' : 'none';
+      if (!on) { const v = c.querySelector('video'); if (v) v.pause(); }
+    });
+  });
+}
+relayout();
+
+document.getElementById('toggleAll').addEventListener('click', e => {
+  autoplay = !autoplay;
+  e.target.setAttribute('aria-pressed', String(autoplay));
+  e.target.textContent = 'Autoplay: ' + (autoplay ? 'on' : 'off');
+  rows.forEach(r => autoplay ? startRow(r) : stopRow(r));
+});
+
+const q = document.getElementById('q');
+function applyFilter() {
+  const term = q.value.trim().toLowerCase();
+  let shown = 0;
+  rows.forEach(r => {
+    const hit = !term || r.sec.dataset.hay.includes(term);
+    r.sec.classList.toggle('hide', !hit);
+    if (hit) shown++; else stopRow(r);
+  });
+  empty.hidden = shown !== 0;
+  const clips = SCENES.reduce((a, s) =>
+    a + METHODS.filter(m => active.has(m.key) && s.clips[m.key]).length, 0);
+  countEl.textContent = shown + ' of ' + SCENES.length + ' prompts · ' + clips + ' clips';
+}
+q.addEventListener('input', applyFilter);
+applyFilter();
+
+const pm = document.getElementById('pm');
+const pmBody = document.getElementById('pmbody');
+const pmCopy = document.getElementById('pmcopy');
+let pmText = '';
+
+function openPrompt(sc) {
+  const pmid = document.getElementById('pmid');
+  pmid.textContent = sc.id;
+  pmid.style.display = SHOW_IDS ? '' : 'none';
+  document.getElementById('pmtitle').textContent = sc.prompt || sc.id;
+  const objs = document.getElementById('pmobjs');
+  objs.textContent = sc.objects || '';
+  objs.style.display = sc.objects ? '' : 'none';
+  pmText = sc.full || '';
+  pmBody.textContent = pmText || 'No full prompt recorded for this scene.';
+  pmBody.classList.toggle('pm-none', !pmText);
+  pmCopy.style.display = pmText ? '' : 'none';
+  pmCopy.textContent = 'Copy';
+  if (!pm.open) pm.showModal();
+}
+document.getElementById('pmclose').addEventListener('click', () => pm.close());
+pmCopy.addEventListener('click', () => {
+  if (!pmText) return;
+  const done = () => { pmCopy.textContent = 'Copied'; setTimeout(() => { pmCopy.textContent = 'Copy'; }, 1400); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(pmText).then(done, fallbackCopy);
+  } else { fallbackCopy(); }
+  function fallbackCopy() {
+    const ta = document.createElement('textarea');
+    ta.value = pmText; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { pmCopy.textContent = 'Press ⌘C'; }
+    document.body.removeChild(ta);
+  }
+});
+
+const lb = document.getElementById('lb');
+const lbv = document.getElementById('lbv');
+const lbt = document.getElementById('lbt');
+const lbc = document.getElementById('lbc');
+let cur = 0;
+
+function openLightbox(i) {
+  cur = i;
+  const it = flat[i];
+  lbv.src = it.src;
+  if (it.poster) lbv.poster = it.poster;
+  lbt.textContent = '';
+  const mspan = document.createElement('span');
+  if (it.methodKey === HIGHLIGHT) mspan.className = 'm-ours';
+  mspan.textContent = it.method;
+  lbt.appendChild(mspan);
+  lbt.appendChild(document.createTextNode(' — ' +
+    (SHOW_IDS ? it.scene + ' · ' : '') + (it.prompt || it.scene)));
+  lbc.textContent = 'Clip length ' + fmt(it.duration) + ' · playing at ' + rate + '×';
+  if (!lb.open) lb.showModal();
+  lbv.playbackRate = rate;
+  lbv.play().catch(() => {});
+}
+lbv.addEventListener('loadedmetadata', () => { lbv.playbackRate = rate; });
+function step(d) {
+  const pool = flat
+    .map((f, i) => i)
+    .filter(i => active.has(flat[i].methodKey)
+                 && !flat[i].el.closest('.scene').classList.contains('hide'));
+  if (!pool.length) return;
+  const at = pool.indexOf(cur);
+  openLightbox(pool[(at + d + pool.length) % pool.length]);
+}
+document.getElementById('prev').addEventListener('click', () => step(-1));
+document.getElementById('next').addEventListener('click', () => step(1));
+document.getElementById('close').addEventListener('click', () => lb.close());
+lb.addEventListener('close', () => { lbv.pause(); lbv.removeAttribute('src'); lbv.load(); });
+document.addEventListener('keydown', e => {
+  if (!lb.open) return;
+  if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+  if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+});
+</script>
+</body>
+</html>
