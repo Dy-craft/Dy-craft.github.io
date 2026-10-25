@@ -1,0 +1,338 @@
+[
+ {
+  "name": "rest",
+  "frame": 0,
+  "camera": "cam_porch",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "cue",
+  "frame": 55,
+  "camera": "cam_cue",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "attention",
+  "frame": 71,
+  "camera": "cam_reaction",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "rise",
+  "frame": 90,
+  "camera": "cam_reaction",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "descent",
+  "frame": 206,
+  "camera": "cam_outbound",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "descent_right_tread",
+  "frame": 206,
+  "camera": "cam_outbound",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "descent_right_path",
+  "frame": 226,
+  "camera": "cam_outbound",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "approach_gate",
+  "frame": 256,
+  "camera": "cam_pickup",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "align",
+  "frame": 303,
+  "camera": "cam_pickup",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "find",
+  "frame": 339,
+  "camera": "cam_pickup",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "bite",
+  "frame": 364,
+  "camera": "cam_pickup",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "lift",
+  "frame": 388,
+  "camera": "cam_pickup",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "pickup_exit",
+  "frame": 403,
+  "camera": "cam_pickup",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "pickup_move",
+  "frame": 417,
+  "camera": "cam_turn",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "turn_apex",
+  "frame": 437,
+  "camera": "cam_turn",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "turn",
+  "frame": 453,
+  "camera": "cam_turn",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "turn_flow",
+  "frame": 499,
+  "camera": "cam_turn",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "turn_exit",
+  "frame": 504,
+  "camera": "cam_turn",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "return_start",
+  "frame": 511,
+  "camera": "cam_return",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "ascent",
+  "frame": 557,
+  "camera": "cam_return",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "relaxed_wait",
+  "frame": 620,
+  "camera": "cam_exchange",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "reseat",
+  "frame": 639,
+  "camera": "cam_exchange",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "roll_approach",
+  "frame": 660,
+  "camera": "cam_exchange",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "approach_owner",
+  "frame": 667,
+  "camera": "cam_exchange",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "roll_midreach",
+  "frame": 672,
+  "camera": "cam_exchange",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "overhand_above",
+  "frame": 680,
+  "camera": "cam_exchange",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "arm_clear_reach",
+  "frame": 682,
+  "camera": "cam_exchange",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "roll_end_approach",
+  "frame": 688,
+  "camera": "cam_exchange",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "offer",
+  "frame": 691,
+  "camera": "cam_exchange",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "roll_preclosure",
+  "frame": 695,
+  "camera": "cam_exchange",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "roll_closure",
+  "frame": 697,
+  "camera": "cam_exchange",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "roll_receipt",
+  "frame": 700,
+  "camera": "cam_exchange",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "shared",
+  "frame": 707,
+  "camera": "cam_exchange",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "separate_early",
+  "frame": 715,
+  "camera": "cam_exchange",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "separate_middle",
+  "frame": 719,
+  "camera": "cam_exchange",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "separate_clear",
+  "frame": 722,
+  "camera": "cam_exchange",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "received",
+  "frame": 725,
+  "camera": "cam_exchange",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "withdraw_early",
+  "frame": 735,
+  "camera": "cam_exchange",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "left_clear",
+  "frame": 746,
+  "camera": "cam_ending",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "overhand_carry",
+  "frame": 750,
+  "camera": "cam_ending",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "sit_lower_early",
+  "frame": 754,
+  "camera": "cam_ending",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "withdraw_middle",
+  "frame": 760,
+  "camera": "cam_ending",
+  "img": "kf/041.jpg"
+ },
+ {
+  "name": "sit_lower_middle",
+  "frame": 766,
+  "camera": "cam_ending",
+  "img": "kf/042.jpg"
+ },
+ {
+  "name": "sit_transition",
+  "frame": 774,
+  "camera": "cam_ending",
+  "img": "kf/043.jpg"
+ },
+ {
+  "name": "sit_lower_late",
+  "frame": 779,
+  "camera": "cam_ending",
+  "img": "kf/044.jpg"
+ },
+ {
+  "name": "sit",
+  "frame": 784,
+  "camera": "cam_ending",
+  "img": "kf/045.jpg"
+ },
+ {
+  "name": "withdraw_late",
+  "frame": 785,
+  "camera": "cam_ending",
+  "img": "kf/046.jpg"
+ },
+ {
+  "name": "sit_settled",
+  "frame": 790,
+  "camera": "cam_ending",
+  "img": "kf/047.jpg"
+ },
+ {
+  "name": "arm_clear_lap",
+  "frame": 798,
+  "camera": "cam_ending",
+  "img": "kf/048.jpg"
+ },
+ {
+  "name": "overhand_lap",
+  "frame": 798,
+  "camera": "cam_ending",
+  "img": "kf/049.jpg"
+ },
+ {
+  "name": "lap",
+  "frame": 803,
+  "camera": "cam_ending",
+  "img": "kf/050.jpg"
+ },
+ {
+  "name": "overhand_release",
+  "frame": 811,
+  "camera": "cam_ending",
+  "img": "kf/051.jpg"
+ },
+ {
+  "name": "thumb_release_rest",
+  "frame": 815,
+  "camera": "cam_ending",
+  "img": "kf/052.jpg"
+ },
+ {
+  "name": "roll_return_rest",
+  "frame": 836,
+  "camera": "cam_ending",
+  "img": "kf/053.jpg"
+ },
+ {
+  "name": "stroke",
+  "frame": 865,
+  "camera": "cam_ending",
+  "img": "kf/054.jpg"
+ },
+ {
+  "name": "settle",
+  "frame": 1054,
+  "camera": "cam_ending",
+  "img": "kf/055.jpg"
+ }
+]

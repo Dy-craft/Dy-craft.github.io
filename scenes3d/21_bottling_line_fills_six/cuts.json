@@ -1,0 +1,85 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1199,
+ "duration": 50.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM_ESTABLISH",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM_ESTABLISH"
+  },
+  {
+   "frame": 36,
+   "t": 1.5,
+   "camera": "CAM_INFEED"
+  },
+  {
+   "frame": 96,
+   "t": 4.0,
+   "camera": "CAM_FILL"
+  },
+  {
+   "frame": 188,
+   "t": 7.833333333333333,
+   "camera": "CAM_CAP"
+  },
+  {
+   "frame": 304,
+   "t": 12.666666666666666,
+   "camera": "CAM_PARALLEL"
+  },
+  {
+   "frame": 390,
+   "t": 16.25,
+   "camera": "CAM_WRAP"
+  },
+  {
+   "frame": 525,
+   "t": 21.875,
+   "camera": "CAM_PARALLEL"
+  },
+  {
+   "frame": 672,
+   "t": 28.0,
+   "camera": "CAM_WRAP"
+  },
+  {
+   "frame": 714,
+   "t": 29.75,
+   "camera": "CAM_RECOVERY"
+  },
+  {
+   "frame": 748,
+   "t": 31.166666666666668,
+   "camera": "CAM_CORRECTION"
+  },
+  {
+   "frame": 776,
+   "t": 32.333333333333336,
+   "camera": "CAM_WRAP"
+  },
+  {
+   "frame": 828,
+   "t": 34.5,
+   "camera": "CAM_DRAIN"
+  },
+  {
+   "frame": 956,
+   "t": 39.833333333333336,
+   "camera": "CAM_LAST"
+  },
+  {
+   "frame": 1060,
+   "t": 44.166666666666664,
+   "camera": "CAM_OUTFEED"
+  },
+  {
+   "frame": 1116,
+   "t": 46.5,
+   "camera": "CAM_END"
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1772,
+ "duration": 73.875,
+ "aspect": 1.7777777777777777,
+ "default_camera": "cam_workshop",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "cam_workshop"
+  },
+  {
+   "frame": 120,
+   "t": 5.0,
+   "camera": "cam_grip"
+  },
+  {
+   "frame": 212,
+   "t": 8.833333333333334,
+   "camera": "cam_pickup"
+  },
+  {
+   "frame": 580,
+   "t": 24.166666666666668,
+   "camera": "cam_turn"
+  },
+  {
+   "frame": 848,
+   "t": 35.333333333333336,
+   "camera": "cam_door"
+  },
+  {
+   "frame": 1184,
+   "t": 49.333333333333336,
+   "camera": "cam_place"
+  },
+  {
+   "frame": 1542,
+   "t": 64.25,
+   "camera": "cam_setdown"
+  },
+  {
+   "frame": 1652,
+   "t": 68.83333333333333,
+   "camera": "cam_finish"
+  }
+ ]
+}

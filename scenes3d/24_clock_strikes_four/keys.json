@@ -1,0 +1,146 @@
+[
+ {
+  "name": "opening",
+  "frame": 0,
+  "camera": "CAM_01_SCULLERY",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "entry_lock",
+  "frame": 144,
+  "camera": "CAM_02_BEAT",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "entry_impulse",
+  "frame": 156,
+  "camera": "CAM_02_BEAT",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "escape_release",
+  "frame": 159,
+  "camera": "CAM_02_BEAT",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "opposite_lock",
+  "frame": 168,
+  "camera": "CAM_02_BEAT",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "cam_lift",
+  "frame": 326,
+  "camera": "CAM_03_CAM",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "warning_held",
+  "frame": 332,
+  "camera": "CAM_03_RELEASE",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "warning_clear",
+  "frame": 348,
+  "camera": "CAM_03_RELEASE",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "rim_takeover",
+  "frame": 380,
+  "camera": "CAM_03_RELEASE",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "first_lift",
+  "frame": 388,
+  "camera": "CAM_04_STRIKES",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "first_fall",
+  "frame": 390,
+  "camera": "CAM_04_STRIKES",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "first_impact",
+  "frame": 392,
+  "camera": "CAM_04_STRIKES",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "first_recovery",
+  "frame": 396,
+  "camera": "CAM_04_STRIKES",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "second_impact",
+  "frame": 440,
+  "camera": "CAM_04_ENERGY",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "second_recovery",
+  "frame": 444,
+  "camera": "CAM_04_ENERGY",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "energy_run",
+  "frame": 452,
+  "camera": "CAM_04_ENERGY",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "third_impact",
+  "frame": 488,
+  "camera": "CAM_04_STRIKES",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "third_recovery",
+  "frame": 492,
+  "camera": "CAM_04_STRIKES",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "fourth_lift",
+  "frame": 532,
+  "camera": "CAM_05_LOCK",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "fourth_impact",
+  "frame": 536,
+  "camera": "CAM_05_LOCK",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "fourth_recovery",
+  "frame": 537,
+  "camera": "CAM_05_LOCK",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "terminal_lock",
+  "frame": 542,
+  "camera": "CAM_05_STOP",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "fly_overrun",
+  "frame": 560,
+  "camera": "CAM_05_FLY",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "ending",
+  "frame": 756,
+  "camera": "CAM_06_RETURN",
+  "img": "kf/023.jpg"
+ }
+]

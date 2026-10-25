@@ -1,0 +1,70 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1355,
+ "duration": 56.5,
+ "aspect": 1.7777777777777777,
+ "default_camera": "Clearing",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "Clearing"
+  },
+  {
+   "frame": 120,
+   "t": 5.0,
+   "camera": "WorkWide"
+  },
+  {
+   "frame": 168,
+   "t": 7.0,
+   "camera": "EscapeLeft"
+  },
+  {
+   "frame": 384,
+   "t": 16.0,
+   "camera": "WorkClose"
+  },
+  {
+   "frame": 480,
+   "t": 20.0,
+   "camera": "ToolChange"
+  },
+  {
+   "frame": 528,
+   "t": 22.0,
+   "camera": "WorkWide"
+  },
+  {
+   "frame": 744,
+   "t": 31.0,
+   "camera": "WorkClose"
+  },
+  {
+   "frame": 912,
+   "t": 38.0,
+   "camera": "Impact"
+  },
+  {
+   "frame": 1032,
+   "t": 43.0,
+   "camera": "EscapeLeft"
+  },
+  {
+   "frame": 1112,
+   "t": 46.333333333333336,
+   "camera": "WorkClose"
+  },
+  {
+   "frame": 1207,
+   "t": 50.291666666666664,
+   "camera": "WorkWide"
+  },
+  {
+   "frame": 1292,
+   "t": 53.833333333333336,
+   "camera": "Eat"
+  }
+ ]
+}

@@ -1,0 +1,200 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 3562,
+ "duration": 148.45833333333334,
+ "aspect": 1.7777777777777777,
+ "default_camera": "Cam_Entrance",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "Cam_Entrance"
+  },
+  {
+   "frame": 18,
+   "t": 0.75,
+   "camera": "Cam_CoilPickup"
+  },
+  {
+   "frame": 60,
+   "t": 2.5,
+   "camera": "Cam_Pickup"
+  },
+  {
+   "frame": 120,
+   "t": 5.0,
+   "camera": "Cam_Wrap"
+  },
+  {
+   "frame": 206,
+   "t": 8.583333333333334,
+   "camera": "Cam_Coils"
+  },
+  {
+   "frame": 230,
+   "t": 9.583333333333334,
+   "camera": "Cam_Pickup"
+  },
+  {
+   "frame": 248,
+   "t": 10.333333333333334,
+   "camera": "Cam_Coils"
+  },
+  {
+   "frame": 270,
+   "t": 11.25,
+   "camera": "Cam_Pickup"
+  },
+  {
+   "frame": 280,
+   "t": 11.666666666666666,
+   "camera": "Cam_WrapRear"
+  },
+  {
+   "frame": 400,
+   "t": 16.666666666666668,
+   "camera": "Cam_Dock"
+  },
+  {
+   "frame": 488,
+   "t": 20.333333333333332,
+   "camera": "Cam_Route"
+  },
+  {
+   "frame": 650,
+   "t": 27.083333333333332,
+   "camera": "Cam_Ratchet"
+  },
+  {
+   "frame": 826,
+   "t": 34.416666666666664,
+   "camera": "Cam_Tip"
+  },
+  {
+   "frame": 1044,
+   "t": 43.5,
+   "camera": "Cam_First"
+  },
+  {
+   "frame": 1165,
+   "t": 48.541666666666664,
+   "camera": "Cam_WheelOne"
+  },
+  {
+   "frame": 1244,
+   "t": 51.833333333333336,
+   "camera": "Cam_Grips"
+  },
+  {
+   "frame": 1276,
+   "t": 53.166666666666664,
+   "camera": "Cam_GripsOther"
+  },
+  {
+   "frame": 1304,
+   "t": 54.333333333333336,
+   "camera": "Cam_FirstLate"
+  },
+  {
+   "frame": 1404,
+   "t": 58.5,
+   "camera": "Cam_Landing"
+  },
+  {
+   "frame": 1557,
+   "t": 64.875,
+   "camera": "Cam_Landing"
+  },
+  {
+   "frame": 1605,
+   "t": 66.875,
+   "camera": "Cam_Post"
+  },
+  {
+   "frame": 1667,
+   "t": 69.45833333333333,
+   "camera": "Cam_Correction"
+  },
+  {
+   "frame": 1729,
+   "t": 72.04166666666667,
+   "camera": "Cam_Cross"
+  },
+  {
+   "frame": 1785,
+   "t": 74.375,
+   "camera": "Cam_Receive"
+  },
+  {
+   "frame": 1821,
+   "t": 75.875,
+   "camera": "Cam_Pivot"
+  },
+  {
+   "frame": 2009,
+   "t": 83.70833333333333,
+   "camera": "Cam_Recline"
+  },
+  {
+   "frame": 2101,
+   "t": 87.54166666666667,
+   "camera": "Cam_Second"
+  },
+  {
+   "frame": 2263,
+   "t": 94.29166666666667,
+   "camera": "Cam_WheelTwo"
+  },
+  {
+   "frame": 2317,
+   "t": 96.54166666666667,
+   "camera": "Cam_SecondLate"
+  },
+  {
+   "frame": 2482,
+   "t": 103.41666666666667,
+   "camera": "Cam_Arrival"
+  },
+  {
+   "frame": 2554,
+   "t": 106.41666666666667,
+   "camera": "Cam_Arrival"
+  },
+  {
+   "frame": 2722,
+   "t": 113.41666666666667,
+   "camera": "Cam_Unload"
+  },
+  {
+   "frame": 2750,
+   "t": 114.58333333333333,
+   "camera": "Cam_Release"
+  },
+  {
+   "frame": 2962,
+   "t": 123.41666666666667,
+   "camera": "Cam_Unload"
+  },
+  {
+   "frame": 3030,
+   "t": 126.25,
+   "camera": "Cam_Unwrap"
+  },
+  {
+   "frame": 3188,
+   "t": 132.83333333333334,
+   "camera": "Cam_Equipment"
+  },
+  {
+   "frame": 3358,
+   "t": 139.91666666666666,
+   "camera": "Cam_End"
+  },
+  {
+   "frame": 3394,
+   "t": 141.41666666666666,
+   "camera": "Cam_End"
+  }
+ ]
+}

@@ -1,0 +1,55 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 575,
+ "duration": 24.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM_01_Establish",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM_01_Establish"
+  },
+  {
+   "frame": 36,
+   "t": 1.5,
+   "camera": "CAM_02_Gate"
+  },
+  {
+   "frame": 108,
+   "t": 4.5,
+   "camera": "CAM_03_Funnel"
+  },
+  {
+   "frame": 212,
+   "t": 8.833333333333334,
+   "camera": "CAM_04_Seesaw"
+  },
+  {
+   "frame": 278,
+   "t": 11.583333333333334,
+   "camera": "CAM_05_Lift"
+  },
+  {
+   "frame": 329,
+   "t": 13.708333333333334,
+   "camera": "CAM_06_Jump"
+  },
+  {
+   "frame": 349,
+   "t": 14.541666666666666,
+   "camera": "CAM_07_Routes"
+  },
+  {
+   "frame": 418,
+   "t": 17.416666666666668,
+   "camera": "CAM_08_Cup"
+  },
+  {
+   "frame": 540,
+   "t": 22.5,
+   "camera": "CAM_09_End"
+  }
+ ]
+}

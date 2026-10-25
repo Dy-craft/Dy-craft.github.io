@@ -1,0 +1,75 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1055,
+ "duration": 44.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM_VALVE",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM_WIDE"
+  },
+  {
+   "frame": 72,
+   "t": 3.0,
+   "camera": "CAM_VALVE"
+  },
+  {
+   "frame": 144,
+   "t": 6.0,
+   "camera": "CAM_BUCKET"
+  },
+  {
+   "frame": 206,
+   "t": 8.583333333333334,
+   "camera": "CAM_FLOW"
+  },
+  {
+   "frame": 288,
+   "t": 12.0,
+   "camera": "CAM_POWER"
+  },
+  {
+   "frame": 456,
+   "t": 19.0,
+   "camera": "CAM_HERO"
+  },
+  {
+   "frame": 588,
+   "t": 24.5,
+   "camera": "CAM_TANK"
+  },
+  {
+   "frame": 672,
+   "t": 28.0,
+   "camera": "CAM_FLOW"
+  },
+  {
+   "frame": 840,
+   "t": 35.0,
+   "camera": "CAM_FLOAT"
+  },
+  {
+   "frame": 863,
+   "t": 35.958333333333336,
+   "camera": "CAM_VALVE"
+  },
+  {
+   "frame": 889,
+   "t": 37.041666666666664,
+   "camera": "CAM_BUCKET"
+  },
+  {
+   "frame": 936,
+   "t": 39.0,
+   "camera": "CAM_TANK"
+  },
+  {
+   "frame": 1026,
+   "t": 42.75,
+   "camera": "CAM_HERO"
+  }
+ ]
+}

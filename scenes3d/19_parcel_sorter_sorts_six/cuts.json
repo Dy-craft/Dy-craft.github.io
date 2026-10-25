@@ -1,0 +1,85 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1151,
+ "duration": 48.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM_WIDE",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM_WIDE"
+  },
+  {
+   "frame": 72,
+   "t": 3.0,
+   "camera": "CAM_FEED"
+  },
+  {
+   "frame": 112,
+   "t": 4.666666666666667,
+   "camera": "CAM_SORT"
+  },
+  {
+   "frame": 228,
+   "t": 9.5,
+   "camera": "CAM_FEED"
+  },
+  {
+   "frame": 268,
+   "t": 11.166666666666666,
+   "camera": "CAM_SORT"
+  },
+  {
+   "frame": 384,
+   "t": 16.0,
+   "camera": "CAM_FEED"
+  },
+  {
+   "frame": 414,
+   "t": 17.25,
+   "camera": "CAM_JAM"
+  },
+  {
+   "frame": 456,
+   "t": 19.0,
+   "camera": "CAM_DRIVE"
+  },
+  {
+   "frame": 496,
+   "t": 20.666666666666668,
+   "camera": "CAM_JAM"
+  },
+  {
+   "frame": 528,
+   "t": 22.0,
+   "camera": "CAM_SORT"
+  },
+  {
+   "frame": 636,
+   "t": 26.5,
+   "camera": "CAM_MASTER"
+  },
+  {
+   "frame": 826,
+   "t": 34.416666666666664,
+   "camera": "CAM_SORT"
+  },
+  {
+   "frame": 948,
+   "t": 39.5,
+   "camera": "CAM_MASTER"
+  },
+  {
+   "frame": 1072,
+   "t": 44.666666666666664,
+   "camera": "CAM_FEED"
+  },
+  {
+   "frame": 1104,
+   "t": 46.0,
+   "camera": "CAM_RESULT"
+  }
+ ]
+}

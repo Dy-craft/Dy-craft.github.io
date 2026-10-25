@@ -1,0 +1,182 @@
+[
+ {
+  "name": "ready",
+  "frame": 18,
+  "camera": "CAM_ESTABLISH",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "admit",
+  "frame": 57,
+  "camera": "CAM_INFEED",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "gate_reclose",
+  "frame": 65,
+  "camera": "CAM_INFEED",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "index_contact",
+  "frame": 80,
+  "camera": "CAM_INFEED",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "fill_entry",
+  "frame": 108,
+  "camera": "CAM_FILL",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "fill_flow",
+  "frame": 137,
+  "camera": "CAM_FILL",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "fill_clear",
+  "frame": 181,
+  "camera": "CAM_FILL",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "cap_falling",
+  "frame": 190,
+  "camera": "CAM_CAP",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "cap_drop",
+  "frame": 195,
+  "camera": "CAM_CAP",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "cap_engage",
+  "frame": 226,
+  "camera": "CAM_CAP",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "cap_pick",
+  "frame": 234,
+  "camera": "CAM_CAP",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "cap_thread",
+  "frame": 273,
+  "camera": "CAM_CAP",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "cap_release",
+  "frame": 300,
+  "camera": "CAM_CAP",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "parallel",
+  "frame": 384,
+  "camera": "CAM_PARALLEL",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "wrap_lead",
+  "frame": 476,
+  "camera": "CAM_WRAP",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "wrap_mid",
+  "frame": 496,
+  "camera": "CAM_WRAP",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "wrap_seam",
+  "frame": 516,
+  "camera": "CAM_WRAP",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "last_admitted",
+  "frame": 641,
+  "camera": "CAM_PARALLEL",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "short_feed",
+  "frame": 713,
+  "camera": "CAM_WRAP",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "slack_loop",
+  "frame": 714,
+  "camera": "CAM_RECOVERY",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "tension",
+  "frame": 742,
+  "camera": "CAM_RECOVERY",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "correction_start",
+  "frame": 748,
+  "camera": "CAM_CORRECTION",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "powered_advance",
+  "frame": 758,
+  "camera": "CAM_CORRECTION",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "registered",
+  "frame": 766,
+  "camera": "CAM_CORRECTION",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "resume",
+  "frame": 792,
+  "camera": "CAM_WRAP",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "drain_index",
+  "frame": 853,
+  "camera": "CAM_DRAIN",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "last_transfer",
+  "frame": 1000,
+  "camera": "CAM_LAST",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "last_wrap",
+  "frame": 1040,
+  "camera": "CAM_LAST",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "final_approach",
+  "frame": 1096,
+  "camera": "CAM_OUTFEED",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "complete",
+  "frame": 1176,
+  "camera": "CAM_END",
+  "img": "kf/029.jpg"
+ }
+]

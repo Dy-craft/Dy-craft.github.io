@@ -1,0 +1,362 @@
+[
+ {
+  "name": "ready",
+  "frame": 0,
+  "camera": "cam_warning",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "sign_grip",
+  "frame": 37,
+  "camera": "cam_sign_contact",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "sign_lift",
+  "frame": 72,
+  "camera": "cam_sign_carry",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "sign_carry",
+  "frame": 133,
+  "camera": "cam_sign_carry",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "sign_set",
+  "frame": 223,
+  "camera": "cam_sign_carry",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "sign_release",
+  "frame": 249,
+  "camera": "cam_sign_carry",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "mop_grip",
+  "frame": 369,
+  "camera": "cam_collect",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "mop_upright",
+  "frame": 384,
+  "camera": "cam_collect_lift",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "mop_clear",
+  "frame": 403,
+  "camera": "cam_collect_lift",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "handle_grip",
+  "frame": 435,
+  "camera": "cam_collect_lift",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "entry_turn",
+  "frame": 531,
+  "camera": "cam_entry_hall",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "threshold_entry",
+  "frame": 729,
+  "camera": "cam_entry_room",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "bucket_stop",
+  "frame": 922,
+  "camera": "cam_entry_room",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "right_support",
+  "frame": 968,
+  "camera": "cam_charge",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "dip",
+  "frame": 1095,
+  "camera": "cam_charge",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "rim_clear",
+  "frame": 1113,
+  "camera": "cam_charge",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "basket_seat",
+  "frame": 1140,
+  "camera": "cam_charge",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "squeeze",
+  "frame": 1162,
+  "camera": "cam_charge",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "lever_open",
+  "frame": 1202,
+  "camera": "cam_charge",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "work_grips",
+  "frame": 1452,
+  "camera": "cam_charge",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "work_regrip",
+  "frame": 1493,
+  "camera": "cam_charge",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "cove_contact",
+  "frame": 1635,
+  "camera": "cam_far_pass",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "lobe_cross",
+  "frame": 1752,
+  "camera": "cam_far_pass",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "dry_backstep",
+  "frame": 2111,
+  "camera": "cam_far_pass",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "second_band",
+  "frame": 2264,
+  "camera": "cam_far_return",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "far_complete",
+  "frame": 2477,
+  "camera": "cam_far_return",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "rinse_regrip",
+  "frame": 2525,
+  "camera": "cam_rinse",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "rinse_handover",
+  "frame": 2544,
+  "camera": "cam_rinse",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "rinse_immersion",
+  "frame": 2744,
+  "camera": "cam_rinse",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "second_basket",
+  "frame": 2789,
+  "camera": "cam_rinse",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "second_squeeze",
+  "frame": 2812,
+  "camera": "cam_rinse",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "second_release",
+  "frame": 2853,
+  "camera": "cam_rinse",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "second_carry",
+  "frame": 3069,
+  "camera": "cam_rinse",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "pull_handover",
+  "frame": 3151,
+  "camera": "cam_rinse",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "bucket_pull",
+  "frame": 3184,
+  "camera": "cam_rinse",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "bucket_near",
+  "frame": 3555,
+  "camera": "cam_leg_work",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "leg_nearside",
+  "frame": 3743,
+  "camera": "cam_leg_work",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "leg_farside",
+  "frame": 3758,
+  "camera": "cam_leg_work",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "middle_band",
+  "frame": 4039,
+  "camera": "cam_leg_work",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "coffee_wet",
+  "frame": 4192,
+  "camera": "cam_coffee",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "coffee_neighbor",
+  "frame": 4202,
+  "camera": "cam_coffee",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "coffee_scrub",
+  "frame": 4263,
+  "camera": "cam_coffee",
+  "img": "kf/041.jpg"
+ },
+ {
+  "name": "coffee_clean",
+  "frame": 4406,
+  "camera": "cam_retreat",
+  "img": "kf/042.jpg"
+ },
+ {
+  "name": "corner_regrip",
+  "frame": 4501,
+  "camera": "cam_retreat",
+  "img": "kf/043.jpg"
+ },
+ {
+  "name": "entrance_left",
+  "frame": 4669,
+  "camera": "cam_retreat",
+  "img": "kf/044.jpg"
+ },
+ {
+  "name": "exit_handle",
+  "frame": 4862,
+  "camera": "cam_bucket_exit",
+  "img": "kf/045.jpg"
+ },
+ {
+  "name": "bucket_exit",
+  "frame": 4923,
+  "camera": "cam_bucket_exit",
+  "img": "kf/046.jpg"
+ },
+ {
+  "name": "bucket_hall",
+  "frame": 5016,
+  "camera": "cam_hall_return",
+  "img": "kf/047.jpg"
+ },
+ {
+  "name": "last_step",
+  "frame": 5431,
+  "camera": "cam_threshold",
+  "img": "kf/048.jpg"
+ },
+ {
+  "name": "final_contact",
+  "frame": 5673,
+  "camera": "cam_threshold",
+  "img": "kf/049.jpg"
+ },
+ {
+  "name": "head_lift",
+  "frame": 5748,
+  "camera": "cam_threshold",
+  "img": "kf/050.jpg"
+ },
+ {
+  "name": "parking_entry",
+  "frame": 5798,
+  "camera": "cam_parking",
+  "img": "kf/051.jpg"
+ },
+ {
+  "name": "parking_takeover",
+  "frame": 5832,
+  "camera": "cam_parking",
+  "img": "kf/052.jpg"
+ },
+ {
+  "name": "parking_regrip",
+  "frame": 5862,
+  "camera": "cam_parking",
+  "img": "kf/053.jpg"
+ },
+ {
+  "name": "parking_lift",
+  "frame": 5895,
+  "camera": "cam_parking",
+  "img": "kf/054.jpg"
+ },
+ {
+  "name": "parking_transfer",
+  "frame": 5904,
+  "camera": "cam_parking",
+  "img": "kf/055.jpg"
+ },
+ {
+  "name": "cradle_support",
+  "frame": 5912,
+  "camera": "cam_parking",
+  "img": "kf/056.jpg"
+ },
+ {
+  "name": "clip_press",
+  "frame": 5931,
+  "camera": "cam_parking",
+  "img": "kf/057.jpg"
+ },
+ {
+  "name": "hands_free",
+  "frame": 5959,
+  "camera": "cam_ending",
+  "img": "kf/058.jpg"
+ },
+ {
+  "name": "ending",
+  "frame": 5980,
+  "camera": "cam_ending",
+  "img": "kf/059.jpg"
+ }
+]

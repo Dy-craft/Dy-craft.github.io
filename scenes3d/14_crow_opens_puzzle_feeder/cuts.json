@@ -1,0 +1,65 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1079,
+ "duration": 45.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM_Arrival",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM_Arrival"
+  },
+  {
+   "frame": 48,
+   "t": 2.0,
+   "camera": "CAM_Route"
+  },
+  {
+   "frame": 168,
+   "t": 7.0,
+   "camera": "CAM_Barrier"
+  },
+  {
+   "frame": 209,
+   "t": 8.708333333333334,
+   "camera": "CAM_Peck"
+  },
+  {
+   "frame": 258,
+   "t": 10.75,
+   "camera": "CAM_Push"
+  },
+  {
+   "frame": 336,
+   "t": 14.0,
+   "camera": "CAM_Failure"
+  },
+  {
+   "frame": 504,
+   "t": 21.0,
+   "camera": "CAM_Hook"
+  },
+  {
+   "frame": 720,
+   "t": 30.0,
+   "camera": "CAM_Open"
+  },
+  {
+   "frame": 864,
+   "t": 36.0,
+   "camera": "CAM_RewardFood"
+  },
+  {
+   "frame": 942,
+   "t": 39.25,
+   "camera": "CAM_Reward"
+  },
+  {
+   "frame": 1006,
+   "t": 41.916666666666664,
+   "camera": "CAM_Eat"
+  }
+ ]
+}

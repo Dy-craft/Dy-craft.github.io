@@ -1,0 +1,614 @@
+[
+ {
+  "name": "arrival",
+  "frame": 0,
+  "camera": "cam_arrival",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "order_gaze",
+  "frame": 109,
+  "camera": "cam_order",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "cup_first_grasp",
+  "frame": 164,
+  "camera": "cam_stack",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "cup_separate",
+  "frame": 177,
+  "camera": "cam_stack",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "cup_stack_clear",
+  "frame": 188,
+  "camera": "cam_stack",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "cup_on_counter",
+  "frame": 200,
+  "camera": "cam_stack",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "stack_hand_clear",
+  "frame": 213,
+  "camera": "cam_stack",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "marker_purchase",
+  "frame": 232,
+  "camera": "cam_mark",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "marker_cap_purchase",
+  "frame": 244,
+  "camera": "cam_mark",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "uncap",
+  "frame": 245,
+  "camera": "cam_mark",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "marker_cap_rest",
+  "frame": 285,
+  "camera": "cam_mark",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "cup_steady_purchase",
+  "frame": 315,
+  "camera": "cam_name",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "marker_first_stroke",
+  "frame": 324,
+  "camera": "cam_name",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "marking",
+  "frame": 357,
+  "camera": "cam_name",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "marker_cap_retrieve",
+  "frame": 428,
+  "camera": "cam_mark",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "recap",
+  "frame": 465,
+  "camera": "cam_mark",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "marker_cap_seated",
+  "frame": 469,
+  "camera": "cam_mark",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "marker_back_on_tray",
+  "frame": 493,
+  "camera": "cam_name",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "name_reveal",
+  "frame": 496,
+  "camera": "cam_name",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "repeat_order",
+  "frame": 535,
+  "camera": "cam_order",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "phone_extract",
+  "frame": 552,
+  "camera": "cam_order",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "till_touch",
+  "frame": 567,
+  "camera": "cam_order",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "payment",
+  "frame": 624,
+  "camera": "cam_order",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "phone_withdraw",
+  "frame": 637,
+  "camera": "cam_order",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "wait_depart",
+  "frame": 672,
+  "camera": "cam_order",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "carry_cup",
+  "frame": 701,
+  "camera": "cam_work",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "park_cup",
+  "frame": 733,
+  "camera": "cam_work",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "grinder_press",
+  "frame": 764,
+  "camera": "cam_dose",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "dose",
+  "frame": 785,
+  "camera": "cam_dose",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "dose_end",
+  "frame": 821,
+  "camera": "cam_tamp",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "settle_dose",
+  "frame": 834,
+  "camera": "cam_tamp",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "tamp",
+  "frame": 869,
+  "camera": "cam_tamp",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "tamper_lift",
+  "frame": 905,
+  "camera": "cam_tamp",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "lock_insert",
+  "frame": 941,
+  "camera": "cam_detail",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "lock",
+  "frame": 965,
+  "camera": "cam_detail",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "brew_press",
+  "frame": 1000,
+  "camera": "cam_detail",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "brew_start",
+  "frame": 1016,
+  "camera": "cam_detail",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "fridge_pull",
+  "frame": 1037,
+  "camera": "cam_fridge",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "fridge_open",
+  "frame": 1061,
+  "camera": "cam_fridge",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "rail_clear",
+  "frame": 1089,
+  "camera": "cam_fridge",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "carton_clear",
+  "frame": 1101,
+  "camera": "cam_fridge",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "carton_supported_regrasp",
+  "frame": 1147,
+  "camera": "cam_milk",
+  "img": "kf/041.jpg"
+ },
+ {
+  "name": "cap_first_turn",
+  "frame": 1179,
+  "camera": "cam_milk",
+  "img": "kf/042.jpg"
+ },
+ {
+  "name": "cap_regrasp",
+  "frame": 1182,
+  "camera": "cam_milk",
+  "img": "kf/043.jpg"
+ },
+ {
+  "name": "carton_uncap",
+  "frame": 1216,
+  "camera": "cam_milk",
+  "img": "kf/044.jpg"
+ },
+ {
+  "name": "cap_roll_clear",
+  "frame": 1226,
+  "camera": "cam_milk",
+  "img": "kf/045.jpg"
+ },
+ {
+  "name": "milk",
+  "frame": 1274,
+  "camera": "cam_milk",
+  "img": "kf/046.jpg"
+ },
+ {
+  "name": "cap_return_clear",
+  "frame": 1321,
+  "camera": "cam_milk",
+  "img": "kf/047.jpg"
+ },
+ {
+  "name": "cap_reseat",
+  "frame": 1352,
+  "camera": "cam_milk",
+  "img": "kf/048.jpg"
+ },
+ {
+  "name": "carton_recap",
+  "frame": 1395,
+  "camera": "cam_milk",
+  "img": "kf/049.jpg"
+ },
+ {
+  "name": "carton_return_regrasp",
+  "frame": 1410,
+  "camera": "cam_milk",
+  "img": "kf/050.jpg"
+ },
+ {
+  "name": "fridge_return",
+  "frame": 1465,
+  "camera": "cam_fridge",
+  "img": "kf/051.jpg"
+ },
+ {
+  "name": "carton_shelf_release",
+  "frame": 1477,
+  "camera": "cam_fridge",
+  "img": "kf/052.jpg"
+ },
+ {
+  "name": "fridge_close_approach",
+  "frame": 1501,
+  "camera": "cam_fridge",
+  "img": "kf/053.jpg"
+ },
+ {
+  "name": "wand_purge",
+  "frame": 1610,
+  "camera": "cam_cleanup",
+  "img": "kf/054.jpg"
+ },
+ {
+  "name": "pitcher_grasp",
+  "frame": 1623,
+  "camera": "cam_cleanup",
+  "img": "kf/055.jpg"
+ },
+ {
+  "name": "post_purge_wand_purchase",
+  "frame": 1644,
+  "camera": "cam_cleanup",
+  "img": "kf/056.jpg"
+ },
+ {
+  "name": "pitcher_side_entry",
+  "frame": 1663,
+  "camera": "cam_cleanup",
+  "img": "kf/057.jpg"
+ },
+ {
+  "name": "steam",
+  "frame": 1700,
+  "camera": "cam_steam_detail",
+  "img": "kf/058.jpg"
+ },
+ {
+  "name": "steam_deep",
+  "frame": 1751,
+  "camera": "cam_steam_detail",
+  "img": "kf/059.jpg"
+ },
+ {
+  "name": "steam_stop",
+  "frame": 1790,
+  "camera": "cam_steam_detail",
+  "img": "kf/060.jpg"
+ },
+ {
+  "name": "pitcher_clear",
+  "frame": 1836,
+  "camera": "cam_cleanup",
+  "img": "kf/061.jpg"
+ },
+ {
+  "name": "cup_withdraw",
+  "frame": 1865,
+  "camera": "cam_carry_finish",
+  "img": "kf/062.jpg"
+ },
+ {
+  "name": "carry_vessels",
+  "frame": 1865,
+  "camera": "cam_carry_finish",
+  "img": "kf/063.jpg"
+ },
+ {
+  "name": "pour_end",
+  "frame": 1873,
+  "camera": "cam_pour",
+  "img": "kf/064.jpg"
+ },
+ {
+  "name": "carry_midway",
+  "frame": 1879,
+  "camera": "cam_carry_finish",
+  "img": "kf/065.jpg"
+ },
+ {
+  "name": "pitcher_set_down_clear",
+  "frame": 1884,
+  "camera": "cam_finish",
+  "img": "kf/066.jpg"
+ },
+ {
+  "name": "pitcher_release",
+  "frame": 1893,
+  "camera": "cam_finish",
+  "img": "kf/067.jpg"
+ },
+ {
+  "name": "cup_landing",
+  "frame": 1897,
+  "camera": "cam_carry_finish",
+  "img": "kf/068.jpg"
+ },
+ {
+  "name": "lid_approach",
+  "frame": 1906,
+  "camera": "cam_finish",
+  "img": "kf/069.jpg"
+ },
+ {
+  "name": "pour",
+  "frame": 1914,
+  "camera": "cam_pour",
+  "img": "kf/070.jpg"
+ },
+ {
+  "name": "lid_at_rest",
+  "frame": 1923,
+  "camera": "cam_finish",
+  "img": "kf/071.jpg"
+ },
+ {
+  "name": "lid_pickup",
+  "frame": 1928,
+  "camera": "cam_finish",
+  "img": "kf/072.jpg"
+ },
+ {
+  "name": "lid_cup_regrasp",
+  "frame": 1935,
+  "camera": "cam_finish",
+  "img": "kf/073.jpg"
+ },
+ {
+  "name": "lid_press_approach",
+  "frame": 1957,
+  "camera": "cam_finish",
+  "img": "kf/074.jpg"
+ },
+ {
+  "name": "lid_sleeve",
+  "frame": 1968,
+  "camera": "cam_finish",
+  "img": "kf/075.jpg"
+ },
+ {
+  "name": "sleeve_approach",
+  "frame": 2025,
+  "camera": "cam_finish",
+  "img": "kf/076.jpg"
+ },
+ {
+  "name": "sleeve_pickup",
+  "frame": 2043,
+  "camera": "cam_finish",
+  "img": "kf/077.jpg"
+ },
+ {
+  "name": "sleeve_insert",
+  "frame": 2058,
+  "camera": "cam_finish",
+  "img": "kf/078.jpg"
+ },
+ {
+  "name": "sleeve_grip",
+  "frame": 2096,
+  "camera": "cam_finish",
+  "img": "kf/079.jpg"
+ },
+ {
+  "name": "first_call",
+  "frame": 2147,
+  "camera": "cam_two_shot",
+  "img": "kf/080.jpg"
+ },
+ {
+  "name": "recall",
+  "frame": 2219,
+  "camera": "cam_two_shot",
+  "img": "kf/081.jpg"
+ },
+ {
+  "name": "notice",
+  "frame": 2243,
+  "camera": "cam_two_shot",
+  "img": "kf/082.jpg"
+ },
+ {
+  "name": "phone_supported_regrasp",
+  "frame": 2267,
+  "camera": "cam_two_shot",
+  "img": "kf/083.jpg"
+ },
+ {
+  "name": "phone_corner_acquired",
+  "frame": 2289,
+  "camera": "cam_two_shot",
+  "img": "kf/084.jpg"
+ },
+ {
+  "name": "phone_align_case",
+  "frame": 2319,
+  "camera": "cam_two_shot",
+  "img": "kf/085.jpg"
+ },
+ {
+  "name": "phone_stow",
+  "frame": 2329,
+  "camera": "cam_two_shot",
+  "img": "kf/086.jpg"
+ },
+ {
+  "name": "phone_seated",
+  "frame": 2334,
+  "camera": "cam_two_shot",
+  "img": "kf/087.jpg"
+ },
+ {
+  "name": "collect_place",
+  "frame": 2379,
+  "camera": "cam_collection",
+  "img": "kf/088.jpg"
+ },
+ {
+  "name": "collect",
+  "frame": 2419,
+  "camera": "cam_collection",
+  "img": "kf/089.jpg"
+ },
+ {
+  "name": "collection_grasp",
+  "frame": 2423,
+  "camera": "cam_collection",
+  "img": "kf/090.jpg"
+ },
+ {
+  "name": "drink_collected",
+  "frame": 2432,
+  "camera": "cam_collection",
+  "img": "kf/091.jpg"
+ },
+ {
+  "name": "acknowledgement",
+  "frame": 2486,
+  "camera": "cam_departure",
+  "img": "kf/092.jpg"
+ },
+ {
+  "name": "cleanup_approach",
+  "frame": 2491,
+  "camera": "cam_departure",
+  "img": "kf/093.jpg"
+ },
+ {
+  "name": "depart_turn",
+  "frame": 2509,
+  "camera": "cam_departure",
+  "img": "kf/094.jpg"
+ },
+ {
+  "name": "cleanup_cloth_ready",
+  "frame": 2521,
+  "camera": "cam_cleanup",
+  "img": "kf/095.jpg"
+ },
+ {
+  "name": "cleanup_wand_wipe",
+  "frame": 2550,
+  "camera": "cam_cleanup",
+  "img": "kf/096.jpg"
+ },
+ {
+  "name": "cleanup_withdraw",
+  "frame": 2588,
+  "camera": "cam_cleanup",
+  "img": "kf/097.jpg"
+ },
+ {
+  "name": "cleanup_counter_wipe",
+  "frame": 2625,
+  "camera": "cam_cleanup_counter",
+  "img": "kf/098.jpg"
+ },
+ {
+  "name": "cleanup_cloth_release",
+  "frame": 2640,
+  "camera": "cam_cleanup_counter",
+  "img": "kf/099.jpg"
+ },
+ {
+  "name": "cleanup_rest",
+  "frame": 2665,
+  "camera": "cam_wide",
+  "img": "kf/100.jpg"
+ },
+ {
+  "name": "cleanup_end",
+  "frame": 2712,
+  "camera": "cam_wide",
+  "img": "kf/101.jpg"
+ }
+]

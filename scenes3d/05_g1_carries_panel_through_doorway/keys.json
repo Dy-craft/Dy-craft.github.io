@@ -1,0 +1,188 @@
+[
+ {
+  "name": "ready",
+  "frame": 0,
+  "camera": "cam_workshop",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "walk_support",
+  "frame": 35,
+  "camera": "cam_workshop",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "approach",
+  "frame": 120,
+  "camera": "cam_grip",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "reach_mid",
+  "frame": 155,
+  "camera": "cam_grip",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "grip_approach",
+  "frame": 178,
+  "camera": "cam_grip",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "grip",
+  "frame": 200,
+  "camera": "cam_grip",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "lift",
+  "frame": 232,
+  "camera": "cam_pickup",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "roll",
+  "frame": 262,
+  "camera": "cam_pickup",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "carry",
+  "frame": 312,
+  "camera": "cam_pickup",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "clear_station",
+  "frame": 352,
+  "camera": "cam_pickup",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "loaded_landing",
+  "frame": 372,
+  "camera": "cam_pickup",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "step_turn_complete",
+  "frame": 576,
+  "camera": "cam_pickup",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "route_facing",
+  "frame": 580,
+  "camera": "cam_turn",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "approach_stop",
+  "frame": 670,
+  "camera": "cam_turn",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "turn_mid",
+  "frame": 708,
+  "camera": "cam_turn",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "edge_on",
+  "frame": 752,
+  "camera": "cam_turn",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "lateral_transfer",
+  "frame": 876,
+  "camera": "cam_door",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "leading_in",
+  "frame": 946,
+  "camera": "cam_door",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "threshold",
+  "frame": 994,
+  "camera": "cam_door",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "passage_exit",
+  "frame": 1176,
+  "camera": "cam_door",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "trailing_clear",
+  "frame": 1184,
+  "camera": "cam_place",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "destination",
+  "frame": 1300,
+  "camera": "cam_place",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "align",
+  "frame": 1416,
+  "camera": "cam_place",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "reverse_roll",
+  "frame": 1496,
+  "camera": "cam_place",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "level_above",
+  "frame": 1542,
+  "camera": "cam_setdown",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "seated",
+  "frame": 1578,
+  "camera": "cam_setdown",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "unclamp",
+  "frame": 1590,
+  "camera": "cam_setdown",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "release",
+  "frame": 1604,
+  "camera": "cam_setdown",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "withdraw_hands",
+  "frame": 1624,
+  "camera": "cam_setdown",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "check",
+  "frame": 1738,
+  "camera": "cam_finish",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "rest",
+  "frame": 1772,
+  "camera": "cam_finish",
+  "img": "kf/030.jpg"
+ }
+]

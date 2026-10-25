@@ -1,0 +1,145 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 2712,
+ "duration": 113.04166666666667,
+ "aspect": 1.7777777777777777,
+ "default_camera": "cam_cleanup",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "cam_arrival"
+  },
+  {
+   "frame": 60,
+   "t": 2.5,
+   "camera": "cam_order"
+  },
+  {
+   "frame": 114,
+   "t": 4.75,
+   "camera": "cam_stack"
+  },
+  {
+   "frame": 222,
+   "t": 9.25,
+   "camera": "cam_mark"
+  },
+  {
+   "frame": 315,
+   "t": 13.125,
+   "camera": "cam_name"
+  },
+  {
+   "frame": 411,
+   "t": 17.125,
+   "camera": "cam_mark"
+  },
+  {
+   "frame": 471,
+   "t": 19.625,
+   "camera": "cam_name"
+  },
+  {
+   "frame": 506,
+   "t": 21.083333333333332,
+   "camera": "cam_order"
+  },
+  {
+   "frame": 677,
+   "t": 28.208333333333332,
+   "camera": "cam_work"
+  },
+  {
+   "frame": 756,
+   "t": 31.5,
+   "camera": "cam_dose"
+  },
+  {
+   "frame": 821,
+   "t": 34.208333333333336,
+   "camera": "cam_tamp"
+  },
+  {
+   "frame": 917,
+   "t": 38.208333333333336,
+   "camera": "cam_detail"
+  },
+  {
+   "frame": 1021,
+   "t": 42.541666666666664,
+   "camera": "cam_fridge"
+  },
+  {
+   "frame": 1120,
+   "t": 46.666666666666664,
+   "camera": "cam_milk"
+  },
+  {
+   "frame": 1433,
+   "t": 59.708333333333336,
+   "camera": "cam_fridge"
+  },
+  {
+   "frame": 1544,
+   "t": 64.33333333333333,
+   "camera": "cam_cleanup"
+  },
+  {
+   "frame": 1700,
+   "t": 70.83333333333333,
+   "camera": "cam_steam_detail"
+  },
+  {
+   "frame": 1796,
+   "t": 74.83333333333333,
+   "camera": "cam_cleanup"
+  },
+  {
+   "frame": 1861,
+   "t": 77.54166666666667,
+   "camera": "cam_carry_finish"
+  },
+  {
+   "frame": 1899,
+   "t": 79.125,
+   "camera": "cam_pour"
+  },
+  {
+   "frame": 1955,
+   "t": 81.45833333333333,
+   "camera": "cam_finish"
+  },
+  {
+   "frame": 2185,
+   "t": 91.04166666666667,
+   "camera": "cam_two_shot"
+  },
+  {
+   "frame": 2425,
+   "t": 101.04166666666667,
+   "camera": "cam_collection"
+  },
+  {
+   "frame": 2484,
+   "t": 103.5,
+   "camera": "cam_departure"
+  },
+  {
+   "frame": 2521,
+   "t": 105.04166666666667,
+   "camera": "cam_cleanup"
+  },
+  {
+   "frame": 2597,
+   "t": 108.20833333333333,
+   "camera": "cam_cleanup_counter"
+  },
+  {
+   "frame": 2665,
+   "t": 111.04166666666667,
+   "camera": "cam_wide"
+  }
+ ]
+}

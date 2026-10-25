@@ -1,0 +1,206 @@
+[
+ {
+  "name": "initial",
+  "frame": 0,
+  "camera": "CounterMaster",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "first_grip",
+  "frame": 27,
+  "camera": "CounterDetail",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "first_over_handle",
+  "frame": 39,
+  "camera": "CounterDetail",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "first_loaded",
+  "frame": 48,
+  "camera": "CounterDetail",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "third_loaded",
+  "frame": 126,
+  "camera": "CounterDetail",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "near_over_handle",
+  "frame": 156,
+  "camera": "CounterDetail",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "last_grip",
+  "frame": 222,
+  "camera": "CounterDetail",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "six_loaded",
+  "frame": 252,
+  "camera": "CounterDetail",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "handle_alignment",
+  "frame": 282,
+  "camera": "CounterDetail",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "handles_approach",
+  "frame": 291,
+  "camera": "CounterDetail",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "handles",
+  "frame": 297,
+  "camera": "CounterDetail",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "lifted",
+  "frame": 312,
+  "camera": "Departure",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "turning",
+  "frame": 369,
+  "camera": "Departure",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "turned",
+  "frame": 417,
+  "camera": "Departure",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "chair_out",
+  "frame": 453,
+  "camera": "Aisle",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "braked",
+  "frame": 462,
+  "camera": "StopDetail",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "pull_engaged",
+  "frame": 480,
+  "camera": "StopDetail",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "chair_clear",
+  "frame": 519,
+  "camera": "Aisle",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "gap_turn",
+  "frame": 606,
+  "camera": "Gap",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "gap_middle",
+  "frame": 636,
+  "camera": "Gap",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "gap_clear",
+  "frame": 681,
+  "camera": "Recovery",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "brush",
+  "frame": 720,
+  "camera": "Recovery",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "catch",
+  "frame": 729,
+  "camera": "Recovery",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "recovered",
+  "frame": 771,
+  "camera": "Recovery",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "tray_down",
+  "frame": 855,
+  "camera": "Delivery",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "first_removal_lift",
+  "frame": 888,
+  "camera": "DeliveryDetail",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "unload_first",
+  "frame": 903,
+  "camera": "DeliveryDetail",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "unload_third",
+  "frame": 981,
+  "camera": "DeliveryDetail",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "last_removal",
+  "frame": 1077,
+  "camera": "DeliveryDetail",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "unload_six",
+  "frame": 1116,
+  "camera": "DeliveryDetail",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "empty_lift",
+  "frame": 1152,
+  "camera": "Delivery",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "empty_withdraw",
+  "frame": 1182,
+  "camera": "ReturnDeparture",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "return_gap",
+  "frame": 1248,
+  "camera": "Return",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "ending",
+  "frame": 1350,
+  "camera": "Return",
+  "img": "kf/033.jpg"
+ }
+]

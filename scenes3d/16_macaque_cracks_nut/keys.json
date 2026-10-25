@@ -1,0 +1,158 @@
+[
+ {
+  "name": "begin",
+  "frame": 0,
+  "camera": "Clearing",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "nut_grasp",
+  "frame": 55,
+  "camera": "Clearing",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "nut_placed",
+  "frame": 105,
+  "camera": "Clearing",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "cobble_grasp",
+  "frame": 160,
+  "camera": "WorkWide",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "first_contact",
+  "frame": 190,
+  "camera": "EscapeLeft",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "nut_on_earth",
+  "frame": 226,
+  "camera": "EscapeLeft",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "retrieve_ground",
+  "frame": 284,
+  "camera": "EscapeLeft",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "returned",
+  "frame": 378,
+  "camera": "EscapeLeft",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "second_contact",
+  "frame": 412,
+  "camera": "WorkClose",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "edge_intact",
+  "frame": 436,
+  "camera": "WorkClose",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "cobble_ground",
+  "frame": 510,
+  "camera": "ToolChange",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "tool_released",
+  "frame": 524,
+  "camera": "ToolChange",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "heavy_grasp",
+  "frame": 583,
+  "camera": "WorkWide",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "heavy_carry",
+  "frame": 640,
+  "camera": "WorkWide",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "heavy_miss",
+  "frame": 718,
+  "camera": "WorkWide",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "grounded_adjustment",
+  "frame": 784,
+  "camera": "WorkClose",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "wide_grip",
+  "frame": 902,
+  "camera": "WorkClose",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "level_raise",
+  "frame": 942,
+  "camera": "Impact",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "fracture",
+  "frame": 966,
+  "camera": "Impact",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "stone_clear",
+  "frame": 1027,
+  "camera": "Impact",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "heavy_setdown",
+  "frame": 1082,
+  "camera": "EscapeLeft",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "shell_peel",
+  "frame": 1145,
+  "camera": "WorkClose",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "kernel_taken",
+  "frame": 1206,
+  "camera": "WorkClose",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "seated",
+  "frame": 1284,
+  "camera": "WorkWide",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "eating",
+  "frame": 1329,
+  "camera": "Eat",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "settled",
+  "frame": 1355,
+  "camera": "Eat",
+  "img": "kf/025.jpg"
+ }
+]

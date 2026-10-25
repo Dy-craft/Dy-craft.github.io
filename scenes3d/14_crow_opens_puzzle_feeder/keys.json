@@ -1,0 +1,152 @@
+[
+ {
+  "name": "arrival_flare",
+  "frame": 10,
+  "camera": "CAM_Arrival",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "landing_settled",
+  "frame": 30,
+  "camera": "CAM_Arrival",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "corner_walk",
+  "frame": 98,
+  "camera": "CAM_Route",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "eye_inspection",
+  "frame": 193,
+  "camera": "CAM_Barrier",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "panel_peck",
+  "frame": 216,
+  "camera": "CAM_Peck",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "peck_retract",
+  "frame": 222,
+  "camera": "CAM_Peck",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "blocked_push",
+  "frame": 307,
+  "camera": "CAM_Push",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "peg_attention",
+  "frame": 371,
+  "camera": "CAM_Failure",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "shallow_grip",
+  "frame": 413,
+  "camera": "CAM_Failure",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "slipped_grip",
+  "frame": 441,
+  "camera": "CAM_Failure",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "brace",
+  "frame": 553,
+  "camera": "CAM_Hook",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "hook",
+  "frame": 592,
+  "camera": "CAM_Hook",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "withdrawn",
+  "frame": 630,
+  "camera": "CAM_Hook",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "released",
+  "frame": 644,
+  "camera": "CAM_Hook",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "settled_peg",
+  "frame": 686,
+  "camera": "CAM_Hook",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "open_push",
+  "frame": 781,
+  "camera": "CAM_Open",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "open_gap",
+  "frame": 842,
+  "camera": "CAM_Open",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "approach_gap",
+  "frame": 887,
+  "camera": "CAM_RewardFood",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "kernel_grip",
+  "frame": 908,
+  "camera": "CAM_RewardFood",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "food_withdrawn",
+  "frame": 931,
+  "camera": "CAM_RewardFood",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "hop_arc",
+  "frame": 991,
+  "camera": "CAM_Reward",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "perch_grip",
+  "frame": 1003,
+  "camera": "CAM_Reward",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "mouth_transfer",
+  "frame": 1033,
+  "camera": "CAM_Eat",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "swallow",
+  "frame": 1043,
+  "camera": "CAM_Eat",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "ending",
+  "frame": 1079,
+  "camera": "CAM_Eat",
+  "img": "kf/024.jpg"
+ }
+]

@@ -1,0 +1,270 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1797,
+ "duration": 74.91666666666667,
+ "aspect": 1.7777777777777777,
+ "default_camera": "camera_establish",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "camera_establish"
+  },
+  {
+   "frame": 24,
+   "t": 1.0,
+   "camera": "camera_far_pickup"
+  },
+  {
+   "frame": 58,
+   "t": 2.4166666666666665,
+   "camera": "camera_far_work"
+  },
+  {
+   "frame": 115,
+   "t": 4.791666666666667,
+   "camera": "camera_far_pickup"
+  },
+  {
+   "frame": 135,
+   "t": 5.625,
+   "camera": "camera_far_work"
+  },
+  {
+   "frame": 173,
+   "t": 7.208333333333333,
+   "camera": "camera_far_collar_opening"
+  },
+  {
+   "frame": 184,
+   "t": 7.666666666666667,
+   "camera": "camera_far_collar"
+  },
+  {
+   "frame": 200,
+   "t": 8.333333333333334,
+   "camera": "camera_far_collar_finish"
+  },
+  {
+   "frame": 211,
+   "t": 8.791666666666666,
+   "camera": "camera_near_pickup"
+  },
+  {
+   "frame": 231,
+   "t": 9.625,
+   "camera": "camera_near_support"
+  },
+  {
+   "frame": 288,
+   "t": 12.0,
+   "camera": "camera_near_pickup"
+  },
+  {
+   "frame": 308,
+   "t": 12.833333333333334,
+   "camera": "camera_near_work"
+  },
+  {
+   "frame": 346,
+   "t": 14.416666666666666,
+   "camera": "camera_near_collar_opening"
+  },
+  {
+   "frame": 357,
+   "t": 14.875,
+   "camera": "camera_near_collar"
+  },
+  {
+   "frame": 373,
+   "t": 15.541666666666666,
+   "camera": "camera_near_collar_finish"
+  },
+  {
+   "frame": 384,
+   "t": 16.0,
+   "camera": "camera_prepare_back"
+  },
+  {
+   "frame": 395,
+   "t": 16.458333333333332,
+   "camera": "camera_prepare_front"
+  },
+  {
+   "frame": 433,
+   "t": 18.041666666666668,
+   "camera": "camera_belt_detail"
+  },
+  {
+   "frame": 452,
+   "t": 18.833333333333332,
+   "camera": "camera_belt_reverse"
+  },
+  {
+   "frame": 498,
+   "t": 20.75,
+   "camera": "camera_belt_detail"
+  },
+  {
+   "frame": 511,
+   "t": 21.291666666666668,
+   "camera": "camera_belt_reverse"
+  },
+  {
+   "frame": 529,
+   "t": 22.041666666666668,
+   "camera": "camera_chalk_detail"
+  },
+  {
+   "frame": 602,
+   "t": 25.083333333333332,
+   "camera": "camera_first"
+  },
+  {
+   "frame": 613,
+   "t": 25.541666666666668,
+   "camera": "camera_first"
+  },
+  {
+   "frame": 769,
+   "t": 32.041666666666664,
+   "camera": "camera_first"
+  },
+  {
+   "frame": 911,
+   "t": 37.958333333333336,
+   "camera": "camera_recovery"
+  },
+  {
+   "frame": 945,
+   "t": 39.375,
+   "camera": "camera_recovery"
+  },
+  {
+   "frame": 961,
+   "t": 40.041666666666664,
+   "camera": "camera_mixed"
+  },
+  {
+   "frame": 1017,
+   "t": 42.375,
+   "camera": "camera_first"
+  },
+  {
+   "frame": 1104,
+   "t": 46.0,
+   "camera": "camera_loosen"
+  },
+  {
+   "frame": 1117,
+   "t": 46.541666666666664,
+   "camera": "camera_loosen_detail"
+  },
+  {
+   "frame": 1127,
+   "t": 46.958333333333336,
+   "camera": "camera_loosen_reverse"
+  },
+  {
+   "frame": 1175,
+   "t": 48.958333333333336,
+   "camera": "camera_loosen_detail"
+  },
+  {
+   "frame": 1183,
+   "t": 49.291666666666664,
+   "camera": "camera_loosen"
+  },
+  {
+   "frame": 1200,
+   "t": 50.0,
+   "camera": "camera_loosen_reverse"
+  },
+  {
+   "frame": 1218,
+   "t": 50.75,
+   "camera": "camera_near_collar"
+  },
+  {
+   "frame": 1249,
+   "t": 52.041666666666664,
+   "camera": "camera_rack_near"
+  },
+  {
+   "frame": 1265,
+   "t": 52.708333333333336,
+   "camera": "camera_far_collar"
+  },
+  {
+   "frame": 1296,
+   "t": 54.0,
+   "camera": "camera_rack_far"
+  },
+  {
+   "frame": 1312,
+   "t": 54.666666666666664,
+   "camera": "camera_far_work"
+  },
+  {
+   "frame": 1342,
+   "t": 55.916666666666664,
+   "camera": "camera_plate_rack_far"
+  },
+  {
+   "frame": 1372,
+   "t": 57.166666666666664,
+   "camera": "camera_far_work"
+  },
+  {
+   "frame": 1439,
+   "t": 59.958333333333336,
+   "camera": "camera_plate_rack_far"
+  },
+  {
+   "frame": 1475,
+   "t": 61.458333333333336,
+   "camera": "camera_near_work"
+  },
+  {
+   "frame": 1505,
+   "t": 62.708333333333336,
+   "camera": "camera_plate_rack_near"
+  },
+  {
+   "frame": 1535,
+   "t": 63.958333333333336,
+   "camera": "camera_near_support"
+  },
+  {
+   "frame": 1602,
+   "t": 66.75,
+   "camera": "camera_plate_rack_near"
+  },
+  {
+   "frame": 1638,
+   "t": 68.25,
+   "camera": "camera_wipe_detail"
+  },
+  {
+   "frame": 1684,
+   "t": 70.16666666666667,
+   "camera": "camera_wipe_handoff"
+  },
+  {
+   "frame": 1737,
+   "t": 72.375,
+   "camera": "camera_wipe_detail"
+  },
+  {
+   "frame": 1761,
+   "t": 73.375,
+   "camera": "camera_cloth_take"
+  },
+  {
+   "frame": 1774,
+   "t": 73.91666666666667,
+   "camera": "camera_ending"
+  }
+ ]
+}

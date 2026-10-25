@@ -1,0 +1,70 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1295,
+ "duration": 54.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM_room",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM_room"
+  },
+  {
+   "frame": 48,
+   "t": 2.0,
+   "camera": "CAM_start"
+  },
+  {
+   "frame": 120,
+   "t": 5.0,
+   "camera": "CAM_tip"
+  },
+  {
+   "frame": 376,
+   "t": 15.666666666666666,
+   "camera": "CAM_release"
+  },
+  {
+   "frame": 432,
+   "t": 18.0,
+   "camera": "CAM_gate_detail"
+  },
+  {
+   "frame": 449,
+   "t": 18.708333333333332,
+   "camera": "CAM_gate"
+  },
+  {
+   "frame": 551,
+   "t": 22.958333333333332,
+   "camera": "CAM_return"
+  },
+  {
+   "frame": 801,
+   "t": 33.375,
+   "camera": "CAM_rough"
+  },
+  {
+   "frame": 1110,
+   "t": 46.25,
+   "camera": "CAM_dock_contact"
+  },
+  {
+   "frame": 1152,
+   "t": 48.0,
+   "camera": "CAM_dock"
+  },
+  {
+   "frame": 1224,
+   "t": 51.0,
+   "camera": "CAM_ball_final"
+  },
+  {
+   "frame": 1248,
+   "t": 52.0,
+   "camera": "CAM_coda"
+  }
+ ]
+}

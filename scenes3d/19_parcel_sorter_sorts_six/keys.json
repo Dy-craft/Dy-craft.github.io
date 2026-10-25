@@ -1,0 +1,146 @@
+[
+ {
+  "name": "loaded",
+  "frame": 24,
+  "camera": "CAM_WIDE",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "holdback",
+  "frame": 78,
+  "camera": "CAM_FEED",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "first_release",
+  "frame": 96,
+  "camera": "CAM_FEED",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "short_sense",
+  "frame": 121,
+  "camera": "CAM_SORT",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "short_clear",
+  "frame": 186,
+  "camera": "CAM_SORT",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "tall_holdback",
+  "frame": 234,
+  "camera": "CAM_FEED",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "tall_sense",
+  "frame": 281,
+  "camera": "CAM_SORT",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "two_sorted",
+  "frame": 378,
+  "camera": "CAM_SORT",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "third_release",
+  "frame": 404,
+  "camera": "CAM_FEED",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "third_skew",
+  "frame": 420,
+  "camera": "CAM_JAM",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "third_jammed",
+  "frame": 450,
+  "camera": "CAM_JAM",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "clutch_slip",
+  "frame": 480,
+  "camera": "CAM_DRIVE",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "paddle_contact",
+  "frame": 506,
+  "camera": "CAM_JAM",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "squared",
+  "frame": 522,
+  "camera": "CAM_JAM",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "medium_sense",
+  "frame": 539,
+  "camera": "CAM_SORT",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "three_sorted",
+  "frame": 630,
+  "camera": "CAM_SORT",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "fourth_sense",
+  "frame": 685,
+  "camera": "CAM_MASTER",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "fourth_collected",
+  "frame": 783,
+  "camera": "CAM_MASTER",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "fifth_sense",
+  "frame": 844,
+  "camera": "CAM_SORT",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "fifth_collected",
+  "frame": 939,
+  "camera": "CAM_SORT",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "sixth_sense",
+  "frame": 1001,
+  "camera": "CAM_MASTER",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "last_clear",
+  "frame": 1061,
+  "camera": "CAM_MASTER",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "follower_down",
+  "frame": 1095,
+  "camera": "CAM_FEED",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "all_sorted",
+  "frame": 1140,
+  "camera": "CAM_RESULT",
+  "img": "kf/023.jpg"
+ }
+]

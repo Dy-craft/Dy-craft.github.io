@@ -1,0 +1,265 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 2399,
+ "duration": 100.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM4_foundation_primary_posts",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM4_foundation_primary_posts"
+  },
+  {
+   "frame": 140,
+   "t": 5.833333333333333,
+   "camera": "CAM4_contact_low"
+  },
+  {
+   "frame": 185,
+   "t": 7.708333333333333,
+   "camera": "CAM4_front_post"
+  },
+  {
+   "frame": 211,
+   "t": 8.791666666666666,
+   "camera": "CAM4_foundation_inward_shelf"
+  },
+  {
+   "frame": 300,
+   "t": 12.5,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 364,
+   "t": 15.166666666666666,
+   "camera": "CAM4_contact_low"
+  },
+  {
+   "frame": 385,
+   "t": 16.041666666666668,
+   "camera": "CAM4_bearing_evidence"
+  },
+  {
+   "frame": 400,
+   "t": 16.666666666666668,
+   "camera": "CAM4_contact_low"
+  },
+  {
+   "frame": 699,
+   "t": 29.125,
+   "camera": "CAM4_bearing_evidence"
+  },
+  {
+   "frame": 714,
+   "t": 29.75,
+   "camera": "CAM4_contact_low"
+  },
+  {
+   "frame": 749,
+   "t": 31.208333333333332,
+   "camera": "CAM4_CC_bowl_pickup"
+  },
+  {
+   "frame": 811,
+   "t": 33.791666666666664,
+   "camera": "CAM4_dual_bowls"
+  },
+  {
+   "frame": 871,
+   "t": 36.291666666666664,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 904,
+   "t": 37.666666666666664,
+   "camera": "CAM4_petite_repeat"
+  },
+  {
+   "frame": 929,
+   "t": 38.708333333333336,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 954,
+   "t": 39.75,
+   "camera": "CAM4_cup_full"
+  },
+  {
+   "frame": 1066,
+   "t": 44.416666666666664,
+   "camera": "CAM4_CC_gauge"
+  },
+  {
+   "frame": 1156,
+   "t": 48.166666666666664,
+   "camera": "CAM4_contact_low"
+  },
+  {
+   "frame": 1208,
+   "t": 50.333333333333336,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 1229,
+   "t": 51.208333333333336,
+   "camera": "CAM4_contact_low"
+  },
+  {
+   "frame": 1239,
+   "t": 51.625,
+   "camera": "CAM4_cm_midposts_right_seat"
+  },
+  {
+   "frame": 1249,
+   "t": 52.041666666666664,
+   "camera": "CAM4_contact_low"
+  },
+  {
+   "frame": 1259,
+   "t": 52.458333333333336,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 1299,
+   "t": 54.125,
+   "camera": "CAM4_CC_headroom"
+  },
+  {
+   "frame": 1325,
+   "t": 55.208333333333336,
+   "camera": "CAM4_vase_complete"
+  },
+  {
+   "frame": 1532,
+   "t": 63.833333333333336,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 1601,
+   "t": 66.70833333333333,
+   "camera": "CAM4_cone_pick"
+  },
+  {
+   "frame": 1611,
+   "t": 67.125,
+   "camera": "CAM4_cm_cone_visible_seat"
+  },
+  {
+   "frame": 1647,
+   "t": 68.625,
+   "camera": "CAM4_CC_rack_seat"
+  },
+  {
+   "frame": 1667,
+   "t": 69.45833333333333,
+   "camera": "CAM4_cm_continuous_plate1"
+  },
+  {
+   "frame": 1772,
+   "t": 73.83333333333333,
+   "camera": "CAM4_CC_plate_turn"
+  },
+  {
+   "frame": 1862,
+   "t": 77.58333333333333,
+   "camera": "CAM4_CC_plate_slot"
+  },
+  {
+   "frame": 1903,
+   "t": 79.29166666666667,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 1919,
+   "t": 79.95833333333333,
+   "camera": "CAM4_cm_middle_rear_vase"
+  },
+  {
+   "frame": 1929,
+   "t": 80.375,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 1939,
+   "t": 80.79166666666667,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 1949,
+   "t": 81.20833333333333,
+   "camera": "CAM4_cm_tallposts_right_seat"
+  },
+  {
+   "frame": 1959,
+   "t": 81.625,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 1969,
+   "t": 82.04166666666667,
+   "camera": "CAM4_cm_shelf3_seat"
+  },
+  {
+   "frame": 2009,
+   "t": 83.70833333333333,
+   "camera": "CAM4_contact_work"
+  },
+  {
+   "frame": 2031,
+   "t": 84.625,
+   "camera": "CAM4_cm_piece_1_seat"
+  },
+  {
+   "frame": 2053,
+   "t": 85.54166666666667,
+   "camera": "CAM4_final_vase_profile"
+  },
+  {
+   "frame": 2069,
+   "t": 86.20833333333333,
+   "camera": "CAM4_final_plate_profile"
+  },
+  {
+   "frame": 2085,
+   "t": 86.875,
+   "camera": "CAM4_final_side_corridor"
+  },
+  {
+   "frame": 2101,
+   "t": 87.54166666666667,
+   "camera": "CAM4_final_front_profile"
+  },
+  {
+   "frame": 2117,
+   "t": 88.20833333333333,
+   "camera": "CAM4_c4_final_rest"
+  },
+  {
+   "frame": 2135,
+   "t": 88.95833333333333,
+   "camera": "CAM4_c4_door"
+  },
+  {
+   "frame": 2246,
+   "t": 93.58333333333333,
+   "camera": "CAM4_latch_readable"
+  },
+  {
+   "frame": 2291,
+   "t": 95.45833333333333,
+   "camera": "CAM4_c4_rejected_return"
+  },
+  {
+   "frame": 2309,
+   "t": 96.20833333333333,
+   "camera": "CAM4_gauge_return_oblique"
+  },
+  {
+   "frame": 2334,
+   "t": 97.25,
+   "camera": "CAM4_finish_side"
+  }
+ ]
+}

@@ -1,0 +1,1040 @@
+[
+ {
+  "name": "opening_entry",
+  "frame": 0,
+  "camera": "camera_establish",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "opening",
+  "frame": 0,
+  "camera": "camera_establish",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "opening_exit",
+  "frame": 23,
+  "camera": "camera_establish",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "tip_far_inner_entry",
+  "frame": 24,
+  "camera": "camera_far_pickup",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "tip_mid",
+  "frame": 41,
+  "camera": "camera_far_pickup",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "tip_far_inner_exit",
+  "frame": 57,
+  "camera": "camera_far_pickup",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "load_far_inner_entry",
+  "frame": 58,
+  "camera": "camera_far_work",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "support_first_shaft",
+  "frame": 67,
+  "camera": "camera_far_work",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "engage_far",
+  "frame": 96,
+  "camera": "camera_far_work",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "insert_far_mid",
+  "frame": 105,
+  "camera": "camera_far_work",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "load_far_inner_exit",
+  "frame": 114,
+  "camera": "camera_far_work",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "tip_far_outer_entry",
+  "frame": 115,
+  "camera": "camera_far_pickup",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "tip_far_outer_exit",
+  "frame": 134,
+  "camera": "camera_far_pickup",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "load_far_outer_entry",
+  "frame": 135,
+  "camera": "camera_far_work",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "second_far_aligned",
+  "frame": 147,
+  "camera": "camera_far_work",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "gap_far",
+  "frame": 163,
+  "camera": "camera_far_work",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "load_far_outer_exit",
+  "frame": 172,
+  "camera": "camera_far_work",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "open_far_entry",
+  "frame": 173,
+  "camera": "camera_far_collar_opening",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "open_far_exit",
+  "frame": 183,
+  "camera": "camera_far_collar_opening",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "secure_far_entry",
+  "frame": 184,
+  "camera": "camera_far_collar",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "secure_far_exit",
+  "frame": 199,
+  "camera": "camera_far_collar",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "secure_far__latch_entry",
+  "frame": 200,
+  "camera": "camera_far_collar_finish",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "far_cam_mid",
+  "frame": 205,
+  "camera": "camera_far_collar_finish",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "clamp_far",
+  "frame": 210,
+  "camera": "camera_far_collar_finish",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "secure_far__latch_exit",
+  "frame": 210,
+  "camera": "camera_far_collar_finish",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "tip_near_inner_entry",
+  "frame": 211,
+  "camera": "camera_near_pickup",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "tip_near_inner_exit",
+  "frame": 230,
+  "camera": "camera_near_pickup",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "load_near_inner_entry",
+  "frame": 231,
+  "camera": "camera_near_support",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "engage_near",
+  "frame": 269,
+  "camera": "camera_near_support",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "load_near_inner_exit",
+  "frame": 287,
+  "camera": "camera_near_support",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "tip_near_outer_entry",
+  "frame": 288,
+  "camera": "camera_near_pickup",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "tip_near_outer_exit",
+  "frame": 307,
+  "camera": "camera_near_pickup",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "load_near_outer_entry",
+  "frame": 308,
+  "camera": "camera_near_work",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "gap_near",
+  "frame": 336,
+  "camera": "camera_near_work",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "load_near_outer_exit",
+  "frame": 345,
+  "camera": "camera_near_work",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "open_near_entry",
+  "frame": 346,
+  "camera": "camera_near_collar_opening",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "open_near_exit",
+  "frame": 356,
+  "camera": "camera_near_collar_opening",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "secure_near_entry",
+  "frame": 357,
+  "camera": "camera_near_collar",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "secure_near_exit",
+  "frame": 372,
+  "camera": "camera_near_collar",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "secure_near__latch_entry",
+  "frame": 373,
+  "camera": "camera_near_collar_finish",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "clamp_near",
+  "frame": 383,
+  "camera": "camera_near_collar_finish",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "secure_near__latch_exit",
+  "frame": 383,
+  "camera": "camera_near_collar_finish",
+  "img": "kf/041.jpg"
+ },
+ {
+  "name": "take_belt_entry",
+  "frame": 384,
+  "camera": "camera_prepare_back",
+  "img": "kf/042.jpg"
+ },
+ {
+  "name": "belt_initial_purchase",
+  "frame": 386,
+  "camera": "camera_prepare_back",
+  "img": "kf/043.jpg"
+ },
+ {
+  "name": "take_belt_exit",
+  "frame": 394,
+  "camera": "camera_prepare_back",
+  "img": "kf/044.jpg"
+ },
+ {
+  "name": "wrap_entry",
+  "frame": 395,
+  "camera": "camera_prepare_front",
+  "img": "kf/045.jpg"
+ },
+ {
+  "name": "belt_taken",
+  "frame": 395,
+  "camera": "camera_prepare_front",
+  "img": "kf/046.jpg"
+ },
+ {
+  "name": "wrap_belt",
+  "frame": 413,
+  "camera": "camera_prepare_front",
+  "img": "kf/047.jpg"
+ },
+ {
+  "name": "wrap_exit",
+  "frame": 432,
+  "camera": "camera_prepare_front",
+  "img": "kf/048.jpg"
+ },
+ {
+  "name": "thread_entry",
+  "frame": 433,
+  "camera": "camera_belt_detail",
+  "img": "kf/049.jpg"
+ },
+ {
+  "name": "belt_working_height",
+  "frame": 433,
+  "camera": "camera_belt_detail",
+  "img": "kf/050.jpg"
+ },
+ {
+  "name": "belt_feed_mid",
+  "frame": 445,
+  "camera": "camera_belt_detail",
+  "img": "kf/051.jpg"
+ },
+ {
+  "name": "thread_exit",
+  "frame": 451,
+  "camera": "camera_belt_detail",
+  "img": "kf/052.jpg"
+ },
+ {
+  "name": "tighten_entry",
+  "frame": 452,
+  "camera": "camera_belt_reverse",
+  "img": "kf/053.jpg"
+ },
+ {
+  "name": "belt_threaded",
+  "frame": 472,
+  "camera": "camera_belt_reverse",
+  "img": "kf/054.jpg"
+ },
+ {
+  "name": "belt_pin_enters",
+  "frame": 484,
+  "camera": "camera_belt_reverse",
+  "img": "kf/055.jpg"
+ },
+ {
+  "name": "buckle_belt",
+  "frame": 490,
+  "camera": "camera_belt_reverse",
+  "img": "kf/056.jpg"
+ },
+ {
+  "name": "tighten_exit",
+  "frame": 497,
+  "camera": "camera_belt_reverse",
+  "img": "kf/057.jpg"
+ },
+ {
+  "name": "keeper_entry_entry",
+  "frame": 498,
+  "camera": "camera_belt_detail",
+  "img": "kf/058.jpg"
+ },
+ {
+  "name": "belt_keeper_entry",
+  "frame": 508,
+  "camera": "camera_belt_detail",
+  "img": "kf/059.jpg"
+ },
+ {
+  "name": "keeper_entry_exit",
+  "frame": 510,
+  "camera": "camera_belt_detail",
+  "img": "kf/060.jpg"
+ },
+ {
+  "name": "keeper_finish_entry",
+  "frame": 511,
+  "camera": "camera_belt_reverse",
+  "img": "kf/061.jpg"
+ },
+ {
+  "name": "keeper_finish_exit",
+  "frame": 528,
+  "camera": "camera_belt_reverse",
+  "img": "kf/062.jpg"
+ },
+ {
+  "name": "chalk_entry",
+  "frame": 529,
+  "camera": "camera_chalk_detail",
+  "img": "kf/063.jpg"
+ },
+ {
+  "name": "block_pickup",
+  "frame": 529,
+  "camera": "camera_chalk_detail",
+  "img": "kf/064.jpg"
+ },
+ {
+  "name": "chalk",
+  "frame": 548,
+  "camera": "camera_chalk_detail",
+  "img": "kf/065.jpg"
+ },
+ {
+  "name": "block_returned",
+  "frame": 581,
+  "camera": "camera_chalk_detail",
+  "img": "kf/066.jpg"
+ },
+ {
+  "name": "palms_rub",
+  "frame": 601,
+  "camera": "camera_chalk_detail",
+  "img": "kf/067.jpg"
+ },
+ {
+  "name": "chalk_exit",
+  "frame": 601,
+  "camera": "camera_chalk_detail",
+  "img": "kf/068.jpg"
+ },
+ {
+  "name": "attempts_entry",
+  "frame": 602,
+  "camera": "camera_first",
+  "img": "kf/069.jpg"
+ },
+ {
+  "name": "feet_set",
+  "frame": 622,
+  "camera": "camera_first",
+  "img": "kf/070.jpg"
+ },
+ {
+  "name": "setup_one",
+  "frame": 657,
+  "camera": "camera_first",
+  "img": "kf/071.jpg"
+ },
+ {
+  "name": "first_separation",
+  "frame": 670,
+  "camera": "camera_first",
+  "img": "kf/072.jpg"
+ },
+ {
+  "name": "crest_one",
+  "frame": 697,
+  "camera": "camera_first",
+  "img": "kf/073.jpg"
+ },
+ {
+  "name": "ground_one",
+  "frame": 726,
+  "camera": "camera_first",
+  "img": "kf/074.jpg"
+ },
+ {
+  "name": "breath_one",
+  "frame": 765,
+  "camera": "camera_first",
+  "img": "kf/075.jpg"
+ },
+ {
+  "name": "attempts_exit",
+  "frame": 768,
+  "camera": "camera_first",
+  "img": "kf/076.jpg"
+ },
+ {
+  "name": "attempts__second_entry",
+  "frame": 769,
+  "camera": "camera_first",
+  "img": "kf/077.jpg"
+ },
+ {
+  "name": "setup_two",
+  "frame": 807,
+  "camera": "camera_first",
+  "img": "kf/078.jpg"
+ },
+ {
+  "name": "crest_two",
+  "frame": 850,
+  "camera": "camera_first",
+  "img": "kf/079.jpg"
+ },
+ {
+  "name": "ground_two",
+  "frame": 882,
+  "camera": "camera_first",
+  "img": "kf/080.jpg"
+ },
+ {
+  "name": "recovery",
+  "frame": 937,
+  "camera": "camera_recovery",
+  "img": "kf/081.jpg"
+ },
+ {
+  "name": "attempts__second_exit",
+  "frame": 944,
+  "camera": "camera_recovery",
+  "img": "kf/082.jpg"
+ },
+ {
+  "name": "attempts__third_entry",
+  "frame": 945,
+  "camera": "camera_recovery",
+  "img": "kf/083.jpg"
+ },
+ {
+  "name": "mixed_open",
+  "frame": 994,
+  "camera": "camera_mixed",
+  "img": "kf/084.jpg"
+ },
+ {
+  "name": "mixed_grip",
+  "frame": 1014,
+  "camera": "camera_mixed",
+  "img": "kf/085.jpg"
+ },
+ {
+  "name": "crest_three",
+  "frame": 1035,
+  "camera": "camera_first",
+  "img": "kf/086.jpg"
+ },
+ {
+  "name": "third_grounded",
+  "frame": 1057,
+  "camera": "camera_first",
+  "img": "kf/087.jpg"
+ },
+ {
+  "name": "attempts__third_exit",
+  "frame": 1103,
+  "camera": "camera_first",
+  "img": "kf/088.jpg"
+ },
+ {
+  "name": "tail_out_entry",
+  "frame": 1104,
+  "camera": "camera_loosen",
+  "img": "kf/089.jpg"
+ },
+ {
+  "name": "tail_out_exit",
+  "frame": 1116,
+  "camera": "camera_loosen",
+  "img": "kf/090.jpg"
+ },
+ {
+  "name": "unload_pin_entry",
+  "frame": 1117,
+  "camera": "camera_loosen_detail",
+  "img": "kf/091.jpg"
+ },
+ {
+  "name": "unload_pin_exit",
+  "frame": 1126,
+  "camera": "camera_loosen_detail",
+  "img": "kf/092.jpg"
+ },
+ {
+  "name": "loosen_entry",
+  "frame": 1127,
+  "camera": "camera_loosen_reverse",
+  "img": "kf/093.jpg"
+ },
+ {
+  "name": "belt_tongue_finger",
+  "frame": 1127,
+  "camera": "camera_loosen_reverse",
+  "img": "kf/094.jpg"
+ },
+ {
+  "name": "belt_tongue_clear",
+  "frame": 1145,
+  "camera": "camera_loosen_reverse",
+  "img": "kf/095.jpg"
+ },
+ {
+  "name": "belt_loose",
+  "frame": 1167,
+  "camera": "camera_loosen_reverse",
+  "img": "kf/096.jpg"
+ },
+ {
+  "name": "loosen_exit",
+  "frame": 1174,
+  "camera": "camera_loosen_reverse",
+  "img": "kf/097.jpg"
+ },
+ {
+  "name": "loosen__tension_entry",
+  "frame": 1175,
+  "camera": "camera_loosen_detail",
+  "img": "kf/098.jpg"
+ },
+ {
+  "name": "loosen__tension_exit",
+  "frame": 1182,
+  "camera": "camera_loosen_detail",
+  "img": "kf/099.jpg"
+ },
+ {
+  "name": "loose_keeper_entry",
+  "frame": 1183,
+  "camera": "camera_loosen",
+  "img": "kf/100.jpg"
+ },
+ {
+  "name": "loose_keeper_exit",
+  "frame": 1199,
+  "camera": "camera_loosen",
+  "img": "kf/101.jpg"
+ },
+ {
+  "name": "loose_keeper_finish_entry",
+  "frame": 1200,
+  "camera": "camera_loosen_reverse",
+  "img": "kf/102.jpg"
+ },
+ {
+  "name": "loose_keeper_finish_exit",
+  "frame": 1217,
+  "camera": "camera_loosen_reverse",
+  "img": "kf/103.jpg"
+ },
+ {
+  "name": "remove_collar_near_entry",
+  "frame": 1218,
+  "camera": "camera_near_collar",
+  "img": "kf/104.jpg"
+ },
+ {
+  "name": "near_collar_released",
+  "frame": 1226,
+  "camera": "camera_near_collar",
+  "img": "kf/105.jpg"
+ },
+ {
+  "name": "remove_collar_near_exit",
+  "frame": 1248,
+  "camera": "camera_near_collar",
+  "img": "kf/106.jpg"
+ },
+ {
+  "name": "store_collar_near_entry",
+  "frame": 1249,
+  "camera": "camera_rack_near",
+  "img": "kf/107.jpg"
+ },
+ {
+  "name": "near_collar_stored",
+  "frame": 1259,
+  "camera": "camera_rack_near",
+  "img": "kf/108.jpg"
+ },
+ {
+  "name": "stored_collar_release_near",
+  "frame": 1264,
+  "camera": "camera_rack_near",
+  "img": "kf/109.jpg"
+ },
+ {
+  "name": "store_collar_near_exit",
+  "frame": 1264,
+  "camera": "camera_rack_near",
+  "img": "kf/110.jpg"
+ },
+ {
+  "name": "remove_collar_far_entry",
+  "frame": 1265,
+  "camera": "camera_far_collar",
+  "img": "kf/111.jpg"
+ },
+ {
+  "name": "far_collar_released",
+  "frame": 1273,
+  "camera": "camera_far_collar",
+  "img": "kf/112.jpg"
+ },
+ {
+  "name": "remove_collar_far_exit",
+  "frame": 1295,
+  "camera": "camera_far_collar",
+  "img": "kf/113.jpg"
+ },
+ {
+  "name": "store_collar_far_entry",
+  "frame": 1296,
+  "camera": "camera_rack_far",
+  "img": "kf/114.jpg"
+ },
+ {
+  "name": "collars_stored",
+  "frame": 1306,
+  "camera": "camera_rack_far",
+  "img": "kf/115.jpg"
+ },
+ {
+  "name": "stored_collar_release_far",
+  "frame": 1311,
+  "camera": "camera_rack_far",
+  "img": "kf/116.jpg"
+ },
+ {
+  "name": "store_collar_far_exit",
+  "frame": 1311,
+  "camera": "camera_rack_far",
+  "img": "kf/117.jpg"
+ },
+ {
+  "name": "unload_far_outer_entry",
+  "frame": 1312,
+  "camera": "camera_far_work",
+  "img": "kf/118.jpg"
+ },
+ {
+  "name": "withdraw_gap_far",
+  "frame": 1322,
+  "camera": "camera_far_work",
+  "img": "kf/119.jpg"
+ },
+ {
+  "name": "unload_far_outer",
+  "frame": 1332,
+  "camera": "camera_far_work",
+  "img": "kf/120.jpg"
+ },
+ {
+  "name": "unload_far_outer_exit",
+  "frame": 1341,
+  "camera": "camera_far_work",
+  "img": "kf/121.jpg"
+ },
+ {
+  "name": "store_far_outer_entry",
+  "frame": 1342,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/122.jpg"
+ },
+ {
+  "name": "peg_insert_far_outer",
+  "frame": 1350,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/123.jpg"
+ },
+ {
+  "name": "racked_far_outer",
+  "frame": 1358,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/124.jpg"
+ },
+ {
+  "name": "rack_release_far_outer",
+  "frame": 1371,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/125.jpg"
+ },
+ {
+  "name": "store_far_outer_exit",
+  "frame": 1371,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/126.jpg"
+ },
+ {
+  "name": "unload_far_inner_entry",
+  "frame": 1372,
+  "camera": "camera_far_work",
+  "img": "kf/127.jpg"
+ },
+ {
+  "name": "shaft_support_far",
+  "frame": 1383,
+  "camera": "camera_far_work",
+  "img": "kf/128.jpg"
+ },
+ {
+  "name": "unload_far_inner",
+  "frame": 1393,
+  "camera": "camera_far_work",
+  "img": "kf/129.jpg"
+ },
+ {
+  "name": "bare_end_far",
+  "frame": 1419,
+  "camera": "camera_far_work",
+  "img": "kf/130.jpg"
+ },
+ {
+  "name": "direct_regrasp_far",
+  "frame": 1438,
+  "camera": "camera_far_work",
+  "img": "kf/131.jpg"
+ },
+ {
+  "name": "unload_far_inner_exit",
+  "frame": 1438,
+  "camera": "camera_far_work",
+  "img": "kf/132.jpg"
+ },
+ {
+  "name": "store_far_inner_entry",
+  "frame": 1439,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/133.jpg"
+ },
+ {
+  "name": "peg_insert_far_inner",
+  "frame": 1456,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/134.jpg"
+ },
+ {
+  "name": "racked_far_inner",
+  "frame": 1461,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/135.jpg"
+ },
+ {
+  "name": "rack_release_far_inner",
+  "frame": 1474,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/136.jpg"
+ },
+ {
+  "name": "store_far_inner_exit",
+  "frame": 1474,
+  "camera": "camera_plate_rack_far",
+  "img": "kf/137.jpg"
+ },
+ {
+  "name": "unload_near_outer_entry",
+  "frame": 1475,
+  "camera": "camera_near_work",
+  "img": "kf/138.jpg"
+ },
+ {
+  "name": "withdraw_gap_near",
+  "frame": 1485,
+  "camera": "camera_near_work",
+  "img": "kf/139.jpg"
+ },
+ {
+  "name": "unload_near_outer",
+  "frame": 1495,
+  "camera": "camera_near_work",
+  "img": "kf/140.jpg"
+ },
+ {
+  "name": "unload_near_outer_exit",
+  "frame": 1504,
+  "camera": "camera_near_work",
+  "img": "kf/141.jpg"
+ },
+ {
+  "name": "store_near_outer_entry",
+  "frame": 1505,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/142.jpg"
+ },
+ {
+  "name": "peg_insert_near_outer",
+  "frame": 1513,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/143.jpg"
+ },
+ {
+  "name": "racked_near_outer",
+  "frame": 1521,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/144.jpg"
+ },
+ {
+  "name": "rack_release_near_outer",
+  "frame": 1534,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/145.jpg"
+ },
+ {
+  "name": "store_near_outer_exit",
+  "frame": 1534,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/146.jpg"
+ },
+ {
+  "name": "unload_near_inner_entry",
+  "frame": 1535,
+  "camera": "camera_near_support",
+  "img": "kf/147.jpg"
+ },
+ {
+  "name": "shaft_support_near",
+  "frame": 1546,
+  "camera": "camera_near_support",
+  "img": "kf/148.jpg"
+ },
+ {
+  "name": "unload_near_inner",
+  "frame": 1556,
+  "camera": "camera_near_support",
+  "img": "kf/149.jpg"
+ },
+ {
+  "name": "bare_end_near",
+  "frame": 1582,
+  "camera": "camera_near_support",
+  "img": "kf/150.jpg"
+ },
+ {
+  "name": "direct_regrasp_near",
+  "frame": 1601,
+  "camera": "camera_near_support",
+  "img": "kf/151.jpg"
+ },
+ {
+  "name": "unload_near_inner_exit",
+  "frame": 1601,
+  "camera": "camera_near_support",
+  "img": "kf/152.jpg"
+ },
+ {
+  "name": "store_near_inner_entry",
+  "frame": 1602,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/153.jpg"
+ },
+ {
+  "name": "peg_insert_near_inner",
+  "frame": 1619,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/154.jpg"
+ },
+ {
+  "name": "racked_near_inner",
+  "frame": 1624,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/155.jpg"
+ },
+ {
+  "name": "rack_release_near_inner",
+  "frame": 1637,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/156.jpg"
+ },
+ {
+  "name": "store_near_inner_exit",
+  "frame": 1637,
+  "camera": "camera_plate_rack_near",
+  "img": "kf/157.jpg"
+ },
+ {
+  "name": "wipe_wrap_entry",
+  "frame": 1638,
+  "camera": "camera_wipe_detail",
+  "img": "kf/158.jpg"
+ },
+ {
+  "name": "cloth_press_open",
+  "frame": 1638,
+  "camera": "camera_wipe_detail",
+  "img": "kf/159.jpg"
+ },
+ {
+  "name": "cloth_wrapped",
+  "frame": 1662,
+  "camera": "camera_wipe_detail",
+  "img": "kf/160.jpg"
+ },
+ {
+  "name": "wipe",
+  "frame": 1673,
+  "camera": "camera_wipe_detail",
+  "img": "kf/161.jpg"
+ },
+ {
+  "name": "wipe_wrap_exit",
+  "frame": 1683,
+  "camera": "camera_wipe_detail",
+  "img": "kf/162.jpg"
+ },
+ {
+  "name": "wipe_handoff_entry",
+  "frame": 1684,
+  "camera": "camera_wipe_handoff",
+  "img": "kf/163.jpg"
+ },
+ {
+  "name": "cloth_transfer",
+  "frame": 1726,
+  "camera": "camera_wipe_handoff",
+  "img": "kf/164.jpg"
+ },
+ {
+  "name": "wipe_handoff_exit",
+  "frame": 1736,
+  "camera": "camera_wipe_handoff",
+  "img": "kf/165.jpg"
+ },
+ {
+  "name": "wipe_second_entry",
+  "frame": 1737,
+  "camera": "camera_wipe_detail",
+  "img": "kf/166.jpg"
+ },
+ {
+  "name": "wipe_second_exit",
+  "frame": 1760,
+  "camera": "camera_wipe_detail",
+  "img": "kf/167.jpg"
+ },
+ {
+  "name": "cloth_return_entry",
+  "frame": 1761,
+  "camera": "camera_cloth_take",
+  "img": "kf/168.jpg"
+ },
+ {
+  "name": "cloth_return_exit",
+  "frame": 1773,
+  "camera": "camera_cloth_take",
+  "img": "kf/169.jpg"
+ },
+ {
+  "name": "ending_entry",
+  "frame": 1774,
+  "camera": "camera_ending",
+  "img": "kf/170.jpg"
+ },
+ {
+  "name": "ending",
+  "frame": 1793,
+  "camera": "camera_ending",
+  "img": "kf/171.jpg"
+ },
+ {
+  "name": "ending_exit",
+  "frame": 1797,
+  "camera": "camera_ending",
+  "img": "kf/172.jpg"
+ }
+]

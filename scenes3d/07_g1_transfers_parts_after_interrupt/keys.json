@@ -1,0 +1,278 @@
+[
+ {
+  "name": "lifting",
+  "frame": 0,
+  "camera": "CAM_bench",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "signal",
+  "frame": 40,
+  "camera": "CAM_open",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "park_contact",
+  "frame": 114,
+  "camera": "CAM_bench",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "park_release",
+  "frame": 168,
+  "camera": "CAM_bench",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "marker_grasp",
+  "frame": 180,
+  "camera": "CAM_bench",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "marker_landing",
+  "frame": 229,
+  "camera": "CAM_bench",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "marker_released",
+  "frame": 278,
+  "camera": "CAM_bench",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "depart",
+  "frame": 302,
+  "camera": "CAM_wide",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "walk_out",
+  "frame": 365,
+  "camera": "CAM_wide",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "urgent_stance",
+  "frame": 456,
+  "camera": "CAM_dispatch",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "red_grasp",
+  "frame": 506,
+  "camera": "CAM_dispatch",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "red_lift",
+  "frame": 523,
+  "camera": "CAM_dispatch",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "red_seat",
+  "frame": 579,
+  "camera": "CAM_dispatch",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "ack_ready",
+  "frame": 622,
+  "camera": "CAM_ack",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "press",
+  "frame": 630,
+  "camera": "CAM_ack",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "ack_release",
+  "frame": 644,
+  "camera": "CAM_ack",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "return_turn",
+  "frame": 697,
+  "camera": "CAM_wide",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "return_walk",
+  "frame": 739,
+  "camera": "CAM_wide",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "return_arrive",
+  "frame": 823,
+  "camera": "CAM_wide",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "marker_check",
+  "frame": 865,
+  "camera": "CAM_return",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "regrasp",
+  "frame": 912,
+  "camera": "CAM_bench",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "seven_seat",
+  "frame": 967,
+  "camera": "CAM_bench",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "marker_retake",
+  "frame": 1025,
+  "camera": "CAM_bench",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "marker_return",
+  "frame": 1042,
+  "camera": "CAM_bench",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "marker_home",
+  "frame": 1058,
+  "camera": "CAM_bench",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "marker_home_release",
+  "frame": 1094,
+  "camera": "CAM_batch",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "eight_grasp",
+  "frame": 1104,
+  "camera": "CAM_batch",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "eight_seat",
+  "frame": 1158,
+  "camera": "CAM_batch",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "nine_grasp",
+  "frame": 1212,
+  "camera": "CAM_batch",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "nine_seat",
+  "frame": 1266,
+  "camera": "CAM_batch",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "nine_clear",
+  "frame": 1298,
+  "camera": "CAM_wide",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "side_swing",
+  "frame": 1307,
+  "camera": "CAM_wide",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "side_step",
+  "frame": 1316,
+  "camera": "CAM_wide",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "side_close",
+  "frame": 1334,
+  "camera": "CAM_wide",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "ten_grasp",
+  "frame": 1388,
+  "camera": "CAM_batch",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "ten_seat",
+  "frame": 1436,
+  "camera": "CAM_batch",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "eleven_grasp",
+  "frame": 1484,
+  "camera": "CAM_batch",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "eleven_seat",
+  "frame": 1532,
+  "camera": "CAM_batch",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "twelve_grasp",
+  "frame": 1580,
+  "camera": "CAM_batch",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "twelve_seat",
+  "frame": 1628,
+  "camera": "CAM_batch",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "inspect_source",
+  "frame": 1674,
+  "camera": "CAM_end",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "inspect_destination",
+  "frame": 1700,
+  "camera": "CAM_end",
+  "img": "kf/041.jpg"
+ },
+ {
+  "name": "back_first",
+  "frame": 1728,
+  "camera": "CAM_wide",
+  "img": "kf/042.jpg"
+ },
+ {
+  "name": "step_back",
+  "frame": 1738,
+  "camera": "CAM_wide",
+  "img": "kf/043.jpg"
+ },
+ {
+  "name": "back_second",
+  "frame": 1752,
+  "camera": "CAM_wide",
+  "img": "kf/044.jpg"
+ },
+ {
+  "name": "finished",
+  "frame": 1783,
+  "camera": "CAM_wide",
+  "img": "kf/045.jpg"
+ }
+]

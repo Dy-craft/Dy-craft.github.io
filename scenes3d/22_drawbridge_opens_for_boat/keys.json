@@ -1,0 +1,164 @@
+[
+ {
+  "name": "initial",
+  "frame": 0,
+  "camera": "Cam_Arrival",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "detected",
+  "frame": 60,
+  "camera": "Cam_Arrival",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "barrier_mid",
+  "frame": 84,
+  "camera": "Cam_Arrival",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "barriers_down",
+  "frame": 125,
+  "camera": "Cam_Arrival",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "lock_start",
+  "frame": 130,
+  "camera": "Cam_Lock",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "bolt_mid",
+  "frame": 150,
+  "camera": "Cam_Lock",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "unlocked",
+  "frame": 165,
+  "camera": "Cam_Lock",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "lift_mid",
+  "frame": 225,
+  "camera": "Cam_Drive",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "counterweight_mid",
+  "frame": 270,
+  "camera": "Cam_Counterweight",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "lift_high",
+  "frame": 315,
+  "camera": "Cam_Opening",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "held_wait",
+  "frame": 340,
+  "camera": "Cam_Signal",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "permission",
+  "frame": 350,
+  "camera": "Cam_Signal",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "restart",
+  "frame": 380,
+  "camera": "Cam_Passage",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "under_bridge",
+  "frame": 600,
+  "camera": "Cam_TransitLow",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "stern_approaching",
+  "frame": 700,
+  "camera": "Cam_Clearance",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "stern_clear",
+  "frame": 749,
+  "camera": "Cam_Clearance",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "lower_start",
+  "frame": 780,
+  "camera": "Cam_Closing",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "wake_buoys",
+  "frame": 810,
+  "camera": "Cam_Buoy",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "lower_mid",
+  "frame": 822,
+  "camera": "Cam_Closing",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "far_buoy_rock",
+  "frame": 843,
+  "camera": "Cam_BuoyEast",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "landing_approach",
+  "frame": 860,
+  "camera": "Cam_Seat",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "near_seated",
+  "frame": 890,
+  "camera": "Cam_Seat",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "seat_contact",
+  "frame": 898,
+  "camera": "Cam_Seat",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "seated",
+  "frame": 900,
+  "camera": "Cam_Lock",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "locked_again",
+  "frame": 955,
+  "camera": "Cam_Lock",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "road_open",
+  "frame": 1040,
+  "camera": "Cam_Release",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "settled",
+  "frame": 1079,
+  "camera": "Cam_Release",
+  "img": "kf/026.jpg"
+ }
+]

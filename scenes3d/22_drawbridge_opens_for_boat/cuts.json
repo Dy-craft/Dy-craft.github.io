@@ -1,0 +1,90 @@
+{
+ "fps": 20.0,
+ "frame_start": 0,
+ "frame_end": 1079,
+ "duration": 54.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "Cam_Arrival",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "Cam_Arrival"
+  },
+  {
+   "frame": 130,
+   "t": 6.5,
+   "camera": "Cam_Lock"
+  },
+  {
+   "frame": 170,
+   "t": 8.5,
+   "camera": "Cam_Drive"
+  },
+  {
+   "frame": 240,
+   "t": 12.0,
+   "camera": "Cam_Counterweight"
+  },
+  {
+   "frame": 290,
+   "t": 14.5,
+   "camera": "Cam_Opening"
+  },
+  {
+   "frame": 335,
+   "t": 16.75,
+   "camera": "Cam_Signal"
+  },
+  {
+   "frame": 370,
+   "t": 18.5,
+   "camera": "Cam_Passage"
+  },
+  {
+   "frame": 540,
+   "t": 27.0,
+   "camera": "Cam_TransitLow"
+  },
+  {
+   "frame": 640,
+   "t": 32.0,
+   "camera": "Cam_Clearance"
+  },
+  {
+   "frame": 750,
+   "t": 37.5,
+   "camera": "Cam_Closing"
+  },
+  {
+   "frame": 785,
+   "t": 39.25,
+   "camera": "Cam_Buoy"
+  },
+  {
+   "frame": 815,
+   "t": 40.75,
+   "camera": "Cam_Closing"
+  },
+  {
+   "frame": 835,
+   "t": 41.75,
+   "camera": "Cam_BuoyEast"
+  },
+  {
+   "frame": 860,
+   "t": 43.0,
+   "camera": "Cam_Seat"
+  },
+  {
+   "frame": 900,
+   "t": 45.0,
+   "camera": "Cam_Lock"
+  },
+  {
+   "frame": 960,
+   "t": 48.0,
+   "camera": "Cam_Release"
+  }
+ ]
+}

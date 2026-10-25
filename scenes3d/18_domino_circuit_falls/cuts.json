@@ -1,0 +1,80 @@
+{
+ "fps": 30.0,
+ "frame_start": 0,
+ "frame_end": 1017,
+ "duration": 33.93333333333333,
+ "aspect": 1.7777777777777777,
+ "default_camera": "Cam_Damper",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "Cam_Establish"
+  },
+  {
+   "frame": 60,
+   "t": 2.0,
+   "camera": "Cam_Release"
+  },
+  {
+   "frame": 152,
+   "t": 5.066666666666666,
+   "camera": "Cam_Fork"
+  },
+  {
+   "frame": 186,
+   "t": 6.2,
+   "camera": "Cam_Branches"
+  },
+  {
+   "frame": 286,
+   "t": 9.533333333333333,
+   "camera": "Cam_Unlock"
+  },
+  {
+   "frame": 350,
+   "t": 11.666666666666666,
+   "camera": "Cam_Pin"
+  },
+  {
+   "frame": 398,
+   "t": 13.266666666666667,
+   "camera": "Cam_RightRoute"
+  },
+  {
+   "frame": 450,
+   "t": 15.0,
+   "camera": "Cam_CupGate"
+  },
+  {
+   "frame": 542,
+   "t": 18.066666666666666,
+   "camera": "Cam_Track"
+  },
+  {
+   "frame": 614,
+   "t": 20.466666666666665,
+   "camera": "Cam_Bridge"
+  },
+  {
+   "frame": 690,
+   "t": 23.0,
+   "camera": "Cam_Trip"
+  },
+  {
+   "frame": 748,
+   "t": 24.933333333333334,
+   "camera": "Cam_Damper"
+  },
+  {
+   "frame": 808,
+   "t": 26.933333333333334,
+   "camera": "Cam_Flag"
+  },
+  {
+   "frame": 928,
+   "t": 30.933333333333334,
+   "camera": "Cam_Final"
+  }
+ ]
+}

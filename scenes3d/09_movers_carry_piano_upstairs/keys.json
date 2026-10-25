@@ -1,0 +1,482 @@
+[
+ {
+  "name": "ready",
+  "frame": 0,
+  "camera": "Cam_Entrance",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "coil_grasp",
+  "frame": 26,
+  "camera": "Cam_CoilPickup",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "pad_pickup",
+  "frame": 66,
+  "camera": "Cam_Pickup",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "pad_lift",
+  "frame": 102,
+  "camera": "Cam_Pickup",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "pad_receive",
+  "frame": 156,
+  "camera": "Cam_Wrap",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "pad_wrap",
+  "frame": 194,
+  "camera": "Cam_Wrap",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "lower_coil_laid",
+  "frame": 218,
+  "camera": "Cam_Coils",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "rear_pad_pickup",
+  "frame": 236,
+  "camera": "Cam_Pickup",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "upper_coil_laid",
+  "frame": 266,
+  "camera": "Cam_Coils",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "rear_pad_lift",
+  "frame": 270,
+  "camera": "Cam_Pickup",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "rear_pad_unfold",
+  "frame": 314,
+  "camera": "Cam_WrapRear",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "pads_secured",
+  "frame": 354,
+  "camera": "Cam_WrapRear",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "dolly_behind",
+  "frame": 400,
+  "camera": "Cam_Dock",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "toe_entry",
+  "frame": 430,
+  "camera": "Cam_Dock",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "sill_seated",
+  "frame": 464,
+  "camera": "Cam_Dock",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "strap_ends_collected",
+  "frame": 490,
+  "camera": "Cam_Route",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "strap_front_pass",
+  "frame": 532,
+  "camera": "Cam_Route",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "strap_rear_return",
+  "frame": 606,
+  "camera": "Cam_Route",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "strap_feed",
+  "frame": 666,
+  "camera": "Cam_Ratchet",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "strap_lower_tension",
+  "frame": 712,
+  "camera": "Cam_Ratchet",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "strap_upper_feed",
+  "frame": 758,
+  "camera": "Cam_Ratchet",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "strap_tight",
+  "frame": 824,
+  "camera": "Cam_Ratchet",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "grip_approach",
+  "frame": 850,
+  "camera": "Cam_Tip",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "front_grips",
+  "frame": 886,
+  "camera": "Cam_Tip",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "tip",
+  "frame": 922,
+  "camera": "Cam_Tip",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "balance",
+  "frame": 964,
+  "camera": "Cam_Tip",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "approach",
+  "frame": 1006,
+  "camera": "Cam_Tip",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "first_contact",
+  "frame": 1044,
+  "camera": "Cam_First",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "first_balance",
+  "frame": 1044,
+  "camera": "Cam_First",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "first_exchange",
+  "frame": 1072,
+  "camera": "Cam_First",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "wheel_one_close",
+  "frame": 1206,
+  "camera": "Cam_WheelOne",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "mid_hold",
+  "frame": 1244,
+  "camera": "Cam_Grips",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "mid_mechanic_bearing",
+  "frame": 1254,
+  "camera": "Cam_Grips",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "mid_regrip",
+  "frame": 1267,
+  "camera": "Cam_Grips",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "mid_overalls_bearing",
+  "frame": 1282,
+  "camera": "Cam_GripsOther",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "mid_overalls",
+  "frame": 1295,
+  "camera": "Cam_GripsOther",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "first_resume",
+  "frame": 1374,
+  "camera": "Cam_FirstLate",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "first_landing_drive",
+  "frame": 1474,
+  "camera": "Cam_Landing",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "landing_arrive",
+  "frame": 1557,
+  "camera": "Cam_Landing",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "post_stop",
+  "frame": 1635,
+  "camera": "Cam_Post",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "backoff",
+  "frame": 1662,
+  "camera": "Cam_Post",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "near_upright",
+  "frame": 1711,
+  "camera": "Cam_Correction",
+  "img": "kf/041.jpg"
+ },
+ {
+  "name": "guide_cross",
+  "frame": 1761,
+  "camera": "Cam_Cross",
+  "img": "kf/042.jpg"
+ },
+ {
+  "name": "receiving_approach",
+  "frame": 1789,
+  "camera": "Cam_Receive",
+  "img": "kf/043.jpg"
+ },
+ {
+  "name": "regained",
+  "frame": 1801,
+  "camera": "Cam_Receive",
+  "img": "kf/044.jpg"
+ },
+ {
+  "name": "turn_middle",
+  "frame": 1931,
+  "camera": "Cam_Pivot",
+  "img": "kf/045.jpg"
+ },
+ {
+  "name": "turn_clear",
+  "frame": 2046,
+  "camera": "Cam_Recline",
+  "img": "kf/046.jpg"
+ },
+ {
+  "name": "recline_transfer",
+  "frame": 2079,
+  "camera": "Cam_Recline",
+  "img": "kf/047.jpg"
+ },
+ {
+  "name": "recline_again",
+  "frame": 2101,
+  "camera": "Cam_Second",
+  "img": "kf/048.jpg"
+ },
+ {
+  "name": "second_balance",
+  "frame": 2101,
+  "camera": "Cam_Second",
+  "img": "kf/049.jpg"
+ },
+ {
+  "name": "second_start",
+  "frame": 2172,
+  "camera": "Cam_Second",
+  "img": "kf/050.jpg"
+ },
+ {
+  "name": "second_exchange",
+  "frame": 2279,
+  "camera": "Cam_WheelTwo",
+  "img": "kf/051.jpg"
+ },
+ {
+  "name": "second_resume",
+  "frame": 2428,
+  "camera": "Cam_SecondLate",
+  "img": "kf/052.jpg"
+ },
+ {
+  "name": "upper_arrival",
+  "frame": 2534,
+  "camera": "Cam_Arrival",
+  "img": "kf/053.jpg"
+ },
+ {
+  "name": "second_landed",
+  "frame": 2554,
+  "camera": "Cam_Arrival",
+  "img": "kf/054.jpg"
+ },
+ {
+  "name": "landing_exchange",
+  "frame": 2554,
+  "camera": "Cam_Arrival",
+  "img": "kf/055.jpg"
+ },
+ {
+  "name": "upper_footprint",
+  "frame": 2626,
+  "camera": "Cam_Arrival",
+  "img": "kf/056.jpg"
+ },
+ {
+  "name": "caster_contact",
+  "frame": 2686,
+  "camera": "Cam_Arrival",
+  "img": "kf/057.jpg"
+ },
+ {
+  "name": "working_clearance",
+  "frame": 2722,
+  "camera": "Cam_Unload",
+  "img": "kf/058.jpg"
+ },
+ {
+  "name": "ratchet_approach",
+  "frame": 2777,
+  "camera": "Cam_Release",
+  "img": "kf/059.jpg"
+ },
+ {
+  "name": "upper_pawl_open",
+  "frame": 2799,
+  "camera": "Cam_Release",
+  "img": "kf/060.jpg"
+ },
+ {
+  "name": "upper_band_free",
+  "frame": 2836,
+  "camera": "Cam_Release",
+  "img": "kf/061.jpg"
+ },
+ {
+  "name": "lower_pawl_open",
+  "frame": 2858,
+  "camera": "Cam_Release",
+  "img": "kf/062.jpg"
+ },
+ {
+  "name": "bands_free",
+  "frame": 2962,
+  "camera": "Cam_Unload",
+  "img": "kf/063.jpg"
+ },
+ {
+  "name": "front_caster_rock",
+  "frame": 2982,
+  "camera": "Cam_Unload",
+  "img": "kf/064.jpg"
+ },
+ {
+  "name": "toe_clear",
+  "frame": 3010,
+  "camera": "Cam_Unload",
+  "img": "kf/065.jpg"
+ },
+ {
+  "name": "four_casters",
+  "frame": 3030,
+  "camera": "Cam_Unwrap",
+  "img": "kf/066.jpg"
+ },
+ {
+  "name": "front_pad_grasp",
+  "frame": 3054,
+  "camera": "Cam_Unwrap",
+  "img": "kf/067.jpg"
+ },
+ {
+  "name": "front_pad_clear",
+  "frame": 3092,
+  "camera": "Cam_Unwrap",
+  "img": "kf/068.jpg"
+ },
+ {
+  "name": "dolly_parked",
+  "frame": 3140,
+  "camera": "Cam_Unwrap",
+  "img": "kf/069.jpg"
+ },
+ {
+  "name": "front_pad_shelved",
+  "frame": 3232,
+  "camera": "Cam_Equipment",
+  "img": "kf/070.jpg"
+ },
+ {
+  "name": "rear_pad_grasp",
+  "frame": 3242,
+  "camera": "Cam_Equipment",
+  "img": "kf/071.jpg"
+ },
+ {
+  "name": "rear_pad_clear",
+  "frame": 3274,
+  "camera": "Cam_Equipment",
+  "img": "kf/072.jpg"
+ },
+ {
+  "name": "rear_pad_folded",
+  "frame": 3296,
+  "camera": "Cam_Equipment",
+  "img": "kf/073.jpg"
+ },
+ {
+  "name": "equipment_on_shelf",
+  "frame": 3374,
+  "camera": "Cam_End",
+  "img": "kf/074.jpg"
+ },
+ {
+  "name": "ending_contact",
+  "frame": 3380,
+  "camera": "Cam_End",
+  "img": "kf/075.jpg"
+ },
+ {
+  "name": "placement_ready",
+  "frame": 3394,
+  "camera": "Cam_End",
+  "img": "kf/076.jpg"
+ },
+ {
+  "name": "final_roll",
+  "frame": 3504,
+  "camera": "Cam_End",
+  "img": "kf/077.jpg"
+ },
+ {
+  "name": "final_release",
+  "frame": 3542,
+  "camera": "Cam_End",
+  "img": "kf/078.jpg"
+ },
+ {
+  "name": "settled",
+  "frame": 3562,
+  "camera": "Cam_End",
+  "img": "kf/079.jpg"
+ }
+]

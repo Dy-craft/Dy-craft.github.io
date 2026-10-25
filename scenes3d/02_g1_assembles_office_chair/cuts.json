@@ -1,0 +1,255 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 2399,
+ "duration": 100.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "Cam_carton_detail_Cut_tape_0",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "Cam_carton_detail_Cut_tape_0"
+  },
+  {
+   "frame": 20,
+   "t": 0.8333333333333334,
+   "camera": "Cam_carton_detail_Cut_tape_1"
+  },
+  {
+   "frame": 56,
+   "t": 2.3333333333333335,
+   "camera": "Cam_carton_detail_Cut_tape_2"
+  },
+  {
+   "frame": 72,
+   "t": 3.0,
+   "camera": "Cam_carton_detail_Cut_tape_3"
+  },
+  {
+   "frame": 96,
+   "t": 4.0,
+   "camera": "Cam_carton_wide_Open_flaps_0"
+  },
+  {
+   "frame": 241,
+   "t": 10.041666666666666,
+   "camera": "Cam_carton_wide_Open_flaps_1"
+  },
+  {
+   "frame": 267,
+   "t": 11.125,
+   "camera": "Cam_bench_wide_Unpack_0"
+  },
+  {
+   "frame": 312,
+   "t": 13.0,
+   "camera": "Cam_bench_wide_Unpack_1"
+  },
+  {
+   "frame": 366,
+   "t": 15.25,
+   "camera": "Cam_bench_wide_Unpack_2"
+  },
+  {
+   "frame": 432,
+   "t": 18.0,
+   "camera": "Cam_bench_wide_Unpack_3"
+  },
+  {
+   "frame": 440,
+   "t": 18.333333333333332,
+   "camera": "Cam_floor_detail_Caster_press_0"
+  },
+  {
+   "frame": 536,
+   "t": 22.333333333333332,
+   "camera": "Cam_bench_wide_Base_right_0"
+  },
+  {
+   "frame": 609,
+   "t": 25.375,
+   "camera": "Cam_bench_wide_Base_right_1"
+  },
+  {
+   "frame": 703,
+   "t": 29.291666666666668,
+   "camera": "Cam_bench_wide_Base_right_2"
+  },
+  {
+   "frame": 717,
+   "t": 29.875,
+   "camera": "Cam_bench_detail_Sleeve_column_0"
+  },
+  {
+   "frame": 758,
+   "t": 31.583333333333332,
+   "camera": "Cam_bench_detail_Sleeve_column_1"
+  },
+  {
+   "frame": 789,
+   "t": 32.875,
+   "camera": "Cam_floor_detail_Column_hub_0"
+  },
+  {
+   "frame": 861,
+   "t": 35.875,
+   "camera": "Cam_bench_detail_Back_register_0"
+  },
+  {
+   "frame": 933,
+   "t": 38.875,
+   "camera": "Cam_bench_detail_Start_hardware_0"
+  },
+  {
+   "frame": 965,
+   "t": 40.208333333333336,
+   "camera": "Cam_bench_detail_Start_hardware_1"
+  },
+  {
+   "frame": 1011,
+   "t": 42.125,
+   "camera": "Cam_bench_detail_Start_hardware_2"
+  },
+  {
+   "frame": 1029,
+   "t": 42.875,
+   "camera": "Cam_bench_detail_Key_rundown_0"
+  },
+  {
+   "frame": 1131,
+   "t": 47.125,
+   "camera": "Cam_bench_detail_Final_torque_0"
+  },
+  {
+   "frame": 1163,
+   "t": 48.458333333333336,
+   "camera": "Cam_bench_detail_Final_torque_1"
+  },
+  {
+   "frame": 1179,
+   "t": 49.125,
+   "camera": "Cam_bench_detail_Cap_bolts_0"
+  },
+  {
+   "frame": 1227,
+   "t": 51.125,
+   "camera": "Cam_bench_wide_Upper_turn_0"
+  },
+  {
+   "frame": 1343,
+   "t": 55.958333333333336,
+   "camera": "Cam_bench_wide_Upper_turn_1"
+  },
+  {
+   "frame": 1454,
+   "t": 60.583333333333336,
+   "camera": "Cam_floor_detail_Upper_seat_0"
+  },
+  {
+   "frame": 1505,
+   "t": 62.708333333333336,
+   "camera": "Cam_floor_detail_Upper_seat_1"
+  },
+  {
+   "frame": 1532,
+   "t": 63.833333333333336,
+   "camera": "Cam_test_Sit_load_0"
+  },
+  {
+   "frame": 1604,
+   "t": 66.83333333333333,
+   "camera": "Cam_test_Test_swivel_0"
+  },
+  {
+   "frame": 1652,
+   "t": 68.83333333333333,
+   "camera": "Cam_test_Test_raise_0"
+  },
+  {
+   "frame": 1672,
+   "t": 69.66666666666667,
+   "camera": "Cam_test_Test_raise_1"
+  },
+  {
+   "frame": 1729,
+   "t": 72.04166666666667,
+   "camera": "Cam_test_Test_raise_2"
+  },
+  {
+   "frame": 1751,
+   "t": 72.95833333333333,
+   "camera": "Cam_test_Test_tilt_0"
+  },
+  {
+   "frame": 1823,
+   "t": 75.95833333333333,
+   "camera": "Cam_test_Test_lower_0"
+  },
+  {
+   "frame": 1868,
+   "t": 77.83333333333333,
+   "camera": "Cam_test_Stand_0"
+  },
+  {
+   "frame": 1916,
+   "t": 79.83333333333333,
+   "camera": "Cam_bench_detail_Tools_away_0"
+  },
+  {
+   "frame": 1946,
+   "t": 81.08333333333333,
+   "camera": "Cam_bench_detail_Tools_away_1"
+  },
+  {
+   "frame": 1976,
+   "t": 82.33333333333333,
+   "camera": "Cam_cleanup_Packing_recycle_0"
+  },
+  {
+   "frame": 2008,
+   "t": 83.66666666666667,
+   "camera": "Cam_cleanup_Packing_recycle_1"
+  },
+  {
+   "frame": 2021,
+   "t": 84.20833333333333,
+   "camera": "Cam_cleanup_Carton_flatten_0"
+  },
+  {
+   "frame": 2063,
+   "t": 85.95833333333333,
+   "camera": "Cam_cleanup_Carton_flatten_1"
+  },
+  {
+   "frame": 2119,
+   "t": 88.29166666666667,
+   "camera": "Cam_cleanup_Carton_flatten_2"
+  },
+  {
+   "frame": 2179,
+   "t": 90.79166666666667,
+   "camera": "Cam_cleanup_Carton_flatten_3"
+  },
+  {
+   "frame": 2202,
+   "t": 91.75,
+   "camera": "Cam_cleanup_Carton_flatten_4"
+  },
+  {
+   "frame": 2225,
+   "t": 92.70833333333333,
+   "camera": "Cam_cleanup_Carton_flatten_5"
+  },
+  {
+   "frame": 2261,
+   "t": 94.20833333333333,
+   "camera": "Cam_finish_Chair_to_desk_0"
+  },
+  {
+   "frame": 2321,
+   "t": 96.70833333333333,
+   "camera": "Cam_finish_Chair_to_desk_1"
+  }
+ ]
+}

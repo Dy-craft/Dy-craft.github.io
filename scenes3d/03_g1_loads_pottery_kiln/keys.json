@@ -1,0 +1,1610 @@
+[
+ {
+  "name": "foundation_primary_posts__ready",
+  "frame": 0,
+  "camera": "CAM4_foundation_primary_posts",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__left_grasp",
+  "frame": 13,
+  "camera": "CAM4_foundation_primary_posts",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__left_lift",
+  "frame": 23,
+  "camera": "CAM4_foundation_primary_posts",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__right_approach",
+  "frame": 60,
+  "camera": "CAM4_foundation_primary_posts",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__right_grasp",
+  "frame": 75,
+  "camera": "CAM4_foundation_primary_posts",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__paired_lift",
+  "frame": 85,
+  "camera": "CAM4_foundation_primary_posts",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__supported_carry",
+  "frame": 106,
+  "camera": "CAM4_foundation_primary_posts",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "foundation_primary_posts_view_before_140",
+  "frame": 139,
+  "camera": "CAM4_foundation_primary_posts",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "view4_foundation_primary_posts_139",
+  "frame": 139,
+  "camera": "CAM4_foundation_primary_posts",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__kiln_reach",
+  "frame": 140,
+  "camera": "CAM4_contact_low",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "foundation_primary_posts_view_after_140",
+  "frame": 140,
+  "camera": "CAM4_contact_low",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "view4_foundation_primary_posts_140",
+  "frame": 140,
+  "camera": "CAM4_contact_low",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__left_bearing",
+  "frame": 151,
+  "camera": "CAM4_contact_low",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__right_bearing",
+  "frame": 173,
+  "camera": "CAM4_contact_low",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "foundation_primary_posts__pair_complete",
+  "frame": 184,
+  "camera": "CAM4_contact_low",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "foundation_repeat_prep__repeat_entry",
+  "frame": 185,
+  "camera": "CAM4_front_post",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "foundation_repeat_prep__crowned_bearing",
+  "frame": 199,
+  "camera": "CAM4_front_post",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "foundation_repeat_prep__repeat_complete",
+  "frame": 210,
+  "camera": "CAM4_front_post",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf__grips_ready",
+  "frame": 211,
+  "camera": "CAM4_foundation_inward_shelf",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf__clamped",
+  "frame": 216,
+  "camera": "CAM4_foundation_inward_shelf",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf__sliding_clear",
+  "frame": 232,
+  "camera": "CAM4_foundation_inward_shelf",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf__level_transition",
+  "frame": 257,
+  "camera": "CAM4_foundation_inward_shelf",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf__level_carry",
+  "frame": 276,
+  "camera": "CAM4_foundation_inward_shelf",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf_view_before_89",
+  "frame": 299,
+  "camera": "CAM4_foundation_inward_shelf",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "view4_foundation_inward_shelf_88",
+  "frame": 299,
+  "camera": "CAM4_foundation_inward_shelf",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf__over_bearings",
+  "frame": 300,
+  "camera": "CAM4_contact_work",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf_view_after_89",
+  "frame": 300,
+  "camera": "CAM4_contact_work",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "view4_foundation_inward_shelf_89",
+  "frame": 300,
+  "camera": "CAM4_contact_work",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf__working_stance",
+  "frame": 319,
+  "camera": "CAM4_contact_work",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf__landed",
+  "frame": 350,
+  "camera": "CAM4_contact_work",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "foundation_inward_shelf__released",
+  "frame": 363,
+  "camera": "CAM4_contact_work",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__entry",
+  "frame": 364,
+  "camera": "CAM4_contact_low",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "foundation_retained_repair_view_before_21",
+  "frame": 384,
+  "camera": "CAM4_contact_low",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "view4_foundation_retained_repair_20",
+  "frame": 384,
+  "camera": "CAM4_contact_low",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "foundation_retained_repair_view_after_21",
+  "frame": 385,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "view4_foundation_retained_repair_21",
+  "frame": 385,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__press_one",
+  "frame": 393,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "foundation_retained_repair_view_before_36",
+  "frame": 399,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "view4_foundation_retained_repair_35",
+  "frame": 399,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "foundation_retained_repair_view_after_36",
+  "frame": 400,
+  "camera": "CAM4_contact_low",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "view4_foundation_retained_repair_36",
+  "frame": 400,
+  "camera": "CAM4_contact_low",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__press_two",
+  "frame": 425,
+  "camera": "CAM4_contact_low",
+  "img": "kf/041.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__notice",
+  "frame": 439,
+  "camera": "CAM4_contact_low",
+  "img": "kf/042.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__clamp",
+  "frame": 462,
+  "camera": "CAM4_contact_low",
+  "img": "kf/043.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__retained",
+  "frame": 486,
+  "camera": "CAM4_contact_low",
+  "img": "kf/044.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__bad_grasp",
+  "frame": 500,
+  "camera": "CAM4_contact_low",
+  "img": "kf/045.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__reject_rest",
+  "frame": 566,
+  "camera": "CAM4_contact_low",
+  "img": "kf/046.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__spare_grasp",
+  "frame": 602,
+  "camera": "CAM4_contact_low",
+  "img": "kf/047.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__replacement_insert",
+  "frame": 668,
+  "camera": "CAM4_contact_low",
+  "img": "kf/048.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__lowered",
+  "frame": 688,
+  "camera": "CAM4_contact_low",
+  "img": "kf/049.jpg"
+ },
+ {
+  "name": "foundation_retained_repair_view_before_335",
+  "frame": 698,
+  "camera": "CAM4_contact_low",
+  "img": "kf/050.jpg"
+ },
+ {
+  "name": "view4_foundation_retained_repair_334",
+  "frame": 698,
+  "camera": "CAM4_contact_low",
+  "img": "kf/051.jpg"
+ },
+ {
+  "name": "foundation_retained_repair_view_after_335",
+  "frame": 699,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/052.jpg"
+ },
+ {
+  "name": "view4_foundation_retained_repair_335",
+  "frame": 699,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/053.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__retest_one",
+  "frame": 704,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/054.jpg"
+ },
+ {
+  "name": "foundation_retained_repair_view_before_350",
+  "frame": 713,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/055.jpg"
+ },
+ {
+  "name": "view4_foundation_retained_repair_349",
+  "frame": 713,
+  "camera": "CAM4_bearing_evidence",
+  "img": "kf/056.jpg"
+ },
+ {
+  "name": "foundation_retained_repair_view_after_350",
+  "frame": 714,
+  "camera": "CAM4_contact_low",
+  "img": "kf/057.jpg"
+ },
+ {
+  "name": "view4_foundation_retained_repair_350",
+  "frame": 714,
+  "camera": "CAM4_contact_low",
+  "img": "kf/058.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__retest_two",
+  "frame": 734,
+  "camera": "CAM4_contact_low",
+  "img": "kf/059.jpg"
+ },
+ {
+  "name": "foundation_retained_repair__complete",
+  "frame": 748,
+  "camera": "CAM4_contact_low",
+  "img": "kf/060.jpg"
+ },
+ {
+  "name": "dual_bowls_entry",
+  "frame": 749,
+  "camera": "CAM4_CC_bowl_pickup",
+  "img": "kf/061.jpg"
+ },
+ {
+  "name": "dual_bowls_grasp",
+  "frame": 761,
+  "camera": "CAM4_CC_bowl_pickup",
+  "img": "kf/062.jpg"
+ },
+ {
+  "name": "view4_dual_bowls_61",
+  "frame": 810,
+  "camera": "CAM4_CC_bowl_pickup",
+  "img": "kf/063.jpg"
+ },
+ {
+  "name": "view4_dual_bowls_62",
+  "frame": 811,
+  "camera": "CAM4_dual_bowls",
+  "img": "kf/064.jpg"
+ },
+ {
+  "name": "dual_bowls_carry_ready",
+  "frame": 812,
+  "camera": "CAM4_dual_bowls",
+  "img": "kf/065.jpg"
+ },
+ {
+  "name": "dual_bowls_step_3",
+  "frame": 813,
+  "camera": "CAM4_dual_bowls",
+  "img": "kf/066.jpg"
+ },
+ {
+  "name": "dual_bowls_lower_carry",
+  "frame": 821,
+  "camera": "CAM4_dual_bowls",
+  "img": "kf/067.jpg"
+ },
+ {
+  "name": "dual_bowls_clearance_approach",
+  "frame": 867,
+  "camera": "CAM4_dual_bowls",
+  "img": "kf/068.jpg"
+ },
+ {
+  "name": "dual_bowls_view_before_122",
+  "frame": 870,
+  "camera": "CAM4_dual_bowls",
+  "img": "kf/069.jpg"
+ },
+ {
+  "name": "view4_dual_bowls_121",
+  "frame": 870,
+  "camera": "CAM4_dual_bowls",
+  "img": "kf/070.jpg"
+ },
+ {
+  "name": "dual_bowls_view_after_122",
+  "frame": 871,
+  "camera": "CAM4_contact_work",
+  "img": "kf/071.jpg"
+ },
+ {
+  "name": "view4_dual_bowls_122",
+  "frame": 871,
+  "camera": "CAM4_contact_work",
+  "img": "kf/072.jpg"
+ },
+ {
+  "name": "dual_bowls_over_shelf",
+  "frame": 881,
+  "camera": "CAM4_contact_work",
+  "img": "kf/073.jpg"
+ },
+ {
+  "name": "dual_bowls_seated",
+  "frame": 894,
+  "camera": "CAM4_contact_work",
+  "img": "kf/074.jpg"
+ },
+ {
+  "name": "dual_bowls_result",
+  "frame": 903,
+  "camera": "CAM4_contact_work",
+  "img": "kf/075.jpg"
+ },
+ {
+  "name": "petite_repeat_entry",
+  "frame": 904,
+  "camera": "CAM4_petite_repeat",
+  "img": "kf/076.jpg"
+ },
+ {
+  "name": "petite_repeat_working",
+  "frame": 917,
+  "camera": "CAM4_petite_repeat",
+  "img": "kf/077.jpg"
+ },
+ {
+  "name": "petite_repeat_result",
+  "frame": 928,
+  "camera": "CAM4_petite_repeat",
+  "img": "kf/078.jpg"
+ },
+ {
+  "name": "large_and_gauge_entry",
+  "frame": 929,
+  "camera": "CAM4_contact_work",
+  "img": "kf/079.jpg"
+ },
+ {
+  "name": "large_and_gauge_working",
+  "frame": 942,
+  "camera": "CAM4_contact_work",
+  "img": "kf/080.jpg"
+ },
+ {
+  "name": "large_and_gauge_result",
+  "frame": 953,
+  "camera": "CAM4_contact_work",
+  "img": "kf/081.jpg"
+ },
+ {
+  "name": "cup_full_entry",
+  "frame": 954,
+  "camera": "CAM4_cup_full",
+  "img": "kf/082.jpg"
+ },
+ {
+  "name": "cup_full_grasp",
+  "frame": 967,
+  "camera": "CAM4_cup_full",
+  "img": "kf/083.jpg"
+ },
+ {
+  "name": "cup_full_step_2",
+  "frame": 1014,
+  "camera": "CAM4_cup_full",
+  "img": "kf/084.jpg"
+ },
+ {
+  "name": "cup_full_third_swing",
+  "frame": 1020,
+  "camera": "CAM4_cup_full",
+  "img": "kf/085.jpg"
+ },
+ {
+  "name": "cup_full_view_before_112",
+  "frame": 1065,
+  "camera": "CAM4_cup_full",
+  "img": "kf/086.jpg"
+ },
+ {
+  "name": "view4_cup_full_111",
+  "frame": 1065,
+  "camera": "CAM4_cup_full",
+  "img": "kf/087.jpg"
+ },
+ {
+  "name": "cup_full_view_after_112",
+  "frame": 1066,
+  "camera": "CAM4_CC_gauge",
+  "img": "kf/088.jpg"
+ },
+ {
+  "name": "view4_cup_full_112",
+  "frame": 1066,
+  "camera": "CAM4_CC_gauge",
+  "img": "kf/089.jpg"
+ },
+ {
+  "name": "cup_full_gauge_pass0",
+  "frame": 1088,
+  "camera": "CAM4_CC_gauge",
+  "img": "kf/090.jpg"
+ },
+ {
+  "name": "cup_full_gauge_crossing0",
+  "frame": 1098,
+  "camera": "CAM4_CC_gauge",
+  "img": "kf/091.jpg"
+ },
+ {
+  "name": "cup_full_gauge_pass1",
+  "frame": 1108,
+  "camera": "CAM4_CC_gauge",
+  "img": "kf/092.jpg"
+ },
+ {
+  "name": "cup_full_gauge_crossing1",
+  "frame": 1118,
+  "camera": "CAM4_CC_gauge",
+  "img": "kf/093.jpg"
+ },
+ {
+  "name": "cup_full_gauge_pass2",
+  "frame": 1128,
+  "camera": "CAM4_CC_gauge",
+  "img": "kf/094.jpg"
+ },
+ {
+  "name": "cup_full_gauge_pass3",
+  "frame": 1148,
+  "camera": "CAM4_CC_gauge",
+  "img": "kf/095.jpg"
+ },
+ {
+  "name": "view4_cup_full_201",
+  "frame": 1155,
+  "camera": "CAM4_CC_gauge",
+  "img": "kf/096.jpg"
+ },
+ {
+  "name": "view4_cup_full_202",
+  "frame": 1156,
+  "camera": "CAM4_contact_low",
+  "img": "kf/097.jpg"
+ },
+ {
+  "name": "cup_full_seated",
+  "frame": 1197,
+  "camera": "CAM4_contact_low",
+  "img": "kf/098.jpg"
+ },
+ {
+  "name": "cup_full_result",
+  "frame": 1207,
+  "camera": "CAM4_contact_low",
+  "img": "kf/099.jpg"
+ },
+ {
+  "name": "cup_repeat_entry",
+  "frame": 1208,
+  "camera": "CAM4_contact_work",
+  "img": "kf/100.jpg"
+ },
+ {
+  "name": "cup_repeat_working",
+  "frame": 1217,
+  "camera": "CAM4_contact_work",
+  "img": "kf/101.jpg"
+ },
+ {
+  "name": "cup_repeat_result",
+  "frame": 1228,
+  "camera": "CAM4_contact_work",
+  "img": "kf/102.jpg"
+ },
+ {
+  "name": "cm_midposts_left_seat_stage_0",
+  "frame": 1229,
+  "camera": "CAM4_contact_low",
+  "img": "kf/103.jpg"
+ },
+ {
+  "name": "cm_midposts_left_seat_stage_4",
+  "frame": 1233,
+  "camera": "CAM4_contact_low",
+  "img": "kf/104.jpg"
+ },
+ {
+  "name": "cm_midposts_left_seat_9",
+  "frame": 1238,
+  "camera": "CAM4_contact_low",
+  "img": "kf/105.jpg"
+ },
+ {
+  "name": "cm_midposts_right_seat_stage_0",
+  "frame": 1239,
+  "camera": "CAM4_cm_midposts_right_seat",
+  "img": "kf/106.jpg"
+ },
+ {
+  "name": "cm_midposts_right_seat_stage_4",
+  "frame": 1243,
+  "camera": "CAM4_cm_midposts_right_seat",
+  "img": "kf/107.jpg"
+ },
+ {
+  "name": "cm_midposts_right_seat_9",
+  "frame": 1248,
+  "camera": "CAM4_cm_midposts_right_seat",
+  "img": "kf/108.jpg"
+ },
+ {
+  "name": "cm_midposts_front_seat_stage_0",
+  "frame": 1249,
+  "camera": "CAM4_contact_low",
+  "img": "kf/109.jpg"
+ },
+ {
+  "name": "cm_midposts_front_seat_stage_4",
+  "frame": 1253,
+  "camera": "CAM4_contact_low",
+  "img": "kf/110.jpg"
+ },
+ {
+  "name": "cm_midposts_front_seat_9",
+  "frame": 1258,
+  "camera": "CAM4_contact_low",
+  "img": "kf/111.jpg"
+ },
+ {
+  "name": "cm_shelf2_seat_stage_0",
+  "frame": 1259,
+  "camera": "CAM4_contact_work",
+  "img": "kf/112.jpg"
+ },
+ {
+  "name": "cm_shelf2_seat_stage_19",
+  "frame": 1278,
+  "camera": "CAM4_contact_work",
+  "img": "kf/113.jpg"
+ },
+ {
+  "name": "cm_shelf2_seat_39",
+  "frame": 1298,
+  "camera": "CAM4_contact_work",
+  "img": "kf/114.jpg"
+ },
+ {
+  "name": "cm_vasecheck_measure_0",
+  "frame": 1299,
+  "camera": "CAM4_CC_headroom",
+  "img": "kf/115.jpg"
+ },
+ {
+  "name": "cm_vasecheck_measure_7",
+  "frame": 1306,
+  "camera": "CAM4_CC_headroom",
+  "img": "kf/116.jpg"
+ },
+ {
+  "name": "cm_vasecheck_measure_15",
+  "frame": 1318,
+  "camera": "CAM4_CC_headroom",
+  "img": "kf/117.jpg"
+ },
+ {
+  "name": "cm_vasecheck_measure_21",
+  "frame": 1324,
+  "camera": "CAM4_CC_headroom",
+  "img": "kf/118.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_0",
+  "frame": 1325,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/119.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_13",
+  "frame": 1338,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/120.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_23",
+  "frame": 1348,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/121.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_48",
+  "frame": 1373,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/122.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_63",
+  "frame": 1388,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/123.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_100",
+  "frame": 1425,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/124.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_135",
+  "frame": 1460,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/125.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_180",
+  "frame": 1505,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/126.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_view_before_207",
+  "frame": 1531,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/127.jpg"
+ },
+ {
+  "name": "view4_cm_continuous_vase_206",
+  "frame": 1531,
+  "camera": "CAM4_vase_complete",
+  "img": "kf/128.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_207",
+  "frame": 1532,
+  "camera": "CAM4_contact_work",
+  "img": "kf/129.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_view_after_207",
+  "frame": 1532,
+  "camera": "CAM4_contact_work",
+  "img": "kf/130.jpg"
+ },
+ {
+  "name": "view4_cm_continuous_vase_207",
+  "frame": 1532,
+  "camera": "CAM4_contact_work",
+  "img": "kf/131.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_231",
+  "frame": 1556,
+  "camera": "CAM4_contact_work",
+  "img": "kf/132.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_245",
+  "frame": 1570,
+  "camera": "CAM4_contact_work",
+  "img": "kf/133.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_252",
+  "frame": 1577,
+  "camera": "CAM4_contact_work",
+  "img": "kf/134.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_264",
+  "frame": 1589,
+  "camera": "CAM4_contact_work",
+  "img": "kf/135.jpg"
+ },
+ {
+  "name": "cm_continuous_vase_275",
+  "frame": 1600,
+  "camera": "CAM4_contact_work",
+  "img": "kf/136.jpg"
+ },
+ {
+  "name": "cm_cone_pick_stage_0",
+  "frame": 1601,
+  "camera": "CAM4_cone_pick",
+  "img": "kf/137.jpg"
+ },
+ {
+  "name": "cm_cone_pick_stage_4",
+  "frame": 1605,
+  "camera": "CAM4_cone_pick",
+  "img": "kf/138.jpg"
+ },
+ {
+  "name": "cm_cone_pick_9",
+  "frame": 1610,
+  "camera": "CAM4_cone_pick",
+  "img": "kf/139.jpg"
+ },
+ {
+  "name": "cm_cone_visible_seat_stage_0",
+  "frame": 1611,
+  "camera": "CAM4_cm_cone_visible_seat",
+  "img": "kf/140.jpg"
+ },
+ {
+  "name": "cm_cone_visible_seat_stage_17",
+  "frame": 1628,
+  "camera": "CAM4_cm_cone_visible_seat",
+  "img": "kf/141.jpg"
+ },
+ {
+  "name": "cm_cone_visible_seat_35",
+  "frame": 1646,
+  "camera": "CAM4_cm_cone_visible_seat",
+  "img": "kf/142.jpg"
+ },
+ {
+  "name": "cm_rack_empty_seat_stage_0",
+  "frame": 1647,
+  "camera": "CAM4_CC_rack_seat",
+  "img": "kf/143.jpg"
+ },
+ {
+  "name": "cm_rack_empty_seat_stage_4",
+  "frame": 1655,
+  "camera": "CAM4_CC_rack_seat",
+  "img": "kf/144.jpg"
+ },
+ {
+  "name": "cm_rack_empty_seat_9",
+  "frame": 1665,
+  "camera": "CAM4_CC_rack_seat",
+  "img": "kf/145.jpg"
+ },
+ {
+  "name": "cm_rack_seated_readable",
+  "frame": 1666,
+  "camera": "CAM4_CC_rack_seat",
+  "img": "kf/146.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_0",
+  "frame": 1667,
+  "camera": "CAM4_cm_continuous_plate1",
+  "img": "kf/147.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_5",
+  "frame": 1672,
+  "camera": "CAM4_cm_continuous_plate1",
+  "img": "kf/148.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_9",
+  "frame": 1676,
+  "camera": "CAM4_cm_continuous_plate1",
+  "img": "kf/149.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_48",
+  "frame": 1715,
+  "camera": "CAM4_cm_continuous_plate1",
+  "img": "kf/150.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_80",
+  "frame": 1747,
+  "camera": "CAM4_cm_continuous_plate1",
+  "img": "kf/151.jpg"
+ },
+ {
+  "name": "view4_cm_continuous_plate1_104",
+  "frame": 1771,
+  "camera": "CAM4_cm_continuous_plate1",
+  "img": "kf/152.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_105",
+  "frame": 1772,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/153.jpg"
+ },
+ {
+  "name": "view4_cm_continuous_plate1_105",
+  "frame": 1772,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/154.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_125",
+  "frame": 1792,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/155.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_145",
+  "frame": 1812,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/156.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_view_before_149",
+  "frame": 1815,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/157.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_149",
+  "frame": 1816,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/158.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_view_after_149",
+  "frame": 1816,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/159.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_160",
+  "frame": 1827,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/160.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_172",
+  "frame": 1839,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/161.jpg"
+ },
+ {
+  "name": "view4_cm_continuous_plate1_194",
+  "frame": 1861,
+  "camera": "CAM4_CC_plate_turn",
+  "img": "kf/162.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_195",
+  "frame": 1862,
+  "camera": "CAM4_CC_plate_slot",
+  "img": "kf/163.jpg"
+ },
+ {
+  "name": "view4_cm_continuous_plate1_195",
+  "frame": 1862,
+  "camera": "CAM4_CC_plate_slot",
+  "img": "kf/164.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_220",
+  "frame": 1887,
+  "camera": "CAM4_CC_plate_slot",
+  "img": "kf/165.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_223",
+  "frame": 1890,
+  "camera": "CAM4_CC_plate_slot",
+  "img": "kf/166.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_228",
+  "frame": 1895,
+  "camera": "CAM4_CC_plate_slot",
+  "img": "kf/167.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_231",
+  "frame": 1898,
+  "camera": "CAM4_CC_plate_slot",
+  "img": "kf/168.jpg"
+ },
+ {
+  "name": "cm_continuous_plate1_235",
+  "frame": 1902,
+  "camera": "CAM4_CC_plate_slot",
+  "img": "kf/169.jpg"
+ },
+ {
+  "name": "cm_plate_2_slot_handover_stage_0",
+  "frame": 1903,
+  "camera": "CAM4_contact_work",
+  "img": "kf/170.jpg"
+ },
+ {
+  "name": "cm_plate_2_slot_handover_stage_7",
+  "frame": 1910,
+  "camera": "CAM4_contact_work",
+  "img": "kf/171.jpg"
+ },
+ {
+  "name": "cm_plate_2_slot_handover_15",
+  "frame": 1918,
+  "camera": "CAM4_contact_work",
+  "img": "kf/172.jpg"
+ },
+ {
+  "name": "cm_middle_rear_vase_stage_0",
+  "frame": 1919,
+  "camera": "CAM4_cm_middle_rear_vase",
+  "img": "kf/173.jpg"
+ },
+ {
+  "name": "cm_middle_rear_vase_stage_4",
+  "frame": 1923,
+  "camera": "CAM4_cm_middle_rear_vase",
+  "img": "kf/174.jpg"
+ },
+ {
+  "name": "cm_middle_rear_vase_9",
+  "frame": 1928,
+  "camera": "CAM4_cm_middle_rear_vase",
+  "img": "kf/175.jpg"
+ },
+ {
+  "name": "cm_middle_rear_rack_stage_0",
+  "frame": 1929,
+  "camera": "CAM4_contact_work",
+  "img": "kf/176.jpg"
+ },
+ {
+  "name": "cm_middle_rear_rack_stage_4",
+  "frame": 1933,
+  "camera": "CAM4_contact_work",
+  "img": "kf/177.jpg"
+ },
+ {
+  "name": "cm_middle_rear_rack_9",
+  "frame": 1938,
+  "camera": "CAM4_contact_work",
+  "img": "kf/178.jpg"
+ },
+ {
+  "name": "cm_tallposts_left_seat_stage_0",
+  "frame": 1939,
+  "camera": "CAM4_contact_work",
+  "img": "kf/179.jpg"
+ },
+ {
+  "name": "cm_tallposts_left_seat_stage_4",
+  "frame": 1943,
+  "camera": "CAM4_contact_work",
+  "img": "kf/180.jpg"
+ },
+ {
+  "name": "cm_tallposts_left_seat_9",
+  "frame": 1948,
+  "camera": "CAM4_contact_work",
+  "img": "kf/181.jpg"
+ },
+ {
+  "name": "cm_tallposts_right_seat_stage_0",
+  "frame": 1949,
+  "camera": "CAM4_cm_tallposts_right_seat",
+  "img": "kf/182.jpg"
+ },
+ {
+  "name": "cm_tallposts_right_seat_stage_4",
+  "frame": 1953,
+  "camera": "CAM4_cm_tallposts_right_seat",
+  "img": "kf/183.jpg"
+ },
+ {
+  "name": "cm_tallposts_right_seat_9",
+  "frame": 1958,
+  "camera": "CAM4_cm_tallposts_right_seat",
+  "img": "kf/184.jpg"
+ },
+ {
+  "name": "cm_tallposts_front_seat_stage_0",
+  "frame": 1959,
+  "camera": "CAM4_contact_work",
+  "img": "kf/185.jpg"
+ },
+ {
+  "name": "cm_tallposts_front_seat_stage_4",
+  "frame": 1963,
+  "camera": "CAM4_contact_work",
+  "img": "kf/186.jpg"
+ },
+ {
+  "name": "cm_tallposts_front_seat_9",
+  "frame": 1968,
+  "camera": "CAM4_contact_work",
+  "img": "kf/187.jpg"
+ },
+ {
+  "name": "cm_shelf3_seat_stage_0",
+  "frame": 1969,
+  "camera": "CAM4_cm_shelf3_seat",
+  "img": "kf/188.jpg"
+ },
+ {
+  "name": "cm_shelf3_seat_stage_19",
+  "frame": 1988,
+  "camera": "CAM4_cm_shelf3_seat",
+  "img": "kf/189.jpg"
+ },
+ {
+  "name": "cm_shelf3_seat_39",
+  "frame": 2008,
+  "camera": "CAM4_cm_shelf3_seat",
+  "img": "kf/190.jpg"
+ },
+ {
+  "name": "cm_piece_2_seat_stage_0",
+  "frame": 2009,
+  "camera": "CAM4_contact_work",
+  "img": "kf/191.jpg"
+ },
+ {
+  "name": "cm_piece_2_seat_stage_10",
+  "frame": 2019,
+  "camera": "CAM4_contact_work",
+  "img": "kf/192.jpg"
+ },
+ {
+  "name": "cm_piece_2_seat_21",
+  "frame": 2030,
+  "camera": "CAM4_contact_work",
+  "img": "kf/193.jpg"
+ },
+ {
+  "name": "cm_piece_1_seat_stage_0",
+  "frame": 2031,
+  "camera": "CAM4_cm_piece_1_seat",
+  "img": "kf/194.jpg"
+ },
+ {
+  "name": "cm_piece_1_seat_stage_10",
+  "frame": 2041,
+  "camera": "CAM4_cm_piece_1_seat",
+  "img": "kf/195.jpg"
+ },
+ {
+  "name": "cm_piece_1_seat_21",
+  "frame": 2052,
+  "camera": "CAM4_cm_piece_1_seat",
+  "img": "kf/196.jpg"
+ },
+ {
+  "name": "c4_final_vase__final_vase_head_0",
+  "frame": 2053,
+  "camera": "CAM4_final_vase_profile",
+  "img": "kf/197.jpg"
+ },
+ {
+  "name": "c4_final_vase__entry",
+  "frame": 2053,
+  "camera": "CAM4_final_vase_profile",
+  "img": "kf/198.jpg"
+ },
+ {
+  "name": "c4_final_vase__final_vase_head_5",
+  "frame": 2064,
+  "camera": "CAM4_final_vase_profile",
+  "img": "kf/199.jpg"
+ },
+ {
+  "name": "c4_final_vase__mid",
+  "frame": 2064,
+  "camera": "CAM4_final_vase_profile",
+  "img": "kf/200.jpg"
+ },
+ {
+  "name": "c4_final_vase__final_vase_head_9",
+  "frame": 2068,
+  "camera": "CAM4_final_vase_profile",
+  "img": "kf/201.jpg"
+ },
+ {
+  "name": "c4_final_vase__exit",
+  "frame": 2068,
+  "camera": "CAM4_final_vase_profile",
+  "img": "kf/202.jpg"
+ },
+ {
+  "name": "c4_final_plate__final_plate_head_0",
+  "frame": 2069,
+  "camera": "CAM4_final_plate_profile",
+  "img": "kf/203.jpg"
+ },
+ {
+  "name": "c4_final_plate__entry",
+  "frame": 2069,
+  "camera": "CAM4_final_plate_profile",
+  "img": "kf/204.jpg"
+ },
+ {
+  "name": "c4_final_plate__final_plate_head_5",
+  "frame": 2080,
+  "camera": "CAM4_final_plate_profile",
+  "img": "kf/205.jpg"
+ },
+ {
+  "name": "c4_final_plate__mid",
+  "frame": 2080,
+  "camera": "CAM4_final_plate_profile",
+  "img": "kf/206.jpg"
+ },
+ {
+  "name": "c4_final_plate__final_plate_head_9",
+  "frame": 2084,
+  "camera": "CAM4_final_plate_profile",
+  "img": "kf/207.jpg"
+ },
+ {
+  "name": "c4_final_plate__exit",
+  "frame": 2084,
+  "camera": "CAM4_final_plate_profile",
+  "img": "kf/208.jpg"
+ },
+ {
+  "name": "c4_final_side__final_side_0",
+  "frame": 2085,
+  "camera": "CAM4_final_side_corridor",
+  "img": "kf/209.jpg"
+ },
+ {
+  "name": "c4_final_side__entry",
+  "frame": 2085,
+  "camera": "CAM4_final_side_corridor",
+  "img": "kf/210.jpg"
+ },
+ {
+  "name": "c4_final_side__final_side_5",
+  "frame": 2096,
+  "camera": "CAM4_final_side_corridor",
+  "img": "kf/211.jpg"
+ },
+ {
+  "name": "c4_final_side__mid",
+  "frame": 2096,
+  "camera": "CAM4_final_side_corridor",
+  "img": "kf/212.jpg"
+ },
+ {
+  "name": "c4_final_side__final_side_9",
+  "frame": 2100,
+  "camera": "CAM4_final_side_corridor",
+  "img": "kf/213.jpg"
+ },
+ {
+  "name": "c4_final_side__exit",
+  "frame": 2100,
+  "camera": "CAM4_final_side_corridor",
+  "img": "kf/214.jpg"
+ },
+ {
+  "name": "c4_final_front__final_front_0",
+  "frame": 2101,
+  "camera": "CAM4_final_front_profile",
+  "img": "kf/215.jpg"
+ },
+ {
+  "name": "c4_final_front__entry",
+  "frame": 2101,
+  "camera": "CAM4_final_front_profile",
+  "img": "kf/216.jpg"
+ },
+ {
+  "name": "c4_final_front__final_front_5",
+  "frame": 2112,
+  "camera": "CAM4_final_front_profile",
+  "img": "kf/217.jpg"
+ },
+ {
+  "name": "c4_final_front__mid",
+  "frame": 2112,
+  "camera": "CAM4_final_front_profile",
+  "img": "kf/218.jpg"
+ },
+ {
+  "name": "c4_final_front__final_front_9",
+  "frame": 2116,
+  "camera": "CAM4_final_front_profile",
+  "img": "kf/219.jpg"
+ },
+ {
+  "name": "c4_final_front__exit",
+  "frame": 2116,
+  "camera": "CAM4_final_front_profile",
+  "img": "kf/220.jpg"
+ },
+ {
+  "name": "c4_final_rest__finalgauge_rest_0",
+  "frame": 2117,
+  "camera": "CAM4_c4_final_rest",
+  "img": "kf/221.jpg"
+ },
+ {
+  "name": "c4_final_rest__entry",
+  "frame": 2117,
+  "camera": "CAM4_c4_final_rest",
+  "img": "kf/222.jpg"
+ },
+ {
+  "name": "c4_final_rest__mid",
+  "frame": 2126,
+  "camera": "CAM4_c4_final_rest",
+  "img": "kf/223.jpg"
+ },
+ {
+  "name": "c4_final_rest__finalgauge_rest_11",
+  "frame": 2128,
+  "camera": "CAM4_c4_final_rest",
+  "img": "kf/224.jpg"
+ },
+ {
+  "name": "c4_final_rest__finalgauge_rest_17",
+  "frame": 2134,
+  "camera": "CAM4_c4_final_rest",
+  "img": "kf/225.jpg"
+ },
+ {
+  "name": "c4_final_rest__exit",
+  "frame": 2134,
+  "camera": "CAM4_c4_final_rest",
+  "img": "kf/226.jpg"
+ },
+ {
+  "name": "c4_door__short_door_grip_entry",
+  "frame": 2135,
+  "camera": "CAM4_c4_door",
+  "img": "kf/227.jpg"
+ },
+ {
+  "name": "c4_door__entry",
+  "frame": 2135,
+  "camera": "CAM4_c4_door",
+  "img": "kf/228.jpg"
+ },
+ {
+  "name": "c4_door__short_door_grip_gripped",
+  "frame": 2140,
+  "camera": "CAM4_c4_door",
+  "img": "kf/229.jpg"
+ },
+ {
+  "name": "c4_door__short_door_grip_engaged",
+  "frame": 2140,
+  "camera": "CAM4_c4_door",
+  "img": "kf/230.jpg"
+ },
+ {
+  "name": "c4_door__short_door_grip_exit",
+  "frame": 2160,
+  "camera": "CAM4_c4_door",
+  "img": "kf/231.jpg"
+ },
+ {
+  "name": "c4_door__short_door_swing_entry",
+  "frame": 2161,
+  "camera": "CAM4_c4_door",
+  "img": "kf/232.jpg"
+ },
+ {
+  "name": "c4_door__short_door_swing_reach_anchor",
+  "frame": 2166,
+  "camera": "CAM4_c4_door",
+  "img": "kf/233.jpg"
+ },
+ {
+  "name": "c4_door__short_door_swing_door_half",
+  "frame": 2200,
+  "camera": "CAM4_c4_door",
+  "img": "kf/234.jpg"
+ },
+ {
+  "name": "c4_door__mid",
+  "frame": 2213,
+  "camera": "CAM4_c4_door",
+  "img": "kf/235.jpg"
+ },
+ {
+  "name": "c4_door__short_door_swing_exit",
+  "frame": 2245,
+  "camera": "CAM4_c4_door",
+  "img": "kf/236.jpg"
+ },
+ {
+  "name": "c4_door_latch_view_110",
+  "frame": 2245,
+  "camera": "CAM4_c4_door",
+  "img": "kf/237.jpg"
+ },
+ {
+  "name": "view4_c4_door_110",
+  "frame": 2245,
+  "camera": "CAM4_c4_door",
+  "img": "kf/238.jpg"
+ },
+ {
+  "name": "c4_door__short_door_pressure_entry",
+  "frame": 2246,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/239.jpg"
+ },
+ {
+  "name": "c4_door_latch_view_111",
+  "frame": 2246,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/240.jpg"
+ },
+ {
+  "name": "view4_c4_door_111",
+  "frame": 2246,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/241.jpg"
+ },
+ {
+  "name": "c4_door__short_door_pressure_exit",
+  "frame": 2260,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/242.jpg"
+ },
+ {
+  "name": "c4_door__short_door_pressure_pressure",
+  "frame": 2260,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/243.jpg"
+ },
+ {
+  "name": "c4_door__short_door_latch_entry",
+  "frame": 2261,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/244.jpg"
+ },
+ {
+  "name": "c4_door__short_door_latch_latched",
+  "frame": 2278,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/245.jpg"
+ },
+ {
+  "name": "c4_door__short_door_latch_exit",
+  "frame": 2278,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/246.jpg"
+ },
+ {
+  "name": "c4_door__short_door_release_release_start",
+  "frame": 2279,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/247.jpg"
+ },
+ {
+  "name": "c4_door__short_door_release_entry",
+  "frame": 2279,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/248.jpg"
+ },
+ {
+  "name": "c4_door__short_door_release_exit",
+  "frame": 2290,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/249.jpg"
+ },
+ {
+  "name": "c4_door__exit",
+  "frame": 2290,
+  "camera": "CAM4_latch_readable",
+  "img": "kf/250.jpg"
+ },
+ {
+  "name": "c4_rejected_return__short_reject_seat_entry",
+  "frame": 2291,
+  "camera": "CAM4_c4_rejected_return",
+  "img": "kf/251.jpg"
+ },
+ {
+  "name": "c4_rejected_return__entry",
+  "frame": 2291,
+  "camera": "CAM4_c4_rejected_return",
+  "img": "kf/252.jpg"
+ },
+ {
+  "name": "c4_rejected_return__short_reject_seat_reject_seat",
+  "frame": 2297,
+  "camera": "CAM4_c4_rejected_return",
+  "img": "kf/253.jpg"
+ },
+ {
+  "name": "c4_rejected_return__mid",
+  "frame": 2300,
+  "camera": "CAM4_c4_rejected_return",
+  "img": "kf/254.jpg"
+ },
+ {
+  "name": "c4_rejected_return__short_reject_seat_reject_release",
+  "frame": 2301,
+  "camera": "CAM4_c4_rejected_return",
+  "img": "kf/255.jpg"
+ },
+ {
+  "name": "c4_rejected_return__short_reject_seat_exit",
+  "frame": 2308,
+  "camera": "CAM4_c4_rejected_return",
+  "img": "kf/256.jpg"
+ },
+ {
+  "name": "c4_rejected_return__exit",
+  "frame": 2308,
+  "camera": "CAM4_c4_rejected_return",
+  "img": "kf/257.jpg"
+ },
+ {
+  "name": "c4_gauge_return_abbreviated_entry",
+  "frame": 2309,
+  "camera": "CAM4_gauge_return_oblique",
+  "img": "kf/258.jpg"
+ },
+ {
+  "name": "c4_gauge_return__cleanup_complete__gauge_seat",
+  "frame": 2322,
+  "camera": "CAM4_gauge_return_oblique",
+  "img": "kf/259.jpg"
+ },
+ {
+  "name": "c4_gauge_return__cleanup_complete__gauge_release",
+  "frame": 2326,
+  "camera": "CAM4_gauge_return_oblique",
+  "img": "kf/260.jpg"
+ },
+ {
+  "name": "c4_gauge_return__exit",
+  "frame": 2333,
+  "camera": "CAM4_gauge_return_oblique",
+  "img": "kf/261.jpg"
+ },
+ {
+  "name": "c4_comparator_finish__entry",
+  "frame": 2334,
+  "camera": "CAM4_finish_side",
+  "img": "kf/262.jpg"
+ },
+ {
+  "name": "c4_comparator_finish__cleanup_complete__comparator_seat",
+  "frame": 2340,
+  "camera": "CAM4_finish_side",
+  "img": "kf/263.jpg"
+ },
+ {
+  "name": "c4_comparator_finish__leanup_complete__comparator_release",
+  "frame": 2344,
+  "camera": "CAM4_finish_side",
+  "img": "kf/264.jpg"
+ },
+ {
+  "name": "c4_comparator_finish__mid",
+  "frame": 2367,
+  "camera": "CAM4_finish_side",
+  "img": "kf/265.jpg"
+ },
+ {
+  "name": "c4_comparator_finish__cleanup_complete__complete",
+  "frame": 2399,
+  "camera": "CAM4_finish_side",
+  "img": "kf/266.jpg"
+ },
+ {
+  "name": "c4_comparator_finish__exit",
+  "frame": 2399,
+  "camera": "CAM4_finish_side",
+  "img": "kf/267.jpg"
+ }
+]

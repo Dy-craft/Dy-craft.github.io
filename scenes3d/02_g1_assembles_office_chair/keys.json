@@ -1,0 +1,914 @@
+[
+ {
+  "name": "Cut_tape_0_entry",
+  "frame": 0,
+  "camera": "Cam_carton_detail_Cut_tape_0",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "Cut_tape_0_action",
+  "frame": 9,
+  "camera": "Cam_carton_detail_Cut_tape_0",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "Cut_tape_0_result",
+  "frame": 19,
+  "camera": "Cam_carton_detail_Cut_tape_0",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "Cut_tape_1_entry",
+  "frame": 20,
+  "camera": "Cam_carton_detail_Cut_tape_1",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "Cut_tape_1_action",
+  "frame": 37,
+  "camera": "Cam_carton_detail_Cut_tape_1",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "Cut_tape_1_result",
+  "frame": 55,
+  "camera": "Cam_carton_detail_Cut_tape_1",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "Cut_tape_2_entry",
+  "frame": 56,
+  "camera": "Cam_carton_detail_Cut_tape_2",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "Cut_tape_2_action",
+  "frame": 63,
+  "camera": "Cam_carton_detail_Cut_tape_2",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "Cut_tape_2_result",
+  "frame": 71,
+  "camera": "Cam_carton_detail_Cut_tape_2",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "Cut_tape_3_entry",
+  "frame": 72,
+  "camera": "Cam_carton_detail_Cut_tape_3",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "Cut_tape_3_action",
+  "frame": 83,
+  "camera": "Cam_carton_detail_Cut_tape_3",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "Cut_tape_3_result",
+  "frame": 95,
+  "camera": "Cam_carton_detail_Cut_tape_3",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "Open_flaps_0_entry",
+  "frame": 96,
+  "camera": "Cam_carton_wide_Open_flaps_0",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "Open_flaps_0_action",
+  "frame": 168,
+  "camera": "Cam_carton_wide_Open_flaps_0",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "Open_flaps_0_result",
+  "frame": 240,
+  "camera": "Cam_carton_wide_Open_flaps_0",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "Open_flaps_1_entry",
+  "frame": 241,
+  "camera": "Cam_carton_wide_Open_flaps_1",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "Open_flaps_1_action",
+  "frame": 253,
+  "camera": "Cam_carton_wide_Open_flaps_1",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "Open_flaps_1_result",
+  "frame": 266,
+  "camera": "Cam_carton_wide_Open_flaps_1",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "Unpack_0_entry",
+  "frame": 267,
+  "camera": "Cam_bench_wide_Unpack_0",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "Unpack_0_action",
+  "frame": 289,
+  "camera": "Cam_bench_wide_Unpack_0",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "Unpack_0_result",
+  "frame": 311,
+  "camera": "Cam_bench_wide_Unpack_0",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "Unpack_1_entry",
+  "frame": 312,
+  "camera": "Cam_bench_wide_Unpack_1",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "Unpack_1_action",
+  "frame": 338,
+  "camera": "Cam_bench_wide_Unpack_1",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "Unpack_column_rim_clear",
+  "frame": 351,
+  "camera": "Cam_bench_wide_Unpack_1",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "Unpack_1_result",
+  "frame": 365,
+  "camera": "Cam_bench_wide_Unpack_1",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "Unpack_2_entry",
+  "frame": 366,
+  "camera": "Cam_bench_wide_Unpack_2",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "Unpack_2_action",
+  "frame": 398,
+  "camera": "Cam_bench_wide_Unpack_2",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "Unpack_seat_rim_clear",
+  "frame": 415,
+  "camera": "Cam_bench_wide_Unpack_2",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "Unpack_2_result",
+  "frame": 431,
+  "camera": "Cam_bench_wide_Unpack_2",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "Unpack_3_entry",
+  "frame": 432,
+  "camera": "Cam_bench_wide_Unpack_3",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "Unpack_3_action",
+  "frame": 435,
+  "camera": "Cam_bench_wide_Unpack_3",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "Unpack_3_result",
+  "frame": 439,
+  "camera": "Cam_bench_wide_Unpack_3",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "Caster_press_0_entry",
+  "frame": 480,
+  "camera": "Cam_floor_detail_Caster_press_0",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "Caster_press_0_action",
+  "frame": 527,
+  "camera": "Cam_floor_detail_Caster_press_0",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "Caster_press_0_result",
+  "frame": 535,
+  "camera": "Cam_floor_detail_Caster_press_0",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "Base_right_0_entry",
+  "frame": 536,
+  "camera": "Cam_bench_wide_Base_right_0",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "Base_right_0_action",
+  "frame": 572,
+  "camera": "Cam_bench_wide_Base_right_0",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "Base_right_0_result",
+  "frame": 608,
+  "camera": "Cam_bench_wide_Base_right_0",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "Base_right_1_entry",
+  "frame": 609,
+  "camera": "Cam_bench_wide_Base_right_1",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "Base_right_1_action",
+  "frame": 655,
+  "camera": "Cam_bench_wide_Base_right_1",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "Base_right_1_result",
+  "frame": 702,
+  "camera": "Cam_bench_wide_Base_right_1",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "Base_right_2_entry",
+  "frame": 703,
+  "camera": "Cam_bench_wide_Base_right_2",
+  "img": "kf/041.jpg"
+ },
+ {
+  "name": "Base_right_2_action",
+  "frame": 709,
+  "camera": "Cam_bench_wide_Base_right_2",
+  "img": "kf/042.jpg"
+ },
+ {
+  "name": "Base_right_2_result",
+  "frame": 716,
+  "camera": "Cam_bench_wide_Base_right_2",
+  "img": "kf/043.jpg"
+ },
+ {
+  "name": "Sleeve_column_0_entry",
+  "frame": 717,
+  "camera": "Cam_bench_detail_Sleeve_column_0",
+  "img": "kf/044.jpg"
+ },
+ {
+  "name": "Sleeve_column_0_action",
+  "frame": 737,
+  "camera": "Cam_bench_detail_Sleeve_column_0",
+  "img": "kf/045.jpg"
+ },
+ {
+  "name": "Sleeve_column_0_result",
+  "frame": 757,
+  "camera": "Cam_bench_detail_Sleeve_column_0",
+  "img": "kf/046.jpg"
+ },
+ {
+  "name": "Sleeve_column_1_entry",
+  "frame": 758,
+  "camera": "Cam_bench_detail_Sleeve_column_1",
+  "img": "kf/047.jpg"
+ },
+ {
+  "name": "Sleeve_column_1_action",
+  "frame": 773,
+  "camera": "Cam_bench_detail_Sleeve_column_1",
+  "img": "kf/048.jpg"
+ },
+ {
+  "name": "Sleeve_column_1_result",
+  "frame": 788,
+  "camera": "Cam_bench_detail_Sleeve_column_1",
+  "img": "kf/049.jpg"
+ },
+ {
+  "name": "Column_hub_0_entry",
+  "frame": 789,
+  "camera": "Cam_floor_detail_Column_hub_0",
+  "img": "kf/050.jpg"
+ },
+ {
+  "name": "Column_hub_0_action",
+  "frame": 824,
+  "camera": "Cam_floor_detail_Column_hub_0",
+  "img": "kf/051.jpg"
+ },
+ {
+  "name": "Column_hub_0_result",
+  "frame": 860,
+  "camera": "Cam_floor_detail_Column_hub_0",
+  "img": "kf/052.jpg"
+ },
+ {
+  "name": "Back_register_0_entry",
+  "frame": 861,
+  "camera": "Cam_bench_detail_Back_register_0",
+  "img": "kf/053.jpg"
+ },
+ {
+  "name": "Back_register_0_action",
+  "frame": 896,
+  "camera": "Cam_bench_detail_Back_register_0",
+  "img": "kf/054.jpg"
+ },
+ {
+  "name": "Back_register_0_result",
+  "frame": 932,
+  "camera": "Cam_bench_detail_Back_register_0",
+  "img": "kf/055.jpg"
+ },
+ {
+  "name": "Start_hardware_0_entry",
+  "frame": 933,
+  "camera": "Cam_bench_detail_Start_hardware_0",
+  "img": "kf/056.jpg"
+ },
+ {
+  "name": "Start_hardware_0_action",
+  "frame": 948,
+  "camera": "Cam_bench_detail_Start_hardware_0",
+  "img": "kf/057.jpg"
+ },
+ {
+  "name": "Start_hardware_0_result",
+  "frame": 964,
+  "camera": "Cam_bench_detail_Start_hardware_0",
+  "img": "kf/058.jpg"
+ },
+ {
+  "name": "Start_hardware_1_entry",
+  "frame": 965,
+  "camera": "Cam_bench_detail_Start_hardware_1",
+  "img": "kf/059.jpg"
+ },
+ {
+  "name": "Start_hardware_1_action",
+  "frame": 987,
+  "camera": "Cam_bench_detail_Start_hardware_1",
+  "img": "kf/060.jpg"
+ },
+ {
+  "name": "Start_hardware_1_result",
+  "frame": 1010,
+  "camera": "Cam_bench_detail_Start_hardware_1",
+  "img": "kf/061.jpg"
+ },
+ {
+  "name": "Start_hardware_2_entry",
+  "frame": 1011,
+  "camera": "Cam_bench_detail_Start_hardware_2",
+  "img": "kf/062.jpg"
+ },
+ {
+  "name": "Start_hardware_2_action",
+  "frame": 1019,
+  "camera": "Cam_bench_detail_Start_hardware_2",
+  "img": "kf/063.jpg"
+ },
+ {
+  "name": "Start_hardware_2_result",
+  "frame": 1028,
+  "camera": "Cam_bench_detail_Start_hardware_2",
+  "img": "kf/064.jpg"
+ },
+ {
+  "name": "Key_rundown_0_entry",
+  "frame": 1029,
+  "camera": "Cam_bench_detail_Key_rundown_0",
+  "img": "kf/065.jpg"
+ },
+ {
+  "name": "Key_rundown_socket_engaged",
+  "frame": 1039,
+  "camera": "Cam_bench_detail_Key_rundown_0",
+  "img": "kf/066.jpg"
+ },
+ {
+  "name": "Key_rundown_drive_complete",
+  "frame": 1061,
+  "camera": "Cam_bench_detail_Key_rundown_0",
+  "img": "kf/067.jpg"
+ },
+ {
+  "name": "Key_rundown_axially_withdrawn",
+  "frame": 1066,
+  "camera": "Cam_bench_detail_Key_rundown_0",
+  "img": "kf/068.jpg"
+ },
+ {
+  "name": "Key_rundown_0_action",
+  "frame": 1079,
+  "camera": "Cam_bench_detail_Key_rundown_0",
+  "img": "kf/069.jpg"
+ },
+ {
+  "name": "Key_rundown_0_result",
+  "frame": 1130,
+  "camera": "Cam_bench_detail_Key_rundown_0",
+  "img": "kf/070.jpg"
+ },
+ {
+  "name": "Final_torque_0_entry",
+  "frame": 1131,
+  "camera": "Cam_bench_detail_Final_torque_0",
+  "img": "kf/071.jpg"
+ },
+ {
+  "name": "Final_torque_0_action",
+  "frame": 1146,
+  "camera": "Cam_bench_detail_Final_torque_0",
+  "img": "kf/072.jpg"
+ },
+ {
+  "name": "Final_torque_0_result",
+  "frame": 1162,
+  "camera": "Cam_bench_detail_Final_torque_0",
+  "img": "kf/073.jpg"
+ },
+ {
+  "name": "Final_torque_1_entry",
+  "frame": 1163,
+  "camera": "Cam_bench_detail_Final_torque_1",
+  "img": "kf/074.jpg"
+ },
+ {
+  "name": "Final_torque_1_action",
+  "frame": 1170,
+  "camera": "Cam_bench_detail_Final_torque_1",
+  "img": "kf/075.jpg"
+ },
+ {
+  "name": "Final_torque_1_result",
+  "frame": 1178,
+  "camera": "Cam_bench_detail_Final_torque_1",
+  "img": "kf/076.jpg"
+ },
+ {
+  "name": "Cap_bolts_0_entry",
+  "frame": 1179,
+  "camera": "Cam_bench_detail_Cap_bolts_0",
+  "img": "kf/077.jpg"
+ },
+ {
+  "name": "Cap_bolts_0_action",
+  "frame": 1202,
+  "camera": "Cam_bench_detail_Cap_bolts_0",
+  "img": "kf/078.jpg"
+ },
+ {
+  "name": "Cap_bolts_0_result",
+  "frame": 1226,
+  "camera": "Cam_bench_detail_Cap_bolts_0",
+  "img": "kf/079.jpg"
+ },
+ {
+  "name": "Upper_turn_0_entry",
+  "frame": 1227,
+  "camera": "Cam_bench_wide_Upper_turn_0",
+  "img": "kf/080.jpg"
+ },
+ {
+  "name": "Upper_turn_0_action",
+  "frame": 1284,
+  "camera": "Cam_bench_wide_Upper_turn_0",
+  "img": "kf/081.jpg"
+ },
+ {
+  "name": "Upper_turn_0_result",
+  "frame": 1342,
+  "camera": "Cam_bench_wide_Upper_turn_0",
+  "img": "kf/082.jpg"
+ },
+ {
+  "name": "Upper_turn_1_entry",
+  "frame": 1343,
+  "camera": "Cam_bench_wide_Upper_turn_1",
+  "img": "kf/083.jpg"
+ },
+ {
+  "name": "Upper_turn_1_action",
+  "frame": 1398,
+  "camera": "Cam_bench_wide_Upper_turn_1",
+  "img": "kf/084.jpg"
+ },
+ {
+  "name": "Upper_turn_1_result",
+  "frame": 1453,
+  "camera": "Cam_bench_wide_Upper_turn_1",
+  "img": "kf/085.jpg"
+ },
+ {
+  "name": "Upper_seat_0_entry",
+  "frame": 1454,
+  "camera": "Cam_floor_detail_Upper_seat_0",
+  "img": "kf/086.jpg"
+ },
+ {
+  "name": "Upper_seat_0_action",
+  "frame": 1479,
+  "camera": "Cam_floor_detail_Upper_seat_0",
+  "img": "kf/087.jpg"
+ },
+ {
+  "name": "Upper_seat_0_result",
+  "frame": 1504,
+  "camera": "Cam_floor_detail_Upper_seat_0",
+  "img": "kf/088.jpg"
+ },
+ {
+  "name": "Upper_seat_1_entry",
+  "frame": 1505,
+  "camera": "Cam_floor_detail_Upper_seat_1",
+  "img": "kf/089.jpg"
+ },
+ {
+  "name": "Upper_seat_1_action",
+  "frame": 1518,
+  "camera": "Cam_floor_detail_Upper_seat_1",
+  "img": "kf/090.jpg"
+ },
+ {
+  "name": "Upper_seat_1_result",
+  "frame": 1531,
+  "camera": "Cam_floor_detail_Upper_seat_1",
+  "img": "kf/091.jpg"
+ },
+ {
+  "name": "Sit_load_0_entry",
+  "frame": 1532,
+  "camera": "Cam_test_Sit_load_0",
+  "img": "kf/092.jpg"
+ },
+ {
+  "name": "Sit_load_0_action",
+  "frame": 1567,
+  "camera": "Cam_test_Sit_load_0",
+  "img": "kf/093.jpg"
+ },
+ {
+  "name": "Sit_load_0_result",
+  "frame": 1603,
+  "camera": "Cam_test_Sit_load_0",
+  "img": "kf/094.jpg"
+ },
+ {
+  "name": "Test_swivel_0_entry",
+  "frame": 1604,
+  "camera": "Cam_test_Test_swivel_0",
+  "img": "kf/095.jpg"
+ },
+ {
+  "name": "Test_swivel_0_action",
+  "frame": 1627,
+  "camera": "Cam_test_Test_swivel_0",
+  "img": "kf/096.jpg"
+ },
+ {
+  "name": "Test_swivel_0_result",
+  "frame": 1651,
+  "camera": "Cam_test_Test_swivel_0",
+  "img": "kf/097.jpg"
+ },
+ {
+  "name": "Test_raise_0_entry",
+  "frame": 1652,
+  "camera": "Cam_test_Test_raise_0",
+  "img": "kf/098.jpg"
+ },
+ {
+  "name": "Test_raise_0_action",
+  "frame": 1661,
+  "camera": "Cam_test_Test_raise_0",
+  "img": "kf/099.jpg"
+ },
+ {
+  "name": "Test_raise_0_result",
+  "frame": 1671,
+  "camera": "Cam_test_Test_raise_0",
+  "img": "kf/100.jpg"
+ },
+ {
+  "name": "Test_raise_1_entry",
+  "frame": 1672,
+  "camera": "Cam_test_Test_raise_1",
+  "img": "kf/101.jpg"
+ },
+ {
+  "name": "Test_raise_1_action",
+  "frame": 1700,
+  "camera": "Cam_test_Test_raise_1",
+  "img": "kf/102.jpg"
+ },
+ {
+  "name": "Test_raise_1_result",
+  "frame": 1728,
+  "camera": "Cam_test_Test_raise_1",
+  "img": "kf/103.jpg"
+ },
+ {
+  "name": "Test_raise_2_entry",
+  "frame": 1729,
+  "camera": "Cam_test_Test_raise_2",
+  "img": "kf/104.jpg"
+ },
+ {
+  "name": "Test_raise_2_action",
+  "frame": 1739,
+  "camera": "Cam_test_Test_raise_2",
+  "img": "kf/105.jpg"
+ },
+ {
+  "name": "Test_raise_2_result",
+  "frame": 1750,
+  "camera": "Cam_test_Test_raise_2",
+  "img": "kf/106.jpg"
+ },
+ {
+  "name": "Test_tilt_0_entry",
+  "frame": 1751,
+  "camera": "Cam_test_Test_tilt_0",
+  "img": "kf/107.jpg"
+ },
+ {
+  "name": "Test_tilt_0_action",
+  "frame": 1786,
+  "camera": "Cam_test_Test_tilt_0",
+  "img": "kf/108.jpg"
+ },
+ {
+  "name": "Test_tilt_0_result",
+  "frame": 1822,
+  "camera": "Cam_test_Test_tilt_0",
+  "img": "kf/109.jpg"
+ },
+ {
+  "name": "Test_lower_0_entry",
+  "frame": 1823,
+  "camera": "Cam_test_Test_lower_0",
+  "img": "kf/110.jpg"
+ },
+ {
+  "name": "Test_lower_0_action",
+  "frame": 1845,
+  "camera": "Cam_test_Test_lower_0",
+  "img": "kf/111.jpg"
+ },
+ {
+  "name": "Test_lower_0_result",
+  "frame": 1867,
+  "camera": "Cam_test_Test_lower_0",
+  "img": "kf/112.jpg"
+ },
+ {
+  "name": "Stand_0_entry",
+  "frame": 1868,
+  "camera": "Cam_test_Stand_0",
+  "img": "kf/113.jpg"
+ },
+ {
+  "name": "Stand_0_action",
+  "frame": 1891,
+  "camera": "Cam_test_Stand_0",
+  "img": "kf/114.jpg"
+ },
+ {
+  "name": "Stand_0_result",
+  "frame": 1915,
+  "camera": "Cam_test_Stand_0",
+  "img": "kf/115.jpg"
+ },
+ {
+  "name": "Tools_away_0_entry",
+  "frame": 1916,
+  "camera": "Cam_bench_detail_Tools_away_0",
+  "img": "kf/116.jpg"
+ },
+ {
+  "name": "Tools_away_0_action",
+  "frame": 1930,
+  "camera": "Cam_bench_detail_Tools_away_0",
+  "img": "kf/117.jpg"
+ },
+ {
+  "name": "Tools_away_0_result",
+  "frame": 1945,
+  "camera": "Cam_bench_detail_Tools_away_0",
+  "img": "kf/118.jpg"
+ },
+ {
+  "name": "Tools_away_1_entry",
+  "frame": 1946,
+  "camera": "Cam_bench_detail_Tools_away_1",
+  "img": "kf/119.jpg"
+ },
+ {
+  "name": "Tools_away_1_action",
+  "frame": 1960,
+  "camera": "Cam_bench_detail_Tools_away_1",
+  "img": "kf/120.jpg"
+ },
+ {
+  "name": "Tools_away_1_result",
+  "frame": 1975,
+  "camera": "Cam_bench_detail_Tools_away_1",
+  "img": "kf/121.jpg"
+ },
+ {
+  "name": "Packing_recycle_0_entry",
+  "frame": 1976,
+  "camera": "Cam_cleanup_Packing_recycle_0",
+  "img": "kf/122.jpg"
+ },
+ {
+  "name": "Packing_recycle_0_action",
+  "frame": 1991,
+  "camera": "Cam_cleanup_Packing_recycle_0",
+  "img": "kf/123.jpg"
+ },
+ {
+  "name": "Packing_recycle_0_result",
+  "frame": 2007,
+  "camera": "Cam_cleanup_Packing_recycle_0",
+  "img": "kf/124.jpg"
+ },
+ {
+  "name": "Packing_recycle_1_entry",
+  "frame": 2008,
+  "camera": "Cam_cleanup_Packing_recycle_1",
+  "img": "kf/125.jpg"
+ },
+ {
+  "name": "Packing_recycle_1_action",
+  "frame": 2014,
+  "camera": "Cam_cleanup_Packing_recycle_1",
+  "img": "kf/126.jpg"
+ },
+ {
+  "name": "Packing_recycle_1_result",
+  "frame": 2020,
+  "camera": "Cam_cleanup_Packing_recycle_1",
+  "img": "kf/127.jpg"
+ },
+ {
+  "name": "Carton_flatten_0_entry",
+  "frame": 2021,
+  "camera": "Cam_cleanup_Carton_flatten_0",
+  "img": "kf/128.jpg"
+ },
+ {
+  "name": "Carton_flatten_0_action",
+  "frame": 2041,
+  "camera": "Cam_cleanup_Carton_flatten_0",
+  "img": "kf/129.jpg"
+ },
+ {
+  "name": "Carton_flatten_0_result",
+  "frame": 2062,
+  "camera": "Cam_cleanup_Carton_flatten_0",
+  "img": "kf/130.jpg"
+ },
+ {
+  "name": "Carton_flatten_1_entry",
+  "frame": 2063,
+  "camera": "Cam_cleanup_Carton_flatten_1",
+  "img": "kf/131.jpg"
+ },
+ {
+  "name": "Carton_flatten_1_action",
+  "frame": 2090,
+  "camera": "Cam_cleanup_Carton_flatten_1",
+  "img": "kf/132.jpg"
+ },
+ {
+  "name": "Carton_flatten_1_result",
+  "frame": 2118,
+  "camera": "Cam_cleanup_Carton_flatten_1",
+  "img": "kf/133.jpg"
+ },
+ {
+  "name": "Carton_flatten_2_entry",
+  "frame": 2119,
+  "camera": "Cam_cleanup_Carton_flatten_2",
+  "img": "kf/134.jpg"
+ },
+ {
+  "name": "Carton_flatten_2_action",
+  "frame": 2148,
+  "camera": "Cam_cleanup_Carton_flatten_2",
+  "img": "kf/135.jpg"
+ },
+ {
+  "name": "Carton_flatten_2_result",
+  "frame": 2178,
+  "camera": "Cam_cleanup_Carton_flatten_2",
+  "img": "kf/136.jpg"
+ },
+ {
+  "name": "Carton_flatten_3_entry",
+  "frame": 2179,
+  "camera": "Cam_cleanup_Carton_flatten_3",
+  "img": "kf/137.jpg"
+ },
+ {
+  "name": "Carton_flatten_3_action",
+  "frame": 2190,
+  "camera": "Cam_cleanup_Carton_flatten_3",
+  "img": "kf/138.jpg"
+ },
+ {
+  "name": "Carton_flatten_3_result",
+  "frame": 2201,
+  "camera": "Cam_cleanup_Carton_flatten_3",
+  "img": "kf/139.jpg"
+ },
+ {
+  "name": "Carton_flatten_4_entry",
+  "frame": 2202,
+  "camera": "Cam_cleanup_Carton_flatten_4",
+  "img": "kf/140.jpg"
+ },
+ {
+  "name": "Carton_flatten_4_action",
+  "frame": 2213,
+  "camera": "Cam_cleanup_Carton_flatten_4",
+  "img": "kf/141.jpg"
+ },
+ {
+  "name": "Carton_flatten_4_result",
+  "frame": 2224,
+  "camera": "Cam_cleanup_Carton_flatten_4",
+  "img": "kf/142.jpg"
+ },
+ {
+  "name": "Carton_flatten_5_entry",
+  "frame": 2225,
+  "camera": "Cam_cleanup_Carton_flatten_5",
+  "img": "kf/143.jpg"
+ },
+ {
+  "name": "Carton_flatten_5_action",
+  "frame": 2242,
+  "camera": "Cam_cleanup_Carton_flatten_5",
+  "img": "kf/144.jpg"
+ },
+ {
+  "name": "Carton_flatten_5_result",
+  "frame": 2260,
+  "camera": "Cam_cleanup_Carton_flatten_5",
+  "img": "kf/145.jpg"
+ },
+ {
+  "name": "Chair_to_desk_0_entry",
+  "frame": 2261,
+  "camera": "Cam_finish_Chair_to_desk_0",
+  "img": "kf/146.jpg"
+ },
+ {
+  "name": "Chair_to_desk_0_action",
+  "frame": 2290,
+  "camera": "Cam_finish_Chair_to_desk_0",
+  "img": "kf/147.jpg"
+ },
+ {
+  "name": "Chair_to_desk_0_result",
+  "frame": 2320,
+  "camera": "Cam_finish_Chair_to_desk_0",
+  "img": "kf/148.jpg"
+ },
+ {
+  "name": "Chair_to_desk_1_entry",
+  "frame": 2321,
+  "camera": "Cam_finish_Chair_to_desk_1",
+  "img": "kf/149.jpg"
+ },
+ {
+  "name": "Chair_to_desk_1_action",
+  "frame": 2360,
+  "camera": "Cam_finish_Chair_to_desk_1",
+  "img": "kf/150.jpg"
+ },
+ {
+  "name": "Chair_to_desk_1_result",
+  "frame": 2399,
+  "camera": "Cam_finish_Chair_to_desk_1",
+  "img": "kf/151.jpg"
+ }
+]

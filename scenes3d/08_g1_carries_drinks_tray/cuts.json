@@ -1,0 +1,75 @@
+{
+ "fps": 18.0,
+ "frame_start": 0,
+ "frame_end": 1350,
+ "duration": 75.05555555555556,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CounterMaster",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CounterMaster"
+  },
+  {
+   "frame": 24,
+   "t": 1.3333333333333333,
+   "camera": "CounterDetail"
+  },
+  {
+   "frame": 312,
+   "t": 17.333333333333332,
+   "camera": "Departure"
+  },
+  {
+   "frame": 420,
+   "t": 23.333333333333332,
+   "camera": "Aisle"
+  },
+  {
+   "frame": 459,
+   "t": 25.5,
+   "camera": "StopDetail"
+  },
+  {
+   "frame": 483,
+   "t": 26.833333333333332,
+   "camera": "Aisle"
+  },
+  {
+   "frame": 546,
+   "t": 30.333333333333332,
+   "camera": "Gap"
+  },
+  {
+   "frame": 678,
+   "t": 37.666666666666664,
+   "camera": "Recovery"
+  },
+  {
+   "frame": 798,
+   "t": 44.333333333333336,
+   "camera": "Delivery"
+  },
+  {
+   "frame": 870,
+   "t": 48.333333333333336,
+   "camera": "DeliveryDetail"
+  },
+  {
+   "frame": 1122,
+   "t": 62.333333333333336,
+   "camera": "Delivery"
+  },
+  {
+   "frame": 1155,
+   "t": 64.16666666666667,
+   "camera": "ReturnDeparture"
+  },
+  {
+   "frame": 1221,
+   "t": 67.83333333333333,
+   "camera": "Return"
+  }
+ ]
+}

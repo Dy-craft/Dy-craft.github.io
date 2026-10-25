@@ -1,0 +1,65 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 767,
+ "duration": 32.0,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM_01_SCULLERY",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM_01_SCULLERY"
+  },
+  {
+   "frame": 120,
+   "t": 5.0,
+   "camera": "CAM_02_BEAT"
+  },
+  {
+   "frame": 240,
+   "t": 10.0,
+   "camera": "CAM_03_CAM"
+  },
+  {
+   "frame": 330,
+   "t": 13.75,
+   "camera": "CAM_03_RELEASE"
+  },
+  {
+   "frame": 386,
+   "t": 16.083333333333332,
+   "camera": "CAM_04_STRIKES"
+  },
+  {
+   "frame": 406,
+   "t": 16.916666666666668,
+   "camera": "CAM_04_ENERGY"
+  },
+  {
+   "frame": 468,
+   "t": 19.5,
+   "camera": "CAM_04_STRIKES"
+  },
+  {
+   "frame": 516,
+   "t": 21.5,
+   "camera": "CAM_05_LOCK"
+  },
+  {
+   "frame": 538,
+   "t": 22.416666666666668,
+   "camera": "CAM_05_STOP"
+  },
+  {
+   "frame": 552,
+   "t": 23.0,
+   "camera": "CAM_05_FLY"
+  },
+  {
+   "frame": 624,
+   "t": 26.0,
+   "camera": "CAM_06_RETURN"
+  }
+ ]
+}

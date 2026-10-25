@@ -1,0 +1,80 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1783,
+ "duration": 74.33333333333333,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM_bench",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM_bench"
+  },
+  {
+   "frame": 24,
+   "t": 1.0,
+   "camera": "CAM_open"
+  },
+  {
+   "frame": 96,
+   "t": 4.0,
+   "camera": "CAM_bench"
+  },
+  {
+   "frame": 288,
+   "t": 12.0,
+   "camera": "CAM_wide"
+  },
+  {
+   "frame": 456,
+   "t": 19.0,
+   "camera": "CAM_dispatch"
+  },
+  {
+   "frame": 612,
+   "t": 25.5,
+   "camera": "CAM_ack"
+  },
+  {
+   "frame": 648,
+   "t": 27.0,
+   "camera": "CAM_wide"
+  },
+  {
+   "frame": 844,
+   "t": 35.166666666666664,
+   "camera": "CAM_return"
+  },
+  {
+   "frame": 872,
+   "t": 36.333333333333336,
+   "camera": "CAM_bench"
+  },
+  {
+   "frame": 1064,
+   "t": 44.333333333333336,
+   "camera": "CAM_batch"
+  },
+  {
+   "frame": 1280,
+   "t": 53.333333333333336,
+   "camera": "CAM_wide"
+  },
+  {
+   "frame": 1352,
+   "t": 56.333333333333336,
+   "camera": "CAM_batch"
+  },
+  {
+   "frame": 1640,
+   "t": 68.33333333333333,
+   "camera": "CAM_end"
+  },
+  {
+   "frame": 1708,
+   "t": 71.16666666666667,
+   "camera": "CAM_wide"
+  }
+ ]
+}

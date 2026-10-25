@@ -1,0 +1,105 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 5981,
+ "duration": 249.25,
+ "aspect": 1.7777777777777777,
+ "default_camera": "cam_warning",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "cam_warning"
+  },
+  {
+   "frame": 22,
+   "t": 0.9166666666666666,
+   "camera": "cam_sign_contact"
+  },
+  {
+   "frame": 58,
+   "t": 2.4166666666666665,
+   "camera": "cam_sign_carry"
+  },
+  {
+   "frame": 259,
+   "t": 10.791666666666666,
+   "camera": "cam_collect"
+  },
+  {
+   "frame": 374,
+   "t": 15.583333333333334,
+   "camera": "cam_collect_lift"
+  },
+  {
+   "frame": 439,
+   "t": 18.291666666666668,
+   "camera": "cam_entry_hall"
+  },
+  {
+   "frame": 690,
+   "t": 28.75,
+   "camera": "cam_entry_room"
+  },
+  {
+   "frame": 938,
+   "t": 39.083333333333336,
+   "camera": "cam_charge"
+  },
+  {
+   "frame": 1575,
+   "t": 65.625,
+   "camera": "cam_far_pass"
+  },
+  {
+   "frame": 2130,
+   "t": 88.75,
+   "camera": "cam_far_return"
+  },
+  {
+   "frame": 2483,
+   "t": 103.45833333333333,
+   "camera": "cam_rinse"
+  },
+  {
+   "frame": 3227,
+   "t": 134.45833333333334,
+   "camera": "cam_leg_work"
+  },
+  {
+   "frame": 4171,
+   "t": 173.79166666666666,
+   "camera": "cam_coffee"
+  },
+  {
+   "frame": 4317,
+   "t": 179.875,
+   "camera": "cam_retreat"
+  },
+  {
+   "frame": 4862,
+   "t": 202.58333333333334,
+   "camera": "cam_bucket_exit"
+  },
+  {
+   "frame": 4962,
+   "t": 206.75,
+   "camera": "cam_hall_return"
+  },
+  {
+   "frame": 5191,
+   "t": 216.29166666666666,
+   "camera": "cam_threshold"
+  },
+  {
+   "frame": 5798,
+   "t": 241.58333333333334,
+   "camera": "cam_parking"
+  },
+  {
+   "frame": 5940,
+   "t": 247.5,
+   "camera": "cam_ending"
+  }
+ ]
+}

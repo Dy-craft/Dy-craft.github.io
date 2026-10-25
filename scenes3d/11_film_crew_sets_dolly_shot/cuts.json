@@ -1,0 +1,225 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 2221,
+ "duration": 92.58333333333333,
+ "aspect": 1.7777777777777777,
+ "default_camera": "CAM_establish",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "CAM_establish"
+  },
+  {
+   "frame": 58,
+   "t": 2.4166666666666665,
+   "camera": "CAM_stand_base"
+  },
+  {
+   "frame": 79,
+   "t": 3.2916666666666665,
+   "camera": "CAM_plate_prep"
+  },
+  {
+   "frame": 89,
+   "t": 3.7083333333333335,
+   "camera": "CAM_stand_fan"
+  },
+  {
+   "frame": 113,
+   "t": 4.708333333333333,
+   "camera": "CAM_plate_detail"
+  },
+  {
+   "frame": 156,
+   "t": 6.5,
+   "camera": "CAM_lamp_doors"
+  },
+  {
+   "frame": 216,
+   "t": 9.0,
+   "camera": "CAM_flag_mount"
+  },
+  {
+   "frame": 241,
+   "t": 10.041666666666666,
+   "camera": "CAM_track_join"
+  },
+  {
+   "frame": 310,
+   "t": 12.916666666666666,
+   "camera": "CAM_flag_insert"
+  },
+  {
+   "frame": 391,
+   "t": 16.291666666666668,
+   "camera": "CAM_track_carry"
+  },
+  {
+   "frame": 450,
+   "t": 18.75,
+   "camera": "CAM_track_three_join"
+  },
+  {
+   "frame": 500,
+   "t": 20.833333333333332,
+   "camera": "CAM_saddle"
+  },
+  {
+   "frame": 605,
+   "t": 25.208333333333332,
+   "camera": "CAM_level"
+  },
+  {
+   "frame": 676,
+   "t": 28.166666666666668,
+   "camera": "CAM_dolly_prepare"
+  },
+  {
+   "frame": 769,
+   "t": 32.041666666666664,
+   "camera": "CAM_dolly_lift"
+  },
+  {
+   "frame": 798,
+   "t": 33.25,
+   "camera": "CAM_actor_tape"
+  },
+  {
+   "frame": 815,
+   "t": 33.958333333333336,
+   "camera": "CAM_dolly_carry"
+  },
+  {
+   "frame": 834,
+   "t": 34.75,
+   "camera": "CAM_actor_stem"
+  },
+  {
+   "frame": 846,
+   "t": 35.25,
+   "camera": "CAM_dolly_set"
+  },
+  {
+   "frame": 862,
+   "t": 35.916666666666664,
+   "camera": "CAM_camera_mount"
+  },
+  {
+   "frame": 906,
+   "t": 37.75,
+   "camera": "CAM_range_A"
+  },
+  {
+   "frame": 941,
+   "t": 39.208333333333336,
+   "camera": "CAM_mark_A"
+  },
+  {
+   "frame": 986,
+   "t": 41.083333333333336,
+   "camera": "CAM_range_B"
+  },
+  {
+   "frame": 1042,
+   "t": 43.416666666666664,
+   "camera": "CAM_mark_B"
+  },
+  {
+   "frame": 1088,
+   "t": 45.333333333333336,
+   "camera": "CAM_actor_arrives"
+  },
+  {
+   "frame": 1192,
+   "t": 49.666666666666664,
+   "camera": "CAM_focus_indices"
+  },
+  {
+   "frame": 1240,
+   "t": 51.666666666666664,
+   "camera": "CAM_rehearsal"
+  },
+  {
+   "frame": 1255,
+   "t": 52.291666666666664,
+   "camera": "CAM_bump"
+  },
+  {
+   "frame": 1280,
+   "t": 53.333333333333336,
+   "camera": "CAM_stop_return"
+  },
+  {
+   "frame": 1360,
+   "t": 56.666666666666664,
+   "camera": "CAM_lighting_repair"
+  },
+  {
+   "frame": 1397,
+   "t": 58.208333333333336,
+   "camera": "CAM_repair"
+  },
+  {
+   "frame": 1527,
+   "t": 63.625,
+   "camera": "CAM_clear"
+  },
+  {
+   "frame": 1613,
+   "t": 67.20833333333333,
+   "camera": "CAM_repeat"
+  },
+  {
+   "frame": 1697,
+   "t": 70.70833333333333,
+   "camera": "CAM_slate_pickup"
+  },
+  {
+   "frame": 1726,
+   "t": 71.91666666666667,
+   "camera": "CAM_repeat_end"
+  },
+  {
+   "frame": 1752,
+   "t": 73.0,
+   "camera": "CAM_reset"
+  },
+  {
+   "frame": 1868,
+   "t": 77.83333333333333,
+   "camera": "CAM_quiet_record"
+  },
+  {
+   "frame": 1917,
+   "t": 79.875,
+   "camera": "CAM_record"
+  },
+  {
+   "frame": 1934,
+   "t": 80.58333333333333,
+   "camera": "CAM_slate"
+  },
+  {
+   "frame": 1983,
+   "t": 82.625,
+   "camera": "CAM_slate_clear"
+  },
+  {
+   "frame": 2053,
+   "t": 85.54166666666667,
+   "camera": "CAM_take_breath"
+  },
+  {
+   "frame": 2094,
+   "t": 87.25,
+   "camera": "CAM_take_crew"
+  },
+  {
+   "frame": 2142,
+   "t": 89.25,
+   "camera": "CAM_take_lens"
+  }
+ ]
+}

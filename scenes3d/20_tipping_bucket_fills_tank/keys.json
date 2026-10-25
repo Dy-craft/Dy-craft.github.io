@@ -1,0 +1,140 @@
+[
+ {
+  "name": "ready",
+  "frame": 0,
+  "camera": "CAM_WIDE",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "opening",
+  "frame": 94,
+  "camera": "CAM_VALVE",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "latched",
+  "frame": 130,
+  "camera": "CAM_VALVE",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "first_full",
+  "frame": 194,
+  "camera": "CAM_BUCKET",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "first_spill",
+  "frame": 216,
+  "camera": "CAM_FLOW",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "first_return",
+  "frame": 232,
+  "camera": "CAM_FLOW",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "first_reseated",
+  "frame": 260,
+  "camera": "CAM_FLOW",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "second_pulse",
+  "frame": 377,
+  "camera": "CAM_POWER",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "second_delivery",
+  "frame": 402,
+  "camera": "CAM_POWER",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "third_release",
+  "frame": 543,
+  "camera": "CAM_HERO",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "third_sheet",
+  "frame": 561,
+  "camera": "CAM_HERO",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "third_return",
+  "frame": 573,
+  "camera": "CAM_HERO",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "float_lift",
+  "frame": 600,
+  "camera": "CAM_TANK",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "fourth_full",
+  "frame": 766,
+  "camera": "CAM_FLOW",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "fourth_sheet",
+  "frame": 791,
+  "camera": "CAM_FLOW",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "fourth_return",
+  "frame": 812,
+  "camera": "CAM_FLOW",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "pickup",
+  "frame": 859,
+  "camera": "CAM_FLOAT",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "released",
+  "frame": 879,
+  "camera": "CAM_VALVE",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "closing",
+  "frame": 883,
+  "camera": "CAM_VALVE",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "last_thread",
+  "frame": 890,
+  "camera": "CAM_BUCKET",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "coast",
+  "frame": 936,
+  "camera": "CAM_TANK",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "wheel_stopped",
+  "frame": 1020,
+  "camera": "CAM_TANK",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "settled",
+  "frame": 1055,
+  "camera": "CAM_HERO",
+  "img": "kf/022.jpg"
+ }
+]

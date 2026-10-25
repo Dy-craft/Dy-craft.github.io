@@ -1,0 +1,254 @@
+[
+ {
+  "name": "ready",
+  "frame": 5,
+  "camera": "Cam_Wide",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "input_slide",
+  "frame": 14,
+  "camera": "Cam_Input",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "square_axis_1",
+  "frame": 27,
+  "camera": "Cam_Input",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "square",
+  "frame": 33,
+  "camera": "Cam_Input",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "square_done",
+  "frame": 34,
+  "camera": "Cam_Input",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "separate",
+  "frame": 44,
+  "camera": "Cam_Work",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "read_first",
+  "frame": 48,
+  "camera": "Cam_Work",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "deposit_first",
+  "frame": 56,
+  "camera": "Cam_Work",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "b_compare",
+  "frame": 125,
+  "camera": "Cam_Read",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "exception_first",
+  "frame": 138,
+  "camera": "Cam_Exception",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "resumed",
+  "frame": 166,
+  "camera": "Cam_Work",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "parcel_grasp",
+  "frame": 178,
+  "camera": "Cam_Parcel",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "parcel_check",
+  "frame": 194,
+  "camera": "Cam_Fit",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "parcel_withdraw",
+  "frame": 202,
+  "camera": "Cam_Parcel",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "parcel_shelf",
+  "frame": 220,
+  "camera": "Cam_Shelf",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "parcel_recover",
+  "frame": 232,
+  "camera": "Cam_Parcel",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "middle",
+  "frame": 278,
+  "camera": "Cam_Work",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "b_compare_second",
+  "frame": 343,
+  "camera": "Cam_Read",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "exception_second",
+  "frame": 356,
+  "camera": "Cam_Exception",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "last_deposit",
+  "frame": 381,
+  "camera": "Cam_Work",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "input_empty",
+  "frame": 391,
+  "camera": "Cam_Work",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "retrieve",
+  "frame": 399,
+  "camera": "Cam_Retrieve",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "bundle_support",
+  "frame": 420,
+  "camera": "Cam_Band",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "band_pickup",
+  "frame": 427,
+  "camera": "Cam_Band",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "band_take_left",
+  "frame": 431,
+  "camera": "Cam_Band",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "band_spread",
+  "frame": 436,
+  "camera": "Cam_Band",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "band_over",
+  "frame": 440,
+  "camera": "Cam_Band",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "band_release_right",
+  "frame": 446,
+  "camera": "Cam_Band",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "band_seated",
+  "frame": 450,
+  "camera": "Cam_Band",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "bundle_lift",
+  "frame": 458,
+  "camera": "Cam_Collect",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "bundle_tray_touch",
+  "frame": 467,
+  "camera": "Cam_Collect",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "bundle_tray",
+  "frame": 470,
+  "camera": "Cam_Collect",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "second_retrieve",
+  "frame": 479,
+  "camera": "Cam_Retrieve",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "second_band",
+  "frame": 520,
+  "camera": "Cam_BandAlt",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "second_release",
+  "frame": 530,
+  "camera": "Cam_BandAlt",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "second_tray",
+  "frame": 550,
+  "camera": "Cam_Collect",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "third_retrieve",
+  "frame": 559,
+  "camera": "Cam_Retrieve",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "third_band",
+  "frame": 600,
+  "camera": "Cam_Band",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "third_release",
+  "frame": 610,
+  "camera": "Cam_Band",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "third_tray_touch",
+  "frame": 627,
+  "camera": "Cam_Collect",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "third_tray",
+  "frame": 630,
+  "camera": "Cam_Collect",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "final",
+  "frame": 650,
+  "camera": "Cam_Final",
+  "img": "kf/041.jpg"
+ }
+]

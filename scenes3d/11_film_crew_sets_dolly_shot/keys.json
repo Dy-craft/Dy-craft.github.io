@@ -1,0 +1,338 @@
+[
+ {
+  "name": "ready",
+  "frame": 0,
+  "camera": "CAM_establish",
+  "img": "kf/000.jpg"
+ },
+ {
+  "name": "stand_lift",
+  "frame": 43,
+  "camera": "CAM_establish",
+  "img": "kf/001.jpg"
+ },
+ {
+  "name": "lamp_tilt",
+  "frame": 68,
+  "camera": "CAM_stand_base",
+  "img": "kf/002.jpg"
+ },
+ {
+  "name": "camera_tip",
+  "frame": 82,
+  "camera": "CAM_plate_prep",
+  "img": "kf/003.jpg"
+ },
+ {
+  "name": "legs_fan",
+  "frame": 94,
+  "camera": "CAM_stand_fan",
+  "img": "kf/004.jpg"
+ },
+ {
+  "name": "panel_one",
+  "frame": 110,
+  "camera": "CAM_stand_fan",
+  "img": "kf/005.jpg"
+ },
+ {
+  "name": "lamp_leaves",
+  "frame": 128,
+  "camera": "CAM_plate_detail",
+  "img": "kf/006.jpg"
+ },
+ {
+  "name": "plate_screw",
+  "frame": 138,
+  "camera": "CAM_plate_detail",
+  "img": "kf/007.jpg"
+ },
+ {
+  "name": "plate_fold",
+  "frame": 153,
+  "camera": "CAM_plate_detail",
+  "img": "kf/008.jpg"
+ },
+ {
+  "name": "lamp_top_leaf",
+  "frame": 185,
+  "camera": "CAM_lamp_doors",
+  "img": "kf/009.jpg"
+ },
+ {
+  "name": "lamp_power",
+  "frame": 231,
+  "camera": "CAM_flag_mount",
+  "img": "kf/010.jpg"
+ },
+ {
+  "name": "panel_two_lock",
+  "frame": 303,
+  "camera": "CAM_track_join",
+  "img": "kf/011.jpg"
+ },
+ {
+  "name": "flag_insert",
+  "frame": 362,
+  "camera": "CAM_flag_insert",
+  "img": "kf/012.jpg"
+ },
+ {
+  "name": "head_lock",
+  "frame": 376,
+  "camera": "CAM_flag_insert",
+  "img": "kf/013.jpg"
+ },
+ {
+  "name": "panel_three_carry",
+  "frame": 402,
+  "camera": "CAM_track_carry",
+  "img": "kf/014.jpg"
+ },
+ {
+  "name": "panel_three_seat",
+  "frame": 450,
+  "camera": "CAM_track_three_join",
+  "img": "kf/015.jpg"
+ },
+ {
+  "name": "sandbag_pickup",
+  "frame": 463,
+  "camera": "CAM_track_three_join",
+  "img": "kf/016.jpg"
+ },
+ {
+  "name": "panel_three_lock",
+  "frame": 496,
+  "camera": "CAM_track_three_join",
+  "img": "kf/017.jpg"
+ },
+ {
+  "name": "sandbag_hanging",
+  "frame": 523,
+  "camera": "CAM_saddle",
+  "img": "kf/018.jpg"
+ },
+ {
+  "name": "sandbag",
+  "frame": 588,
+  "camera": "CAM_saddle",
+  "img": "kf/019.jpg"
+ },
+ {
+  "name": "level",
+  "frame": 636,
+  "camera": "CAM_level",
+  "img": "kf/020.jpg"
+ },
+ {
+  "name": "dolly_lift",
+  "frame": 790,
+  "camera": "CAM_dolly_lift",
+  "img": "kf/021.jpg"
+ },
+ {
+  "name": "subject_mark",
+  "frame": 806,
+  "camera": "CAM_actor_tape",
+  "img": "kf/022.jpg"
+ },
+ {
+  "name": "subject_stem",
+  "frame": 840,
+  "camera": "CAM_actor_stem",
+  "img": "kf/023.jpg"
+ },
+ {
+  "name": "dolly_seat",
+  "frame": 858,
+  "camera": "CAM_dolly_set",
+  "img": "kf/024.jpg"
+ },
+ {
+  "name": "plate_insert",
+  "frame": 888,
+  "camera": "CAM_camera_mount",
+  "img": "kf/025.jpg"
+ },
+ {
+  "name": "camera_lock",
+  "frame": 902,
+  "camera": "CAM_camera_mount",
+  "img": "kf/026.jpg"
+ },
+ {
+  "name": "range_start",
+  "frame": 934,
+  "camera": "CAM_range_A",
+  "img": "kf/027.jpg"
+ },
+ {
+  "name": "focus_mark_A",
+  "frame": 968,
+  "camera": "CAM_mark_A",
+  "img": "kf/028.jpg"
+ },
+ {
+  "name": "range_end",
+  "frame": 1030,
+  "camera": "CAM_range_B",
+  "img": "kf/029.jpg"
+ },
+ {
+  "name": "focus_mark_B",
+  "frame": 1062,
+  "camera": "CAM_mark_B",
+  "img": "kf/030.jpg"
+ },
+ {
+  "name": "actor_mark",
+  "frame": 1190,
+  "camera": "CAM_actor_arrives",
+  "img": "kf/031.jpg"
+ },
+ {
+  "name": "index_A",
+  "frame": 1198,
+  "camera": "CAM_focus_indices",
+  "img": "kf/032.jpg"
+ },
+ {
+  "name": "index_B",
+  "frame": 1219,
+  "camera": "CAM_focus_indices",
+  "img": "kf/033.jpg"
+ },
+ {
+  "name": "loaded_joint",
+  "frame": 1264,
+  "camera": "CAM_bump",
+  "img": "kf/034.jpg"
+ },
+ {
+  "name": "stop",
+  "frame": 1314,
+  "camera": "CAM_stop_return",
+  "img": "kf/035.jpg"
+ },
+ {
+  "name": "lamp_correction",
+  "frame": 1391,
+  "camera": "CAM_lighting_repair",
+  "img": "kf/036.jpg"
+ },
+ {
+  "name": "repair_unloaded",
+  "frame": 1401,
+  "camera": "CAM_repair",
+  "img": "kf/037.jpg"
+ },
+ {
+  "name": "support_exchange",
+  "frame": 1431,
+  "camera": "CAM_repair",
+  "img": "kf/038.jpg"
+ },
+ {
+  "name": "opposed_wedges",
+  "frame": 1463,
+  "camera": "CAM_repair",
+  "img": "kf/039.jpg"
+ },
+ {
+  "name": "load_test",
+  "frame": 1499,
+  "camera": "CAM_repair",
+  "img": "kf/040.jpg"
+ },
+ {
+  "name": "tools_clear",
+  "frame": 1601,
+  "camera": "CAM_clear",
+  "img": "kf/041.jpg"
+ },
+ {
+  "name": "repeat_mid",
+  "frame": 1663,
+  "camera": "CAM_repeat",
+  "img": "kf/042.jpg"
+ },
+ {
+  "name": "slate_pickup",
+  "frame": 1701,
+  "camera": "CAM_slate_pickup",
+  "img": "kf/043.jpg"
+ },
+ {
+  "name": "slate_transfer",
+  "frame": 1717,
+  "camera": "CAM_slate_pickup",
+  "img": "kf/044.jpg"
+ },
+ {
+  "name": "repeat_end",
+  "frame": 1747,
+  "camera": "CAM_repeat_end",
+  "img": "kf/045.jpg"
+ },
+ {
+  "name": "final_reading",
+  "frame": 1769,
+  "camera": "CAM_reset",
+  "img": "kf/046.jpg"
+ },
+ {
+  "name": "quiet",
+  "frame": 1914,
+  "camera": "CAM_quiet_record",
+  "img": "kf/047.jpg"
+ },
+ {
+  "name": "record",
+  "frame": 1924,
+  "camera": "CAM_record",
+  "img": "kf/048.jpg"
+ },
+ {
+  "name": "slate_handover",
+  "frame": 1938,
+  "camera": "CAM_slate",
+  "img": "kf/049.jpg"
+ },
+ {
+  "name": "slate_open",
+  "frame": 1964,
+  "camera": "CAM_slate",
+  "img": "kf/050.jpg"
+ },
+ {
+  "name": "slate_closed",
+  "frame": 1975,
+  "camera": "CAM_slate",
+  "img": "kf/051.jpg"
+ },
+ {
+  "name": "slate_clear",
+  "frame": 2041,
+  "camera": "CAM_slate_clear",
+  "img": "kf/052.jpg"
+ },
+ {
+  "name": "take_breath",
+  "frame": 2054,
+  "camera": "CAM_take_breath",
+  "img": "kf/053.jpg"
+ },
+ {
+  "name": "take_gesture",
+  "frame": 2115,
+  "camera": "CAM_take_crew",
+  "img": "kf/054.jpg"
+ },
+ {
+  "name": "take_finish",
+  "frame": 2214,
+  "camera": "CAM_take_lens",
+  "img": "kf/055.jpg"
+ }
+]

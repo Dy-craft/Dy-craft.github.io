@@ -1,0 +1,55 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1060,
+ "duration": 44.208333333333336,
+ "aspect": 1.7777777777777777,
+ "default_camera": "cam_porch",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "cam_porch"
+  },
+  {
+   "frame": 36,
+   "t": 1.5,
+   "camera": "cam_cue"
+  },
+  {
+   "frame": 64,
+   "t": 2.6666666666666665,
+   "camera": "cam_reaction"
+  },
+  {
+   "frame": 166,
+   "t": 6.916666666666667,
+   "camera": "cam_outbound"
+  },
+  {
+   "frame": 244,
+   "t": 10.166666666666666,
+   "camera": "cam_pickup"
+  },
+  {
+   "frame": 405,
+   "t": 16.875,
+   "camera": "cam_turn"
+  },
+  {
+   "frame": 505,
+   "t": 21.041666666666668,
+   "camera": "cam_return"
+  },
+  {
+   "frame": 615,
+   "t": 25.625,
+   "camera": "cam_exchange"
+  },
+  {
+   "frame": 744,
+   "t": 31.0,
+   "camera": "cam_ending"
+  }
+ ]
+}

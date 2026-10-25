@@ -1,0 +1,135 @@
+{
+ "fps": 24.0,
+ "frame_start": 0,
+ "frame_end": 1952,
+ "duration": 81.375,
+ "aspect": 1.7777777777777777,
+ "default_camera": "Cam_Wide",
+ "cuts": [
+  {
+   "frame": 0,
+   "t": 0.0,
+   "camera": "Cam_Wide"
+  },
+  {
+   "frame": 24,
+   "t": 1.0,
+   "camera": "Cam_Input"
+  },
+  {
+   "frame": 111,
+   "t": 4.625,
+   "camera": "Cam_Work"
+  },
+  {
+   "frame": 357,
+   "t": 14.875,
+   "camera": "Cam_Read"
+  },
+  {
+   "frame": 390,
+   "t": 16.25,
+   "camera": "Cam_Exception"
+  },
+  {
+   "frame": 441,
+   "t": 18.375,
+   "camera": "Cam_Work"
+  },
+  {
+   "frame": 513,
+   "t": 21.375,
+   "camera": "Cam_Parcel"
+  },
+  {
+   "frame": 564,
+   "t": 23.5,
+   "camera": "Cam_Fit"
+  },
+  {
+   "frame": 600,
+   "t": 25.0,
+   "camera": "Cam_Parcel"
+  },
+  {
+   "frame": 624,
+   "t": 26.0,
+   "camera": "Cam_Shelf"
+  },
+  {
+   "frame": 690,
+   "t": 28.75,
+   "camera": "Cam_Parcel"
+  },
+  {
+   "frame": 705,
+   "t": 29.375,
+   "camera": "Cam_Work"
+  },
+  {
+   "frame": 1014,
+   "t": 42.25,
+   "camera": "Cam_Read"
+  },
+  {
+   "frame": 1044,
+   "t": 43.5,
+   "camera": "Cam_Exception"
+  },
+  {
+   "frame": 1095,
+   "t": 45.625,
+   "camera": "Cam_Work"
+  },
+  {
+   "frame": 1185,
+   "t": 49.375,
+   "camera": "Cam_Retrieve"
+  },
+  {
+   "frame": 1230,
+   "t": 51.25,
+   "camera": "Cam_Band"
+  },
+  {
+   "frame": 1374,
+   "t": 57.25,
+   "camera": "Cam_Collect"
+  },
+  {
+   "frame": 1425,
+   "t": 59.375,
+   "camera": "Cam_Retrieve"
+  },
+  {
+   "frame": 1470,
+   "t": 61.25,
+   "camera": "Cam_BandAlt"
+  },
+  {
+   "frame": 1614,
+   "t": 67.25,
+   "camera": "Cam_Collect"
+  },
+  {
+   "frame": 1665,
+   "t": 69.375,
+   "camera": "Cam_Retrieve"
+  },
+  {
+   "frame": 1710,
+   "t": 71.25,
+   "camera": "Cam_Band"
+  },
+  {
+   "frame": 1854,
+   "t": 77.25,
+   "camera": "Cam_Collect"
+  },
+  {
+   "frame": 1905,
+   "t": 79.375,
+   "camera": "Cam_Final"
+  }
+ ]
+}
