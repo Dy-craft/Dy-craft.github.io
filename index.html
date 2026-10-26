@@ -148,6 +148,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
   --ours-tint:#e8f5ec; --warn:#b45309; --serif:'Google Sans','Noto Sans',sans-serif; --mono:ui-monospace,SFMono-Regular,Menlo,monospace}
 .viewer-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:#4a4a4a}
 .viewer-intro p{margin:0 0 .75em}
+.viewer-intro .viewer-note{font-size:.92em;color:#666;border-left:3px solid #dbdbdb;padding:.15em 0 .15em .8em;text-align:left}
 /* ---- Interactive comparison (console) ---- */
 .cx{display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;align-items:stretch;border:1px solid var(--rule);background:var(--sheet);padding:14px;color:var(--ink)}
 .cx:fullscreen{padding:18px;overflow:auto}
@@ -184,19 +185,10 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 .cx-tlab .s{margin-left:auto;font:400 12px/1 var(--mono);color:var(--ink3)}
 .cx-tile.is-ended .s{color:var(--warn)}
 .cx-frame{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;cursor:pointer;border-radius:2px}
-.cx-frame video,.cx-wipe video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.cx-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:block}
 .cx-tile.is-ended .cx-frame video{filter:grayscale(.6) brightness(.75)}
 .cx-tile .cx-endtag{position:absolute;left:6px;bottom:6px;z-index:2;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 6px;border-radius:2px;display:none}
 .cx-tile.is-ended .cx-endtag{display:block}
-.cx-wipe{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;cursor:ew-resize;touch-action:none;user-select:none;
-  width:100%;max-width:calc((100vh - 240px) * 16 / 9);min-width:min(100%,480px);margin:0 auto}
-.cx-wtop{position:absolute;inset:0;z-index:1}
-.cx-handle{position:absolute;top:0;bottom:0;z-index:3;width:2px;margin-left:-1px;background:#fff;pointer-events:none}
-.cx-handle::after{content:'\2194';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;
-  background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:16px;border:1px solid var(--rule)}
-.cx-wlab{position:absolute;top:8px;z-index:4;background:rgba(0,0,0,.66);color:#fff;font-size:13px;padding:2px 8px;border-radius:2px;pointer-events:none}
-.cx-wlab.l{left:8px}.cx-wlab.r{right:8px}
-.cx-wlab i{font-style:normal;opacity:.7;margin-left:6px;font-size:11.5px}
 .cx-tl{position:relative;border-top:1px solid var(--rule);padding:12px 0 0}
 .cx-ctl{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 8px}
 .cx-play{width:34px;height:34px;padding:0;border-radius:50%;background:var(--ink);border-color:var(--ink);color:var(--sheet);display:inline-flex;align-items:center;justify-content:center}
@@ -300,9 +292,9 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
   <div class="container is-max-desktop">
     <h2 class="title is-3">Abstract</h2>
     <div class="content">
-      <p>While frontier coding agents can generate high-quality 3D scenes and articulated assets, they struggle to create coherent long-horizon animations. When equipped with general-purpose harnesses, they frequently produce outputs that are physically implausible, generating objects that lack physical support, interpenetrate, or move unnaturally. Such bare agents struggle to repair these errors because they default to scripting the full animation in one pass, making it difficult to disentangle interdependent temporal and spatial constraints.</p>
-      <p>Drawing on the practice of human animators, we introduce <strong>DyCraft</strong>, a system for 4D scene generation that breaks animation into steps that coding agents can more reliably solve. DyCraft first expands the user&rsquo;s prompt into a detailed plan and builds a static scene. It then creates a 3D storyboard of key animation poses, where each frame is a static 3D scene that the agent can build and debug in isolation. The storyboard decomposes the problem into pairs of verified start and end states, allowing the agent to author local motion between them with a collection of motion authoring tools.</p>
-      <p>We evaluate DyCraft on 16 long-horizon, multi-shot animation tasks covering humanoid robots, human and animal characters, and physical mechanisms. Compared with a native GPT-6 agent in Codex and prior agentic baselines, DyCraft substantially reduces physical violations and generates higher-quality 4D scenes that are more often preferred by human raters.</p>
+      <p>While frontier coding agents can generate high-quality 3D scenes and articulated assets, they struggle to create coherent long-horizon animations. When equipped with general-purpose harnesses, they frequently produce physically implausible outputs, generating objects that interpenetrate, lack physical support, or move unnaturally. Such bare agents struggle to repair these errors because they default to scripting the full animation in one pass, making it difficult to verify their work and disentangle complex spatiotemporal constraints.</p>
+      <p>Drawing on the practice of human animators, we introduce <strong>DyCraft</strong>, a system for animated 3D scene generation that breaks animation into steps that coding agents can more reliably solve. DyCraft first expands the user&rsquo;s prompt into a detailed plan and builds a static scene. It then creates a 3D storyboard of key animation poses, where each frame is a static 3D scene that the agent can build and debug in isolation. Storyboarding decomposes the problem into pairs of verified start and end states, allowing the agent to author local motion between them with a collection of motion authoring tools.</p>
+      <p>We evaluate DyCraft on 24 long-horizon, multi-shot animation tasks covering humanoid robots, human and animal characters, and physical mechanisms. Compared with a native GPT-6 agent in Codex and prior agentic baselines, DyCraft substantially reduces physical violations and generates higher-quality animated 3D scenes that are more often preferred by human raters.</p>
     </div>
   </div>
 </section>
@@ -312,7 +304,8 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
     <h2 class="title is-3">Interactive 4D Scene Viewer</h2>
     <div class="viewer-intro">
       <p>Every task opens in DyCraft&rsquo;s generated 4D scene, rendered live in your browser. Watch it through the film&rsquo;s cameras or switch to <strong>Free orbit</strong> and drag to look around while it plays; the rendered film plays in the corner at the same moment. The timeline marks the verified storyboard key poses and the camera cuts.</p>
-      <p><strong>Side by side</strong> plays every method from one shared clock instead, and <strong>Wipe</strong> overlays DyCraft and one baseline in the same frame. Dragging on the timeline scrubs everything at once; <kbd>Space</kbd> plays and pauses, <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> change the task.</p>
+      <p>Drag on the timeline to scrub; <kbd>Space</kbd> plays and pauses, <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> change the task, and <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> (with <kbd>Q</kbd>/<kbd>E</kbd> for down/up) fly the camera through the scene; <strong>Reset camera</strong> or <kbd>R</kbd> brings it back to the film&rsquo;s shot.</p>
+      <p class="viewer-note"><strong>Note:</strong> the viewer is a real-time WebGL approximation, meant to give an intuitive sense of each scene&rsquo;s 3D structure and motion. Liquids, glass and some procedural textures are approximated, so materials and lighting differ from the Cycles renders shown in the films.</p>
     </div>
     <div class="cx" id="cx">
       <aside class="cx-side">
@@ -328,32 +321,20 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
             <p class="cx-objs" id="cxObjs"></p>
           </div>
           <div class="cx-tools">
-            <div class="cx-seg" id="cxMode">
-              <button data-mode="grid" aria-pressed="true">Side by side</button>
-              <button data-mode="wipe" aria-pressed="false">Wipe</button>
-              <button data-mode="3d" aria-pressed="false" id="cxMode3d">3D scene</button>
-            </div>
-            <div class="cx-seg" id="cxVs" hidden></div>
             <div class="cx-seg" id="cxView" hidden>
               <button data-view="camera" aria-pressed="true">Through the camera</button>
               <button data-view="free" aria-pressed="false">Free orbit</button>
             </div>
+            <button id="cxReset" title="Put the camera back where the film's current shot sees it (R)">Reset camera</button>
             <button id="cxFs" aria-label="Full screen">Full screen</button>
           </div>
         </div>
         <div class="cx-stage">
           <div class="cx-grid" id="cxGrid"></div>
-          <div class="cx-wipe" id="cxWipe" hidden>
-            <div class="cx-wbase" id="cxWbase"></div>
-            <div class="cx-wtop" id="cxWtop"></div>
-            <div class="cx-handle" id="cxHandle"></div>
-            <span class="cx-wlab l" id="cxWl"></span>
-            <span class="cx-wlab r" id="cxWr"></span>
-          </div>
           <div class="cx-3d" id="cx3d" hidden>
             <canvas id="cx3dCanvas" tabindex="0" aria-label="The generated 4D scene at the playhead; drag to orbit"></canvas>
             <div class="cx-hud"><span id="cxShotLab"></span><span id="cxKeyLab"></span></div>
-            <span class="cx-hint" id="cxHint">Drag to orbit · scroll to zoom</span>
+            <span class="cx-hint" id="cxHint">Drag to orbit · WASD to move</span>
             <div class="cx-pip" id="cxPip" title="Rendered film at the same moment (click to enlarge)"><b>Rendered film</b></div>
             <div class="cx-load" id="cxLoad"><span id="cxLoadT">Loading the scene</span><i><b id="cxLoadB"></b></i></div>
           </div>
@@ -366,7 +347,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
             <div class="cx-seg" id="cxSpeed"></div>
             <div class="cx-seg"><button id="cxLoop" aria-pressed="true">Loop</button></div>
             <span class="cx-buf" id="cxBuf" hidden>Buffering…</span>
-            <span class="cx-keys"><kbd>Space</kbd> play · <kbd>&larr;</kbd><kbd>&rarr;</kbd> seek · <kbd>,</kbd><kbd>.</kbd> frame · <kbd>&uarr;</kbd><kbd>&darr;</kbd> prompt · <kbd>W</kbd> wipe</span>
+            <span class="cx-keys"><kbd>Space</kbd> play · <kbd>&larr;</kbd><kbd>&rarr;</kbd> seek · <kbd>,</kbd><kbd>.</kbd> frame · <kbd>&uarr;</kbd><kbd>&darr;</kbd> prompt · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move camera · <kbd>R</kbd> reset</span>
           </div>
           <div class="cx-tip" id="cxTip" hidden><img alt=""><p></p></div>
           <div class="cx-lanes" id="cxLanes">
@@ -1376,8 +1357,7 @@ document.addEventListener('keydown', e => {
   const root = document.getElementById('cx');
   const el = id => document.getElementById(id);
   const label = k => METHODS.find(m => m.key === k).label;
-  const st = { i: 0, t: 0, playing: false, rate: 1, loop: true, mode: 'grid',
-               vs: METHODS.find(m => m.key !== HIGHLIGHT).key, wipe: 50, cat: 'all',
+  const st = { i: 0, t: 0, playing: false, rate: 2, loop: true, mode: '3d', cat: 'all',
                last: performance.now(), inView: false, started: false, scrubbing: false };
   const shown = new Set(METHODS.map(m => m.key));
 
@@ -1386,7 +1366,7 @@ document.addEventListener('keydown', e => {
     return m + ':' + (r < 10 ? '0' : '') + r.toFixed(1);
   }
 
-  // One persistent <video> per method; they are moved between the grid and wipe layouts.
+  // One persistent <video> per method; DyCraft's plays in the 3D view's corner, the rest wait in the hold.
   const players = {};
   const tiles = {};
   METHODS.forEach(m => {
@@ -1416,8 +1396,7 @@ document.addEventListener('keydown', e => {
     return isFinite(v.duration) && v.duration > 0 ? v.duration : scene().clips[k].duration;
   }
   function activeKeys() {
-    const ks = st.mode === 'wipe' ? [HIGHLIGHT, st.vs] : st.mode === '3d' ? [HIGHLIGHT]
-             : METHODS.map(m => m.key).filter(k => shown.has(k));
+    const ks = st.mode === '3d' ? [HIGHLIGHT] : METHODS.map(m => m.key).filter(k => shown.has(k));
     return ks.filter(k => scene().clips[k]);
   }
   const span = () => Math.max(0.1, ...activeKeys().map(dur),
@@ -1471,17 +1450,6 @@ document.addEventListener('keydown', e => {
     [...el('cxSpeed').children].forEach((c, j) => c.setAttribute('aria-pressed', String(CX_SPEEDS[j] === sp)));
     Object.values(players).forEach(v => { try { v.playbackRate = sp; } catch (e) {} });
   }
-  METHODS.filter(m => m.key !== HIGHLIGHT).forEach(m => {
-    const b = document.createElement('button');
-    b.textContent = 'vs ' + m.label;
-    b.dataset.k = m.key;
-    b.addEventListener('click', () => { st.vs = m.key; layout(); });
-    el('cxVs').appendChild(b);
-  });
-  el('cxMode').addEventListener('click', e => {
-    const m = e.target.dataset.mode;
-    if (m && !e.target.disabled) { st.mode = m; layout(); }
-  });
   el('cxLoop').addEventListener('click', e => {
     st.loop = !st.loop;
     e.currentTarget.setAttribute('aria-pressed', String(st.loop));
@@ -1503,30 +1471,17 @@ document.addEventListener('keydown', e => {
     el('cxPlay').setAttribute('aria-label', p ? 'Pause' : 'Play');
   }
 
-  // ---- layout: grid vs wipe ----
+  // ---- layout: the 3D scene with the film in the corner (the grid is the no-3D fallback) ----
   function layout() {
-    [...el('cxMode').children].forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === st.mode)));
-    [...el('cxVs').children].forEach(b => b.setAttribute('aria-pressed', String(b.dataset.k === st.vs)));
-    const wipe = st.mode === 'wipe', three = st.mode === '3d';
-    el('cxMode3d').disabled = !SCENES3D[scene().id];
-    el('cxMode3d').title = SCENES3D[scene().id] ? '' : 'No exported 3D scene for this prompt yet';
-    el('cxGrid').hidden = wipe || three;
-    el('cxWipe').hidden = !wipe;
-    el('cxVs').hidden = !wipe;
+    const three = st.mode === '3d';
+    el('cxGrid').hidden = three;
     el('cx3d').hidden = !three;
     el('cxView').hidden = !three;
+    el('cxReset').hidden = !three;
     if (three) {
       el('cxPip').appendChild(players[HIGHLIGHT]);
       METHODS.forEach(m => { if (m.key !== HIGHLIGHT) el('cxHold').appendChild(players[m.key]); });
       show3D(scene().id);
-    } else if (wipe) {
-      el('cxWtop').appendChild(players[HIGHLIGHT]);
-      el('cxWbase').appendChild(players[st.vs]);
-      METHODS.forEach(m => { if (m.key !== HIGHLIGHT && m.key !== st.vs) el('cxHold').appendChild(players[m.key]); });
-      el('cxWl').innerHTML = ''; el('cxWr').innerHTML = '';
-      el('cxWl').append(label(HIGHLIGHT), Object.assign(document.createElement('i'), { id: 'cxWlS' }));
-      el('cxWr').append(label(st.vs), Object.assign(document.createElement('i'), { id: 'cxWrS' }));
-      setWipe(st.wipe);
     } else {
       const ks = METHODS.map(m => m.key).filter(k => shown.has(k));
       el('cxGrid').style.gridTemplateColumns = 'repeat(' + ks.length + ', minmax(0,1fr))';
@@ -1537,20 +1492,6 @@ document.addEventListener('keydown', e => {
     }
     renderLanes();
   }
-  function setWipe(p) {
-    st.wipe = Math.max(0, Math.min(100, p));
-    el('cxWtop').style.clipPath = 'inset(0 ' + (100 - st.wipe) + '% 0 0)';
-    el('cxHandle').style.left = st.wipe + '%';
-  }
-  (() => {
-    const w = el('cxWipe');
-    let drag = false;
-    const at = e => { const r = w.getBoundingClientRect(); setWipe((e.clientX - r.left) / r.width * 100); };
-    w.addEventListener('pointerdown', e => { drag = true; w.setPointerCapture(e.pointerId); at(e); });
-    w.addEventListener('pointermove', e => { if (drag) at(e); });
-    w.addEventListener('pointerup', () => { drag = false; });
-    w.addEventListener('pointercancel', () => { drag = false; });
-  })();
 
   // ---- timeline lanes ----
   const lanes = {};
@@ -1563,7 +1504,6 @@ document.addEventListener('keydown', e => {
     b.title = 'Show or hide ' + m.label;
     b.addEventListener('click', () => {
       if (st.mode === '3d') return;
-      if (st.mode === 'wipe') { if (m.key !== HIGHLIGHT) { st.vs = m.key; layout(); } return; }
       if (shown.has(m.key)) { if (shown.size > 1) shown.delete(m.key); } else shown.add(m.key);
       layout();
     });
@@ -1633,7 +1573,7 @@ document.addEventListener('keydown', e => {
       tiles[m.key].querySelector('.cx-endtag').textContent = clip ? 'ended · ' + fmt(clip.duration) : 'no result';
     });
     st.meta = null;
-    if (st.mode === '3d' && !SCENES3D[sc.id]) st.mode = 'grid';
+    st.mode = SCENES3D[sc.id] ? '3d' : 'grid';
     loadMeta(sc.id).then(m => { if (m && scene().id === sc.id) { st.meta = m; renderLanes(); } });
     el('cxTitle').textContent = sc.prompt;
     el('cxObjs').textContent = sc.objects || '';
@@ -1971,7 +1911,7 @@ document.addEventListener('keydown', e => {
     v3.view = v;
     [...el('cxView').children].forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
     el('cx3d').classList.toggle('is-free', v === 'free');
-    el('cxHint').textContent = v === 'free' ? 'Drag to orbit · scroll to zoom · right-drag to pan' : 'Drag to orbit freely';
+    el('cxHint').textContent = v === 'free' ? 'Drag to orbit · scroll to zoom · WASD/QE to move' : 'Drag to orbit · WASD to move';
     if (!v3.cur || !st.meta) return;
     if (v === 'camera' || init) placeShotCamera();
     if (v === 'free') {
@@ -1982,6 +1922,29 @@ document.addEventListener('keydown', e => {
     }
   }
   el('cxView').addEventListener('click', e => { const v = e.target.dataset.view; if (v) setView(v); });
+  // Back to the current shot's camera, keeping the chosen view mode.
+  const resetCamera = () => setView(v3.view, true);
+  el('cxReset').addEventListener('click', resetCamera);
+  // WASD flies the camera (Q/E down/up); the orbit target travels with it so dragging still turns around what's ahead.
+  const MOVE = { w: [0, 0, -1], s: [0, 0, 1], a: [-1, 0, 0], d: [1, 0, 0], q: [0, -1, 0], e: [0, 1, 0] };
+  const held = new Set();
+  let lastFly = 0;
+  function fly() {
+    const now = performance.now(), dt = Math.min(0.1, (now - lastFly) / 1000);
+    lastFly = now;
+    if (!held.size || !v3.cur) return;
+    if (v3.view === 'camera') setView('free');
+    const THREE = v3.THREE, dir = new THREE.Vector3();
+    held.forEach(k => dir.add(new THREE.Vector3(...MOVE[k])));
+    if (!dir.lengthSq()) return;
+    const up = dir.y; dir.y = 0;
+    dir.applyQuaternion(v3.cam.quaternion);
+    dir.y += up;
+    const speed = 0.8 * Math.max(0.3, v3.cam.position.distanceTo(v3.controls.target));
+    dir.normalize().multiplyScalar(speed * dt);
+    v3.cam.position.add(dir);
+    v3.controls.target.add(dir);
+  }
   el('cxPip').addEventListener('click', () => el('cxPip').classList.toggle('big'));
   function draw3D() {
     const c = v3.cur;
@@ -1989,6 +1952,7 @@ document.addEventListener('keydown', e => {
     attach(el('cx3d'));
     pose(c, st.t);
     const shot = shotAt(st.t), key = keyAt(st.t);
+    fly();
     if (v3.view === 'camera') placeShotCamera();
     else v3.controls.update();
     if (shot !== v3.lastShot) {
@@ -2042,10 +2006,6 @@ document.addEventListener('keydown', e => {
       const s = ended ? 'ended at ' + clock(d) : clock(st.t);
       tiles[m.key].classList.toggle('is-ended', ended);
       tiles[m.key].querySelector('.s').textContent = s;
-      if (st.mode === 'wipe') {
-        const w = el(m.key === HIGHLIGHT ? 'cxWlS' : 'cxWrS');
-        if (w && (m.key === HIGHLIGHT || m.key === st.vs)) w.textContent = ended ? 'ended' : '';
-      }
     });
 
     const n = clock(st.t), ph = (st.t / S * 100).toFixed(2) + '%';
@@ -2061,8 +2021,6 @@ document.addEventListener('keydown', e => {
       st.inView = e.isIntersecting;
       if (st.inView && !st.started) {
         st.started = true;
-        // The section is a 3D viewer first: unless a link asked for something else, start in the 3D scene.
-        if (!location.hash.startsWith('#console-') && SCENES3D[scene().id]) { st.mode = '3d'; layout(); }
         setPlaying(true);
       }
     });
@@ -2085,21 +2043,22 @@ document.addEventListener('keydown', e => {
       const at = vis.indexOf(st.i);
       loadScene(vis[((at < 0 ? 0 : at) + (k === 'ArrowDown' ? 1 : -1) + vis.length) % vis.length], true);
     }
-    else if (k === 'w' || k === 'W') { st.mode = st.mode === 'wipe' ? 'grid' : 'wipe'; layout(); }
+    else if ((k === 'r' || k === 'R') && st.mode === '3d') resetCamera();
+    else if (MOVE[k.toLowerCase()] && st.mode === '3d') { e.preventDefault(); held.add(k.toLowerCase()); }
   });
+  document.addEventListener('keyup', e => { held.delete(e.key.toLowerCase()); });
+  window.addEventListener('blur', () => held.clear());
 
   // Entry point for the rest of the page (results strip, storyboard filmstrip).
   window.cxOpen = (id, opts = {}) => {
     const j = SCENES.findIndex(s => s.id === id);
     if (j < 0) return;
-    if (opts.mode === '3d' && SCENES3D[id]) st.mode = '3d';
     loadScene(j, true);
     if (opts.t) seek(opts.t);
     root.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const fromHash = location.hash.match(/^#console-(\d+)(-3d)?/);
-  if (fromHash && fromHash[2] && SCENES3D[fromHash[1]]) st.mode = '3d';
+  const fromHash = location.hash.match(/^#console-(\d+)/);
   const startIdx = fromHash ? Math.max(0, SCENES.findIndex(s => s.id === fromHash[1])) : 0;
   setPlaying(false);
   loadScene(startIdx, false);
