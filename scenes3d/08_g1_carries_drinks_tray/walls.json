@@ -1,0 +1,23 @@
+{
+"hide": [
+"part/ceiling/body",
+"part/ceiling/grid",
+"part/collection_wall/body",
+"part/collection_wall/skirting",
+"part/corridor_wall/body",
+"part/corridor_wall/skirting",
+"part/corridor_wall/door_reveal",
+"part/service_wall/body",
+"part/service_wall/skirting",
+"part/service_wall/door_reveal",
+"part/window_wall/body",
+"part/window_wall/skirting",
+"part/wash_recess/tiles",
+"part/wash_recess/tile_backer"
+],
+"cut": [
+"part/corridor_extension/body",
+"part/courtyard/body",
+"part/wash_recess/body"
+]
+}

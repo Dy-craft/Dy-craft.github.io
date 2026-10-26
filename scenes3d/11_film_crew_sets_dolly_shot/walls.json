@@ -1,0 +1,19 @@
+{
+"hide": [
+"part/studio_ceiling/body",
+"part/studio_ceiling/beam_shoes",
+"part/studio_ceiling/downstand_beams",
+"part/studio_east/body",
+"part/studio_north/body",
+"part/studio_south/body",
+"part/studio_south/corridor_ceiling",
+"part/studio_south/wall_dado",
+"part/studio_west/body",
+"part/studio_west/wall_plinth",
+"part/studio_west/brick_faces",
+"part/studio_west/court_masonry"
+],
+"cut": [
+"part/studio_south/corridor_walls"
+]
+}

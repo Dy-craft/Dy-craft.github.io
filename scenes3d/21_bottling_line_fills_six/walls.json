@@ -1,0 +1,15 @@
+{
+"hide": [
+"part/room_set/ceiling_and_store_soffit",
+"part/room_set/painted_loft_joists",
+"part/room_set/ivory_wall_tiles",
+"part/room_set/sage_dado_and_repairs",
+"part/room_set/sage_plinths",
+"part/room_set/tile_grout",
+"part/room_set/opposite_court_brickwork"
+],
+"cut": [
+"part/room_set/body",
+"part/room_set/court_mortar_and_returns"
+]
+}

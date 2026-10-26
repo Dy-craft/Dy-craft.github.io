@@ -1,0 +1,17 @@
+{
+"hide": [
+"part/back_wall/body",
+"part/back_wall/gable",
+"part/boat_store_wall/body",
+"part/boat_store_wall/store_ceiling",
+"part/boat_store_wall/store_end_wall",
+"part/boat_store_wall/store_north_wall",
+"part/boat_store_wall/store_south_wall",
+"part/embankment_wall/body",
+"part/river_frontage/body",
+"part/river_frontage/east_pier",
+"part/pitched_roof/east_sheet",
+"part/pitched_roof/west_sheet"
+],
+"cut": []
+}

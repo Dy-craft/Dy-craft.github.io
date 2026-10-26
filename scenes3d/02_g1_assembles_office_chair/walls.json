@@ -1,0 +1,16 @@
+{
+"hide": [
+"part/ceiling_grid_and_lights/acoustic_tiles",
+"part/ceiling_grid_and_lights/exposed_ceiling_T_grid",
+"part/court_brick_wall/mortar_backing",
+"part/court_brick_wall/stretcher_bond_bricks",
+"part/file_store_opening/plaster_partition",
+"part/file_store_opening/painted_skirting",
+"part/service_core_wall/painted_masonry",
+"part/service_core_wall/skirting",
+"part/window_wall/masonry_spandrel"
+],
+"cut": [
+"part/outer_enclosure/outer_walls"
+]
+}

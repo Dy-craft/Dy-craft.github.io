@@ -1,0 +1,17 @@
+{
+"hide": [
+"part/entry_vestibule/plaster_wall",
+"part/kiln_wall/brick_courses",
+"part/kiln_wall/mortar",
+"part/party_wall/plaster",
+"part/party_wall/skirting",
+"part/studio_ceiling/exposed_joists",
+"part/studio_ceiling/painted_boards",
+"part/window_yard/limewashed_yard_bricks",
+"part/window_yard/opposing_wall_backing",
+"part/window_yard/plaster_wall"
+],
+"cut": [
+"part/entry_vestibule/vestibule_shell"
+]
+}

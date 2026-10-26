@@ -1,0 +1,10 @@
+{
+"hide": [
+"part/cafe_place/ceiling",
+"part/cafe_place/tile"
+],
+"cut": [
+"part/cafe_place/plaster",
+"part/cafe_place/paint"
+]
+}

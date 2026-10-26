@@ -1,0 +1,29 @@
+{
+"hide": [
+"part/env_back_wall/body",
+"part/env_back_wall/dado",
+"part/env_back_wall/skirting",
+"part/env_back_wall/brick_reveals",
+"part/env_back_wall/reveal_mortar",
+"part/env_back_wall/court_wall",
+"part/env_back_wall/splashback",
+"part/env_ceiling/body",
+"part/env_ceiling/cornice",
+"part/env_front_wall/body",
+"part/env_front_wall/dado",
+"part/env_front_wall/skirting",
+"part/env_front_wall/gallery_end",
+"part/env_front_wall/gallery_ceiling",
+"part/env_left_wall/body",
+"part/env_left_wall/dado",
+"part/env_left_wall/dado_cap",
+"part/env_left_wall/skirting",
+"part/env_right_wall/body",
+"part/env_right_wall/dado",
+"part/env_right_wall/dado_cap",
+"part/env_right_wall/skirting"
+],
+"cut": [
+"part/env_front_wall/gallery_sides"
+]
+}

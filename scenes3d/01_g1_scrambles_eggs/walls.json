@@ -1,0 +1,19 @@
+{
+"hide": [
+"part/ceiling/plaster",
+"part/wall_back/plaster",
+"part/wall_back/skirting",
+"part/wall_entrance/plaster",
+"part/wall_entrance/skirting",
+"part/wall_entrance/passage_side",
+"part/wall_entrance/passage_back",
+"part/wall_right/plaster",
+"part/wall_right/skirting",
+"part/wall_window/plaster",
+"part/wall_window/skirting",
+"part/wall_window/painted_rebates",
+"part/wall_window/yard_bricks",
+"part/wall_window/yard_mortar"
+],
+"cut": []
+}

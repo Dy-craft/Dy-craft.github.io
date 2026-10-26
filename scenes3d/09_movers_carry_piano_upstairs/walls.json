@@ -1,0 +1,10 @@
+{
+"hide": [],
+"cut": [
+"part/house/plaster_enclosure",
+"part/house/dado_paint",
+"part/house/occupied_room_backs",
+"part/house/brick_frontages",
+"part/house/washhouse_walls"
+]
+}

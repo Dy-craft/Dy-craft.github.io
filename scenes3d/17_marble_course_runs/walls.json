@@ -1,0 +1,25 @@
+{
+"hide": [
+"part/room_ceiling/ceiling_battens",
+"part/room_ceiling/ceiling_boards",
+"part/room_ceiling/roof_backing",
+"part/room_rear/plaster_wall",
+"part/room_rear/skirting_dado_cornice",
+"part/room_rear/tongue_groove_dado",
+"part/room_right/plaster_wall",
+"part/room_right/skirting_dado_cornice",
+"part/room_right/tongue_groove_dado",
+"part/room_window_court/window_wall",
+"part/room_window_court/wall_trim",
+"part/room_window_court/boarded_dado",
+"part/room_window_court/painted_deep_reveal",
+"part/room_window_court/court_brick_faces",
+"part/room_window_court/court_wall_mortar",
+"part/room_door_store/doorway_wall",
+"part/room_door_store/door_architrave_skirting",
+"part/room_door_store/front_boarded_dado"
+],
+"cut": [
+"part/room_door_store/store_plaster"
+]
+}

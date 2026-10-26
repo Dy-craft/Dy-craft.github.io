@@ -1,0 +1,19 @@
+{
+"hide": [
+"part/depot/ceiling_battens",
+"part/depot/ceiling_boards",
+"part/depot/wall_feed",
+"part/depot/wall_outlet",
+"part/depot/wall_store",
+"part/depot/wall_window",
+"part/depot/skirting_boards",
+"part/depot/court_opposite_bricks",
+"part/depot/court_opposite_mortar",
+"part/depot/court_wall_coping",
+"part/depot/passage_ceiling"
+],
+"cut": [
+"part/depot/passage_plaster_returns",
+"part/depot/recess_side_returns"
+]
+}

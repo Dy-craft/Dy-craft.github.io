@@ -1,0 +1,14 @@
+{
+"hide": [
+"part/environment/ceiling",
+"part/environment/corridor_ceiling",
+"part/environment/building_b_brick_facade",
+"part/environment/court_sky",
+"part/environment/skirting",
+"part/environment/corridor_skirting"
+],
+"cut": [
+"part/environment/body",
+"part/environment/corridor_return"
+]
+}

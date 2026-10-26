@@ -1,0 +1,13 @@
+{
+"hide": [
+"part/continuous_ceiling/body",
+"part/delivery_passage/body",
+"part/delivery_passage/return_wall",
+"part/outer_walls/body",
+"part/outer_walls/court_facing",
+"part/outer_walls/east",
+"part/outer_walls/south",
+"part/skirting/body"
+],
+"cut": []
+}

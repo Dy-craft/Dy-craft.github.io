@@ -1,0 +1,20 @@
+{
+"hide": [
+"part/workshop/ceiling",
+"part/workshop/ceiling_joists",
+"part/workshop/wall_back",
+"part/workshop/wall_front",
+"part/workshop/wall_left",
+"part/workshop/wall_window",
+"part/workshop/dado_back",
+"part/workshop/dado_front",
+"part/workshop/dado_sides",
+"part/workshop/dado_scuffs",
+"part/workshop/court_bricks",
+"part/workshop/court_mortar",
+"part/workshop/passage_ceiling"
+],
+"cut": [
+"part/workshop/passage_walls"
+]
+}

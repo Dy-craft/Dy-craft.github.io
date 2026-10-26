@@ -1,0 +1,18 @@
+{
+"hide": [
+"part/blind_end_wall/body",
+"part/blind_end_wall/skirting",
+"part/boarded_ceiling/body",
+"part/boarded_ceiling/ceiling_battens",
+"part/pantry_back/body",
+"part/pantry_back/skirting",
+"part/window_and_courtyard/body",
+"part/window_and_courtyard/splashback_tiles",
+"part/window_and_courtyard/yard_bricks",
+"part/window_and_courtyard/yard_mortar",
+"part/window_and_courtyard/yard_coping"
+],
+"cut": [
+"part/entrance_and_passage/body"
+]
+}

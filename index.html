@@ -41,6 +41,76 @@ a:hover{color:#363636}
   text-align:center;margin:0 0 1.5rem;line-height:1.125}
 .content{text-align:justify;color:#4a4a4a}
 .content p{margin:0 0 1em}
+.md{--sheet:#fff;--ink:#363636;--ink2:#4a4a4a;--ink3:#7a7a7a;--rule:#dbdbdb;--rule2:#ededed;--warn:#c2410c;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;max-width:1120px;margin:0 auto;color:var(--ink)}
+.md-steps{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.md-step{position:relative;width:100%;height:auto;min-height:58px;padding:8px 10px 10px;border:1px solid var(--rule);border-radius:8px;
+  background:var(--sheet);color:var(--ink2);text-align:left;display:flex;flex-direction:column;gap:2px;overflow:hidden;cursor:pointer}
+.md-step i{font:500 11px/1 var(--mono);font-style:normal;color:var(--ink3)}
+.md-step b{font:600 14px/1.2 'Google Sans','Noto Sans',sans-serif}
+.md-step u{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--ours);text-decoration:none}
+.md-step[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.md-step[aria-selected=true] i{color:#bdbdbd}
+.md-demo{border:1px solid var(--rule);border-radius:12px;padding:10px;background:var(--sheet)}
+.md-view{position:relative;aspect-ratio:16/9;background:#e6e3dc;overflow:hidden;border-radius:4px}
+.md-view canvas,.md-view > img,.md-view video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.md-view canvas,.md-view > img{transition:filter .4s}
+.md-view[data-stage=prompt] canvas,.md-view[data-stage=prompt] > img,
+.md-view[data-stage=rewrite] canvas,.md-view[data-stage=rewrite] > img{filter:grayscale(.7) opacity(.45) blur(4px)}
+.md-view video{object-fit:contain;background:#000;z-index:2}
+.md-hud{position:absolute;left:10px;top:10px;z-index:4;display:flex;gap:6px;flex-wrap:wrap;pointer-events:none;max-width:calc(100% - 20px)}
+.md-hud span{background:rgba(20,20,20,.72);color:#fff;font:500 12px/1 var(--mono);padding:5px 7px;border-radius:3px;white-space:nowrap}
+.md-hud span:empty{display:none}
+.md-load{position:absolute;right:10px;bottom:10px;z-index:4;font-size:12px;color:var(--ink3)}
+.md-ov{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;gap:16px;padding:48px 6% 24px}
+.md-card{background:rgba(255,255,255,.94);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;box-shadow:0 6px 24px rgba(0,0,0,.08);
+  font-size:14.5px;line-height:1.55;color:var(--ink2);max-height:100%;overflow:hidden}
+.md-card h4{margin:0 0 6px;font:600 13px/1.3 var(--mono);color:var(--ink)}
+.md-card h4 span{font-weight:400;color:var(--ink3)}
+.md-card p{margin:0}
+.md-card mark{background:#fde9b8;color:inherit;padding:0 1px}
+.md-ov[data-for=prompt] .md-card{max-width:640px;font:400 16px/1.6 'Google Sans','Noto Sans',sans-serif}
+.md-ov[data-for=rewrite] .md-card{flex:1;max-width:420px}
+.md-ov[data-for=rewrite] .md-arrow{font-size:22px;color:var(--ink3)}
+.md-ov[data-for=verify]{background:#f4f3ef;flex-direction:column;gap:10px;padding:48px 4% 14px}
+.md-vrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;min-height:0}
+.md-vrow figure{margin:0;min-width:0}
+.md-vrow img{width:100%;height:auto;display:block;border-radius:3px}
+.md-vrow figcaption{font:400 12.5px/1.45 var(--mono);color:var(--ink2);margin-top:6px}
+.md-vrow .bad{color:var(--warn)} .md-vrow .ok{color:var(--ours)}
+.md-tl{position:relative;height:30px;margin:10px 4px 0}
+.md-tl::before{content:'';position:absolute;left:0;right:0;top:11px;border-top:1px solid var(--rule)}
+.md-tl i{position:absolute;top:11px;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;transform:rotate(45deg);background:var(--ours);border:1px solid var(--sheet);cursor:pointer}
+.md-tl i.on{background:var(--ink);width:12px;height:12px;margin:-6px 0 0 -6px}
+.md-tl i.ahead{opacity:.45}
+.md-tl em{position:absolute;top:5px;height:12px;background:rgba(21,128,61,.14);border-radius:2px;pointer-events:none}
+.md-tl em.bad{background:rgba(194,65,12,.55)}
+.md-tl b{position:absolute;top:0;width:2px;height:22px;margin-left:-1px;background:var(--ink);pointer-events:none}
+.md-tl span{position:absolute;top:19px;font:400 10.5px/1 var(--mono);color:var(--ink3)}
+.md-desc{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin:8px 4px 2px}
+.md-desc h3{margin:0;font:600 17px/1.3 'Google Sans','Noto Sans',sans-serif;color:var(--ink)}
+.md-desc p{margin:0;flex:1;min-width:260px;font-size:15px;line-height:1.55;color:var(--ink2)}
+.md-auto{height:28px;font-size:12.5px;padding:0 10px}
+.md [hidden]{display:none!important}
+@media (max-width:900px){
+  .md-steps{display:flex;overflow-x:auto;padding-bottom:4px}
+  .md-steps li{flex:0 0 124px}
+  .md-view{aspect-ratio:4/3}
+  .md-ov{padding:40px 10px 10px;gap:8px}
+  .md-card{font-size:12.5px;padding:10px 12px}
+  .md-ov[data-for=prompt] .md-card{font-size:13.5px;display:-webkit-box;-webkit-line-clamp:10;-webkit-box-orient:vertical}
+  .md-ov[data-for=rewrite]{flex-direction:column}
+  .md-ov[data-for=rewrite] .md-arrow{display:none}
+  .md-ov[data-for=rewrite] .md-card{max-width:none;flex:0 1 auto}
+}
+@media (max-width:700px){
+  /* Text and the verifier pair don't fit a phone-sized frame: these steps grow to their content. */
+  .md-view[data-stage=prompt],.md-view[data-stage=rewrite],.md-view[data-stage=verify]{aspect-ratio:auto;min-height:56vw}
+  .md-ov{position:relative;inset:auto;min-height:56vw}
+  .md-vrow{grid-template-columns:minmax(0,1fr)}
+  .md-hud span{white-space:normal;line-height:1.35}
+  .md-vrow figcaption{font-size:11.5px}
+}
 .gallery-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:#4a4a4a}
 .gallery-intro p{margin:0 0 .75em}
 .site-footer{background:#fafafa;padding:3rem 1.5rem 4rem;margin-top:2rem;
@@ -50,8 +120,9 @@ a:hover{color:#363636}
 /* ---- Video gallery (identical to index.html) ---- */
 
 :root{
-  --bg:#ffffff; --fg:#1a1a1a; --fg2:#6b6b6b; --fg3:#909090; --line:#e4e4e4;
-  --card:#fafafa; --accent:#3273dc; --chip:#f0f0f0; --miss:#f4f4f4;
+  /* same ink, rules and white sheets as the viewer and Method figure: selection is ink, DyCraft is green */
+  --bg:#ffffff; --fg:#363636; --fg2:#6b6b6b; --fg3:#909090; --line:#dbdbdb;
+  --card:#ffffff; --accent:#363636; --chip:#f0f0f0; --miss:#f4f4f4;
   --ours:#15803d; --ours-bd:#15803d;
 }
 *{box-sizing:border-box}
@@ -91,7 +162,7 @@ button:hover{border-color:var(--fg2)}
 .objs{font-size:14px;color:var(--fg2);margin:0}
 .sctl{display:flex;gap:7px;align-items:center;flex-shrink:0;margin-top:1px}
 .sctl button{height:32px;padding:0 12px;font-size:13px}
-.bar{height:3px;background:var(--line);border-radius:2px;overflow:hidden;margin:0 0 13px}
+.bar{height:3px;background:#ededed;border-radius:2px;overflow:hidden;margin:0 0 13px}
 .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .1s linear}
 
 .cols{display:grid;gap:14px}
@@ -304,7 +375,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
     <h2 class="title is-3">Interactive 4D Scene Viewer</h2>
     <div class="viewer-intro">
       <p>Every task opens in DyCraft&rsquo;s generated 4D scene, rendered live in your browser. Watch it through the film&rsquo;s cameras or switch to <strong>Free orbit</strong> and drag to look around while it plays; the rendered film plays in the corner at the same moment. The timeline marks the verified storyboard key poses and the camera cuts.</p>
-      <p>Drag on the timeline to scrub; <kbd>Space</kbd> plays and pauses, <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> change the task, and <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> (with <kbd>Q</kbd>/<kbd>E</kbd> for down/up) fly the camera through the scene; <strong>Reset camera</strong> or <kbd>R</kbd> brings it back to the film&rsquo;s shot.</p>
+      <p>Drag on the timeline to scrub; <kbd>Space</kbd> plays and pauses, <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> change the task, and <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> (with <kbd>Q</kbd>/<kbd>E</kbd> for down/up) fly the camera through the scene; <strong>Reset camera</strong> or <kbd>R</kbd> brings it back to the film&rsquo;s shot. In indoor scenes, <strong>Hide walls</strong> or <kbd>H</kbd> takes away the walls and ceiling so you can watch from outside the room; windows, doors, shelves and fittings stay in place.</p>
       <p class="viewer-note"><strong>Note:</strong> the viewer is a real-time WebGL approximation, meant to give an intuitive sense of each scene&rsquo;s 3D structure and motion. Liquids, glass and some procedural textures are approximated, so materials and lighting differ from the Cycles renders shown in the films.</p>
     </div>
     <div class="cx" id="cx">
@@ -325,6 +396,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
               <button data-view="camera" aria-pressed="true">Through the camera</button>
               <button data-view="free" aria-pressed="false">Free orbit</button>
             </div>
+            <button id="cxWalls" aria-pressed="false" title="Take away the room's walls and ceiling; windows, doors, shelves and fittings stay (H)" hidden>Hide walls</button>
             <button id="cxReset" title="Put the camera back where the film's current shot sees it (R)">Reset camera</button>
             <button id="cxFs" aria-label="Full screen">Full screen</button>
           </div>
@@ -347,7 +419,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
             <div class="cx-seg" id="cxSpeed"></div>
             <div class="cx-seg"><button id="cxLoop" aria-pressed="true">Loop</button></div>
             <span class="cx-buf" id="cxBuf" hidden>Buffering…</span>
-            <span class="cx-keys"><kbd>Space</kbd> play · <kbd>&larr;</kbd><kbd>&rarr;</kbd> seek · <kbd>,</kbd><kbd>.</kbd> frame · <kbd>&uarr;</kbd><kbd>&darr;</kbd> prompt · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move camera · <kbd>R</kbd> reset</span>
+            <span class="cx-keys"><kbd>Space</kbd> play · <kbd>&larr;</kbd><kbd>&rarr;</kbd> seek · <kbd>,</kbd><kbd>.</kbd> frame · <kbd>&uarr;</kbd><kbd>&darr;</kbd> prompt · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move camera · <kbd>H</kbd> walls · <kbd>R</kbd> reset</span>
           </div>
           <div class="cx-tip" id="cxTip" hidden><img alt=""><p></p></div>
           <div class="cx-lanes" id="cxLanes">
@@ -366,6 +438,56 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
       </div>
     </div>
   </div>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-wide">
+    <h2 class="title is-3">Method</h2>
+    <div class="viewer-intro">
+      <p>DyCraft gives a general coding agent (GPT-6-Astra in Codex) tools for CAD, motion authoring and verification, and steers it through the steps an animator would take, so each one can be checked on its own. Click a step to see it on a real task from the benchmark, <em>&ldquo;Turn a wide panel through a narrow doorway&rdquo;</em>.</p>
+    </div>
+    <div class="md" id="md">
+      <ol class="md-steps" role="tablist" id="mdSteps">
+        <li><button class="md-step" role="tab" data-s="prompt"><i>1</i><b>Prompt</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="rewrite"><i>2</i><b>Prompt rewriting</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="cad"><i>3</i><b>CAD scene</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="board"><i>4</i><b>3D storyboard</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="motion"><i>5</i><b>Motion authoring</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="verify"><i>6</i><b>Verification</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="film"><i>7</i><b>Film</b><u></u></button></li>
+      </ol>
+      <div class="md-demo">
+        <div class="md-view" id="mdView" data-stage="prompt">
+          <img id="mdImg" alt="">
+          <div class="md-hud"><span id="mdStage"></span><span id="mdLab"></span></div>
+          <span class="md-load" id="mdLoad">Loading the 3D scene&hellip;</span>
+          <div class="md-ov" data-for="prompt"><div class="md-card"><h4>prompt.txt <span id="mdPromptN"></span></h4><p id="mdPrompt"></p></div></div>
+          <div class="md-ov" data-for="rewrite">
+            <div class="md-card"><h4>scene.txt <span>944 words</span></h4><p>&hellip; <mark>This workshop belongs to a museum that keeps refitting the same travelling displays between loans;</mark> the returning stock has gradually taken over the adjoining booking office, which now serves as the clean fitting room. The narrow personnel doorway survives that change of use. The workshop is 3.4 by 3.2 metres and the former office 3 by 3.2 metres, sharing a partition beneath a continuous low ceiling. &hellip;</p></div>
+            <span class="md-arrow" aria-hidden="true">+</span>
+            <div class="md-card"><h4>motion.txt <span>1,466 words</span></h4><p>&hellip; The chest starts the turn, successive lifted foot placements turn the pelvis, and the panel turns with the hold. <mark>At 45 degrees from broadside, the panel alone still projects about 720 mm across the 740 mm opening, leaving only about 10 mm at each jamb.</mark> The turn therefore continues until the long edge lies nearly along the passage. &hellip;</p></div>
+          </div>
+          <div class="md-ov" data-for="verify">
+            <div class="md-vrow">
+              <figure><img src="method/v_before.jpg" width="647" height="360" alt="The robot's left upper arm passes through its torso">
+                <figcaption><span class="bad">&#10007; NoPenetration</span> &middot; check #77<br>left shoulder &harr; torso, 6.2&ndash;7.3 s, 23 mm deep</figcaption></figure>
+              <figure><img src="method/v_after.jpg" width="650" height="360" alt="After the repair the arm stays clear of the torso">
+                <figcaption><span class="ok">&#10003; 8 / 8 verifiers pass</span> &middot; check #87<br>penetration, support, joint limits, contacts&hellip;</figcaption></figure>
+            </div>
+          </div>
+          <video id="mdFilm" muted playsinline loop preload="none" poster="_posters/ours_gpt6/05_g1_carries_panel_through_doorway.jpg" hidden>
+            <source src="ours_gpt6/05_g1_carries_panel_through_doorway.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="md-tl" id="mdTl"><b id="mdPh"></b></div>
+        <div class="md-desc">
+          <h3 id="mdTitle"></h3>
+          <p id="mdText"></p>
+          <button class="md-auto" id="mdAuto" aria-pressed="true">Auto-advance: on</button>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1357,7 +1479,7 @@ document.addEventListener('keydown', e => {
   const root = document.getElementById('cx');
   const el = id => document.getElementById(id);
   const label = k => METHODS.find(m => m.key === k).label;
-  const st = { i: 0, t: 0, playing: false, rate: 2, loop: true, mode: '3d', cat: 'all',
+  const st = { i: 0, t: 0, playing: false, rate: 2, loop: true, mode: '3d', cat: 'all', walls: false,
                last: performance.now(), inView: false, started: false, scrubbing: false };
   const shown = new Set(METHODS.map(m => m.key));
 
@@ -1478,6 +1600,7 @@ document.addEventListener('keydown', e => {
     el('cx3d').hidden = !three;
     el('cxView').hidden = !three;
     el('cxReset').hidden = !three;
+    el('cxWalls').hidden = !three || !(v3.cur && v3.cur.walls);
     if (three) {
       el('cxPip').appendChild(players[HIGHLIGHT]);
       METHODS.forEach(m => { if (m.key !== HIGHLIGHT) el('cxHold').appendChild(players[m.key]); });
@@ -1521,6 +1644,8 @@ document.addEventListener('keydown', e => {
     const act = activeKeys();
     METHODS.forEach(m => {
       const L = lanes[m.key], d = dur(m.key);
+      // the 3D view plays only DyCraft's film, so the baselines' lanes would just sit greyed out
+      L.b.hidden = L.tr.hidden = st.mode === '3d' && m.key !== HIGHLIGHT;
       L.b.setAttribute('aria-pressed', String(act.includes(m.key)));
       L.b.querySelector('.d').textContent = d ? fmt(d) : '—';
       L.tr.classList.toggle('off', !act.includes(m.key));
@@ -1722,7 +1847,7 @@ document.addEventListener('keydown', e => {
     const [r, g, b] = cx.getImageData(x, y, 1, 1).data;
     return new THREE.Color().setRGB(r / 255, g / 255, b / 255, THREE.SRGBColorSpace).multiply(m.color);
   }
-  function prepare(gltf) {
+  function prepare(gltf, wallList) {
     const THREE = v3.THREE;
     const scn = new THREE.Scene();
     scn.background = new THREE.Color(0xe6e3dc);
@@ -1836,7 +1961,40 @@ document.addEventListener('keydown', e => {
     }));
     const focus = moving.isEmpty() ? mid : moving.getCenter(new THREE.Vector3());
     const reach = moving.isEmpty() ? size.length() * 0.25 : moving.getSize(new THREE.Vector3()).length();
-    return { scn, mixer, actions, duration, cams, focus, reach };
+    return { scn, mixer, actions, duration, cams, focus, reach, walls: wallParts(gltf, wallList) };
+  }
+  // walls.json names the room's walls, skirting and ceiling (hidden whole) and any merged room
+  // shells, which keep only their floor-level faces. Windows, doors, shelves and fittings are not listed.
+  function wallParts(gltf, list) {
+    if (!list) return null;
+    const THREE = v3.THREE, byName = {};
+    gltf.scene.traverse(o => { if (o.userData.name) byName[o.userData.name] = o; });
+    const hide = list.hide.map(n => byName[n]).filter(Boolean), cut = [];
+    const a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), n = new THREE.Vector3();
+    list.cut.forEach(name => (byName[name] || { traverse() {} }).traverse(o => {
+      if (!o.isMesh) return;
+      const g = o.geometry, pos = g.attributes.position;
+      const full = g.index || new THREE.BufferAttribute(Uint32Array.from({ length: pos.count }, (_, i) => i), 1);
+      if (!g.index) g.setIndex(full);
+      const keep = [];
+      for (let i = 0; i < full.count; i += 3) {
+        const t = [full.getX(i), full.getX(i + 1), full.getX(i + 2)];
+        a.fromBufferAttribute(pos, t[0]).applyMatrix4(o.matrixWorld);
+        b.fromBufferAttribute(pos, t[1]).applyMatrix4(o.matrixWorld);
+        c.fromBufferAttribute(pos, t[2]).applyMatrix4(o.matrixWorld);
+        n.crossVectors(b.clone().sub(a), c.clone().sub(a)).normalize();
+        if (Math.abs(n.y) > 0.7 && (a.y + b.y + c.y) / 3 < 0.5) keep.push(...t);
+      }
+      cut.push({ g, full, cut: new THREE.BufferAttribute(Uint32Array.from(keep), 1) });
+    }));
+    return hide.length || cut.length ? { hide, cut, off: false } : null;
+  }
+  function setWalls(c, off) {
+    const w = c.walls;
+    if (!w || w.off === off) return;
+    w.off = off;
+    w.hide.forEach(o => { o.visible = !off; });
+    w.cut.forEach(x => x.g.setIndex(off ? x.cut : x.full));
   }
   // The one WebGL canvas moves between hosts (this console, the Method figure) so the
   // scene and its textures are only ever uploaded once.
@@ -1850,8 +2008,9 @@ document.addEventListener('keydown', e => {
   }
   function getScene(id, onProgress) {
     if (!v3.cache[id]) {
-      v3.cache[id] = boot3D().then(() => new Promise((res, rej) =>
-        v3.loader.load(SCENES3D[id] + 'scene.glb', res, onProgress, rej))).then(prepare);
+      const walls = fetch(SCENES3D[id] + 'walls.json').then(r => r.ok ? r.json() : null).catch(() => null);
+      v3.cache[id] = boot3D().then(() => Promise.all([new Promise((res, rej) =>
+        v3.loader.load(SCENES3D[id] + 'scene.glb', res, onProgress, rej)), walls])).then(([g, w]) => prepare(g, w));
       v3.cache[id].catch(() => { delete v3.cache[id]; });
     }
     return v3.cache[id];
@@ -1865,10 +2024,21 @@ document.addEventListener('keydown', e => {
     load: id => getScene(id),
     attach,
     consoleBusy: () => st.mode === '3d' && st.inView,
+    // The Method figure borrows the canvas while it is the more visible of the two; the console's camera comes back unchanged.
+    lend(on) {
+      if (!v3.renderer || on === !!v3.lent) return;
+      v3.lent = on;
+      if (on) v3.saved = { p: v3.cam.position.clone(), q: v3.cam.quaternion.clone(), fov: v3.cam.fov };
+      else if (v3.saved) {
+        v3.cam.position.copy(v3.saved.p); v3.cam.quaternion.copy(v3.saved.q); v3.cam.fov = v3.saved.fov;
+        v3.cam.updateProjectionMatrix();
+      }
+    },
     // place(cam, scene, THREE) positions the shared camera; called after the scene is posed at t.
     render(c, t, place) {
       if (!v3.renderer) return;
       pose(c, t);
+      setWalls(c, false);
       place(v3.cam, c, v3.THREE);
       v3.cam.updateProjectionMatrix();
       v3.renderer.render(c.scn, v3.cam);
@@ -1879,6 +2049,7 @@ document.addEventListener('keydown', e => {
     const base = SCENES3D[id];
     if (!base || v3.id === id) return;
     v3.id = id; v3.cur = null;
+    el('cxWalls').hidden = true;
     el('cxLoad').hidden = false;
     el('cxLoadT').textContent = 'Loading the scene';
     el('cxLoadB').style.width = '0';
@@ -1892,6 +2063,7 @@ document.addEventListener('keydown', e => {
       if (v3.id !== id) return;
       v3.cur = cur;
       v3.lastShot = -1;
+      el('cxWalls').hidden = !cur.walls;
       setView(v3.view, true);
       el('cxLoad').hidden = true;
     } catch (e) {
@@ -1925,6 +2097,13 @@ document.addEventListener('keydown', e => {
   // Back to the current shot's camera, keeping the chosen view mode.
   const resetCamera = () => setView(v3.view, true);
   el('cxReset').addEventListener('click', resetCamera);
+  function toggleWalls() {
+    if (el('cxWalls').hidden) return;
+    st.walls = !st.walls;
+    el('cxWalls').setAttribute('aria-pressed', String(st.walls));
+    el('cxWalls').textContent = st.walls ? 'Show walls' : 'Hide walls';
+  }
+  el('cxWalls').addEventListener('click', toggleWalls);
   // WASD flies the camera (Q/E down/up); the orbit target travels with it so dragging still turns around what's ahead.
   const MOVE = { w: [0, 0, -1], s: [0, 0, 1], a: [-1, 0, 0], d: [1, 0, 0], q: [0, -1, 0], e: [0, 1, 0] };
   const held = new Set();
@@ -1951,6 +2130,7 @@ document.addEventListener('keydown', e => {
     if (!c || !st.meta) return;
     attach(el('cx3d'));
     pose(c, st.t);
+    setWalls(c, st.walls);
     const shot = shotAt(st.t), key = keyAt(st.t);
     fly();
     if (v3.view === 'camera') placeShotCamera();
@@ -2011,7 +2191,7 @@ document.addEventListener('keydown', e => {
     const n = clock(st.t), ph = (st.t / S * 100).toFixed(2) + '%';
     if (n !== lastNow) { el('cxNow').textContent = n; lastNow = n; }
     if (ph !== lastPh) { el('cxPh').style.left = ph; lastPh = ph; }
-    if (st.mode === '3d' && st.inView) draw3D();
+    if (st.mode === '3d' && st.inView && !v3.lent) draw3D();
     requestAnimationFrame(frame);
   }
 
@@ -2044,6 +2224,7 @@ document.addEventListener('keydown', e => {
       loadScene(vis[((at < 0 ? 0 : at) + (k === 'ArrowDown' ? 1 : -1) + vis.length) % vis.length], true);
     }
     else if ((k === 'r' || k === 'R') && st.mode === '3d') resetCamera();
+    else if ((k === 'h' || k === 'H') && st.mode === '3d') toggleWalls();
     else if (MOVE[k.toLowerCase()] && st.mode === '3d') { e.preventDefault(); held.add(k.toLowerCase()); }
   });
   document.addEventListener('keyup', e => { held.delete(e.key.toLowerCase()); });
@@ -2064,6 +2245,187 @@ document.addEventListener('keydown', e => {
   loadScene(startIdx, false);
   layout();
   if (fromHash) root.closest('section').scrollIntoView();
+  requestAnimationFrame(frame);
+})();
+</script>
+<script>
+// ---- Method figure: the seven DyCraft steps on one task, drawn with the console's shared 3D canvas ----
+(() => {
+  const el = id => document.getElementById(id);
+  const ID = '05', BASE = 'scenes3d/05_g1_carries_panel_through_doorway/';
+  const STEPS = {
+    prompt:  { ms: 6000, title: 'Prompt', text: 'The input is a short paragraph describing the action. Many details of the scene and the motion are left open.' },
+    rewrite: { ms: 8000, title: 'Prompt rewriting', text: 'Fresh-context rewriters expand the prompt into a scene brief and a motion brief. They pick an organizing principle for the scene and work out the constraints the motion has to meet.' },
+    cad:     { ms: 7200, title: 'CAD scene', text: 'The agent builds the static scene with a B-rep CAD interface, plus native Blender tools for characters and fluids. Nothing moves yet; here it is seen through the film’s cameras.' },
+    board:   { ms: 14000, title: '3D storyboard', text: 'Key poses are authored as complete static 3D scenes, rendered through the film’s cameras and verified one by one before any motion exists.' },
+    motion:  { ms: 18500, title: 'Motion authoring', text: 'Motion fills in each segment between two verified key poses, using tools such as footstep planning and IK for humanoids and rigid-body or fluid simulation for physics.' },
+    verify:  { ms: 8000, title: 'Verification', text: 'Verifiers check every frame for interpenetration, support, joint limits and the agent’s own assertions. A failing check blocks delivery until the agent repairs it.' },
+    film:    { ms: 14000, title: 'Film', text: 'Once every check passes, the agent renders the final film in Cycles. The Blender project stays editable.' },
+  };
+  const ORDER = Object.keys(STEPS), LIVE = new Set(['prompt', 'rewrite', 'cad', 'board', 'motion']);
+  const MOTION_RATE = 4, POSE_MS = 450, CAD_MS = 1800;
+  const view = el('mdView'), img = el('mdImg'), film = el('mdFilm'), tl = el('mdTl'), ph = el('mdPh');
+  const tabs = [...document.querySelectorAll('.md-step')], ovs = [...view.querySelectorAll('.md-ov')];
+  const md = { step: 'prompt', t0: performance.now(), auto: !matchMedia('(prefers-reduced-motion: reduce)').matches,
+               keys: null, cuts: null, scene: null, hold: -1, loading: false, lent: false };
+
+  const sc = SCENES.find(x => x.id === ID);
+  if (sc) {
+    el('mdPrompt').textContent = sc.full.replace(/\s*Use the existing [^.]*\./, ' […]');
+    el('mdPromptN').textContent = sc.full.split(/\s+/).length + ' words';
+  }
+  const fmt = t => Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
+  const pct = t => (t / md.cuts.duration * 100) + '%';
+  const keyT = k => md.keys[k].frame / md.cuts.fps;
+  const keyAt = t => { let k = 0; md.keys.forEach((kf, i) => { if (kf.frame / md.cuts.fps <= t + 1e-6) k = i; }); return k; };
+  const cutAt = t => { let k = 0; md.cuts.cuts.forEach((c, i) => { if (c.t <= t + 1e-6) k = i; }); return md.cuts.cuts[k].camera; };
+  const nice = n => n.replace(/^cam_/, '').replace(/_/g, ' ');
+  const filmCam = (name, zoom = 1) => (cam, c, THREE) => {
+    const o = c.cams[name];
+    if (!o) return;
+    o.updateWorldMatrix(true, false);
+    o.matrixWorld.decompose(cam.position, cam.quaternion, new THREE.Vector3());
+    cam.fov = o.fov * zoom;
+  };
+
+  Promise.all(['keys.json', 'cuts.json'].map(f => fetch(BASE + f).then(r => r.json()))).then(([keys, cuts]) => {
+    md.keys = keys; md.cuts = cuts;
+    md.cams = [...new Set(cuts.cuts.map(c => c.camera))];
+    keys.forEach((kf, k) => {
+      const d = document.createElement('i');
+      d.style.left = pct(kf.frame / cuts.fps);
+      d.title = 'Key pose ' + (k + 1) + ': ' + kf.name.replace(/_/g, ' ') + ' (' + (kf.frame / cuts.fps).toFixed(1) + ' s)';
+      d.addEventListener('click', () => { go('board', true); md.hold = k; });
+      tl.appendChild(d);
+    });
+    // The window motion check #77 covered, and the frames where it found the arm inside the torso.
+    [[5.0, 8.79, ''], [6.21, 7.33, 'bad']].forEach(([a, b, cls]) => {
+      const e = document.createElement('em');
+      e.className = cls; e.dataset.verify = '';
+      e.style.left = pct(a); e.style.width = ((b - a) / cuts.duration * 100) + '%';
+      tl.appendChild(e);
+    });
+    [[0, '0:00'], [cuts.duration, fmt(cuts.duration)]].forEach(([t, s], j) => {
+      const e = document.createElement('span');
+      e.textContent = s;
+      if (j) e.style.right = '0'; else e.style.left = '0';
+      tl.appendChild(e);
+    });
+    img.src = BASE + keys[0].img;
+    go(md.step, false);
+  }).catch(() => {});
+
+  function go(s, user) {
+    md.step = s; md.t0 = performance.now(); md.hold = -1;
+    if (user) setAuto(false);
+    tabs.forEach(b => {
+      b.setAttribute('aria-selected', String(b.dataset.s === s));
+      b.querySelector('u').style.width = '0';
+    });
+    view.dataset.stage = s;
+    ovs.forEach(o => { o.hidden = o.dataset.for !== s; });
+    film.hidden = s !== 'film';
+    if (s === 'film') { film.currentTime = 0; film.playbackRate = 2; } else film.pause();
+    tl.querySelectorAll('[data-verify]').forEach(e => { e.hidden = s !== 'verify'; });
+    el('mdTitle').textContent = (ORDER.indexOf(s) + 1) + '. ' + STEPS[s].title;
+    el('mdText').textContent = STEPS[s].text;
+  }
+  function setAuto(on) {
+    md.auto = on; md.t0 = performance.now();
+    el('mdAuto').setAttribute('aria-pressed', String(on));
+    el('mdAuto').textContent = 'Auto-advance: ' + (on ? 'on' : 'off');
+  }
+  tabs.forEach(b => b.addEventListener('click', () => go(b.dataset.s, true)));
+  el('mdAuto').addEventListener('click', () => setAuto(!md.auto));
+  film.addEventListener('loadedmetadata', () => { film.playbackRate = 2; });
+
+  // What the demo shows at this moment of the current step: animation time, camera and the HUD label.
+  function plan(e) {
+    const n = md.keys.length, D = md.cuts.duration;
+    switch (md.step) {
+      case 'prompt': return { t: 0, place: filmCam(md.cams[0]), lab: '' };
+      case 'rewrite': return { t: 0, place: filmCam(md.cams[0]), lab: '' };
+      case 'cad': {
+        const j = Math.floor(e * 1000 / CAD_MS) % md.cams.length, u = (e * 1000 % CAD_MS) / CAD_MS;
+        return { t: 0, place: filmCam(md.cams[j], 1.08 - 0.08 * u), lab: 't = 0 · camera ' + (j + 1) + '/' + md.cams.length + ' · ' + nice(md.cams[j]) };
+      }
+      case 'board': {
+        const k = md.hold >= 0 ? md.hold : Math.floor(e * 1000 / POSE_MS) % n, kf = md.keys[k];
+        return { t: keyT(k), key: k, img: kf.img, place: filmCam(kf.camera),
+                 lab: 'key pose ' + (k + 1) + '/' + n + ' · ' + kf.name.replace(/_/g, ' ') + ' · ' + keyT(k).toFixed(1) + ' s' };
+      }
+      case 'motion': {
+        const t = (e * MOTION_RATE) % D, k = keyAt(t), a = md.keys[k], b = md.keys[Math.min(n - 1, k + 1)];
+        return { t, key: k, img: a.img, place: filmCam(cutAt(t)),
+                 lab: t.toFixed(1) + ' s · ' + a.name.replace(/_/g, ' ') + ' → ' + b.name.replace(/_/g, ' ') + ' · ' + MOTION_RATE + '×' };
+      }
+      case 'verify': return { t: -1, lab: 'motion check · frames 120–211 (5.0–8.8 s)' };
+      default: return { t: film.currentTime || 0, lab: 'rendered film · ' + fmt(film.currentTime || 0) + ' / ' + fmt(D) + ' · 2×' };
+    }
+  }
+
+  const frac = e => {
+    const r = e && e.getBoundingClientRect();
+    if (!r || !r.height) return 0;
+    return Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0)) / r.height;
+  };
+  function lend(on) {
+    if (on === md.lent || !window.Dy3D) return;
+    md.lent = on;
+    window.Dy3D.lend(on);
+  }
+
+  let lastLab = null, lastKey = -2, lastImg = '';
+  function frame(now) {
+    requestAnimationFrame(frame);
+    const dt = now - (md.last || now);
+    md.last = now;
+    const vis = frac(view);
+    if (!vis || !md.keys) {
+      md.t0 += dt;  // the current step resumes where it was when the figure scrolls back in
+      lend(false);
+      if (!film.paused) film.pause();
+      return;
+    }
+    if (!md.loading && window.Dy3D) {
+      md.loading = true;
+      window.Dy3D.load(ID).then(c => { md.scene = c; el('mdLoad').hidden = true; })
+        .catch(() => { el('mdLoad').textContent = '3D view unavailable; showing storyboard renders'; });
+    }
+    const e = Math.max(0, now - md.t0) / 1000;
+    if (md.auto) {
+      const p = e * 1000 / STEPS[md.step].ms;
+      if (p >= 1) { go(ORDER[(ORDER.indexOf(md.step) + 1) % ORDER.length], false); return; }
+      tabs[ORDER.indexOf(md.step)].querySelector('u').style.width = (p * 100) + '%';
+    }
+    if (md.step === 'film' && film.paused) film.play().catch(() => {});
+    const f = plan(e);
+    // The canvas goes to whichever of the console and this figure shows more of itself.
+    const live = !!md.scene && LIVE.has(md.step) &&
+      (!window.Dy3D.consoleBusy() || vis > frac(document.getElementById('cx3d')));
+    lend(live);
+    if (live) {
+      window.Dy3D.attach(view);
+      window.Dy3D.render(md.scene, f.t, f.place);
+      img.hidden = true;
+    } else {
+      img.hidden = !LIVE.has(md.step);
+      const src = f.img || md.keys[0].img;
+      if (src !== lastImg) { img.src = BASE + src; lastImg = src; }
+    }
+    const lab = f.lab + (LIVE.has(md.step) && md.step !== 'prompt' && md.step !== 'rewrite' ? (live ? ' · live 3D' : ' · storyboard render') : '');
+    if (lab !== lastLab) { el('mdLab').textContent = lab; lastLab = lab; }
+    ph.hidden = f.t < 0 || md.step === 'prompt' || md.step === 'rewrite';
+    if (!ph.hidden) ph.style.left = pct(f.t);
+    const key = f.key === undefined ? -1 : f.key;
+    if (key !== lastKey || md.step === 'motion' || md.step === 'film') {
+      lastKey = key;
+      [...tl.querySelectorAll('i')].forEach((d, k) => {
+        d.classList.toggle('on', md.step === 'board' && k === key);
+        d.classList.toggle('ahead', f.t >= 0 && keyT(k) > f.t + 1e-6 && (md.step === 'motion' || md.step === 'film'));
+      });
+    }
+  }
   requestAnimationFrame(frame);
 })();
 </script>

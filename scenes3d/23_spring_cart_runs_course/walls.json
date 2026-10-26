@@ -1,0 +1,22 @@
+{
+"hide": [
+"part/architecture_ceiling/slab",
+"part/architecture_back/masonry",
+"part/architecture_back/lower_dado",
+"part/architecture_back/skirting_and_dado_cap",
+"part/architecture_loading/masonry",
+"part/architecture_loading/lower_dado",
+"part/architecture_loading/skirting_and_dado_cap",
+"part/architecture_loading/opposite_brick_store",
+"part/architecture_loading/store_wall_coping",
+"part/architecture_right/masonry",
+"part/architecture_right/lower_dado",
+"part/architecture_right/skirting_and_dado_cap",
+"part/architecture_stock/masonry",
+"part/architecture_stock/lower_dado",
+"part/architecture_stock/skirting_and_dado_cap"
+],
+"cut": [
+"part/architecture_stock/stock_passage_returns"
+]
+}

@@ -1,0 +1,25 @@
+{
+"hide": [
+"part/env_bench_wall/body",
+"part/env_bench_wall/skirting",
+"part/env_ceiling/boards",
+"part/env_ceiling/body",
+"part/env_ceiling/cross_battens",
+"part/env_hatch_wall/aisle_endwall",
+"part/env_hatch_wall/aisle_soffit",
+"part/env_hatch_wall/body",
+"part/env_hatch_wall/skirting",
+"part/env_passage_wall/body",
+"part/env_passage_wall/skirting",
+"part/env_passage_wall/passage_ceiling",
+"part/env_window_wall/body",
+"part/env_window_wall/skirting",
+"part/env_window_wall/brick_court_boundary",
+"part/env_window_wall/court_copings"
+],
+"cut": [
+"part/env_hatch_wall/aisle_sidewalls",
+"part/env_passage_wall/passage_turn_walls",
+"part/env_window_wall/court_returns"
+]
+}

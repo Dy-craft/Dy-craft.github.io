@@ -1,0 +1,18 @@
+{
+"hide": [
+"part/env_ceiling/acoustic_tiles",
+"part/env_ceiling/exposed_t_grid",
+"part/env_ceiling/hall_ceiling",
+"part/env_ceiling/office_ceiling",
+"part/env_court/mortar_backing",
+"part/env_court/pale_brick_courses",
+"part/env_walls/vending_ghost_wall",
+"part/env_walls/ceramic_coved_skirting",
+"part/env_walls/hall_skirting"
+],
+"cut": [
+"part/env_walls/painted_partitions",
+"part/env_court/court_end_mortar",
+"part/env_court/court_return_bricks"
+]
+}
