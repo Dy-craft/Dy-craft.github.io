@@ -291,7 +291,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 .cx-hold{display:none}
 .b3,.cx-item .b3{display:inline-block;margin-left:5px;padding:0 4px;border:1px solid var(--ours);border-radius:2px;color:var(--ours);
   font:500 10.5px/14px var(--mono);vertical-align:1px}
-.cx-3d{position:relative;aspect-ratio:16/9;background:#e6e3dc;overflow:hidden;touch-action:none}
+.cx-3d{position:relative;aspect-ratio:16/9;background:#e6e3dc;overflow:hidden}
 .cx-3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none}
 .cx-3d.is-free canvas{cursor:grab}
 .cx-3d.is-free canvas:active{cursor:grabbing}
@@ -335,6 +335,107 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
   .cx-tlab{font-size:12.5px}
   .cx-tlab .s{display:none}
 }
+
+/* ---- Touch screens: instructions for fingers instead of keys ---- */
+.only-touch,.cx .narrow{display:none}
+@media (pointer:coarse){
+  .only-touch{display:revert}
+  .only-kbd{display:none}
+  .expand{display:none}
+}
+.cx-3d{touch-action:pan-y}
+.cx-3d.is-free{touch-action:none}
+
+/* ---- Phones ---- */
+@media (max-width:640px){
+  .hero-body{padding:2rem 16px 1rem}
+  .container{padding:0}
+  .teaser{padding:0 16px 1rem}
+  .section{padding:2rem 16px}
+  .section + .section{padding-top:.5rem}
+  .publication-title{font-size:1.7rem;margin-bottom:1rem}
+  .publication-authors{font-size:1.05rem}
+  .publication-venue{font-size:.95rem}
+  .publication-links{gap:.4rem}
+  .link-block a{font-size:.9rem;padding:0 1em}
+  .teaser video{border-radius:6px}
+  .teaser .subtitle{font-size:1rem;margin-top:.75rem}
+  .title.is-3{font-size:1.5rem;margin-bottom:1rem}
+  /* justified text leaves rivers in a phone-width column */
+  .content,.viewer-intro,.gallery-intro{text-align:left;font-size:15px;line-height:1.6}
+
+  /* viewer: the task list becomes a swipeable strip of cards */
+  .cx{padding:8px;gap:10px;border-radius:10px;margin:0 -8px}
+  .cx-cats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .cx-cats::-webkit-scrollbar,.cx-list::-webkit-scrollbar{display:none}
+  .cx-cats button{flex-shrink:0;height:30px;padding:0 10px}
+  .cx-list{scroll-snap-type:x proximity;scrollbar-width:none;gap:6px;padding:0}
+  .cx-list > li{flex:0 0 128px;scroll-snap-align:start}
+  .cx-item{padding:4px;gap:5px;border-color:var(--rule2)}
+  .cx-item .t{font-size:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .cx-item .c{display:none}
+  .cx-title{font-size:17px}
+  .cx-objs{font-size:12.5px}
+  .cx-htxt{min-width:0;flex-basis:100%}
+  .cx-tools{width:100%;gap:6px}
+  .cx-tools > *{flex:1 1 auto}
+  .cx-tools > .cx-seg{flex-basis:100%}
+  .cx-tools .cx-seg button{flex:1;height:34px}
+  .cx-tools > button{height:34px;padding:0 8px}
+  .cx .wide{display:none}
+  .cx .narrow{display:inline}
+  .cx-hint{display:none}
+  .cx-hud{left:5px;top:5px}
+  .cx-hud span{font-size:10.5px;padding:1px 5px}
+  .cx-pip{right:5px;bottom:5px;width:38%;border-width:1px}
+  .cx-pip.big{width:70%}
+  .cx-pip b{font-size:10px}
+  .cx-ctl{gap:8px}
+  .cx-clock{font-size:12.5px}
+  .cx-seg button{height:30px;padding:0 9px}
+  /* keeps the transport on one row; 2× is the default anyway */
+  #cxSpeed button:first-child{display:none}
+  .cx-shots span{font-size:0;padding:0}
+  .cx-lanes{grid-template-columns:70px minmax(0,1fr);column-gap:6px}
+  .cx-lane-l,.cx-mlab{font-size:11px;padding:0 2px}
+  .cx-prompt{font-size:14.5px}
+
+  /* method figure */
+  .md-steps li{flex:0 0 112px}
+  .md-step{min-height:50px;padding:6px 8px 8px}
+  .md-step b{font-size:13px}
+  .md-demo{padding:6px;margin:0 -8px}
+  .md-ov[data-for=prompt] .md-card{display:block;max-height:none}
+  .md-ov[data-for=prompt] .md-card p{display:-webkit-box;-webkit-line-clamp:9;-webkit-box-orient:vertical;overflow:hidden}
+  .md-desc{margin:8px 2px 2px}
+  .md-desc p{min-width:0;flex-basis:100%;font-size:14.5px}
+
+  /* gallery: methods stack, one clip per row, and the toolbar stops following the page */
+  .toolbar{position:static;gap:8px;padding:10px 0;margin-bottom:16px}
+  .chips{flex:1 1 100%}
+  .chip{flex:1;height:34px;padding:0 6px}
+  input[type=search]{flex:1 1 100%;order:1;height:34px}
+  .toolbar > .speed,#toggleAll{order:2}
+  #toggleAll{height:34px;flex:1}
+  .count{order:3;flex:1 1 100%;margin:0;text-align:right;font-size:12.5px}
+  .scene{padding:12px;margin:0 -8px 18px;border-radius:10px}
+  .shead{flex-direction:column;gap:8px;margin-bottom:10px}
+  .prompt{font-size:16px}
+  .objs{font-size:13px}
+  .sctl button{height:30px}
+  .cols{grid-template-columns:minmax(0,1fr)!important;gap:12px}
+  .vwrap,.missing{border-radius:6px}
+
+  /* dialogs fill the width */
+  dialog{max-width:100vw}
+  .lb video{max-width:100vw;width:100vw;max-height:62vh}
+  .lb .meta{flex-direction:column;gap:10px;padding:12px}
+  .lb .nav{width:100%}
+  .lb .nav button{flex:1}
+  #pm{width:calc(100vw - 20px)}
+  .pm-in{padding:16px}
+  .pm-body{font-size:15px;line-height:1.65;max-height:60vh}
+}
 </style>
 </head>
 <body>
@@ -375,7 +476,8 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
     <h2 class="title is-3">Interactive 4D Scene Viewer</h2>
     <div class="viewer-intro">
       <p>Every task opens in DyCraft&rsquo;s generated 4D scene, rendered live in your browser. Watch it through the film&rsquo;s cameras or switch to <strong>Free orbit</strong> and drag to look around while it plays; the rendered film plays in the corner at the same moment. The timeline marks the verified storyboard key poses and the camera cuts.</p>
-      <p>Drag on the timeline to scrub; <kbd>Space</kbd> plays and pauses, <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> change the task, and <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> (with <kbd>Q</kbd>/<kbd>E</kbd> for down/up) fly the camera through the scene; <strong>Reset camera</strong> or <kbd>R</kbd> brings it back to the film&rsquo;s shot. In indoor scenes, <strong>Hide walls</strong> or <kbd>H</kbd> takes away the walls and ceiling so you can watch from outside the room; windows, doors, shelves and fittings stay in place.</p>
+      <p class="only-kbd">Drag on the timeline to scrub; <kbd>Space</kbd> plays and pauses, <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> change the task, and <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> (with <kbd>Q</kbd>/<kbd>E</kbd> for down/up) fly the camera through the scene; <strong>Reset camera</strong> or <kbd>R</kbd> brings it back to the film&rsquo;s shot. In indoor scenes, <strong>Hide walls</strong> or <kbd>H</kbd> takes away the walls and ceiling so you can watch from outside the room; windows, doors, shelves and fittings stay in place.</p>
+      <p class="only-touch">Drag on the timeline to scrub. Swipe sideways across the scene to switch to <strong>Free orbit</strong>, then drag to look around, pinch to zoom and drag with two fingers to pan; <strong>Reset camera</strong> brings it back to the film&rsquo;s shot. In indoor scenes, <strong>Hide walls</strong> takes away the walls and ceiling so you can watch from outside the room; windows, doors, shelves and fittings stay in place.</p>
       <p class="viewer-note"><strong>Note:</strong> the viewer is a real-time WebGL approximation, meant to give an intuitive sense of each scene&rsquo;s 3D structure and motion. Liquids, glass and some procedural textures are approximated, so materials and lighting differ from the Cycles renders shown in the films.</p>
     </div>
     <div class="cx" id="cx">
@@ -393,7 +495,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
           </div>
           <div class="cx-tools">
             <div class="cx-seg" id="cxView" hidden>
-              <button data-view="camera" aria-pressed="true">Through the camera</button>
+              <button data-view="camera" aria-pressed="true"><span class="wide">Through the camera</span><span class="narrow">Film camera</span></button>
               <button data-view="free" aria-pressed="false">Free orbit</button>
             </div>
             <button id="cxWalls" aria-pressed="false" title="Take away the room's walls and ceiling; windows, doors, shelves and fittings stay (H)" hidden>Hide walls</button>
@@ -496,7 +598,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
     <h2 class="title is-3">Video Gallery</h2>
     <div class="gallery-intro">
       <p>Every benchmark prompt with each method&rsquo;s result side by side. Use the buttons below to hide a method, or type to filter prompts. <strong>Full prompt</strong> opens the complete brief the methods were given.</p>
-      <p>Within a block all clips start together and are aligned to the longest one; a clip that finishes early holds on its last frame and is marked <em>ended</em>, so differing lengths stay visible rather than being hidden by looping. Playback speed applies to every clip at once. Click any clip to open it larger with playback controls; <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> step through, <kbd>Esc</kbd> closes.</p>
+      <p>Within a block all clips start together and are aligned to the longest one; a clip that finishes early holds on its last frame and is marked <em>ended</em>, so differing lengths stay visible rather than being hidden by looping. Playback speed applies to every clip at once. <span class="only-kbd">Click any clip to open it larger with playback controls; <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> step through, <kbd>Esc</kbd> closes.</span><span class="only-touch">Tap any clip to open it larger with playback controls.</span></p>
     </div>
 <div class="toolbar">
   <div class="chips" id="chips"></div>
@@ -1473,6 +1575,7 @@ document.addEventListener('keydown', e => {
   const SCENES3D = {'01': 'scenes3d/01_g1_scrambles_eggs/', '02': 'scenes3d/02_g1_assembles_office_chair/', '03': 'scenes3d/03_g1_loads_pottery_kiln/', '04': 'scenes3d/04_g1_mops_break_room/', '05': 'scenes3d/05_g1_carries_panel_through_doorway/', '06': 'scenes3d/06_g1_sorts_mailroom_post/', '07': 'scenes3d/07_g1_transfers_parts_after_interrupt/', '08': 'scenes3d/08_g1_carries_drinks_tray/', '09': 'scenes3d/09_movers_carry_piano_upstairs/', '10': 'scenes3d/10_barista_serves_takeaway_coffee/', '11': 'scenes3d/11_film_crew_sets_dolly_shot/', '12': 'scenes3d/12_lifter_fails_heavy_deadlift/', '13': 'scenes3d/13_dog_fetches_newspaper/', '14': 'scenes3d/14_crow_opens_puzzle_feeder/', '15': 'scenes3d/15_trainer_teaches_dog_to_stay/', '16': 'scenes3d/16_macaque_cracks_nut/', '17': 'scenes3d/17_marble_course_runs/', '18': 'scenes3d/18_domino_circuit_falls/', '19': 'scenes3d/19_parcel_sorter_sorts_six/', '20': 'scenes3d/20_tipping_bucket_fills_tank/', '21': 'scenes3d/21_bottling_line_fills_six/', '22': 'scenes3d/22_drawbridge_opens_for_boat/', '23': 'scenes3d/23_spring_cart_runs_course/', '24': 'scenes3d/24_clock_strikes_four/'};
   const CX_SPEEDS = [0.5, 1, 2, 3];
   const FRAME = 1 / 30;
+  const COARSE = matchMedia('(pointer: coarse)').matches;
   const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.7v14.6a1 1 0 0 0 1.52.85l11.8-7.3a1 1 0 0 0 0-1.7L8.52 3.85A1 1 0 0 0 7 4.7z"/></svg>';
   const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
 
@@ -1577,6 +1680,8 @@ document.addEventListener('keydown', e => {
     e.currentTarget.setAttribute('aria-pressed', String(st.loop));
   });
   el('cxPlay').addEventListener('click', () => setPlaying(!st.playing));
+  // iPhones can't take a page element full screen
+  el('cxFs').hidden = !document.fullscreenEnabled;
   el('cxFs').addEventListener('click', () => {
     if (document.fullscreenElement) document.exitFullscreen();
     else if (root.requestFullscreen) root.requestFullscreen().catch(() => {});
@@ -1655,7 +1760,9 @@ document.addEventListener('keydown', e => {
     el('cxSpan').textContent = clock(S);
     const tk = el('cxTicks');
     tk.innerHTML = '';
-    const stepS = S > 120 ? 30 : S > 50 ? 10 : 5;
+    // ticks at least ~42 px apart, so a phone-width timeline stays legible
+    const w = el('cxTracks').clientWidth || 900;
+    const stepS = [5, 10, 30, 60, 120].find(x => x / S * w >= 42) || 120;
     for (let s = 0; s <= S - stepS * 0.4; s += stepS) {
       const sp = document.createElement('span');
       sp.style.left = (s / S * 100) + '%';
@@ -1664,6 +1771,7 @@ document.addEventListener('keydown', e => {
     }
   }
 
+  new ResizeObserver(() => renderLanes()).observe(el('cxTracks'));
   (() => {
     const tr = el('cxTracks');
     let resume = false;
@@ -1804,12 +1912,29 @@ document.addEventListener('keydown', e => {
       const controls = new OrbitControls(cam, canvas);
       controls.enableDamping = true;
       controls.addEventListener('start', () => { if (v3.view === 'camera') setView('free'); });
+      // a touch in the film's view may be a scroll: keep it from the controls until it turns out sideways
+      let swipe = null;
+      canvas.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'touch' || v3.view !== 'camera' || v3.host !== el('cx3d')) return;
+        swipe = [e.clientX, e.clientY];
+        controls.enabled = false;
+      }, true);
+      canvas.addEventListener('pointermove', e => {
+        if (!swipe) return;
+        const dx = Math.abs(e.clientX - swipe[0]), dy = Math.abs(e.clientY - swipe[1]);
+        if (dx > 12 && dx > 1.5 * dy) { swipe = null; controls.enabled = true; setView('free'); }
+      }, true);
+      const unswipe = () => { if (swipe) { swipe = null; controls.enabled = v3.host === el('cx3d'); } };
+      canvas.addEventListener('pointerup', unswipe, true);
+      canvas.addEventListener('pointercancel', unswipe, true);
       const loader = new GLTFLoader();
       loader.setMeshoptDecoder(MeshoptDecoder);
       const resize = () => {
         const r = (v3.host || el('cx3d')).getBoundingClientRect();
         if (!r.width) return;
         renderer.setSize(r.width, r.height, false);
+        // a drag turns by its share of the canvas height: slow it down on a phone-sized canvas
+        controls.rotateSpeed = Math.min(1, r.height / 400);
         cam.aspect = r.width / r.height;
         cam.updateProjectionMatrix();
       };
@@ -2037,7 +2162,13 @@ document.addEventListener('keydown', e => {
     v3.host = host;
     v3.ro.observe(host);
     v3.controls.enabled = host === el('cx3d');
+    touchAction();
     v3.resize();
+  }
+  // Touch: over the film's view a vertical swipe still scrolls the page and a sideways one switches to
+  // free orbit, which takes every gesture. The Method figure only shows the canvas, so it scrolls.
+  function touchAction() {
+    if (v3.renderer) v3.renderer.domElement.style.touchAction = v3.host !== el('cx3d') ? 'auto' : v3.view === 'free' ? 'none' : 'pan-y';
   }
   function getScene(id, onProgress) {
     if (!v3.cache[id]) {
@@ -2131,7 +2262,9 @@ document.addEventListener('keydown', e => {
     v3.view = v;
     [...el('cxView').children].forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
     el('cx3d').classList.toggle('is-free', v === 'free');
-    el('cxHint').textContent = v === 'free' ? 'Drag to orbit · scroll to zoom · WASD/QE to move' : 'Drag to orbit · WASD to move';
+    el('cxHint').textContent = COARSE ? (v === 'free' ? 'Drag to orbit · pinch to zoom' : 'Swipe sideways to look around')
+      : v === 'free' ? 'Drag to orbit · scroll to zoom · WASD/QE to move' : 'Drag to orbit · WASD to move';
+    touchAction();
     if (!v3.cur || !st.meta) return;
     if (v === 'camera' || init) placeShotCamera();
     if (v === 'free') {
@@ -2141,7 +2274,7 @@ document.addEventListener('keydown', e => {
       v3.controls.update();
     }
   }
-  el('cxView').addEventListener('click', e => { const v = e.target.dataset.view; if (v) setView(v); });
+  el('cxView').addEventListener('click', e => { const b = e.target.closest('[data-view]'); if (b) setView(b.dataset.view); });
   // Back to the current shot's camera, keeping the chosen view mode.
   const resetCamera = () => setView(v3.view, true);
   el('cxReset').addEventListener('click', resetCamera);
