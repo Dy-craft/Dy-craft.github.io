@@ -481,7 +481,11 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
 }
 
 /* ---- 24-task sandbox ---- */
-.sb{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;
+.abs-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:4rem;align-items:center}
+.abs-board{margin:0}
+.abs-board figcaption{margin-top:.75rem;font-size:.95rem;color:var(--ink3)}
+@media (max-width:1000px){ .abs-grid{grid-template-columns:minmax(0,1fr);gap:2rem} }
+.sb{position:relative;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;
   background:radial-gradient(ellipse 70% 60% at 50% 45%,#fff 0%,var(--surface-2) 60%,#e9edf3 100%)}
 .sb canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
 .sb.is-hot canvas{cursor:pointer}
@@ -623,7 +627,6 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
   <a class="topbar-name" href="#film">DyCraft</a>
   <div class="topbar-links">
     <a href="#abstract">Abstract</a>
-    <a href="#tasks">Tasks</a>
     <a href="#console">Viewer</a>
     <a href="#method">Method</a>
     <a href="#gallery">Gallery</a>
@@ -631,27 +634,23 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
 </nav>
 
 <section class="section" id="abstract">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3">Abstract</h2>
-    <div class="content">
-      <p>Coding agents can build convincing 3D scenes, but asked to animate them over a long horizon they script the whole motion in one pass, and the result is full of objects that pass through each other, float, or move unnaturally.</p>
-      <p><strong>DyCraft</strong> works the way an animator does. It plans the scene, builds it, then storyboards the key poses as static 3D scenes the agent can check one at a time, and fills in the motion between them. On 24 long-horizon tasks it produces substantially fewer physical errors than a native GPT-6 agent and prior agentic baselines, and human raters more often prefer its results.</p>
+  <div class="container is-wide abs-grid">
+    <div class="abs-text">
+      <h2 class="title is-3">Abstract</h2>
+      <div class="content">
+        <p>Coding agents can build convincing 3D scenes, but asked to animate them over a long horizon they script the whole motion in one pass, and the result is full of objects that pass through each other, float, or move unnaturally.</p>
+        <p><strong>DyCraft</strong> works the way an animator does. It plans the scene, builds it, then storyboards the key poses as static 3D scenes the agent can check one at a time, and fills in the motion between them. On 24 long-horizon tasks it produces substantially fewer physical errors than a native GPT-6 agent and prior agentic baselines, and human raters more often prefer its results.</p>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="section" id="tasks">
-  <div class="container is-wide">
-    <h2 class="title is-3">24 Long-Horizon Tasks</h2>
-    <div class="viewer-intro">
-      <p>Every benchmark scene as DyCraft built it, all playing at once. <span class="only-kbd">Click</span><span class="only-touch">Tap</span> a tile to open it in the viewer.</p>
-    </div>
-    <div class="sb" id="sb">
-      <canvas id="sbCanvas" aria-hidden="true"></canvas>
-      <div class="sb-tip" id="sbTip" hidden><b></b><span></span></div>
-      <p class="sb-load" id="sbLoad">Loading scenes&hellip;</p>
-      <ol class="sb-keys" id="sbKeys" aria-label="Tasks"></ol>
-    </div>
+    <figure class="abs-board">
+      <div class="sb" id="sb">
+        <canvas id="sbCanvas" aria-hidden="true"></canvas>
+        <div class="sb-tip" id="sbTip" hidden><b></b><span></span></div>
+        <p class="sb-load" id="sbLoad">Loading scenes&hellip;</p>
+        <ol class="sb-keys" id="sbKeys" aria-label="Tasks"></ol>
+      </div>
+      <figcaption>All 24 benchmark tasks, playing live. <span class="only-kbd">Click</span><span class="only-touch">Tap</span> a tile to open it in the viewer.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -1003,7 +1002,7 @@ function aimCamera(time) {
   aimNow += (aim - aimNow) * 0.05;
   const az = sway + aimNow * 0.12, el = cam.aspect < 1 ? 0.95 : 0.72;
   // close enough that the board (half-width 2.5) fills the frame: its width, and its depth foreshortened
-  const half = 2.62, vf = THREE.MathUtils.degToRad(cam.fov) / 2, hf = Math.atan(Math.tan(vf) * cam.aspect);
+  const half = 2.85, vf = THREE.MathUtils.degToRad(cam.fov) / 2, hf = Math.atan(Math.tan(vf) * cam.aspect);
   const d = Math.max(half / Math.tan(hf), half * (Math.sin(el) + 0.25) / Math.tan(vf));
   cam.position.set(Math.sin(az) * Math.cos(el) * d, Math.sin(el) * d, Math.cos(az) * Math.cos(el) * d);
   // the board shrinks every scene 3 to 10 times, so a rug and the floor under it end up a fraction of a
