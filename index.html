@@ -8,71 +8,65 @@
 <title>DyCraft: An Agentic System for Long-Horizon 4D Scene Generation</title>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 /* ---- Nerfies-style page shell (Bulma look, no external CSS required) ---- */
-body{margin:0;background:#fff;color:#4a4a4a;
-  font-family:'Noto Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+body{margin:0;background:var(--bg);color:var(--ink2);
+  font-family:var(--font-body);
   font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
-a{color:#3273dc;text-decoration:none}
-a:hover{color:#363636}
-.hero-body{padding:3rem 1.5rem 1.5rem;text-align:center}
+a{color:var(--link);text-decoration:none}
+a:hover{color:var(--ink)}
 .container{margin:0 auto;padding:0 1.5rem}
 .is-max-desktop{max-width:960px}
 .is-wide{max-width:1560px}
-.publication-title{font-family:'Google Sans',sans-serif;font-size:3rem;font-weight:600;
-  line-height:1.125;color:#363636;margin:0 0 1.5rem;letter-spacing:0}
-.publication-authors{font-family:'Google Sans',sans-serif;font-size:1.25rem;color:#4a4a4a;margin:0 0 .35rem}
-.publication-venue{font-family:'Google Sans',sans-serif;font-size:1.05rem;color:#7a7a7a;margin:0}
+.publication-title{font-family:var(--font-display);font-size:3rem;font-weight:600;
+  line-height:1.125;color:var(--ink);margin:0 0 1.5rem;letter-spacing:0}
+.publication-authors{font-family:var(--font-display);font-size:1.25rem;color:var(--ink2);margin:0 0 .35rem}
+.publication-venue{font-family:var(--font-display);font-size:1.05rem;color:var(--ink3);margin:0}
 .publication-links{margin-top:1.25rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
 .link-block a{display:inline-flex;align-items:center;gap:.5em;height:2.5em;padding:0 1.25em;
-  border-radius:290486px;background:#363636;color:#fff;font-size:1rem;
-  font-family:'Google Sans','Noto Sans',sans-serif;white-space:nowrap}
-.link-block a:hover{background:#2f2f2f;color:#fff}
+  border-radius:290486px;background:var(--accent);color:var(--on-accent);font-size:1rem;
+  font-family:var(--font-display);white-space:nowrap}
+.link-block a:hover{opacity:.88;color:var(--on-accent)}
 .link-block a svg{width:1em;height:1em}
 .link-block a.is-disabled{opacity:.55;cursor:default;pointer-events:none}
-.teaser{padding:0 1.5rem 1.5rem}
-.teaser video{width:100%;border-radius:8px;background:#000;display:block}
-.teaser .subtitle{text-align:center;font-size:1.1rem;color:#4a4a4a;margin:1rem 0 0}
-.teaser .subtitle .dnerf{font-variant:small-caps}
 .section{padding:3rem 1.5rem}
 .section + .section{padding-top:1rem}
-.title.is-3{font-family:'Google Sans',sans-serif;font-size:2rem;font-weight:600;color:#363636;
+.title.is-3{font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--ink);
   text-align:center;margin:0 0 1.5rem;line-height:1.125}
-.content{text-align:justify;color:#4a4a4a}
+.content{text-align:justify;color:var(--ink2)}
 .content p{margin:0 0 1em}
-.md{--sheet:#fff;--ink:#363636;--ink2:#4a4a4a;--ink3:#7a7a7a;--rule:#dbdbdb;--rule2:#ededed;--warn:#c2410c;
-  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;max-width:1120px;margin:0 auto;color:var(--ink)}
+.md{max-width:1120px;margin:0 auto;color:var(--ink)}
 .md-steps{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
-.md-step{position:relative;width:100%;height:auto;min-height:58px;padding:8px 10px 10px;border:1px solid var(--rule);border-radius:8px;
+.md-step{position:relative;width:100%;height:auto;min-height:58px;padding:8px 10px 10px;border:1px solid var(--rule);border-radius:var(--radius-sm);
   background:var(--sheet);color:var(--ink2);text-align:left;display:flex;flex-direction:column;gap:2px;overflow:hidden;cursor:pointer}
 .md-step i{font:500 11px/1 var(--mono);font-style:normal;color:var(--ink3)}
-.md-step b{font:600 14px/1.2 'Google Sans','Noto Sans',sans-serif}
+.md-step b{font:600 14px/1.2 var(--font-display)}
 .md-step u{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--ours);text-decoration:none}
-.md-step[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
-.md-step[aria-selected=true] i{color:#bdbdbd}
-.md-demo{border:1px solid var(--rule);border-radius:12px;padding:10px;background:var(--sheet)}
-.md-view{position:relative;aspect-ratio:16/9;background:#e6e3dc;overflow:hidden;border-radius:4px}
+.md-step[aria-selected=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.md-step[aria-selected=true] i{color:inherit;opacity:.6}
+.md-demo{border:1px solid var(--rule);border-radius:var(--radius);padding:10px;background:var(--sheet)}
+.md-view{position:relative;aspect-ratio:16/9;background:var(--scene-bg);overflow:hidden;border-radius:calc(var(--radius-sm) / 2)}
 .md-view canvas,.md-view > img,.md-view video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
 .md-view canvas,.md-view > img{transition:filter .4s}
 .md-view[data-stage=prompt] canvas,.md-view[data-stage=prompt] > img,
 .md-view[data-stage=rewrite] canvas,.md-view[data-stage=rewrite] > img{filter:grayscale(.7) opacity(.45) blur(4px)}
 .md-view video{object-fit:contain;background:#000;z-index:2}
 .md-hud{position:absolute;left:10px;top:10px;z-index:4;display:flex;gap:6px;flex-wrap:wrap;pointer-events:none;max-width:calc(100% - 20px)}
-.md-hud span{background:rgba(20,20,20,.72);color:#fff;font:500 12px/1 var(--mono);padding:5px 7px;border-radius:3px;white-space:nowrap}
+.md-hud span{background:var(--hud-bg);color:var(--hud-ink);font:500 12px/1 var(--mono);padding:5px 7px;border-radius:3px;white-space:nowrap}
 .md-hud span:empty{display:none}
 .md-load{position:absolute;right:10px;bottom:10px;z-index:4;font-size:12px;color:var(--ink3)}
 .md-ov{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;gap:16px;padding:48px 6% 24px}
-.md-card{background:rgba(255,255,255,.94);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;box-shadow:0 6px 24px rgba(0,0,0,.08);
+.md-card{background:var(--glass);border:1px solid var(--rule);border-radius:var(--radius-sm);padding:14px 16px;box-shadow:var(--shadow);
   font-size:14.5px;line-height:1.55;color:var(--ink2);max-height:100%;overflow:hidden}
 .md-card h4{margin:0 0 6px;font:600 13px/1.3 var(--mono);color:var(--ink)}
 .md-card h4 span{font-weight:400;color:var(--ink3)}
 .md-card p{margin:0}
-.md-card mark{background:#fde9b8;color:inherit;padding:0 1px}
-.md-ov[data-for=prompt] .md-card{max-width:640px;font:400 16px/1.6 'Google Sans','Noto Sans',sans-serif}
+.md-card mark{background:var(--hl);color:inherit;padding:0 1px}
+.md-ov[data-for=prompt] .md-card{max-width:640px;font:400 16px/1.6 var(--font-display)}
 .md-ov[data-for=rewrite] .md-card{flex:1;max-width:420px}
 .md-ov[data-for=rewrite] .md-arrow{font-size:22px;color:var(--ink3)}
-.md-ov[data-for=verify]{background:#f4f3ef;flex-direction:column;gap:10px;padding:48px 4% 14px}
+.md-ov[data-for=verify]{background:var(--surface-2);flex-direction:column;gap:10px;padding:48px 4% 14px}
 .md-vrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;min-height:0}
 .md-vrow figure{margin:0;min-width:0}
 .md-vrow img{width:100%;height:auto;display:block;border-radius:3px}
@@ -83,12 +77,12 @@ a:hover{color:#363636}
 .md-tl i{position:absolute;top:11px;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;transform:rotate(45deg);background:var(--ours);border:1px solid var(--sheet);cursor:pointer}
 .md-tl i.on{background:var(--ink);width:12px;height:12px;margin:-6px 0 0 -6px}
 .md-tl i.ahead{opacity:.45}
-.md-tl em{position:absolute;top:5px;height:12px;background:rgba(21,128,61,.14);border-radius:2px;pointer-events:none}
-.md-tl em.bad{background:rgba(194,65,12,.55)}
+.md-tl em{position:absolute;top:5px;height:12px;background:var(--ours-tint);border-radius:2px;pointer-events:none}
+.md-tl em.bad{background:var(--warn);opacity:.6}
 .md-tl b{position:absolute;top:0;width:2px;height:22px;margin-left:-1px;background:var(--ink);pointer-events:none}
 .md-tl span{position:absolute;top:19px;font:400 10.5px/1 var(--mono);color:var(--ink3)}
 .md-desc{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin:8px 4px 2px}
-.md-desc h3{margin:0;font:600 17px/1.3 'Google Sans','Noto Sans',sans-serif;color:var(--ink)}
+.md-desc h3{margin:0;font:600 17px/1.3 var(--font-display);color:var(--ink)}
 .md-desc p{margin:0;flex:1;min-width:260px;font-size:15px;line-height:1.55;color:var(--ink2)}
 .md-auto{height:28px;font-size:12.5px;padding:0 10px}
 .md [hidden]{display:none!important}
@@ -111,19 +105,30 @@ a:hover{color:#363636}
   .md-hud span{white-space:normal;line-height:1.35}
   .md-vrow figcaption{font-size:11.5px}
 }
-.gallery-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:#4a4a4a}
+.gallery-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:var(--ink2)}
 .gallery-intro p{margin:0 0 .75em}
-.site-footer{background:#fafafa;padding:3rem 1.5rem 4rem;margin-top:2rem;
-  font-size:.9rem;color:#4a4a4a;text-align:center}
+.site-footer{background:var(--surface-2);padding:3rem 1.5rem 4rem;margin-top:2rem;
+  font-size:.9rem;color:var(--ink3);text-align:center}
 .site-footer p{max-width:720px;margin:0 auto .5em}
 
 /* ---- Video gallery (identical to index.html) ---- */
 
 :root{
-  /* same ink, rules and white sheets as the viewer and Method figure: selection is ink, DyCraft is green */
-  --bg:#ffffff; --fg:#363636; --fg2:#6b6b6b; --fg3:#909090; --line:#dbdbdb;
-  --card:#ffffff; --accent:#363636; --chip:#f0f0f0; --miss:#f4f4f4;
-  --ours:#15803d; --ours-bd:#15803d;
+  /* Design tokens: every colour, face and radius on the page comes from here. */
+  color-scheme:light;
+  --bg:#fff; --surface:#fff; --surface-2:#f8f9fc; --surface-3:#eff2f7;
+  --ink:#121317; --ink2:#45474d; --ink3:#6f737a; --rule:rgba(33,34,38,.12); --rule2:rgba(33,34,38,.06);
+  --accent:#121317; --on-accent:#fff; --link:#2b4fda;
+  --ours:#2b4fda; --on-ours:#fff; --ours-tint:#edf3ff; --m-bare:#80868b; --m-viga:#f29900;
+  --warn:#be1c1b; --hl:#fcffad;
+  --scene-bg:#e6eaf0; --glass:rgba(255,255,255,.95); --hud-bg:rgba(18,19,23,.72); --hud-ink:#fff;
+  --shadow:0 8px 32px rgba(18,19,23,.08); --radius:24px; --radius-sm:16px;
+  --font-body:'Google Sans Flex',Arial,Helvetica,sans-serif; --font-display:'Google Sans Flex',Arial,Helvetica,sans-serif;
+  --mono:'Google Sans Code',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --page:1320px; --gutter:max(1.5rem, calc((100vw - var(--page)) / 2)); --bar:64px;
+  /* older names the components still use */
+  --sheet:var(--surface); --card:var(--surface); --chip:var(--surface-2); --miss:var(--surface-2);
+  --fg:var(--ink); --fg2:var(--ink3); --fg3:var(--ink3); --line:var(--rule); --ours-bd:var(--ours); --serif:var(--font-display);
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -133,7 +138,7 @@ kbd{font:inherit;font-size:13px;background:var(--chip);border:1px solid var(--li
   margin:0 0 26px;position:sticky;top:0;z-index:30;
   background:var(--bg);padding:14px 0;border-bottom:1px solid var(--line)}
 input[type=search]{flex:1;min-width:170px;height:36px;padding:0 12px;
-  border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--fg);
+  border:1px solid var(--line);border-radius:var(--radius-sm);background:var(--bg);color:var(--fg);
   font-size:15px;font-family:inherit}
 input[type=search]:focus{outline:none;border-color:var(--accent)}
 button{height:36px;padding:0 14px;border:1px solid var(--line);border-radius:7px;
@@ -142,16 +147,16 @@ button:hover{border-color:var(--fg2)}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chip{height:36px;padding:0 13px;border:1px solid var(--line);border-radius:7px;
   background:var(--bg);color:var(--fg2);font-size:14px;cursor:pointer;font-family:inherit}
-.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:500}
 .chip .n{opacity:.65;margin-left:5px;font-variant-numeric:tabular-nums}
 #toggleAll[aria-pressed=true]{background:var(--chip)}
 .speed{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
 .speed button{height:34px;border:none;border-radius:0;padding:0 12px;font-variant-numeric:tabular-nums}
 .speed button + button{border-inline-start:1px solid var(--line)}
-.speed button[aria-pressed=true]{background:var(--accent);color:#fff;font-weight:500}
+.speed button[aria-pressed=true]{background:var(--accent);color:var(--on-accent);font-weight:500}
 .count{color:var(--fg2);font-size:14px;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
 
-.scene{border:1px solid var(--line);border-radius:12px;background:var(--card);
+.scene{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
   padding:18px 18px 20px;margin:0 0 26px}
 .scene.hide{display:none}
 .shead{display:flex;gap:14px;align-items:flex-start;margin:0 0 14px}
@@ -162,7 +167,7 @@ button:hover{border-color:var(--fg2)}
 .objs{font-size:14px;color:var(--fg2);margin:0}
 .sctl{display:flex;gap:7px;align-items:center;flex-shrink:0;margin-top:1px}
 .sctl button{height:32px;padding:0 12px;font-size:13px}
-.bar{height:3px;background:#ededed;border-radius:2px;overflow:hidden;margin:0 0 13px}
+.bar{height:3px;background:var(--rule2);border-radius:2px;overflow:hidden;margin:0 0 13px}
 .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .1s linear}
 
 .cols{display:grid;gap:14px}
@@ -170,10 +175,10 @@ button:hover{border-color:var(--fg2)}
 .clabel{display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
 .cname{font-size:15px;font-weight:500}
 .cname.is-ours{color:var(--ours);font-weight:600}
-.chip.is-ours[aria-pressed=true]{background:var(--ours-bd);border-color:var(--ours-bd);color:#fff}
+.chip.is-ours[aria-pressed=true]{background:var(--ours-bd);border-color:var(--ours-bd);color:var(--on-ours,#fff)}
 .lb .title .m-ours{color:var(--ours);font-weight:600}
 .cdur{font-size:13px;color:var(--fg3);font-variant-numeric:tabular-nums}
-.vwrap{position:relative;background:#000;aspect-ratio:16/9;border-radius:8px;overflow:hidden;cursor:zoom-in}
+.vwrap{position:relative;background:#000;aspect-ratio:16/9;border-radius:var(--radius-sm);overflow:hidden;cursor:zoom-in}
 .vwrap video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
 .ended{position:absolute;inset:auto 0 0 0;z-index:2;background:rgba(0,0,0,.72);color:#fff;
   font-size:12px;padding:5px 9px;display:none}
@@ -182,12 +187,12 @@ button:hover{border-color:var(--fg2)}
   background:rgba(0,0,0,.66);color:#fff;border:none;height:25px;padding:0 9px;
   border-radius:4px;font-size:13px;cursor:pointer}
 .vwrap:hover .expand{opacity:1}
-.missing{aspect-ratio:16/9;border:1px dashed var(--line);border-radius:8px;background:var(--miss);
+.missing{aspect-ratio:16/9;border:1px dashed var(--line);border-radius:var(--radius-sm);background:var(--miss);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
   color:var(--fg3);font-size:14px;text-align:center;padding:12px}
 .missing b{font-weight:500;color:var(--fg2);font-size:14px}
 
-dialog{border:none;border-radius:12px;padding:0;max-width:96vw;max-height:96vh;background:var(--bg);color:var(--fg)}
+dialog{border:none;border-radius:var(--radius);padding:0;max-width:96vw;max-height:96vh;background:var(--bg);color:var(--fg)}
 dialog::backdrop{background:rgba(0,0,0,.84)}
 .lb video{display:block;max-width:92vw;max-height:74vh;background:#000}
 .lb .meta{padding:13px 16px 15px;display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
@@ -211,15 +216,13 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 @media (max-width:900px){ .shead{flex-wrap:wrap} }
 
 .toolbar{border-top:1px solid var(--line)}
-.prompt{font-family:'Google Sans','Noto Sans',sans-serif;color:#363636}
+.prompt{font-family:var(--font-display);color:var(--ink)}
 @media (max-width:768px){ .publication-title{font-size:2rem} }
 
 /* ---- Interactive viewer: console tokens mapped onto the Nerfies palette ---- */
-.cx{--sheet:#fff; --ink:#363636; --ink2:#4a4a4a; --ink3:#7a7a7a; --rule:#dbdbdb; --rule2:#ededed;
-  --ours-tint:#e8f5ec; --warn:#b45309; --serif:'Google Sans','Noto Sans',sans-serif; --mono:ui-monospace,SFMono-Regular,Menlo,monospace}
-.viewer-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:#4a4a4a}
+.viewer-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:var(--ink2)}
 .viewer-intro p{margin:0 0 .75em}
-.viewer-intro .viewer-note{font-size:.92em;color:#666;border-left:3px solid #dbdbdb;padding:.15em 0 .15em .8em;text-align:left}
+.viewer-intro .viewer-note{font-size:.92em;color:var(--ink3);border-left:3px solid var(--rule);padding:.15em 0 .15em .8em;text-align:left}
 /* ---- Interactive comparison (console) ---- */
 .cx{display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;align-items:stretch;border:1px solid var(--rule);background:var(--sheet);padding:14px;color:var(--ink)}
 .cx:fullscreen{padding:18px;overflow:auto}
@@ -227,12 +230,12 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 .cx-side-in{position:absolute;inset:0;display:flex;flex-direction:column;gap:10px}
 .cx-cats{display:flex;flex-wrap:wrap;gap:4px}
 .cx-cats button{height:26px;padding:0 8px;font-size:12.5px;color:var(--ink2)}
-.cx-cats button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.cx-cats button[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .cx-list{list-style:none;margin:0;padding:0 4px 0 0;flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:2px}
 .cx-item{display:flex;gap:9px;align-items:center;width:100%;height:auto;padding:5px;border:1px solid transparent;border-radius:3px;background:none;text-align:left;cursor:pointer;color:var(--ink)}
 .cx-item:hover{background:var(--chip);border-color:transparent}
 .cx-item[aria-current=true]{background:var(--ours-tint);border-color:var(--ours)}
-.cx-item img{width:76px;aspect-ratio:16/9;object-fit:cover;background:#ddd;flex-shrink:0}
+.cx-item img{width:76px;aspect-ratio:16/9;object-fit:cover;background:var(--rule);flex-shrink:0}
 .cx-item .t{font-size:13px;line-height:1.3;font-weight:500;white-space:normal}
 .cx-item .c{display:block;font-size:11.5px;color:var(--ink3);margin-top:2px;font-weight:400}
 .cx-main{min-width:0;display:flex;flex-direction:column;gap:12px}
@@ -244,7 +247,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 .cx-seg{display:flex;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--sheet)}
 .cx-seg button{height:30px;border:none;border-radius:0;padding:0 10px;font-size:13px;font-variant-numeric:tabular-nums}
 .cx-seg button + button{border-inline-start:1px solid var(--rule)}
-.cx-seg button[aria-pressed=true]{background:var(--ink);color:var(--sheet)}
+.cx-seg button[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
 .cx-seg button:disabled{color:var(--ink3);cursor:not-allowed;background:var(--sheet)}
 .cx-tools > button{height:32px;font-size:13px}
 .cx-stage{position:relative}
@@ -262,14 +265,12 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 .cx-tile.is-ended .cx-endtag{display:block}
 .cx-tl{position:relative;border-top:1px solid var(--rule);padding:12px 0 0}
 .cx-ctl{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 8px}
-.cx-play{width:34px;height:34px;padding:0;border-radius:50%;background:var(--ink);border-color:var(--ink);color:var(--sheet);display:inline-flex;align-items:center;justify-content:center}
-.cx-play:hover{background:#000}
+.cx-play{width:34px;height:34px;padding:0;border-radius:50%;background:var(--accent);border-color:var(--accent);color:var(--on-accent);display:inline-flex;align-items:center;justify-content:center}
+.cx-play:hover{opacity:.88}
 .cx-play svg{width:14px;height:14px}
 .cx-clock{font:500 14px/1 var(--mono);font-variant-numeric:tabular-nums}
 .cx-clock span{color:var(--ink3)}
 .cx-buf{font-size:12px;color:var(--ink3)}
-.cx-keys{margin-left:auto;font-size:12px;color:var(--ink3)}
-.cx-keys kbd{font-size:10.5px}
 .cx-lanes{display:grid;grid-template-columns:124px minmax(0,1fr);column-gap:10px;row-gap:4px}
 .cx-lane-l{height:22px;padding:0 6px;font-size:12.5px;display:flex;align-items:center;gap:6px;border-radius:3px;justify-content:flex-start}
 .cx-lane-l .d{margin-left:auto;font:400 11px/1 var(--mono);color:var(--ink3)}
@@ -291,49 +292,209 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 .cx-hold{display:none}
 .b3,.cx-item .b3{display:inline-block;margin-left:5px;padding:0 4px;border:1px solid var(--ours);border-radius:2px;color:var(--ours);
   font:500 10.5px/14px var(--mono);vertical-align:1px}
-.cx-3d{position:relative;aspect-ratio:16/9;background:#e6e3dc;overflow:hidden}
+.cx-3d{position:relative;aspect-ratio:16/9;background:var(--scene-bg);overflow:hidden}
 .cx-3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none}
 .cx-3d.is-free canvas{cursor:grab}
 .cx-3d.is-free canvas:active{cursor:grabbing}
 .cx-hud{position:absolute;left:8px;top:8px;z-index:3;display:flex;flex-direction:column;gap:3px;pointer-events:none}
-.cx-hud span{background:rgba(251,250,247,.92);color:var(--ink);font:400 12px/1.4 var(--mono);padding:2px 7px;border-radius:2px;width:max-content}
+.cx-hud span{background:var(--glass);color:var(--ink);font:400 12px/1.4 var(--mono);padding:2px 7px;border-radius:2px;width:max-content}
 .cx-hud span:empty{display:none}
-.cx-hint{position:absolute;right:8px;top:8px;z-index:3;background:rgba(251,250,247,.92);color:var(--ink2);font-size:12px;padding:2px 7px;border-radius:2px;pointer-events:none}
+.cx-hint{position:absolute;right:8px;top:8px;z-index:3;background:var(--glass);color:var(--ink2);font-size:12px;padding:2px 7px;border-radius:2px;pointer-events:none}
 .cx-pip{position:absolute;right:8px;bottom:8px;z-index:3;width:28%;aspect-ratio:16/9;overflow:hidden;background:#000;cursor:pointer;border:2px solid var(--sheet);transition:width .2s}
 .cx-pip.big{width:48%}
 .cx-pip video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 .cx-pip b{position:absolute;left:5px;top:4px;z-index:2;color:#fff;font-size:11.5px;font-weight:500;text-shadow:0 1px 3px rgba(0,0,0,.8)}
-.cx-load{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#e6e3dc;color:var(--ink2);font-size:14px}
+.cx-load{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--scene-bg);color:var(--ink2);font-size:14px}
 .cx-load i{display:block;width:180px;height:2px;background:var(--rule);overflow:hidden}
 .cx-load i b{display:block;height:100%;width:0;background:var(--ink);transition:width .15s}
 .cx-mrow{height:20px}
 .cx-mlab{height:20px;font-size:12px;color:var(--ink2);display:flex;align-items:center;padding:0 6px}
 .cx-shots{position:relative;height:20px;overflow:hidden;background:var(--rule2)}
 .cx-shots span{position:absolute;top:0;bottom:0;border-inline-start:1px solid var(--sheet);font:400 10px/20px var(--mono);color:var(--ink2);padding:0 4px;white-space:nowrap;overflow:hidden}
-.cx-shots span.on{background:var(--ink);color:var(--sheet)}
+.cx-shots span.on{background:var(--accent);color:var(--on-accent)}
 .cx-sb{position:relative;height:20px}
 .cx-sb::before{content:'';position:absolute;left:0;right:0;top:50%;border-top:1px solid var(--rule)}
 .cx-sb i{position:absolute;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;transform:rotate(45deg);background:var(--ours);border:1px solid var(--sheet)}
 .cx-sb i:hover,.cx-sb i.on{background:var(--ink);width:11px;height:11px;margin:-5.5px 0 0 -5.5px}
 .cx-tip{position:absolute;z-index:20;bottom:100%;margin-bottom:6px;transform:translateX(-50%);background:var(--sheet);border:1px solid var(--rule);
-  padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.12);pointer-events:none;width:176px}
-.cx-tip img{display:block;width:166px;aspect-ratio:16/9;object-fit:cover;background:#ddd}
+  padding:4px;box-shadow:var(--shadow);pointer-events:none;width:176px}
+.cx-tip img{display:block;width:166px;aspect-ratio:16/9;object-fit:cover;background:var(--rule)}
 .cx-tip p{margin:4px 2px 0;font-size:12px;line-height:1.35;color:var(--ink)}
 .cx-tip p span{color:var(--ink3);font-variant-numeric:tabular-nums}
 .cx [hidden]{display:none!important}
 
-.cx{border-radius:12px}
+.cx{border-radius:var(--radius)}
 @media (max-width:900px){
   .cx{grid-template-columns:minmax(0,1fr);padding:10px}
   .cx-side-in{position:static}
   .cx-list{flex-direction:row;overflow-x:auto;padding:0 0 6px}
   .cx-item{flex:0 0 150px;flex-direction:column;align-items:stretch}
   .cx-item img{width:100%}
-  .cx-keys{display:none}
   .cx-lanes{grid-template-columns:92px minmax(0,1fr)}
   .cx-lane-l .d{display:none}
   .cx-tlab{font-size:12.5px}
   .cx-tlab .s{display:none}
+}
+
+/* ---- Viewer controls, folded away under the intro ---- */
+.controls{margin:.5rem 0 0;font-size:.92rem;color:var(--ink3)}
+.controls summary{cursor:pointer;width:max-content;color:var(--ink);font-weight:500}
+.controls dl{grid-template-columns:max-content minmax(0,1fr);gap:6px 16px;margin:.75rem 0;text-align:left}
+.controls dl.only-kbd{display:grid}
+.controls dt{color:var(--ink);font-weight:500}
+.controls dd{margin:0}
+@media (pointer:coarse){ .controls dl.only-kbd{display:none} .controls dl.only-touch{display:grid} }
+
+/* ==== Look: white page, ink type in Google Sans Flex, cool-grey surfaces, pill controls, DyCraft in blue ==== */
+body{font-size:17px;line-height:1.5;color:var(--ink2);font-weight:400}
+::selection{background:#dcf1ff}
+b,strong{font-weight:600}
+
+/* opening film: the page starts as the teaser alone; scrolling dims it and brings up the title over it */
+.film{position:relative;height:190svh;background:#000}
+.film-stage{position:sticky;top:0;height:100svh;overflow:hidden;--p:0;--t:0}
+.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;
+  opacity:calc(1 - var(--p) * .7);transform:scale(calc(1 - var(--p) * .05))}
+.film-title{position:absolute;left:0;right:0;bottom:0;padding:22svh var(--gutter) 9svh;color:#fff;
+  background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.8) 45%);
+  opacity:var(--t);transform:translateY(calc((1 - var(--t)) * 48px));visibility:hidden}
+.film.is-titled .film-title{visibility:visible}
+.publication-title{margin:0 0 1.25rem;font-weight:450;color:#fff;text-align:left}
+.publication-title .t-name{display:block;font-size:clamp(3.5rem,10vw,8.5rem);line-height:1;letter-spacing:-.025em;font-weight:500}
+.publication-title .t-sep{display:none}
+.publication-title .t-sub{display:block;max-width:30ch;margin-top:.75rem;font-size:clamp(1.4rem,2.6vw,2.25rem);
+  line-height:1.12;letter-spacing:-.01em;color:#fff}
+.film-lead{max-width:52ch;margin:0 0 1.5rem;font-size:1.125rem;color:rgba(255,255,255,.72)}
+.publication-authors,.publication-venue{display:inline;font-size:.95rem;color:rgba(255,255,255,.72)}
+.publication-venue::before{content:'  \00b7  ';white-space:pre}
+.publication-links{justify-content:flex-start;gap:.5rem;margin-top:1.75rem}
+.link-block a{height:48px;padding:0 1.5rem;border-radius:999px;background:#fff;color:var(--ink);font:500 1rem/1 var(--font-body)}
+.link-block + .link-block a{background:rgba(255,255,255,.14);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.link-block a:hover{opacity:.88;color:var(--ink)}
+.link-block + .link-block a:hover{background:rgba(255,255,255,.24);color:#fff;opacity:1}
+.film-cue{position:absolute;left:50%;bottom:24px;z-index:2;display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px 0 20px;
+  border:none;border-radius:999px;background:#fff;box-shadow:0 6px 24px rgba(0,0,0,.35);
+  color:var(--ink);font:500 16px/1 var(--font-body);cursor:pointer;
+  opacity:calc(1 - var(--p) * 5);transform:translateX(-50%);animation:cue-in .8s 1.2s backwards}
+.film-cue:hover{background:#eff2f7}
+.film-cue svg{width:20px;height:20px;animation:cue 1.6s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:translateY(-3px)}50%{transform:translateY(4px)}}
+@keyframes cue-in{from{opacity:0;translate:0 12px}}
+
+/* section bar: slides in once the film has gone by */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:40;height:var(--bar);display:flex;align-items:center;gap:2rem;padding:0 var(--gutter);
+  background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--rule2);
+  transform:translateY(-100%);visibility:hidden;transition:transform .35s ease,visibility 0s .35s}
+.topbar.on{transform:none;visibility:visible;transition-delay:0s}
+.topbar-name{font-weight:500;font-size:22px;letter-spacing:-.01em;color:var(--ink)}
+.topbar-name:hover{color:var(--ink2)}
+.topbar-links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.topbar-links::-webkit-scrollbar{display:none}
+.topbar-links a{padding:9px 16px;border-radius:999px;font-size:15px;font-weight:450;color:var(--ink2);white-space:nowrap;transition:background .2s,color .2s}
+.topbar-links a:hover{background:var(--rule2);color:var(--ink)}
+.topbar-links a[aria-current=true]{background:var(--surface-3);color:var(--ink)}
+.section{scroll-margin-top:var(--bar)}
+.cx{scroll-margin-top:calc(var(--bar) + 16px)}
+
+/* sections: large light headings on the left, a short dek beneath */
+.section{padding:7rem 1.5rem 1rem}
+.section + .section{padding-top:7rem}
+#console{background:var(--surface-2);padding-bottom:6rem;margin-top:6rem}
+#console + .section{padding-top:6rem}
+.section .container,.is-max-desktop,.is-wide{max-width:var(--page)}
+.md{max-width:none}
+.title.is-3{text-align:left;margin:0 0 1.25rem;font-size:clamp(2.25rem,4.4vw,3.75rem);font-weight:450;letter-spacing:-.015em;line-height:1.06;color:var(--ink)}
+.content,.viewer-intro,.gallery-intro{max-width:44rem;margin-left:0;text-align:left}
+.content{font-size:1.2rem;line-height:1.55;color:var(--ink2)}
+.content strong,.viewer-intro strong,.gallery-intro strong{color:var(--ink);font-weight:500}
+.viewer-intro,.gallery-intro{margin-bottom:2.5rem;font-size:1.2rem;line-height:1.5;color:var(--ink2)}
+.viewer-intro .viewer-note{border:none;padding:0;font-size:.95rem}
+.controls{font-size:.95rem}
+.controls summary{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:var(--surface-3);color:var(--ink);font-weight:500;list-style:none}
+.controls summary::-webkit-details-marker{display:none}
+#console .controls summary{background:#fff}
+
+/* controls: pills, tonal when idle, ink when chosen */
+button,.chip{border-radius:999px;border-color:transparent;background:var(--surface-3);color:var(--ink);font-weight:450}
+button:hover,.chip:hover{border-color:transparent;background:var(--rule)}
+input[type=search]{border-radius:999px;padding:0 18px;border-color:var(--rule);font-weight:400}
+input[type=search]:focus{border-color:var(--ink)}
+.chip{background:transparent;border-color:var(--rule);color:var(--ink3)}
+.chip[aria-pressed=true]{background:var(--surface-3);border-color:var(--surface-3);color:var(--ink)}
+.cx-cats button[aria-pressed=true],.cx-seg button[aria-pressed=true],.speed button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.is-ours[aria-pressed=true]{background:var(--ours);border-color:var(--ours);color:#fff}
+.speed,.cx-seg{border:none;border-radius:999px;background:var(--surface-3);padding:2px;gap:2px}
+.speed button,.cx-seg button{border-radius:999px!important;border:none!important;background:transparent;height:32px}
+.cx-seg button:disabled{background:transparent}
+#cx .cx-seg{background:var(--surface-3)}
+.cx-tools > button{height:36px;padding:0 16px}
+#toggleAll[aria-pressed=true]{background:var(--surface-3)}
+kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
+
+/* panels: soft grey, no hairlines, generous corners */
+.cx{background:#fff;border:none;padding:20px;box-shadow:var(--shadow)}
+.md-demo,.scene{background:var(--surface-2);border:none}
+.md-demo{padding:14px}
+.scene{padding:24px}
+.md-view,.cx-3d,.cx-frame,.vwrap,.missing{border-radius:var(--radius-sm)}
+.cx-3d,.cx-frame,.vwrap{overflow:hidden}
+.cx-pip{border-radius:10px;border-width:3px}
+.md-hud span,.cx-hud span,.cx-hint{font-family:var(--font-body);border-radius:999px;padding:4px 10px}
+.md-card{border:none}
+.md-steps{gap:8px}
+.md-step{border:none;background:var(--surface-2);border-radius:var(--radius-sm);padding:12px 14px}
+.md-step:hover{background:var(--surface-3)}
+.md-step[aria-selected=true]{background:var(--ink);color:#fff}
+.md-step b{font-weight:500}
+.md-desc h3{font-weight:500}
+.cx-title{font-size:24px;font-weight:450;letter-spacing:-.005em}
+.cx-item{border-radius:12px}
+.cx-item img{border-radius:8px}
+.cx-item[aria-current=true]{background:var(--ours-tint);border-color:transparent}
+.cx-track,.cx-shots{border-radius:6px}
+.prompt{font-size:22px;font-weight:450;letter-spacing:-.005em}
+.sid{border-radius:999px;background:#fff;padding:3px 10px}
+.toolbar{top:var(--bar);border:none;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.site-footer{background:var(--surface-2);text-align:left;padding:3rem 1.5rem 5rem;margin-top:6rem;color:var(--ink3)}
+.site-footer p{max-width:var(--page);font-size:.9rem}
+
+@media (prefers-reduced-motion:reduce){
+  .film{height:100svh}
+  .film-cue,.film-cue svg{animation:none}
+}
+@media (max-width:640px){
+  :root{--bar:52px}
+  .film-title{padding:0 16px 7svh}
+  .film-lead{font-size:1rem;margin-bottom:1.1rem}
+  .publication-venue{display:block;margin-top:.35rem}
+  .publication-venue::before{content:none}
+  .link-block a{height:40px;padding:0 1rem;font-size:.9rem}
+  .topbar{gap:.75rem;padding:0 12px}
+  .topbar-name{font-size:18px}
+  .topbar-links a{padding:7px 10px;font-size:13.5px}
+  .section,.section + .section{padding:4rem 16px 1rem}
+  #console{margin-top:4rem;padding-bottom:3rem}
+  .title.is-3{font-size:2.1rem}
+  .content,.viewer-intro,.gallery-intro{font-size:1.05rem}
+  .cx{padding:10px;border-radius:16px}
+  .scene{padding:14px}
+}
+
+/* ---- 24-task sandbox ---- */
+.sb{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;
+  background:radial-gradient(ellipse 70% 60% at 50% 45%,#fff 0%,var(--surface-2) 60%,#e9edf3 100%)}
+.sb canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+.sb.is-hot canvas{cursor:pointer}
+.sb-tip{position:absolute;left:0;top:0;z-index:2;pointer-events:none;transform:translate(-50%,calc(-100% - 16px));
+  padding:9px 14px;border-radius:14px;background:var(--ink);color:#fff;box-shadow:var(--shadow);white-space:nowrap;line-height:1.3}
+.sb-tip b{display:block;font-weight:500;font-size:15px}
+.sb-tip span{font-size:12.5px;color:rgba(255,255,255,.66)}
+.sb-load{position:absolute;left:20px;bottom:14px;margin:0;font-size:13px;color:var(--ink3)}
+/* one button per task for keyboards and screen readers; focus shows the tile */
+.sb-keys{position:absolute;inset:auto 0 0 0;margin:0;padding:0;list-style:none;height:1px;overflow:hidden;clip-path:inset(50%)}
+@media (max-width:640px){
+  .sb{aspect-ratio:1/1.08;margin:0 -8px;border-radius:16px}
+  .sb-tip b{font-size:14px}
 }
 
 /* ---- Touch screens: instructions for fingers instead of keys ---- */
@@ -348,9 +509,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 
 /* ---- Phones ---- */
 @media (max-width:640px){
-  .hero-body{padding:2rem 16px 1rem}
   .container{padding:0}
-  .teaser{padding:0 16px 1rem}
   .section{padding:2rem 16px}
   .section + .section{padding-top:.5rem}
   .publication-title{font-size:1.7rem;margin-bottom:1rem}
@@ -358,8 +517,6 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
   .publication-venue{font-size:.95rem}
   .publication-links{gap:.4rem}
   .link-block a{font-size:.9rem;padding:0 1em}
-  .teaser video{border-radius:6px}
-  .teaser .subtitle{font-size:1rem;margin-top:.75rem}
   .title.is-3{font-size:1.5rem;margin-bottom:1rem}
   /* justified text leaves rivers in a phone-width column */
   .content,.viewer-intro,.gallery-intro{text-align:left;font-size:15px;line-height:1.6}
@@ -437,36 +594,63 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
   .pm-body{font-size:15px;line-height:1.65;max-height:60vh}
 }
 </style>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans+Code:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <h1 class="publication-title">DyCraft: An Agentic System for Long-Horizon 4D Scene Generation</h1>
-      <p class="publication-authors">Anonymous Authors</p>
-      <p class="publication-venue">Paper under double-blind review</p>
-    </div>
-  </div>
-</section>
-
-<section class="teaser">
-  <div class="container is-max-desktop">
+<header class="film" id="film">
+  <div class="film-stage" id="filmStage">
     <video id="teaser" autoplay muted loop playsinline preload="auto"
            poster="teaser/dycraft_teaser.jpg">
       <source src="teaser/dycraft_teaser.mp4" type="video/mp4">
     </video>
-    <p class="subtitle"><strong>DyCraft</strong> is an end-to-end agentic system that generates long-horizon 4D (3D + time) scenes from text prompts.</p>
+    <div class="film-title">
+      <h1 class="publication-title"><span class="t-name">DyCraft</span><span class="t-sep">: </span><span class="t-sub">An Agentic System for Long-Horizon 4D Scene Generation</span></h1>
+      <p class="film-lead">An end-to-end agentic system that generates long-horizon 4D (3D + time) scenes from text prompts.</p>
+      <p class="publication-authors">Anonymous Authors</p>
+      <p class="publication-venue">Paper under double-blind review</p>
+      <nav class="publication-links">
+        <span class="link-block"><a href="#console">Interactive viewer</a></span>
+        <span class="link-block"><a href="#method">Method</a></span>
+        <span class="link-block"><a href="#gallery">Video gallery</a></span>
+      </nav>
+    </div>
+    <button class="film-cue" id="filmCue" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Scroll to explore</button>
   </div>
-</section>
+</header>
 
-<section class="section">
+<nav class="topbar" id="topbar" aria-label="Sections">
+  <a class="topbar-name" href="#film">DyCraft</a>
+  <div class="topbar-links">
+    <a href="#abstract">Abstract</a>
+    <a href="#tasks">Tasks</a>
+    <a href="#console">Viewer</a>
+    <a href="#method">Method</a>
+    <a href="#gallery">Gallery</a>
+  </div>
+</nav>
+
+<section class="section" id="abstract">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Abstract</h2>
     <div class="content">
-      <p>While frontier coding agents can generate high-quality 3D scenes and articulated assets, they struggle to create coherent long-horizon animations. When equipped with general-purpose harnesses, they frequently produce physically implausible outputs, generating objects that interpenetrate, lack physical support, or move unnaturally. Such bare agents struggle to repair these errors because they default to scripting the full animation in one pass, making it difficult to verify their work and disentangle complex spatiotemporal constraints.</p>
-      <p>Drawing on the practice of human animators, we introduce <strong>DyCraft</strong>, a system for animated 3D scene generation that breaks animation into steps that coding agents can more reliably solve. DyCraft first expands the user&rsquo;s prompt into a detailed plan and builds a static scene. It then creates a 3D storyboard of key animation poses, where each frame is a static 3D scene that the agent can build and debug in isolation. Storyboarding decomposes the problem into pairs of verified start and end states, allowing the agent to author local motion between them with a collection of motion authoring tools.</p>
-      <p>We evaluate DyCraft on 24 long-horizon, multi-shot animation tasks covering humanoid robots, human and animal characters, and physical mechanisms. Compared with a native GPT-6 agent in Codex and prior agentic baselines, DyCraft substantially reduces physical violations and generates higher-quality animated 3D scenes that are more often preferred by human raters.</p>
+      <p>Coding agents can build convincing 3D scenes, but asked to animate them over a long horizon they script the whole motion in one pass, and the result is full of objects that pass through each other, float, or move unnaturally.</p>
+      <p><strong>DyCraft</strong> works the way an animator does. It plans the scene, builds it, then storyboards the key poses as static 3D scenes the agent can check one at a time, and fills in the motion between them. On 24 long-horizon tasks it produces substantially fewer physical errors than a native GPT-6 agent and prior agentic baselines, and human raters more often prefer its results.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="tasks">
+  <div class="container is-wide">
+    <h2 class="title is-3">24 Long-Horizon Tasks</h2>
+    <div class="viewer-intro">
+      <p>Every benchmark scene as DyCraft built it, all playing at once. <span class="only-kbd">Click</span><span class="only-touch">Tap</span> a tile to open it in the viewer.</p>
+    </div>
+    <div class="sb" id="sb">
+      <canvas id="sbCanvas" aria-hidden="true"></canvas>
+      <div class="sb-tip" id="sbTip" hidden><b></b><span></span></div>
+      <p class="sb-load" id="sbLoad">Loading scenes&hellip;</p>
+      <ol class="sb-keys" id="sbKeys" aria-label="Tasks"></ol>
     </div>
   </div>
 </section>
@@ -475,10 +659,22 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
   <div class="container is-wide">
     <h2 class="title is-3">Interactive 4D Scene Viewer</h2>
     <div class="viewer-intro">
-      <p>Every task opens in DyCraft&rsquo;s generated 4D scene, rendered live in your browser. Watch it through the film&rsquo;s cameras or switch to <strong>Free orbit</strong> and drag to look around while it plays; the rendered film plays in the corner at the same moment. The timeline marks the verified storyboard key poses and the camera cuts.</p>
-      <p class="only-kbd">Drag on the timeline to scrub; <kbd>Space</kbd> plays and pauses, <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> change the task, and <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> (with <kbd>Q</kbd>/<kbd>E</kbd> for down/up) fly the camera through the scene; <strong>Reset camera</strong> or <kbd>R</kbd> brings it back to the film&rsquo;s shot. In indoor scenes, <strong>Hide walls</strong> or <kbd>H</kbd> takes away the walls and ceiling so you can watch from outside the room; windows, doors, shelves and fittings stay in place.</p>
-      <p class="only-touch">Drag on the timeline to scrub. Swipe sideways across the scene to switch to <strong>Free orbit</strong>, then drag to look around, pinch to zoom and drag with two fingers to pan; <strong>Reset camera</strong> brings it back to the film&rsquo;s shot. In indoor scenes, <strong>Hide walls</strong> takes away the walls and ceiling so you can watch from outside the room; windows, doors, shelves and fittings stay in place.</p>
-      <p class="viewer-note"><strong>Note:</strong> the viewer is a real-time WebGL approximation, meant to give an intuitive sense of each scene&rsquo;s 3D structure and motion. Liquids, glass and some procedural textures are approximated, so materials and lighting differ from the Cycles renders shown in the films.</p>
+      <p>Each task&rsquo;s generated 4D scene, live in your browser. Watch through the film&rsquo;s cameras or switch to <strong>Free orbit</strong> and look around while it plays.</p>
+      <details class="controls">
+        <summary>Controls</summary>
+        <dl class="only-kbd">
+          <dt>Timeline</dt><dd>drag to scrub; <kbd>Space</kbd> play/pause; <kbd>&larr;</kbd><kbd>&rarr;</kbd> seek; <kbd>,</kbd><kbd>.</kbd> step a frame</dd>
+          <dt>Tasks</dt><dd><kbd>&uarr;</kbd><kbd>&darr;</kbd></dd>
+          <dt>Camera</dt><dd><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> fly, <kbd>Q</kbd><kbd>E</kbd> down/up, <kbd>R</kbd> back to the film&rsquo;s shot</dd>
+          <dt>Walls</dt><dd>indoor scenes open with walls and ceiling hidden; <kbd>H</kbd> brings them back</dd>
+        </dl>
+        <dl class="only-touch">
+          <dt>Timeline</dt><dd>drag to scrub</dd>
+          <dt>Camera</dt><dd>swipe sideways for Free orbit, then drag to look, pinch to zoom, two fingers to pan</dd>
+          <dt>Walls</dt><dd>indoor scenes open with walls hidden; <strong>Show walls</strong> brings them back</dd>
+        </dl>
+        <p class="viewer-note">A real-time WebGL approximation: liquids, glass and some procedural materials differ from the Cycles renders in the films.</p>
+      </details>
     </div>
     <div class="cx" id="cx">
       <aside class="cx-side">
@@ -498,7 +694,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
               <button data-view="camera" aria-pressed="true"><span class="wide">Through the camera</span><span class="narrow">Film camera</span></button>
               <button data-view="free" aria-pressed="false">Free orbit</button>
             </div>
-            <button id="cxWalls" aria-pressed="false" title="Take away the room's walls and ceiling; windows, doors, shelves and fittings stay (H)" hidden>Hide walls</button>
+            <button id="cxWalls" aria-pressed="true" title="Indoor scenes open with the walls and ceiling taken away; windows, doors, shelves and fittings stay (H)" hidden>Show walls</button>
             <button id="cxReset" title="Put the camera back where the film's current shot sees it (R)">Reset camera</button>
             <button id="cxFs" aria-label="Full screen">Full screen</button>
           </div>
@@ -521,7 +717,6 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
             <div class="cx-seg" id="cxSpeed"></div>
             <div class="cx-seg"><button id="cxLoop" aria-pressed="true">Loop</button></div>
             <span class="cx-buf" id="cxBuf" hidden>Buffering…</span>
-            <span class="cx-keys"><kbd>Space</kbd> play · <kbd>&larr;</kbd><kbd>&rarr;</kbd> seek · <kbd>,</kbd><kbd>.</kbd> frame · <kbd>&uarr;</kbd><kbd>&darr;</kbd> prompt · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move camera · <kbd>H</kbd> walls · <kbd>R</kbd> reset</span>
           </div>
           <div class="cx-tip" id="cxTip" hidden><img alt=""><p></p></div>
           <div class="cx-lanes" id="cxLanes">
@@ -547,7 +742,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
   <div class="container is-wide">
     <h2 class="title is-3">Method</h2>
     <div class="viewer-intro">
-      <p>DyCraft gives a general coding agent (GPT-6-Astra in Codex) tools for CAD, motion authoring and verification, and steers it through the steps an animator would take, so each one can be checked on its own. Click a step to see it on a real task from the benchmark, <em>&ldquo;Turn a wide panel through a narrow doorway&rdquo;</em>.</p>
+      <p>DyCraft gives a coding agent (GPT-6-Astra in Codex) tools for CAD, motion and verification, and walks it through an animator&rsquo;s steps so each can be checked on its own. Shown on <em>&ldquo;Turn a wide panel through a narrow doorway&rdquo;</em>.</p>
     </div>
     <div class="md" id="md">
       <ol class="md-steps" role="tablist" id="mdSteps">
@@ -597,8 +792,7 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
   <div class="container is-wide">
     <h2 class="title is-3">Video Gallery</h2>
     <div class="gallery-intro">
-      <p>Every benchmark prompt with each method&rsquo;s result side by side. Use the buttons below to hide a method, or type to filter prompts. <strong>Full prompt</strong> opens the complete brief the methods were given.</p>
-      <p>Within a block all clips start together and are aligned to the longest one; a clip that finishes early holds on its last frame and is marked <em>ended</em>, so differing lengths stay visible rather than being hidden by looping. Playback speed applies to every clip at once. <span class="only-kbd">Click any clip to open it larger with playback controls; <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> step through, <kbd>Esc</kbd> closes.</span><span class="only-touch">Tap any clip to open it larger with playback controls.</span></p>
+      <p>Every benchmark prompt, each method side by side. Clips in a row start together; one that finishes early holds its last frame. <span class="only-kbd">Click a clip to enlarge it.</span><span class="only-touch">Tap a clip to enlarge it.</span></p>
     </div>
 <div class="toolbar">
   <div class="chips" id="chips"></div>
@@ -618,6 +812,325 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
   <p>Anonymous submission &mdash; supplementary material.</p>
   <p>This page is adapted from the <a href="https://github.com/nerfies/nerfies.github.io" rel="noreferrer">Nerfies</a> project page template, licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="noreferrer">Creative Commons Attribution-ShareAlike 4.0 International License</a>. The 3D viewer uses <a href="https://threejs.org" rel="noreferrer">three.js</a>.</p>
 </footer>
+
+<script type="module">
+// 24-task sandbox: a light, low-poly copy of every scene (mini.glb, walls already taken out) on a 5x5 board
+// with the centre left empty. Each copy is cut to a square around its action, like a diorama, and they all
+// play together; clicking a tile opens that task in the viewer.
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const root = document.getElementById('sb'), canvas = document.getElementById('sbCanvas');
+const tip = document.getElementById('sbTip'), loadNote = document.getElementById('sbLoad');
+const PITCH = 1, BASE = 0.16, RATE = 2, GAP = 0.004;
+const CAT = id => (+id <= 8 ? 'Humanoid robot' : +id <= 16 ? 'Human & animal' : 'Mechanism');
+const still = matchMedia('(prefers-reduced-motion: reduce)');
+
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(2, devicePixelRatio || 1));
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.localClippingEnabled = true;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+const scene = new THREE.Scene();
+scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), 0.04).texture;
+scene.environmentIntensity = 0.55;
+scene.add(new THREE.HemisphereLight(0xffffff, 0xb8c2d0, 0.55));
+// one key light from the upper left, its soft shadow is what makes the board read as solid
+const sun = new THREE.DirectionalLight(0xffffff, 2.1);
+sun.position.set(-4, 9, 5);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048, 2048);
+Object.assign(sun.shadow.camera, { left: -4, right: 4, top: 4, bottom: -4, near: 1, far: 25 });
+sun.shadow.bias = -0.0025;
+sun.shadow.radius = 3;
+scene.add(sun);
+const cam = new THREE.PerspectiveCamera(24, 16 / 9, 1, 50);
+
+// slots: row-major over the 5x5 board, skipping the centre; blocks touch (PITCH 1 = one block)
+const slots = [];
+for (let r = 0; r < 5; r++) for (let c = 0; c < 5; c++) if (r !== 2 || c !== 2) slots.push([(c - 2) * PITCH, (r - 2) * PITCH]);
+// its top sits a hair under the scene's floor (y = 0) so the two never fight over the same depth
+const plinthGeo = new THREE.BoxGeometry(1, BASE, 1).translate(0, -BASE / 2 - GAP, 0);
+// box faces are +x, -x, +y, -y, +z, -z: a white top on slightly darker sides
+const plinthMats = () => { const side = new THREE.MeshStandardMaterial({ color: 0xdfe4eb, roughness: 0.9 });
+  const top = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.9 }); return [side, side, top, side, side, side]; };
+const tiles = SCENES.slice(0, 24).map((sc, i) => {
+  const [x, z] = slots[i];
+  const g = new THREE.Group();
+  g.position.set(x, 0, z);
+  const plinth = new THREE.Mesh(plinthGeo, plinthMats());
+  plinth.castShadow = plinth.receiveShadow = true;
+  g.add(plinth);
+  scene.add(g);
+  return { id: sc.id, title: sc.prompt, group: g, plinth, x, z, lift: 0, model: null, grow: 0 };
+});
+// the blocks sit edge to edge as one board; the centre is a blank block, so the board has no hole
+const centre = new THREE.Mesh(plinthGeo, plinthMats());
+centre.castShadow = centre.receiveShadow = true;
+scene.add(centre);
+
+// Where the action is: the animated nodes' positions over the whole clip, sampled.
+function actionBox(gltf, mixer, actions, duration) {
+  const box = new THREE.Box3(), p = new THREE.Vector3(), moving = new Set();
+  gltf.animations.forEach(c => c.tracks.forEach(t => {
+    const n = gltf.scene.getObjectByName(t.name.split('.')[0]);
+    if (n) moving.add(n);
+  }));
+  for (let k = 0; k <= 24; k++) {
+    actions.forEach(a => { a.time = duration * k / 24; });
+    mixer.update(0);
+    gltf.scene.updateMatrixWorld(true);
+    moving.forEach(n => box.expandByPoint(n.getWorldPosition(p)));
+  }
+  return box;
+}
+
+// Indoor scenes lose everything static overhead: walls.json lists the ceiling surfaces, but beams, joists,
+// rafters and light rails often stay behind. A triangle goes when all of it is above head height, or above
+// the highest point the action reaches (09 carries its piano up to a landing). Moving parts are left alone.
+function trimOverhead(gltf, top) {
+  const moving = new Set();
+  gltf.animations.forEach(c => c.tracks.forEach(t => { const n = gltf.scene.getObjectByName(t.name.split('.')[0]); if (n) moving.add(n); }));
+  const moves = o => { for (let n = o; n; n = n.parent) if (moving.has(n)) return true; return false; };
+  const v = new THREE.Vector3();
+  gltf.scene.traverse(o => {
+    if (!o.isMesh || o.isSkinnedMesh || moves(o)) return;
+    const g = o.geometry, pos = g.attributes.position;
+    const idx = g.index ? g.index.array : Uint32Array.from({ length: pos.count }, (_, i) => i);
+    const high = new Uint8Array(pos.count);
+    for (let i = 0; i < pos.count; i++) high[i] = v.fromBufferAttribute(pos, i).applyMatrix4(o.matrixWorld).y > top;
+    const keep = [];
+    for (let i = 0; i < idx.length; i += 3) if (!(high[idx[i]] && high[idx[i + 1]] && high[idx[i + 2]])) keep.push(idx[i], idx[i + 1], idx[i + 2]);
+    if (keep.length === idx.length) return;
+    if (!keep.length) { o.visible = false; return; }
+    g.setIndex(keep);
+  });
+}
+
+async function place(t, gltf, indoor) {
+  const model = gltf.scene;
+  const mixer = new THREE.AnimationMixer(model);
+  const actions = gltf.animations.map(c => { const a = mixer.clipAction(c); a.play(); return a; });
+  const duration = Math.max(1, ...gltf.animations.map(c => c.duration));
+  model.updateMatrixWorld(true);
+  // the square: the action's reach plus room to stand, never wider than what was built around it
+  const built = new THREE.Box3();
+  model.traverse(o => {
+    if (!o.isMesh) return;
+    const b = new THREE.Box3().setFromObject(o), s = b.getSize(new THREE.Vector3());
+    if (Math.max(s.x, s.z) < 14) built.union(b);
+  });
+  const act = actions.length ? actionBox(gltf, mixer, actions, duration) : new THREE.Box3();
+  if (indoor) trimOverhead(gltf, Math.max(2.5, act.isEmpty() ? 0 : act.max.y + 0.5));
+  const ctr = (act.isEmpty() ? built : act).getCenter(new THREE.Vector3());
+  const as = act.isEmpty() ? new THREE.Vector3() : act.getSize(new THREE.Vector3());
+  const bs = built.getSize(new THREE.Vector3());
+  let side = Math.max(3.2, Math.max(as.x, as.z) + 1.8);
+  side = Math.min(side, Math.max(3.2, Math.max(bs.x, bs.z) + 0.2));
+  const k = 1 / side;
+  const holder = new THREE.Group();
+  holder.scale.setScalar(k);
+  model.position.set(-ctr.x, 0, -ctr.z);
+  holder.add(model);
+  // clip to the tile's column; planes are in world space and move with the tile when it lifts
+  const planes = [new THREE.Plane(new THREE.Vector3(1, 0, 0)), new THREE.Plane(new THREE.Vector3(-1, 0, 0)),
+                  new THREE.Plane(new THREE.Vector3(0, 0, 1)), new THREE.Plane(new THREE.Vector3(0, 0, -1)),
+                  new THREE.Plane(new THREE.Vector3(0, -1, 0))];
+  model.traverse(o => {
+    // lines and points too: anything drawn has to stay inside its block
+    if (!o.material) return;
+    if (o.isSkinnedMesh) o.frustumCulled = false;
+    o.castShadow = o.receiveShadow = true;
+    const mats = Array.isArray(o.material) ? o.material : [o.material];
+    mats.forEach(m => {
+      m.clippingPlanes = planes;
+      m.clipShadows = true;  // what is cut away must not cast shadows onto the neighbouring blocks
+      m.flatShading = true;
+      if (m.transmission > 0) { m.transmission = 0; m.transparent = true; m.opacity = 0.35; m.depthWrite = false; }
+      m.needsUpdate = true;
+    });
+  });
+  t.group.add(holder);
+  Object.assign(t, { model: holder, mixer, actions, duration, planes, offset: Math.random() * duration });
+}
+function clipTo(t) {
+  const y = t.group.position.y, h = 0.5;
+  t.planes[0].constant = -(t.x - h); t.planes[1].constant = t.x + h;
+  t.planes[2].constant = -(t.z - h); t.planes[3].constant = t.z + h;
+  t.planes[4].constant = y + 0.95;
+}
+
+// ---- loading: a few at a time, once the board is near the screen
+let loaded = 0, started = false;
+function startLoading() {
+  if (started) return;
+  started = true;
+  const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+  const queue = tiles.slice();
+  const next = () => {
+    const t = queue.shift();
+    if (!t) return;
+    // a scene with a walls.json is a room; outdoor scenes keep what stands over them
+    const indoor = fetch(Dy3D.paths[t.id] + 'walls.json', { method: 'HEAD' }).then(r => r.ok).catch(() => false);
+    Promise.all([loader.loadAsync(Dy3D.paths[t.id] + 'mini.glb'), indoor])
+      .then(([g, room]) => place(t, g, room))
+      .catch(() => {})
+      .finally(() => {
+        loaded++;
+        loadNote.textContent = loaded < tiles.length ? `Loading scenes ${loaded} / ${tiles.length}` : '';
+        next();
+      });
+  };
+  for (let i = 0; i < 4; i++) next();
+}
+
+// ---- camera: a three-quarter view of the whole board, swaying gently; the pointer adds a little parallax
+let W = 0, H = 0, aim = 0, aimNow = 0;
+function resize() {
+  const r = root.getBoundingClientRect();
+  W = r.width; H = r.height;
+  if (!W) return;
+  renderer.setSize(W, H, false);
+  cam.aspect = W / H;
+  cam.updateProjectionMatrix();
+}
+new ResizeObserver(resize).observe(root);
+function aimCamera(time) {
+  const sway = still.matches ? 0 : Math.sin(time * 0.00012) * 0.1;
+  aimNow += (aim - aimNow) * 0.05;
+  const az = sway + aimNow * 0.12, el = cam.aspect < 1 ? 0.95 : 0.72;
+  // close enough that the board (half-width 2.5) fills the frame: its width, and its depth foreshortened
+  const half = 2.62, vf = THREE.MathUtils.degToRad(cam.fov) / 2, hf = Math.atan(Math.tan(vf) * cam.aspect);
+  const d = Math.max(half / Math.tan(hf), half * (Math.sin(el) + 0.25) / Math.tan(vf));
+  cam.position.set(Math.sin(az) * Math.cos(el) * d, Math.sin(el) * d, Math.cos(az) * Math.cos(el) * d);
+  // the board shrinks every scene 3 to 10 times, so a rug and the floor under it end up a fraction of a
+  // millimetre apart: keep the depth range tight around the board or they flicker as the camera sways
+  cam.near = Math.max(0.5, d - 6);
+  cam.far = d + 6;
+  cam.updateProjectionMatrix();
+  cam.lookAt(0, -0.25, 0.1);
+}
+
+// ---- picking
+const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+let hot = -1, hotFrom = 'pointer';
+function pick(e) {
+  const r = canvas.getBoundingClientRect();
+  ndc.set((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
+  ray.setFromCamera(ndc, cam);
+  // the plinth, or anything standing on it
+  let best = -1, bestD = Infinity;
+  tiles.forEach((t, i) => {
+    const box = new THREE.Box3(new THREE.Vector3(t.x - 0.5, -BASE - GAP, t.z - 0.5), new THREE.Vector3(t.x + 0.5, 0.6, t.z + 0.5));
+    const hit = ray.ray.intersectBox(box, new THREE.Vector3());
+    if (hit) { const dd = hit.distanceTo(ray.ray.origin); if (dd < bestD) { bestD = dd; best = i; } }
+  });
+  return best;
+}
+function setHot(i, from) {
+  hot = i; hotFrom = from;
+  root.classList.toggle('is-hot', i >= 0);
+  tip.hidden = i < 0;
+  if (i >= 0) {
+    tip.querySelector('b').textContent = tiles[i].title;
+    tip.querySelector('span').textContent = CAT(tiles[i].id) + ' · open in the viewer';
+  }
+}
+function tipAt(i) {
+  const t = tiles[i], p = new THREE.Vector3(t.x, t.group.position.y + 0.55, t.z).project(cam);
+  tip.style.left = ((p.x + 1) / 2 * W) + 'px';
+  tip.style.top = ((1 - p.y) / 2 * H) + 'px';
+}
+canvas.addEventListener('pointermove', e => {
+  aim = ((e.clientX - canvas.getBoundingClientRect().left) / W) * 2 - 1;
+  if (e.pointerType === 'mouse') setHot(pick(e), 'pointer');
+});
+canvas.addEventListener('pointerleave', () => { aim = 0; if (hotFrom === 'pointer') setHot(-1); });
+canvas.addEventListener('click', e => {
+  const i = pick(e);
+  if (i >= 0) window.cxOpen(tiles[i].id);
+});
+
+// keyboard and screen readers: a button per task
+const keys = document.getElementById('sbKeys');
+tiles.forEach((t, i) => {
+  const li = document.createElement('li'), b = document.createElement('button');
+  b.type = 'button';
+  b.textContent = t.title + ', ' + CAT(t.id) + ': open in the viewer';
+  b.addEventListener('focus', () => { setHot(i, 'key'); root.classList.add('has-focus'); });
+  b.addEventListener('blur', () => { if (hotFrom === 'key') setHot(-1); });
+  b.addEventListener('click', () => window.cxOpen(t.id));
+  li.append(b);
+  keys.append(li);
+});
+
+// ---- loop: only while the board is on screen
+let inView = false, last = performance.now(), clock = 0;
+new IntersectionObserver(es => es.forEach(e => {
+  inView = e.isIntersecting;
+  if (inView) { startLoading(); last = performance.now(); }
+}), { rootMargin: '300px 0px' }).observe(root);
+function frame(now) {
+  requestAnimationFrame(frame);
+  if (!inView || document.hidden || !W) return;
+  const dt = Math.min(0.1, (now - last) / 1000);
+  last = now;
+  clock += dt * RATE;
+  tiles.forEach((t, i) => {
+    t.lift += ((i === hot ? 0.08 : 0) - t.lift) * 0.18;
+    t.group.position.y = t.lift;
+    t.plinth.material[2].color.setHex(i === hot ? 0xe3ebff : 0xffffff);
+    if (!t.model) return;
+    if (t.grow < 1) { t.grow = Math.min(1, t.grow + dt * 2.5); const g = 1 - (1 - t.grow) ** 3; t.model.scale.setScalar(t.model.scale.x / (t.prevG || 1) * g); t.prevG = g; }
+    t.actions.forEach(a => { a.time = (clock + t.offset) % t.duration; });
+    t.mixer.update(0);
+    clipTo(t);
+  });
+  aimCamera(now);
+  if (hot >= 0) tipAt(hot);
+  renderer.render(scene, cam);
+}
+resize();
+requestAnimationFrame(frame);
+</script>
+
+<script>
+// Opening film and section bar. --p runs 0 to 1 while the film is pinned; the title fades in over its middle third.
+(() => {
+  const film = document.getElementById('film'), stage = document.getElementById('filmStage'), video = document.getElementById('teaser');
+  const bar = document.getElementById('topbar'), links = [...bar.querySelectorAll('.topbar-links a')];
+  const sections = links.map(a => document.querySelector(a.hash));
+  const still = matchMedia('(prefers-reduced-motion: reduce)');
+  let queued = false;
+  function update() {
+    queued = false;
+    const r = film.getBoundingClientRect(), run = film.offsetHeight - innerHeight;
+    const p = still.matches ? 1 : Math.min(1, Math.max(0, -r.top / Math.max(1, run)));
+    const t = still.matches ? 1 : Math.min(1, Math.max(0, (p - .15) / .45));
+    stage.style.setProperty('--p', p.toFixed(3));
+    stage.style.setProperty('--t', t.toFixed(3));
+    film.classList.toggle('is-titled', t > .02);
+    bar.classList.toggle('on', r.bottom < innerHeight * .35);
+    // no point decoding the teaser while it is scrolled away
+    if (r.bottom <= 0) { if (!video.paused) video.pause(); }
+    else if (video.paused && !document.hidden) video.play().catch(() => {});
+    let cur = -1;
+    sections.forEach((sec, i) => { if (sec && sec.getBoundingClientRect().top < innerHeight * .4) cur = i; });
+    links.forEach((a, i) => a.toggleAttribute('aria-current', i === cur));
+    if (cur >= 0) links[cur].setAttribute('aria-current', 'true');
+  }
+  const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+  document.getElementById('filmCue').addEventListener('click', () =>
+    scrollTo({ top: film.offsetTop + (film.offsetHeight - innerHeight) * .7, behavior: still.matches ? 'auto' : 'smooth' }));
+  addEventListener('scroll', queue, { passive: true });
+  addEventListener('resize', queue);
+  still.addEventListener('change', queue);
+  update();
+})();
+</script>
 
 <dialog id="lb">
   <div class="lb">
@@ -1570,7 +2083,8 @@ document.addEventListener('keydown', e => {
   // Interactive console: one master clock drives every method's clip for the selected prompt.
   const CATS = [['all', 'All'], ['humanoid', 'Humanoid robot'], ['character', 'Human & animal'], ['mechanism', 'Mechanism']];
   const catOf = id => (+id <= 8 ? 'humanoid' : +id <= 16 ? 'character' : 'mechanism');
-  const COLORS = { ours_gpt6: '#1d7a4f', bare_gpt6: '#6b7280', viga_gpt6: '#b7791f' };
+  const tok = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const COLORS = { ours_gpt6: tok('--ours'), bare_gpt6: tok('--m-bare'), viga_gpt6: tok('--m-viga') };
   // DyCraft's exported 4D scenes (GLB + camera cuts + storyboard key poses), keyed by scene id.
   const SCENES3D = {'01': 'scenes3d/01_g1_scrambles_eggs/', '02': 'scenes3d/02_g1_assembles_office_chair/', '03': 'scenes3d/03_g1_loads_pottery_kiln/', '04': 'scenes3d/04_g1_mops_break_room/', '05': 'scenes3d/05_g1_carries_panel_through_doorway/', '06': 'scenes3d/06_g1_sorts_mailroom_post/', '07': 'scenes3d/07_g1_transfers_parts_after_interrupt/', '08': 'scenes3d/08_g1_carries_drinks_tray/', '09': 'scenes3d/09_movers_carry_piano_upstairs/', '10': 'scenes3d/10_barista_serves_takeaway_coffee/', '11': 'scenes3d/11_film_crew_sets_dolly_shot/', '12': 'scenes3d/12_lifter_fails_heavy_deadlift/', '13': 'scenes3d/13_dog_fetches_newspaper/', '14': 'scenes3d/14_crow_opens_puzzle_feeder/', '15': 'scenes3d/15_trainer_teaches_dog_to_stay/', '16': 'scenes3d/16_macaque_cracks_nut/', '17': 'scenes3d/17_marble_course_runs/', '18': 'scenes3d/18_domino_circuit_falls/', '19': 'scenes3d/19_parcel_sorter_sorts_six/', '20': 'scenes3d/20_tipping_bucket_fills_tank/', '21': 'scenes3d/21_bottling_line_fills_six/', '22': 'scenes3d/22_drawbridge_opens_for_boat/', '23': 'scenes3d/23_spring_cart_runs_course/', '24': 'scenes3d/24_clock_strikes_four/'};
   const CX_SPEEDS = [0.5, 1, 2, 3];
@@ -1582,7 +2096,7 @@ document.addEventListener('keydown', e => {
   const root = document.getElementById('cx');
   const el = id => document.getElementById(id);
   const label = k => METHODS.find(m => m.key === k).label;
-  const st = { i: 0, t: 0, playing: false, rate: 2, loop: true, mode: '3d', cat: 'all', walls: false,
+  const st = { i: 0, t: 0, playing: false, rate: 2, loop: true, mode: '3d', cat: 'all', walls: true,
                last: performance.now(), inView: false, started: false, scrubbing: false };
   const shown = new Set(METHODS.map(m => m.key));
 
@@ -1975,7 +2489,7 @@ document.addEventListener('keydown', e => {
   function prepare(gltf, wallList, layers) {
     const THREE = v3.THREE;
     const scn = new THREE.Scene();
-    scn.background = new THREE.Color(0xe6e3dc);
+    scn.background = new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--scene-bg').trim());
     scn.environment = v3.env;
     scn.add(gltf.scene);
     gltf.scene.updateMatrixWorld(true);
@@ -2186,6 +2700,7 @@ document.addEventListener('keydown', e => {
     c.mixer.update(0);
   }
   window.Dy3D = {
+    paths: SCENES3D,
     load: id => getScene(id),
     attach,
     consoleBusy: () => st.mode === '3d' && st.inView,

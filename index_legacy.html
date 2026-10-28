@@ -1,0 +1,2617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>DyCraft: An Agentic System for Long-Horizon 4D Scene Generation</title>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+<style>
+/* ---- Nerfies-style page shell (Bulma look, no external CSS required) ---- */
+body{margin:0;background:#fff;color:#4a4a4a;
+  font-family:'Noto Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:#3273dc;text-decoration:none}
+a:hover{color:#363636}
+.hero-body{padding:3rem 1.5rem 1.5rem;text-align:center}
+.container{margin:0 auto;padding:0 1.5rem}
+.is-max-desktop{max-width:960px}
+.is-wide{max-width:1560px}
+.publication-title{font-family:'Google Sans',sans-serif;font-size:3rem;font-weight:600;
+  line-height:1.125;color:#363636;margin:0 0 1.5rem;letter-spacing:0}
+.publication-authors{font-family:'Google Sans',sans-serif;font-size:1.25rem;color:#4a4a4a;margin:0 0 .35rem}
+.publication-venue{font-family:'Google Sans',sans-serif;font-size:1.05rem;color:#7a7a7a;margin:0}
+.publication-links{margin-top:1.25rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
+.link-block a{display:inline-flex;align-items:center;gap:.5em;height:2.5em;padding:0 1.25em;
+  border-radius:290486px;background:#363636;color:#fff;font-size:1rem;
+  font-family:'Google Sans','Noto Sans',sans-serif;white-space:nowrap}
+.link-block a:hover{background:#2f2f2f;color:#fff}
+.link-block a svg{width:1em;height:1em}
+.link-block a.is-disabled{opacity:.55;cursor:default;pointer-events:none}
+.teaser{padding:0 1.5rem 1.5rem}
+.teaser video{width:100%;border-radius:8px;background:#000;display:block}
+.teaser .subtitle{text-align:center;font-size:1.1rem;color:#4a4a4a;margin:1rem 0 0}
+.teaser .subtitle .dnerf{font-variant:small-caps}
+.section{padding:3rem 1.5rem}
+.section + .section{padding-top:1rem}
+.title.is-3{font-family:'Google Sans',sans-serif;font-size:2rem;font-weight:600;color:#363636;
+  text-align:center;margin:0 0 1.5rem;line-height:1.125}
+.content{text-align:justify;color:#4a4a4a}
+.content p{margin:0 0 1em}
+.md{--sheet:#fff;--ink:#363636;--ink2:#4a4a4a;--ink3:#7a7a7a;--rule:#dbdbdb;--rule2:#ededed;--warn:#c2410c;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;max-width:1120px;margin:0 auto;color:var(--ink)}
+.md-steps{list-style:none;margin:0 0 12px;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.md-step{position:relative;width:100%;height:auto;min-height:58px;padding:8px 10px 10px;border:1px solid var(--rule);border-radius:8px;
+  background:var(--sheet);color:var(--ink2);text-align:left;display:flex;flex-direction:column;gap:2px;overflow:hidden;cursor:pointer}
+.md-step i{font:500 11px/1 var(--mono);font-style:normal;color:var(--ink3)}
+.md-step b{font:600 14px/1.2 'Google Sans','Noto Sans',sans-serif}
+.md-step u{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--ours);text-decoration:none}
+.md-step[aria-selected=true]{background:var(--ink);border-color:var(--ink);color:#fff}
+.md-step[aria-selected=true] i{color:#bdbdbd}
+.md-demo{border:1px solid var(--rule);border-radius:12px;padding:10px;background:var(--sheet)}
+.md-view{position:relative;aspect-ratio:16/9;background:#e6e3dc;overflow:hidden;border-radius:4px}
+.md-view canvas,.md-view > img,.md-view video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover}
+.md-view canvas,.md-view > img{transition:filter .4s}
+.md-view[data-stage=prompt] canvas,.md-view[data-stage=prompt] > img,
+.md-view[data-stage=rewrite] canvas,.md-view[data-stage=rewrite] > img{filter:grayscale(.7) opacity(.45) blur(4px)}
+.md-view video{object-fit:contain;background:#000;z-index:2}
+.md-hud{position:absolute;left:10px;top:10px;z-index:4;display:flex;gap:6px;flex-wrap:wrap;pointer-events:none;max-width:calc(100% - 20px)}
+.md-hud span{background:rgba(20,20,20,.72);color:#fff;font:500 12px/1 var(--mono);padding:5px 7px;border-radius:3px;white-space:nowrap}
+.md-hud span:empty{display:none}
+.md-load{position:absolute;right:10px;bottom:10px;z-index:4;font-size:12px;color:var(--ink3)}
+.md-ov{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;gap:16px;padding:48px 6% 24px}
+.md-card{background:rgba(255,255,255,.94);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;box-shadow:0 6px 24px rgba(0,0,0,.08);
+  font-size:14.5px;line-height:1.55;color:var(--ink2);max-height:100%;overflow:hidden}
+.md-card h4{margin:0 0 6px;font:600 13px/1.3 var(--mono);color:var(--ink)}
+.md-card h4 span{font-weight:400;color:var(--ink3)}
+.md-card p{margin:0}
+.md-card mark{background:#fde9b8;color:inherit;padding:0 1px}
+.md-ov[data-for=prompt] .md-card{max-width:640px;font:400 16px/1.6 'Google Sans','Noto Sans',sans-serif}
+.md-ov[data-for=rewrite] .md-card{flex:1;max-width:420px}
+.md-ov[data-for=rewrite] .md-arrow{font-size:22px;color:var(--ink3)}
+.md-ov[data-for=verify]{background:#f4f3ef;flex-direction:column;gap:10px;padding:48px 4% 14px}
+.md-vrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;min-height:0}
+.md-vrow figure{margin:0;min-width:0}
+.md-vrow img{width:100%;height:auto;display:block;border-radius:3px}
+.md-vrow figcaption{font:400 12.5px/1.45 var(--mono);color:var(--ink2);margin-top:6px}
+.md-vrow .bad{color:var(--warn)} .md-vrow .ok{color:var(--ours)}
+.md-tl{position:relative;height:30px;margin:10px 4px 0}
+.md-tl::before{content:'';position:absolute;left:0;right:0;top:11px;border-top:1px solid var(--rule)}
+.md-tl i{position:absolute;top:11px;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;transform:rotate(45deg);background:var(--ours);border:1px solid var(--sheet);cursor:pointer}
+.md-tl i.on{background:var(--ink);width:12px;height:12px;margin:-6px 0 0 -6px}
+.md-tl i.ahead{opacity:.45}
+.md-tl em{position:absolute;top:5px;height:12px;background:rgba(21,128,61,.14);border-radius:2px;pointer-events:none}
+.md-tl em.bad{background:rgba(194,65,12,.55)}
+.md-tl b{position:absolute;top:0;width:2px;height:22px;margin-left:-1px;background:var(--ink);pointer-events:none}
+.md-tl span{position:absolute;top:19px;font:400 10.5px/1 var(--mono);color:var(--ink3)}
+.md-desc{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin:8px 4px 2px}
+.md-desc h3{margin:0;font:600 17px/1.3 'Google Sans','Noto Sans',sans-serif;color:var(--ink)}
+.md-desc p{margin:0;flex:1;min-width:260px;font-size:15px;line-height:1.55;color:var(--ink2)}
+.md-auto{height:28px;font-size:12.5px;padding:0 10px}
+.md [hidden]{display:none!important}
+@media (max-width:900px){
+  .md-steps{display:flex;overflow-x:auto;padding-bottom:4px}
+  .md-steps li{flex:0 0 124px}
+  .md-view{aspect-ratio:4/3}
+  .md-ov{padding:40px 10px 10px;gap:8px}
+  .md-card{font-size:12.5px;padding:10px 12px}
+  .md-ov[data-for=prompt] .md-card{font-size:13.5px;display:-webkit-box;-webkit-line-clamp:10;-webkit-box-orient:vertical}
+  .md-ov[data-for=rewrite]{flex-direction:column}
+  .md-ov[data-for=rewrite] .md-arrow{display:none}
+  .md-ov[data-for=rewrite] .md-card{max-width:none;flex:0 1 auto}
+}
+@media (max-width:700px){
+  /* Text and the verifier pair don't fit a phone-sized frame: these steps grow to their content. */
+  .md-view[data-stage=prompt],.md-view[data-stage=rewrite],.md-view[data-stage=verify]{aspect-ratio:auto;min-height:56vw}
+  .md-ov{position:relative;inset:auto;min-height:56vw}
+  .md-vrow{grid-template-columns:minmax(0,1fr)}
+  .md-hud span{white-space:normal;line-height:1.35}
+  .md-vrow figcaption{font-size:11.5px}
+}
+.gallery-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:#4a4a4a}
+.gallery-intro p{margin:0 0 .75em}
+.site-footer{background:#fafafa;padding:3rem 1.5rem 4rem;margin-top:2rem;
+  font-size:.9rem;color:#4a4a4a;text-align:center}
+.site-footer p{max-width:720px;margin:0 auto .5em}
+
+/* ---- Video gallery (identical to index.html) ---- */
+
+:root{
+  /* same ink, rules and white sheets as the viewer and Method figure: selection is ink, DyCraft is green */
+  --bg:#ffffff; --fg:#363636; --fg2:#6b6b6b; --fg3:#909090; --line:#dbdbdb;
+  --card:#ffffff; --accent:#363636; --chip:#f0f0f0; --miss:#f4f4f4;
+  --ours:#15803d; --ours-bd:#15803d;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+kbd{font:inherit;font-size:13px;background:var(--chip);border:1px solid var(--line);border-radius:4px;padding:0 5px}
+
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  margin:0 0 26px;position:sticky;top:0;z-index:30;
+  background:var(--bg);padding:14px 0;border-bottom:1px solid var(--line)}
+input[type=search]{flex:1;min-width:170px;height:36px;padding:0 12px;
+  border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--fg);
+  font-size:15px;font-family:inherit}
+input[type=search]:focus{outline:none;border-color:var(--accent)}
+button{height:36px;padding:0 14px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--fg);font-size:14px;font-family:inherit;cursor:pointer;white-space:nowrap}
+button:hover{border-color:var(--fg2)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{height:36px;padding:0 13px;border:1px solid var(--line);border-radius:7px;
+  background:var(--bg);color:var(--fg2);font-size:14px;cursor:pointer;font-family:inherit}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
+.chip .n{opacity:.65;margin-left:5px;font-variant-numeric:tabular-nums}
+#toggleAll[aria-pressed=true]{background:var(--chip)}
+.speed{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden}
+.speed button{height:34px;border:none;border-radius:0;padding:0 12px;font-variant-numeric:tabular-nums}
+.speed button + button{border-inline-start:1px solid var(--line)}
+.speed button[aria-pressed=true]{background:var(--accent);color:#fff;font-weight:500}
+.count{color:var(--fg2);font-size:14px;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.scene{border:1px solid var(--line);border-radius:12px;background:var(--card);
+  padding:18px 18px 20px;margin:0 0 26px}
+.scene.hide{display:none}
+.shead{display:flex;gap:14px;align-items:flex-start;margin:0 0 14px}
+.sid{font:500 13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+  background:var(--chip);color:var(--fg2);padding:3px 8px;border-radius:5px;flex-shrink:0;margin-top:3px}
+.sbody{flex:1;min-width:0}
+.prompt{font-size:18px;font-weight:500;margin:0 0 5px;letter-spacing:-.005em}
+.objs{font-size:14px;color:var(--fg2);margin:0}
+.sctl{display:flex;gap:7px;align-items:center;flex-shrink:0;margin-top:1px}
+.sctl button{height:32px;padding:0 12px;font-size:13px}
+.bar{height:3px;background:#ededed;border-radius:2px;overflow:hidden;margin:0 0 13px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .1s linear}
+
+.cols{display:grid;gap:14px}
+.cell{min-width:0}
+.clabel{display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
+.cname{font-size:15px;font-weight:500}
+.cname.is-ours{color:var(--ours);font-weight:600}
+.chip.is-ours[aria-pressed=true]{background:var(--ours-bd);border-color:var(--ours-bd);color:#fff}
+.lb .title .m-ours{color:var(--ours);font-weight:600}
+.cdur{font-size:13px;color:var(--fg3);font-variant-numeric:tabular-nums}
+.vwrap{position:relative;background:#000;aspect-ratio:16/9;border-radius:8px;overflow:hidden;cursor:zoom-in}
+.vwrap video{width:100%;height:100%;display:block;object-fit:contain;background:#000}
+.ended{position:absolute;inset:auto 0 0 0;z-index:2;background:rgba(0,0,0,.72);color:#fff;
+  font-size:12px;padding:5px 9px;display:none}
+.vwrap.is-ended .ended{display:block}
+.expand{position:absolute;right:7px;top:7px;z-index:3;opacity:0;transition:opacity .15s;
+  background:rgba(0,0,0,.66);color:#fff;border:none;height:25px;padding:0 9px;
+  border-radius:4px;font-size:13px;cursor:pointer}
+.vwrap:hover .expand{opacity:1}
+.missing{aspect-ratio:16/9;border:1px dashed var(--line);border-radius:8px;background:var(--miss);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  color:var(--fg3);font-size:14px;text-align:center;padding:12px}
+.missing b{font-weight:500;color:var(--fg2);font-size:14px}
+
+dialog{border:none;border-radius:12px;padding:0;max-width:96vw;max-height:96vh;background:var(--bg);color:var(--fg)}
+dialog::backdrop{background:rgba(0,0,0,.84)}
+.lb video{display:block;max-width:92vw;max-height:74vh;background:#000}
+.lb .meta{padding:13px 16px 15px;display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
+.lb .nav{display:flex;gap:8px;flex-shrink:0}
+.lb .title{font-size:16px;font-weight:500;margin:0 0 3px}
+.lb .cap{font-size:14px;color:var(--fg2);margin:0}
+
+#pm{max-width:760px;width:calc(100vw - 48px)}
+.pm-in{padding:22px 26px 24px}
+.pm-head{display:flex;gap:12px;align-items:flex-start;margin:0 0 4px}
+.pm-title{font-size:20px;font-weight:500;margin:0;flex:1}
+.pm-objs{font-size:14px;color:var(--fg2);margin:0 0 16px}
+.pm-label{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--fg3);margin:0 0 7px}
+.pm-body{font-size:16px;line-height:1.75;margin:0;white-space:pre-wrap;
+  max-height:52vh;overflow-y:auto;padding-inline-end:6px}
+.pm-none{color:var(--fg3);font-style:italic}
+.pm-foot{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
+
+.empty{color:var(--fg2);padding:48px 0;text-align:center}
+@media (max-width:900px){ .shead{flex-wrap:wrap} }
+
+.toolbar{border-top:1px solid var(--line)}
+.prompt{font-family:'Google Sans','Noto Sans',sans-serif;color:#363636}
+@media (max-width:768px){ .publication-title{font-size:2rem} }
+
+/* ---- Interactive viewer: console tokens mapped onto the Nerfies palette ---- */
+.cx{--sheet:#fff; --ink:#363636; --ink2:#4a4a4a; --ink3:#7a7a7a; --rule:#dbdbdb; --rule2:#ededed;
+  --ours-tint:#e8f5ec; --warn:#b45309; --serif:'Google Sans','Noto Sans',sans-serif; --mono:ui-monospace,SFMono-Regular,Menlo,monospace}
+.viewer-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:#4a4a4a}
+.viewer-intro p{margin:0 0 .75em}
+.viewer-intro .viewer-note{font-size:.92em;color:#666;border-left:3px solid #dbdbdb;padding:.15em 0 .15em .8em;text-align:left}
+/* ---- Interactive comparison (console) ---- */
+.cx{display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;align-items:stretch;border:1px solid var(--rule);background:var(--sheet);padding:14px;color:var(--ink)}
+.cx:fullscreen{padding:18px;overflow:auto}
+.cx-side{position:relative;min-height:0;min-width:0}
+.cx-side-in{position:absolute;inset:0;display:flex;flex-direction:column;gap:10px}
+.cx-cats{display:flex;flex-wrap:wrap;gap:4px}
+.cx-cats button{height:26px;padding:0 8px;font-size:12.5px;color:var(--ink2)}
+.cx-cats button[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--sheet)}
+.cx-list{list-style:none;margin:0;padding:0 4px 0 0;flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:2px}
+.cx-item{display:flex;gap:9px;align-items:center;width:100%;height:auto;padding:5px;border:1px solid transparent;border-radius:3px;background:none;text-align:left;cursor:pointer;color:var(--ink)}
+.cx-item:hover{background:var(--chip);border-color:transparent}
+.cx-item[aria-current=true]{background:var(--ours-tint);border-color:var(--ours)}
+.cx-item img{width:76px;aspect-ratio:16/9;object-fit:cover;background:#ddd;flex-shrink:0}
+.cx-item .t{font-size:13px;line-height:1.3;font-weight:500;white-space:normal}
+.cx-item .c{display:block;font-size:11.5px;color:var(--ink3);margin-top:2px;font-weight:400}
+.cx-main{min-width:0;display:flex;flex-direction:column;gap:12px}
+.cx-head{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+.cx-htxt{flex:1;min-width:220px}
+.cx-title{font:500 21px/1.25 var(--serif);margin:0;color:var(--ink)}
+.cx-objs{font-size:13.5px;color:var(--ink3);margin:2px 0 0}
+.cx-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.cx-seg{display:flex;border:1px solid var(--rule);border-radius:4px;overflow:hidden;background:var(--sheet)}
+.cx-seg button{height:30px;border:none;border-radius:0;padding:0 10px;font-size:13px;font-variant-numeric:tabular-nums}
+.cx-seg button + button{border-inline-start:1px solid var(--rule)}
+.cx-seg button[aria-pressed=true]{background:var(--ink);color:var(--sheet)}
+.cx-seg button:disabled{color:var(--ink3);cursor:not-allowed;background:var(--sheet)}
+.cx-tools > button{height:32px;font-size:13px}
+.cx-stage{position:relative}
+.cx-grid{display:grid;gap:8px}
+.cx-tile{min-width:0}
+.cx-tlab{display:flex;align-items:center;gap:7px;margin:0 0 5px;font-size:14px}
+.cx-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.cx-tlab b{font-weight:600}
+.cx-tlab .s{margin-left:auto;font:400 12px/1 var(--mono);color:var(--ink3)}
+.cx-tile.is-ended .s{color:var(--warn)}
+.cx-frame{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;cursor:pointer;border-radius:2px}
+.cx-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.cx-tile.is-ended .cx-frame video{filter:grayscale(.6) brightness(.75)}
+.cx-tile .cx-endtag{position:absolute;left:6px;bottom:6px;z-index:2;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;padding:2px 6px;border-radius:2px;display:none}
+.cx-tile.is-ended .cx-endtag{display:block}
+.cx-tl{position:relative;border-top:1px solid var(--rule);padding:12px 0 0}
+.cx-ctl{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 8px}
+.cx-play{width:34px;height:34px;padding:0;border-radius:50%;background:var(--ink);border-color:var(--ink);color:var(--sheet);display:inline-flex;align-items:center;justify-content:center}
+.cx-play:hover{background:#000}
+.cx-play svg{width:14px;height:14px}
+.cx-clock{font:500 14px/1 var(--mono);font-variant-numeric:tabular-nums}
+.cx-clock span{color:var(--ink3)}
+.cx-buf{font-size:12px;color:var(--ink3)}
+.cx-keys{margin-left:auto;font-size:12px;color:var(--ink3)}
+.cx-keys kbd{font-size:10.5px}
+.cx-lanes{display:grid;grid-template-columns:124px minmax(0,1fr);column-gap:10px;row-gap:4px}
+.cx-lane-l{height:22px;padding:0 6px;font-size:12.5px;display:flex;align-items:center;gap:6px;border-radius:3px;justify-content:flex-start}
+.cx-lane-l .d{margin-left:auto;font:400 11px/1 var(--mono);color:var(--ink3)}
+.cx-lane-l[aria-pressed=false]{opacity:.45}
+.cx-lane-l[aria-pressed=false] .cx-dot{background:var(--ink3)!important}
+.cx-tracks{position:relative;display:grid;row-gap:4px;cursor:pointer;touch-action:none;user-select:none}
+.cx-track{height:22px;position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,var(--rule2) 0 5px,transparent 5px 10px)}
+.cx-track i{position:absolute;left:0;top:0;bottom:0;opacity:.22}
+.cx-track u{position:absolute;left:0;top:0;bottom:0;opacity:.85;text-decoration:none}
+.cx-track.off{opacity:.35}
+.cx-ph{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;background:var(--ink);pointer-events:none;z-index:2}
+.cx-ph::before{content:'';position:absolute;top:-4px;left:-5px;border:6px solid transparent;border-top-color:var(--ink)}
+.cx-ticks{grid-column:2;position:relative;height:16px;font:400 10.5px/1 var(--mono);color:var(--ink3)}
+.cx-ticks span{position:absolute;transform:translateX(-50%);top:3px}
+.cx-ticks span:first-child{transform:none}
+.cx-prompt{font:400 16px/1.6 var(--serif);color:var(--ink2);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cx-prompt.open{display:block}
+.cx-more{height:auto;padding:0;border:none;background:none;color:var(--ink);font-size:13.5px;text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:3px}
+.cx-hold{display:none}
+.b3,.cx-item .b3{display:inline-block;margin-left:5px;padding:0 4px;border:1px solid var(--ours);border-radius:2px;color:var(--ours);
+  font:500 10.5px/14px var(--mono);vertical-align:1px}
+.cx-3d{position:relative;aspect-ratio:16/9;background:#e6e3dc;overflow:hidden}
+.cx-3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block;outline:none}
+.cx-3d.is-free canvas{cursor:grab}
+.cx-3d.is-free canvas:active{cursor:grabbing}
+.cx-hud{position:absolute;left:8px;top:8px;z-index:3;display:flex;flex-direction:column;gap:3px;pointer-events:none}
+.cx-hud span{background:rgba(251,250,247,.92);color:var(--ink);font:400 12px/1.4 var(--mono);padding:2px 7px;border-radius:2px;width:max-content}
+.cx-hud span:empty{display:none}
+.cx-hint{position:absolute;right:8px;top:8px;z-index:3;background:rgba(251,250,247,.92);color:var(--ink2);font-size:12px;padding:2px 7px;border-radius:2px;pointer-events:none}
+.cx-pip{position:absolute;right:8px;bottom:8px;z-index:3;width:28%;aspect-ratio:16/9;overflow:hidden;background:#000;cursor:pointer;border:2px solid var(--sheet);transition:width .2s}
+.cx-pip.big{width:48%}
+.cx-pip video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.cx-pip b{position:absolute;left:5px;top:4px;z-index:2;color:#fff;font-size:11.5px;font-weight:500;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+.cx-load{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:#e6e3dc;color:var(--ink2);font-size:14px}
+.cx-load i{display:block;width:180px;height:2px;background:var(--rule);overflow:hidden}
+.cx-load i b{display:block;height:100%;width:0;background:var(--ink);transition:width .15s}
+.cx-mrow{height:20px}
+.cx-mlab{height:20px;font-size:12px;color:var(--ink2);display:flex;align-items:center;padding:0 6px}
+.cx-shots{position:relative;height:20px;overflow:hidden;background:var(--rule2)}
+.cx-shots span{position:absolute;top:0;bottom:0;border-inline-start:1px solid var(--sheet);font:400 10px/20px var(--mono);color:var(--ink2);padding:0 4px;white-space:nowrap;overflow:hidden}
+.cx-shots span.on{background:var(--ink);color:var(--sheet)}
+.cx-sb{position:relative;height:20px}
+.cx-sb::before{content:'';position:absolute;left:0;right:0;top:50%;border-top:1px solid var(--rule)}
+.cx-sb i{position:absolute;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;transform:rotate(45deg);background:var(--ours);border:1px solid var(--sheet)}
+.cx-sb i:hover,.cx-sb i.on{background:var(--ink);width:11px;height:11px;margin:-5.5px 0 0 -5.5px}
+.cx-tip{position:absolute;z-index:20;bottom:100%;margin-bottom:6px;transform:translateX(-50%);background:var(--sheet);border:1px solid var(--rule);
+  padding:4px;box-shadow:0 4px 14px rgba(0,0,0,.12);pointer-events:none;width:176px}
+.cx-tip img{display:block;width:166px;aspect-ratio:16/9;object-fit:cover;background:#ddd}
+.cx-tip p{margin:4px 2px 0;font-size:12px;line-height:1.35;color:var(--ink)}
+.cx-tip p span{color:var(--ink3);font-variant-numeric:tabular-nums}
+.cx [hidden]{display:none!important}
+
+.cx{border-radius:12px}
+@media (max-width:900px){
+  .cx{grid-template-columns:minmax(0,1fr);padding:10px}
+  .cx-side-in{position:static}
+  .cx-list{flex-direction:row;overflow-x:auto;padding:0 0 6px}
+  .cx-item{flex:0 0 150px;flex-direction:column;align-items:stretch}
+  .cx-item img{width:100%}
+  .cx-keys{display:none}
+  .cx-lanes{grid-template-columns:92px minmax(0,1fr)}
+  .cx-lane-l .d{display:none}
+  .cx-tlab{font-size:12.5px}
+  .cx-tlab .s{display:none}
+}
+
+/* ---- Touch screens: instructions for fingers instead of keys ---- */
+.only-touch,.cx .narrow{display:none}
+@media (pointer:coarse){
+  .only-touch{display:revert}
+  .only-kbd{display:none}
+  .expand{display:none}
+}
+.cx-3d{touch-action:pan-y}
+.cx-3d.is-free{touch-action:none}
+
+/* ---- Phones ---- */
+@media (max-width:640px){
+  .hero-body{padding:2rem 16px 1rem}
+  .container{padding:0}
+  .teaser{padding:0 16px 1rem}
+  .section{padding:2rem 16px}
+  .section + .section{padding-top:.5rem}
+  .publication-title{font-size:1.7rem;margin-bottom:1rem}
+  .publication-authors{font-size:1.05rem}
+  .publication-venue{font-size:.95rem}
+  .publication-links{gap:.4rem}
+  .link-block a{font-size:.9rem;padding:0 1em}
+  .teaser video{border-radius:6px}
+  .teaser .subtitle{font-size:1rem;margin-top:.75rem}
+  .title.is-3{font-size:1.5rem;margin-bottom:1rem}
+  /* justified text leaves rivers in a phone-width column */
+  .content,.viewer-intro,.gallery-intro{text-align:left;font-size:15px;line-height:1.6}
+
+  /* viewer: the task list becomes a swipeable strip of cards */
+  .cx{padding:8px;gap:10px;border-radius:10px;margin:0 -8px}
+  .cx-cats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .cx-cats::-webkit-scrollbar,.cx-list::-webkit-scrollbar{display:none}
+  .cx-cats button{flex-shrink:0;height:30px;padding:0 10px}
+  .cx-list{scroll-snap-type:x proximity;scrollbar-width:none;gap:6px;padding:0}
+  .cx-list > li{flex:0 0 128px;scroll-snap-align:start}
+  .cx-item{padding:4px;gap:5px;border-color:var(--rule2)}
+  .cx-item .t{font-size:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .cx-item .c{display:none}
+  .cx-title{font-size:17px}
+  .cx-objs{font-size:12.5px}
+  .cx-htxt{min-width:0;flex-basis:100%}
+  .cx-tools{width:100%;gap:6px}
+  .cx-tools > *{flex:1 1 auto}
+  .cx-tools > .cx-seg{flex-basis:100%}
+  .cx-tools .cx-seg button{flex:1;height:34px}
+  .cx-tools > button{height:34px;padding:0 8px}
+  .cx .wide{display:none}
+  .cx .narrow{display:inline}
+  .cx-hint{display:none}
+  .cx-hud{left:5px;top:5px}
+  .cx-hud span{font-size:10.5px;padding:1px 5px}
+  .cx-pip{right:5px;bottom:5px;width:38%;border-width:1px}
+  .cx-pip.big{width:70%}
+  .cx-pip b{font-size:10px}
+  .cx-ctl{gap:8px}
+  .cx-clock{font-size:12.5px}
+  .cx-seg button{height:30px;padding:0 9px}
+  /* keeps the transport on one row; 2× is the default anyway */
+  #cxSpeed button:first-child{display:none}
+  .cx-shots span{font-size:0;padding:0}
+  .cx-lanes{grid-template-columns:70px minmax(0,1fr);column-gap:6px}
+  .cx-lane-l,.cx-mlab{font-size:11px;padding:0 2px}
+  .cx-prompt{font-size:14.5px}
+
+  /* method figure */
+  .md-steps li{flex:0 0 112px}
+  .md-step{min-height:50px;padding:6px 8px 8px}
+  .md-step b{font-size:13px}
+  .md-demo{padding:6px;margin:0 -8px}
+  .md-ov[data-for=prompt] .md-card{display:block;max-height:none}
+  .md-ov[data-for=prompt] .md-card p{display:-webkit-box;-webkit-line-clamp:9;-webkit-box-orient:vertical;overflow:hidden}
+  .md-desc{margin:8px 2px 2px}
+  .md-desc p{min-width:0;flex-basis:100%;font-size:14.5px}
+
+  /* gallery: methods stack, one clip per row, and the toolbar stops following the page */
+  .toolbar{position:static;gap:8px;padding:10px 0;margin-bottom:16px}
+  .chips{flex:1 1 100%}
+  .chip{flex:1;height:34px;padding:0 6px}
+  input[type=search]{flex:1 1 100%;order:1;height:34px}
+  .toolbar > .speed,#toggleAll{order:2}
+  #toggleAll{height:34px;flex:1}
+  .count{order:3;flex:1 1 100%;margin:0;text-align:right;font-size:12.5px}
+  .scene{padding:12px;margin:0 -8px 18px;border-radius:10px}
+  .shead{flex-direction:column;gap:8px;margin-bottom:10px}
+  .prompt{font-size:16px}
+  .objs{font-size:13px}
+  .sctl button{height:30px}
+  .cols{grid-template-columns:minmax(0,1fr)!important;gap:12px}
+  .vwrap,.missing{border-radius:6px}
+
+  /* dialogs fill the width */
+  dialog{max-width:100vw}
+  .lb video{max-width:100vw;width:100vw;max-height:62vh}
+  .lb .meta{flex-direction:column;gap:10px;padding:12px}
+  .lb .nav{width:100%}
+  .lb .nav button{flex:1}
+  #pm{width:calc(100vw - 20px)}
+  .pm-in{padding:16px}
+  .pm-body{font-size:15px;line-height:1.65;max-height:60vh}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <h1 class="publication-title">DyCraft: An Agentic System for Long-Horizon 4D Scene Generation</h1>
+      <p class="publication-authors">Anonymous Authors</p>
+      <p class="publication-venue">Paper under double-blind review</p>
+    </div>
+  </div>
+</section>
+
+<section class="teaser">
+  <div class="container is-max-desktop">
+    <video id="teaser" autoplay muted loop playsinline preload="auto"
+           poster="teaser/dycraft_teaser.jpg">
+      <source src="teaser/dycraft_teaser.mp4" type="video/mp4">
+    </video>
+    <p class="subtitle"><strong>DyCraft</strong> is an end-to-end agentic system that generates long-horizon 4D (3D + time) scenes from text prompts.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content">
+      <p>While frontier coding agents can generate high-quality 3D scenes and articulated assets, they struggle to create coherent long-horizon animations. When equipped with general-purpose harnesses, they frequently produce physically implausible outputs, generating objects that interpenetrate, lack physical support, or move unnaturally. Such bare agents struggle to repair these errors because they default to scripting the full animation in one pass, making it difficult to verify their work and disentangle complex spatiotemporal constraints.</p>
+      <p>Drawing on the practice of human animators, we introduce <strong>DyCraft</strong>, a system for animated 3D scene generation that breaks animation into steps that coding agents can more reliably solve. DyCraft first expands the user&rsquo;s prompt into a detailed plan and builds a static scene. It then creates a 3D storyboard of key animation poses, where each frame is a static 3D scene that the agent can build and debug in isolation. Storyboarding decomposes the problem into pairs of verified start and end states, allowing the agent to author local motion between them with a collection of motion authoring tools.</p>
+      <p>We evaluate DyCraft on 24 long-horizon, multi-shot animation tasks covering humanoid robots, human and animal characters, and physical mechanisms. Compared with a native GPT-6 agent in Codex and prior agentic baselines, DyCraft substantially reduces physical violations and generates higher-quality animated 3D scenes that are more often preferred by human raters.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="console">
+  <div class="container is-wide">
+    <h2 class="title is-3">Interactive 4D Scene Viewer</h2>
+    <div class="viewer-intro">
+      <p>Every task opens in DyCraft&rsquo;s generated 4D scene, rendered live in your browser. Watch it through the film&rsquo;s cameras or switch to <strong>Free orbit</strong> and drag to look around while it plays; the rendered film plays in the corner at the same moment. The timeline marks the verified storyboard key poses and the camera cuts.</p>
+      <p class="only-kbd">Drag on the timeline to scrub; <kbd>Space</kbd> plays and pauses, <kbd>&uarr;</kbd>/<kbd>&darr;</kbd> change the task, and <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> (with <kbd>Q</kbd>/<kbd>E</kbd> for down/up) fly the camera through the scene; <strong>Reset camera</strong> or <kbd>R</kbd> brings it back to the film&rsquo;s shot. In indoor scenes, <strong>Hide walls</strong> or <kbd>H</kbd> takes away the walls and ceiling so you can watch from outside the room; windows, doors, shelves and fittings stay in place.</p>
+      <p class="only-touch">Drag on the timeline to scrub. Swipe sideways across the scene to switch to <strong>Free orbit</strong>, then drag to look around, pinch to zoom and drag with two fingers to pan; <strong>Reset camera</strong> brings it back to the film&rsquo;s shot. In indoor scenes, <strong>Hide walls</strong> takes away the walls and ceiling so you can watch from outside the room; windows, doors, shelves and fittings stay in place.</p>
+      <p class="viewer-note"><strong>Note:</strong> the viewer is a real-time WebGL approximation, meant to give an intuitive sense of each scene&rsquo;s 3D structure and motion. Liquids, glass and some procedural textures are approximated, so materials and lighting differ from the Cycles renders shown in the films.</p>
+    </div>
+    <div class="cx" id="cx">
+      <aside class="cx-side">
+        <div class="cx-side-in">
+          <div class="cx-cats" id="cxCats"></div>
+          <ol class="cx-list" id="cxList"></ol>
+        </div>
+      </aside>
+      <div class="cx-main">
+        <div class="cx-head">
+          <div class="cx-htxt">
+            <p class="cx-title" id="cxTitle"></p>
+            <p class="cx-objs" id="cxObjs"></p>
+          </div>
+          <div class="cx-tools">
+            <div class="cx-seg" id="cxView" hidden>
+              <button data-view="camera" aria-pressed="true"><span class="wide">Through the camera</span><span class="narrow">Film camera</span></button>
+              <button data-view="free" aria-pressed="false">Free orbit</button>
+            </div>
+            <button id="cxWalls" aria-pressed="false" title="Take away the room's walls and ceiling; windows, doors, shelves and fittings stay (H)" hidden>Hide walls</button>
+            <button id="cxReset" title="Put the camera back where the film's current shot sees it (R)">Reset camera</button>
+            <button id="cxFs" aria-label="Full screen">Full screen</button>
+          </div>
+        </div>
+        <div class="cx-stage">
+          <div class="cx-grid" id="cxGrid"></div>
+          <div class="cx-3d" id="cx3d" hidden>
+            <canvas id="cx3dCanvas" tabindex="0" aria-label="The generated 4D scene at the playhead; drag to orbit"></canvas>
+            <div class="cx-hud"><span id="cxShotLab"></span><span id="cxKeyLab"></span></div>
+            <span class="cx-hint" id="cxHint">Drag to orbit · WASD to move</span>
+            <div class="cx-pip" id="cxPip" title="Rendered film at the same moment (click to enlarge)"><b>Rendered film</b></div>
+            <div class="cx-load" id="cxLoad"><span id="cxLoadT">Loading the scene</span><i><b id="cxLoadB"></b></i></div>
+          </div>
+          <div class="cx-hold" id="cxHold"></div>
+        </div>
+        <div class="cx-tl">
+          <div class="cx-ctl">
+            <button class="cx-play" id="cxPlay" aria-label="Play"></button>
+            <div class="cx-clock"><time id="cxNow">0:00.0</time> <span>/ <span id="cxSpan">0:00</span></span></div>
+            <div class="cx-seg" id="cxSpeed"></div>
+            <div class="cx-seg"><button id="cxLoop" aria-pressed="true">Loop</button></div>
+            <span class="cx-buf" id="cxBuf" hidden>Buffering…</span>
+            <span class="cx-keys"><kbd>Space</kbd> play · <kbd>&larr;</kbd><kbd>&rarr;</kbd> seek · <kbd>,</kbd><kbd>.</kbd> frame · <kbd>&uarr;</kbd><kbd>&darr;</kbd> prompt · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move camera · <kbd>H</kbd> walls · <kbd>R</kbd> reset</span>
+          </div>
+          <div class="cx-tip" id="cxTip" hidden><img alt=""><p></p></div>
+          <div class="cx-lanes" id="cxLanes">
+            <div id="cxLabels" style="display:grid;row-gap:4px">
+              <div class="cx-mlab cx-mrow" data-mk hidden>Storyboard</div>
+              <div class="cx-mlab cx-mrow" data-mk hidden>Shots</div>
+            </div>
+            <div class="cx-tracks" id="cxTracks"><div class="cx-sb cx-mrow" id="cxSb" data-mk hidden></div><div class="cx-shots cx-mrow" id="cxShots" data-mk hidden></div><div class="cx-ph" id="cxPh"></div></div>
+            <div class="cx-ticks" id="cxTicks"></div>
+          </div>
+        </div>
+        <div>
+          <p class="cx-prompt" id="cxPrompt"></p>
+          <button class="cx-more" id="cxMore">Show full prompt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<section class="section" id="method">
+  <div class="container is-wide">
+    <h2 class="title is-3">Method</h2>
+    <div class="viewer-intro">
+      <p>DyCraft gives a general coding agent (GPT-6-Astra in Codex) tools for CAD, motion authoring and verification, and steers it through the steps an animator would take, so each one can be checked on its own. Click a step to see it on a real task from the benchmark, <em>&ldquo;Turn a wide panel through a narrow doorway&rdquo;</em>.</p>
+    </div>
+    <div class="md" id="md">
+      <ol class="md-steps" role="tablist" id="mdSteps">
+        <li><button class="md-step" role="tab" data-s="prompt"><i>1</i><b>Prompt</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="rewrite"><i>2</i><b>Prompt rewriting</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="cad"><i>3</i><b>CAD scene</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="board"><i>4</i><b>3D storyboard</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="motion"><i>5</i><b>Motion authoring</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="verify"><i>6</i><b>Verification</b><u></u></button></li>
+        <li><button class="md-step" role="tab" data-s="film"><i>7</i><b>Film</b><u></u></button></li>
+      </ol>
+      <div class="md-demo">
+        <div class="md-view" id="mdView" data-stage="prompt">
+          <img id="mdImg" alt="">
+          <div class="md-hud"><span id="mdStage"></span><span id="mdLab"></span></div>
+          <span class="md-load" id="mdLoad">Loading the 3D scene&hellip;</span>
+          <div class="md-ov" data-for="prompt"><div class="md-card"><h4>prompt.txt <span id="mdPromptN"></span></h4><p id="mdPrompt"></p></div></div>
+          <div class="md-ov" data-for="rewrite">
+            <div class="md-card"><h4>scene.txt <span>944 words</span></h4><p>&hellip; <mark>This workshop belongs to a museum that keeps refitting the same travelling displays between loans;</mark> the returning stock has gradually taken over the adjoining booking office, which now serves as the clean fitting room. The narrow personnel doorway survives that change of use. The workshop is 3.4 by 3.2 metres and the former office 3 by 3.2 metres, sharing a partition beneath a continuous low ceiling. &hellip;</p></div>
+            <span class="md-arrow" aria-hidden="true">+</span>
+            <div class="md-card"><h4>motion.txt <span>1,466 words</span></h4><p>&hellip; The chest starts the turn, successive lifted foot placements turn the pelvis, and the panel turns with the hold. <mark>At 45 degrees from broadside, the panel alone still projects about 720 mm across the 740 mm opening, leaving only about 10 mm at each jamb.</mark> The turn therefore continues until the long edge lies nearly along the passage. &hellip;</p></div>
+          </div>
+          <div class="md-ov" data-for="verify">
+            <div class="md-vrow">
+              <figure><img src="method/v_before.jpg" width="647" height="360" alt="The robot's left upper arm passes through its torso">
+                <figcaption><span class="bad">&#10007; NoPenetration</span> &middot; check #77<br>left shoulder &harr; torso, 6.2&ndash;7.3 s, 23 mm deep</figcaption></figure>
+              <figure><img src="method/v_after.jpg" width="650" height="360" alt="After the repair the arm stays clear of the torso">
+                <figcaption><span class="ok">&#10003; 8 / 8 verifiers pass</span> &middot; check #87<br>penetration, support, joint limits, contacts&hellip;</figcaption></figure>
+            </div>
+          </div>
+          <video id="mdFilm" muted playsinline loop preload="none" poster="_posters/ours_gpt6/05_g1_carries_panel_through_doorway.jpg" hidden>
+            <source src="ours_gpt6/05_g1_carries_panel_through_doorway.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="md-tl" id="mdTl"><b id="mdPh"></b></div>
+        <div class="md-desc">
+          <h3 id="mdTitle"></h3>
+          <p id="mdText"></p>
+          <button class="md-auto" id="mdAuto" aria-pressed="true">Auto-advance: on</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="container is-wide">
+    <h2 class="title is-3">Video Gallery</h2>
+    <div class="gallery-intro">
+      <p>Every benchmark prompt with each method&rsquo;s result side by side. Use the buttons below to hide a method, or type to filter prompts. <strong>Full prompt</strong> opens the complete brief the methods were given.</p>
+      <p>Within a block all clips start together and are aligned to the longest one; a clip that finishes early holds on its last frame and is marked <em>ended</em>, so differing lengths stay visible rather than being hidden by looping. Playback speed applies to every clip at once. <span class="only-kbd">Click any clip to open it larger with playback controls; <kbd>&larr;</kbd>/<kbd>&rarr;</kbd> step through, <kbd>Esc</kbd> closes.</span><span class="only-touch">Tap any clip to open it larger with playback controls.</span></p>
+    </div>
+<div class="toolbar">
+  <div class="chips" id="chips"></div>
+  <div class="speed" id="speed"></div>
+  <input type="search" id="q" placeholder="Filter prompts…" autocomplete="off">
+  <button id="toggleAll" aria-pressed="true">Autoplay: on</button>
+  <span class="count" id="count"></span>
+</div>
+
+<div id="scenes"></div>
+<div class="empty" id="empty" hidden>No scenes match the current filter.</div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>Anonymous submission &mdash; supplementary material.</p>
+  <p>This page is adapted from the <a href="https://github.com/nerfies/nerfies.github.io" rel="noreferrer">Nerfies</a> project page template, licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="noreferrer">Creative Commons Attribution-ShareAlike 4.0 International License</a>. The 3D viewer uses <a href="https://threejs.org" rel="noreferrer">three.js</a>.</p>
+</footer>
+
+<dialog id="lb">
+  <div class="lb">
+    <video id="lbv" controls loop playsinline></video>
+    <div class="meta">
+      <div>
+        <p class="title" id="lbt"></p>
+        <p class="cap" id="lbc"></p>
+      </div>
+      <div class="nav">
+        <button id="prev">&larr; Prev</button>
+        <button id="next">Next &rarr;</button>
+        <button id="close">Close</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="pm">
+  <div class="pm-in">
+    <div class="pm-head">
+      <span class="sid" id="pmid"></span>
+      <p class="pm-title" id="pmtitle"></p>
+    </div>
+    <p class="pm-objs" id="pmobjs"></p>
+    <p class="pm-label">Full prompt</p>
+    <p class="pm-body" id="pmbody"></p>
+    <div class="pm-foot">
+      <button id="pmcopy">Copy</button>
+      <button id="pmclose">Close</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const SCENES = [
+ {
+  "id": "01",
+  "prompt": "Cook scrambled eggs from fridge to plate",
+  "objects": "G1, eggs, bowl, pan, stove, fridge",
+  "full": "A Unitree G1 humanoid robot cooks scrambled eggs by itself in a compact kitchen. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. The preparation counter starts clear; three eggs and a portion of butter sit in the refrigerator, with a bowl, whisk, spatula, plate, and cloth on a nearby shelf and a frying pan on the stovetop. An open waste bin stands beside the counter. The robot opens the refrigerator, carries the eggs and butter to the counter, retrieves the bowl, and cracks each egg over it, separating the shells and setting the empty halves aside. It steadies the bowl with one hand and whisks with the other, then centers the pan on the burner, turns on the heat, and adds the butter. Once the butter melts, it lifts and tilts the bowl to pour the eggs into the pan, sets the emptied bowl down, and scrapes and folds the mixture with the spatula as it thickens into soft curds. It turns off the burner, brings over the plate, and tilts the pan while guiding the eggs onto it, then returns the pan to the stove. Finally, it drops the shells into the bin, wipes the preparation counter, puts down the cloth, and closes the refrigerator.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/01_g1_scrambles_eggs.mp4",
+    "poster": "_posters/ours_gpt6/01_g1_scrambles_eggs.jpg",
+    "duration": 281.5
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/01_g1_scrambles_eggs.mp4",
+    "poster": "_posters/bare_gpt6/01_g1_scrambles_eggs.jpg",
+    "duration": 169.8
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/01_g1_scrambles_eggs.mp4",
+    "poster": "_posters/viga_gpt6/01_g1_scrambles_eggs.jpg",
+    "duration": 208.8
+   }
+  }
+ },
+ {
+  "id": "02",
+  "prompt": "Unbox and assemble an office chair",
+  "objects": "G1, carton, star base, casters, seat, Allen key",
+  "full": "A Unitree G1 humanoid robot assembles a flat-pack office chair by itself in an open-plan office bay. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. A sealed carton stands on the floor; the robot cuts its tape with a safety cutter, folds the four top flaps open, and lays out a five-arm star base, five casters, a gas-lift column with its plastic sleeve, the moulded seat, the backrest and its mounting spine, bolts and washers, bolt cover caps, and an Allen key. It presses each caster into a socket of the upturned base, rights the base, slides the sleeve over the column, and inserts the column into the base hub. It places the seat upside down on a low workbench, bolts the backrest spine to its underside, tightens the bolts, and fits the cover caps. It turns the upper assembly upright, lifts it over the column, and lowers it onto the taper. The robot sits briefly to seat the connection, tests the swivel, height lever, and backrest tilt, then stands, puts away the tools, flattens the empty carton beside the recycling bin, and rolls the finished chair to a desk.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/02_g1_assembles_office_chair.mp4",
+    "poster": "_posters/ours_gpt6/02_g1_assembles_office_chair.jpg",
+    "duration": 100.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/02_g1_assembles_office_chair.mp4",
+    "poster": "_posters/bare_gpt6/02_g1_assembles_office_chair.jpg",
+    "duration": 123.6
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/02_g1_assembles_office_chair.mp4",
+    "poster": "_posters/viga_gpt6/02_g1_assembles_office_chair.jpg",
+    "duration": 220.0
+   }
+  }
+ },
+ {
+  "id": "03",
+  "prompt": "Load a kiln and fix a wobbling shelf",
+  "objects": "G1, kiln, shelves, posts, bowls, vase",
+  "full": "A Unitree G1 humanoid robot loads mixed pottery into a front-loading kiln in a pottery studio. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. The kiln is cold and its door is open. A nearby trolley holds bowls, cups, a tall vase, plates, kiln shelves, support posts of several heights, a clearance gauge, and a cone pack. The robot places three posts inside the kiln and lowers the first shelf onto them. It presses lightly at the shelf edges, notices a wobble, lifts the shelf, replaces the uneven post, and checks it again. It loads four bowls with gaps between them, checks the gaps with the gauge, and nests small unglazed cups inside a larger unglazed bowl. It adds taller posts and a second shelf, checks the vase against the available headroom, and places it upright. It loads plates into a rack, adds a third shelf for the remaining small pieces, and places the cone pack where it will be visible through the viewing port. Finally, it checks the clearances around the loaded shelves, withdraws its hands, closes and latches the kiln door, and returns the unused posts and gauge to the trolley.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/03_g1_loads_pottery_kiln.mp4",
+    "poster": "_posters/ours_gpt6/03_g1_loads_pottery_kiln.jpg",
+    "duration": 100.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/03_g1_loads_pottery_kiln.mp4",
+    "poster": "_posters/bare_gpt6/03_g1_loads_pottery_kiln.jpg",
+    "duration": 124.6
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/03_g1_loads_pottery_kiln.mp4",
+    "poster": "_posters/viga_gpt6/03_g1_loads_pottery_kiln.jpg",
+    "duration": 133.8
+   }
+  }
+ },
+ {
+  "id": "04",
+  "prompt": "Mop a break room backward toward the door",
+  "objects": "G1, mop, bucket, wet-floor sign, tables",
+  "full": "A Unitree G1 humanoid robot mops a tiled office break room, working backward from the far corner toward the doorway. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. Chairs are tucked beneath the tables, leaving an open floor with several dusty footprints and a small coffee stain. A mop, a wheeled bucket with a wringer, and a folding wet-floor sign stand in the dry hallway. The robot places the sign beside the entrance, rolls the bucket into the room, dips and wrings the mop, and begins in the far corner. It sweeps the mop in overlapping figure-eight strokes, then steps backward onto the remaining dry floor. After several passes, it rinses and wrings the mop and pulls the bucket closer along the dry strip. It works around the table legs, scrubs the coffee stain with shorter strokes, and continues toward the exit as the cleaned wet area expands. Near the doorway, it moves the bucket into the hallway, mops the final strip, lifts the mop clear, and steps out. It secures the mop in the bucket and leaves the warning sign beside the freshly cleaned room.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/04_g1_mops_break_room.mp4",
+    "poster": "_posters/ours_gpt6/04_g1_mops_break_room.jpg",
+    "duration": 249.2
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/04_g1_mops_break_room.mp4",
+    "poster": "_posters/bare_gpt6/04_g1_mops_break_room.jpg",
+    "duration": 56.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/04_g1_mops_break_room.mp4",
+    "poster": "_posters/viga_gpt6/04_g1_mops_break_room.jpg",
+    "duration": 80.0
+   }
+  }
+ },
+ {
+  "id": "05",
+  "prompt": "Turn a wide panel through a narrow doorway",
+  "objects": "G1, panel, doorway, trestles",
+  "full": "A Unitree G1 humanoid robot carries a wide rectangular panel from a workshop into an adjoining room through a narrow doorway. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. A lightweight panel rests horizontally on two waist-high trestles. It is too wide to pass through the doorway broadside but can fit when turned edge-on. A second pair of trestles stands in the destination room, and the door is secured open. The robot approaches the panel, grips its two accessible edges, lifts it clear of the supports, and rotates it into an upright carrying position. It adjusts its stance and walks toward the doorway with short steps, stopping before the frame to turn the panel edge-on. It guides the leading edge through, sidesteps across the threshold while turning its torso, and brings the trailing edge clear of the frame. Once inside, it turns toward the empty trestles, pauses to align the panel, rotates it back to horizontal, and lowers it onto both supports. It releases its grips, steps back, and checks the panel’s placement before returning to a relaxed standing posture.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/05_g1_carries_panel_through_doorway.mp4",
+    "poster": "_posters/ours_gpt6/05_g1_carries_panel_through_doorway.jpg",
+    "duration": 73.9
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/05_g1_carries_panel_through_doorway.mp4",
+    "poster": "_posters/bare_gpt6/05_g1_carries_panel_through_doorway.jpg",
+    "duration": 36.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/05_g1_carries_panel_through_doorway.mp4",
+    "poster": "_posters/viga_gpt6/05_g1_carries_panel_through_doorway.jpg",
+    "duration": 47.0
+   }
+  }
+ },
+ {
+  "id": "06",
+  "prompt": "Sort mail and handle delivery exceptions",
+  "objects": "G1, envelopes, parcel, trays, bands",
+  "full": "A Unitree G1 humanoid robot sorts a mixed bundle of mail at a mailroom sorting station. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. A counter holds a stack of envelopes addressed to six clearly labelled departments, an exception tray, rubber bands, and one small parcel. A bank of matching pigeonholes stands within reach, with a parcel shelf below. The robot squares the bundle, picks up the first envelope, turns its address toward its head, and places it into the corresponding pigeonhole. It continues through several envelopes at a steady pace until it finds one addressed to another building, pauses to inspect it, and sets it in the exception tray. It resumes sorting, then reaches the parcel and checks it against the intended pigeonhole. Finding it too large, it withdraws the parcel and places it on the lower shelf. It works through the remaining envelopes, sets aside a second misdirected item, and checks the now-empty input area. Finally, it gathers the mail from three occupied pigeonholes into separate bundles, secures each with a rubber band, and places them in a collection tray, leaving the exceptions separate.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/06_g1_sorts_mailroom_post.mp4",
+    "poster": "_posters/ours_gpt6/06_g1_sorts_mailroom_post.jpg",
+    "duration": 81.4
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/06_g1_sorts_mailroom_post.mp4",
+    "poster": "_posters/bare_gpt6/06_g1_sorts_mailroom_post.jpg",
+    "duration": 100.8
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/06_g1_sorts_mailroom_post.mp4",
+    "poster": "_posters/viga_gpt6/06_g1_sorts_mailroom_post.jpg",
+    "duration": 175.0
+   }
+  }
+ },
+ {
+  "id": "07",
+  "prompt": "Pause a tray transfer for an urgent job, then resume",
+  "objects": "G1, trays, parts, marker, lamp, cradle",
+  "full": "A Unitree G1 humanoid robot transfers parts between two indexed trays at a workshop bench, interrupts its work for an urgent delivery, and then resumes where it stopped. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. The trays each have twelve numbered pockets arranged in two rows. At the start, parts one through six have been transferred to the destination tray, and the robot is lifting part seven from the source tray. A padded temporary holder sits between the trays, and a separate urgent-job station stands a few steps away. An amber lamp illuminates at that station while the robot holds part seven. It pauses, lowers the part into the temporary holder, and places a small marker beside destination pocket seven. It turns, walks to the urgent station, picks up a red component, carries it to a dispatch cradle, and presses the acknowledgement button. When the lamp goes out, it returns to the original bench, checks the marker, retrieves the parked part, and places it into pocket seven. It removes the marker, transfers parts eight through twelve in order, checks the empty source tray and completed destination tray, and steps back from the bench.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/07_g1_transfers_parts_after_interrupt.mp4",
+    "poster": "_posters/ours_gpt6/07_g1_transfers_parts_after_interrupt.jpg",
+    "duration": 74.3
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/07_g1_transfers_parts_after_interrupt.mp4",
+    "poster": "_posters/bare_gpt6/07_g1_transfers_parts_after_interrupt.jpg",
+    "duration": 64.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/07_g1_transfers_parts_after_interrupt.mp4",
+    "poster": "_posters/viga_gpt6/07_g1_transfers_parts_after_interrupt.jpg",
+    "duration": 152.0
+   }
+  }
+ },
+ {
+  "id": "08",
+  "prompt": "Carry and serve drinks despite interruptions",
+  "objects": "G1, people, glasses, tray, chairs",
+  "full": "A Unitree G1 humanoid robot carries a tray of drinks from a service counter to a collection table across a busy office lounge. Use the existing Unitree G1 robot asset at <PATH_TO_G1_ASSET> as the character; load and reuse its model and articulation rather than creating a new robot. Six partially filled glasses stand beside a rigid serving tray on the counter. Several people sit at tables along the route, leaving an aisle with one narrow gap between chairs. The robot places the glasses onto the tray, lifts it with both hands, and turns toward the collection table. It walks between the occupied tables until a seated person pushes a chair backward into its path. The robot stops, lets the glasses settle, and waits while the person notices it and pulls the chair inward. It resumes, turns its body sideways to pass through the narrow gap, and brings the tray through at a steady height. Beyond the gap, a passing person lightly bumps its upper arm. The robot pauses, bends its knees slightly, adjusts its stance, and steadies the tray before continuing. At the collection table, it lowers the tray onto the surface, releases its grip, and arranges the six glasses one by one on coasters. It then picks up the empty tray and returns toward the service counter.\n\n---",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/08_g1_carries_drinks_tray.mp4",
+    "poster": "_posters/ours_gpt6/08_g1_carries_drinks_tray.jpg",
+    "duration": 75.1
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/08_g1_carries_drinks_tray.mp4",
+    "poster": "_posters/bare_gpt6/08_g1_carries_drinks_tray.jpg",
+    "duration": 84.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/08_g1_carries_drinks_tray.mp4",
+    "poster": "_posters/viga_gpt6/08_g1_carries_drinks_tray.jpg",
+    "duration": 105.0
+   }
+  }
+ },
+ {
+  "id": "09",
+  "prompt": "Carry a piano upstairs around a tight landing",
+  "objects": "Three movers, piano, dolly, straps, stairs",
+  "full": "Three movers carry an upright piano up two flights of stairs in an apartment building, negotiating a tight turn at the half-landing. The piano stands in the entrance hall beside a stair-climbing dolly, moving blankets, and straps. The movers wrap the case, secure it to the dolly, and tip it backward together, with one mover above guiding and two below supporting the load. They find their balance, approach the first step, and work up the flight one step at a time, pausing midway to adjust their grips. At the half-landing, they begin turning toward the second flight, but the piano’s case meets the space occupied by the newel post. They stop, back off slightly, and bring the piano almost upright to make room for the turn. The upper mover changes position while the other two hold the load, then they pivot the piano and reposition the dolly toward the next flight. They resume climbing, reach the upper landing, and lower the piano upright onto the floor. Finally, they release the straps, withdraw the dolly, remove the blankets, and move the piano into its position against the hallway wall.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/09_movers_carry_piano_upstairs.mp4",
+    "poster": "_posters/ours_gpt6/09_movers_carry_piano_upstairs.jpg",
+    "duration": 148.5
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/09_movers_carry_piano_upstairs.mp4",
+    "poster": "_posters/bare_gpt6/09_movers_carry_piano_upstairs.jpg",
+    "duration": 60.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/09_movers_carry_piano_upstairs.mp4",
+    "poster": "_posters/viga_gpt6/09_movers_carry_piano_upstairs.jpg",
+    "duration": 15.0
+   }
+  }
+ },
+ {
+  "id": "10",
+  "prompt": "Prepare a coffee order and hand it over",
+  "objects": "Barista, customer, coffee machine, cups",
+  "full": "A barista serves a customer from ordering to collecting a takeaway coffee in a small café. The counter contains a till, paper cups, a marker, an espresso machine, a grinder, a milk pitcher, lids, sleeves, and a cleaning cloth. The customer approaches the till, orders a milk coffee, and gives their name. The barista marks a cup, repeats the order, and takes payment while the customer moves to the collection end of the counter and looks at their phone. The barista grinds and tamps the coffee, locks the portafilter into the machine, and starts the shot. While it extracts, they pour milk into the pitcher and steam it, then remove the cup and pour in the milk. They press on a lid, fit a sleeve, and call the customer’s name. The customer does not respond. The barista glances toward them and calls again, raising the cup slightly. The customer looks up, puts away their phone, and approaches. The barista places the drink within reach, the customer takes it and leaves, and the barista wipes the steam wand and counter before returning the pitcher to its place.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/10_barista_serves_takeaway_coffee.mp4",
+    "poster": "_posters/ours_gpt6/10_barista_serves_takeaway_coffee.jpg",
+    "duration": 113.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/10_barista_serves_takeaway_coffee.mp4",
+    "poster": "_posters/bare_gpt6/10_barista_serves_takeaway_coffee.jpg",
+    "duration": 78.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/10_barista_serves_takeaway_coffee.mp4",
+    "poster": "_posters/viga_gpt6/10_barista_serves_takeaway_coffee.jpg",
+    "duration": 10.0
+   }
+  }
+ },
+ {
+  "id": "11",
+  "prompt": "Set up and shoot a dolly move",
+  "objects": "Crew, actor, track, dolly, lamp, slate",
+  "full": "A small film crew sets up a dolly shot in a furnished studio interior. Equipment cases, three track sections, a camera dolly, a lamp, a flag, stands, sandbags, wedges, and marking tape are arranged along the edge of the set. A grip opens a stand, mounts the flag, and secures the base with a sandbag while a gaffer positions the lamp and adjusts its direction. At the same time, a camera assistant lays the track sections end to end, joins them, and levels the track with wedges. The crew places the dolly on the rails and mounts the camera. The gaffer takes a light reading beside the actor’s position and adjusts the lamp while the focus puller measures two distances and tapes marks beside the track. An actor steps onto their floor mark for a rehearsal. The dolly grip pushes the camera through the planned move, the focus puller follows the distance marks, and the crew stops to correct a bump at one track joint. They repeat the move, return to the starting positions, and make a final lighting check. The director calls for quiet, the camera starts, an assistant presents and snaps the slate, and the actor performs as the dolly travels along the track.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/11_film_crew_sets_dolly_shot.mp4",
+    "poster": "_posters/ours_gpt6/11_film_crew_sets_dolly_shot.jpg",
+    "duration": 92.6
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/11_film_crew_sets_dolly_shot.mp4",
+    "poster": "_posters/bare_gpt6/11_film_crew_sets_dolly_shot.jpg",
+    "duration": 64.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/11_film_crew_sets_dolly_shot.mp4",
+    "poster": "_posters/viga_gpt6/11_film_crew_sets_dolly_shot.jpg",
+    "duration": 7.5
+   }
+  }
+ },
+ {
+  "id": "12",
+  "prompt": "Fail a heavy deadlift three times, then unload",
+  "objects": "Lifter, barbell, plates, collars, belt, chalk",
+  "full": "A weightlifter attempts a heavy deadlift in a gym, fails to complete it, and puts the equipment away. An unloaded barbell lies on a lifting platform beside four weight plates, collars, a lifting belt, a chalk bowl, and a plate rack. The lifter loads two plates on each end, secures the collars, tightens their belt, and chalks their hands. They approach the bar, set their feet, bend down, and establish their grip. On the first attempt, they pull the bar to knee height, stall, and lower it back to the platform. They release their grip, stand to take a breath, then reset their feet and try again. The second pull rises slightly higher but still stops before lockout, and they lower it once more. After a longer pause, they change their grip and make a third attempt, this time lifting the bar only a short distance before returning it to the floor. They let go, step back, and loosen their belt. Finally, they remove the collars, unload the plates one at a time onto the rack, wipe the bar, and leave it empty on the platform.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/12_lifter_fails_heavy_deadlift.mp4",
+    "poster": "_posters/ours_gpt6/12_lifter_fails_heavy_deadlift.jpg",
+    "duration": 74.9
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/12_lifter_fails_heavy_deadlift.mp4",
+    "poster": "_posters/bare_gpt6/12_lifter_fails_heavy_deadlift.jpg",
+    "duration": 130.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/12_lifter_fails_heavy_deadlift.mp4",
+    "poster": "_posters/viga_gpt6/12_lifter_fails_heavy_deadlift.jpg",
+    "duration": 45.0
+   }
+  }
+ },
+ {
+  "id": "13",
+  "prompt": "Fetch a newspaper and deliver it to the owner",
+  "objects": "Dog, owner, newspaper, porch, chair",
+  "full": "A dog retrieves a rolled newspaper from the front garden and delivers it to its owner on the porch. The owner sits beside the front door, and a newspaper secured with a paper band lies near the garden gate at the end of a short path. The dog rests beside the chair until the owner gives a verbal cue and points toward the gate. It raises its head, stands, walks to the porch steps, and trots down onto the path. Near the gate, it slows, lowers its nose, and locates the newspaper beside a plant pot. It grips the middle of the roll in its mouth, lifts it, turns, and trots back toward the house. At the steps, it slows and climbs while carrying the newspaper. On reaching the porch, it pauses to adjust its grip, then approaches the owner and raises its muzzle toward the waiting hand. The owner takes hold of the newspaper before the dog releases it. The dog sits beside the chair, the owner places the newspaper on their lap and strokes its head, and the dog settles at their feet.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/13_dog_fetches_newspaper.mp4",
+    "poster": "_posters/ours_gpt6/13_dog_fetches_newspaper.jpg",
+    "duration": 44.2
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/13_dog_fetches_newspaper.mp4",
+    "poster": "_posters/bare_gpt6/13_dog_fetches_newspaper.jpg",
+    "duration": 32.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/13_dog_fetches_newspaper.mp4",
+    "poster": "_posters/viga_gpt6/13_dog_fetches_newspaper.jpg",
+    "duration": 7.5
+   }
+  }
+ },
+ {
+  "id": "14",
+  "prompt": "Remove a peg to open a puzzle feeder",
+  "objects": "Crow, feeder, peg, hatch, food",
+  "full": "A crow works out how to open a puzzle feeder on a low outdoor table. Food is visible behind a transparent sliding hatch, but a removable peg blocks the hatch from opening. A perch stands beside the table. The crow lands near the feeder, walks around it, and tilts its head to inspect the food through the clear panel. It pecks the panel several times, then catches the edge of the hatch with its bill and pushes it sideways. The hatch moves a little and stops against the peg. The crow steps back, looks along the hatch edge, and pecks at the protruding peg. It grips the peg with its bill and pulls, but loses its grip. It changes position, braces beside the feeder, hooks one foot around the peg, and draws it out of the retaining hole. The peg drops onto the table. The crow returns its bill to the hatch edge and slides the hatch far enough to expose the food. It reaches inside, takes a piece, withdraws its head, and hops onto the nearby perch to eat, leaving the hatch open and the peg on the table.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/14_crow_opens_puzzle_feeder.mp4",
+    "poster": "_posters/ours_gpt6/14_crow_opens_puzzle_feeder.jpg",
+    "duration": 45.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/14_crow_opens_puzzle_feeder.mp4",
+    "poster": "_posters/bare_gpt6/14_crow_opens_puzzle_feeder.jpg",
+    "duration": 30.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/14_crow_opens_puzzle_feeder.mp4",
+    "poster": "_posters/viga_gpt6/14_crow_opens_puzzle_feeder.jpg",
+    "duration": 15.0
+   }
+  }
+ },
+ {
+  "id": "15",
+  "prompt": "Practice sit and stay with a failed trial",
+  "objects": "Trainer, dog, treats, treat pouch",
+  "full": "A trainer teaches a young dog to sit and stay in a quiet fenced garden. The trainer wears a treat pouch, and the dog begins standing in front of them on a clear patch of grass. The trainer holds a treat above the dog’s nose and moves it backward until the dog sits, marks the response with a short word, and gives the treat. They repeat the sit with a raised-hand signal, reward it, and then introduce an open-palm stay signal. The trainer steps backward one pace, pauses, returns to the dog, and rewards it while it remains seated. On the next attempt, the trainer takes two steps back, but the dog stands and follows. The trainer stops, guides the dog back to its original place, and asks it to sit again. They repeat the easier one-step stay and reward it, then try two steps again. This time the dog holds its position until the trainer returns. Finally, the trainer backs away three paces and briefly turns sideways before facing the dog again. The dog remains seated. The trainer returns, gives a release cue, and rewards the dog as it gets up and approaches.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/15_trainer_teaches_dog_to_stay.mp4",
+    "poster": "_posters/ours_gpt6/15_trainer_teaches_dog_to_stay.jpg",
+    "duration": 82.9
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/15_trainer_teaches_dog_to_stay.mp4",
+    "poster": "_posters/bare_gpt6/15_trainer_teaches_dog_to_stay.jpg",
+    "duration": 57.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/15_trainer_teaches_dog_to_stay.mp4",
+    "poster": "_posters/viga_gpt6/15_trainer_teaches_dog_to_stay.jpg",
+    "duration": 11.7
+   }
+  }
+ },
+ {
+  "id": "16",
+  "prompt": "Retry nut cracking with a heavier stone",
+  "objects": "Macaque, nuts, cobble, anvil stones",
+  "full": "A young macaque attempts to crack a hard-shelled nut on a flat stone in a forest clearing. Several nuts lie beside the stone, with a small cobble nearby and a larger, heavier stone a short distance away. The macaque picks up a nut, places it on the flat surface, and lifts the small cobble in one hand. It strikes the nut, but the nut rolls off the stone without opening. The macaque follows it, retrieves it, and places it back near the center. A second strike sends the nut skidding to the edge, still intact. It retrieves the nut again, sets down the small cobble, and moves to the heavier stone. It lifts that stone with both hands, brings it over the nut, and strikes, but misses to one side. The macaque lowers the stone, repositions the nut, widens its stance, and adjusts its grip. It raises the stone again and strikes squarely, cracking the shell. It sets the stone down beside the anvil, separates the shell pieces with its fingers, picks out the kernel, and sits beside the scattered fragments to eat.\n\n---",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/16_macaque_cracks_nut.mp4",
+    "poster": "_posters/ours_gpt6/16_macaque_cracks_nut.jpg",
+    "duration": 56.5
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/16_macaque_cracks_nut.mp4",
+    "poster": "_posters/bare_gpt6/16_macaque_cracks_nut.jpg",
+    "duration": 40.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/16_macaque_cracks_nut.mp4",
+    "poster": "_posters/viga_gpt6/16_macaque_cracks_nut.jpg",
+    "duration": 66.0
+   }
+  }
+ },
+ {
+  "id": "17",
+  "prompt": "Route two marbles through a lift to a cup",
+  "objects": "Marbles, ramps, seesaw, lift, cup",
+  "full": "A mechanical marble course runs on a freestanding wooden frame with ramps, a spiral funnel, a seesaw, a counterweight lift, and a finishing cup. No people, animals, or robot characters appear. At the start, a steel marble rests behind a closed gate at the top, a second marble sits in a pocket on the raised end of the seesaw, and the lift platform waits at the bottom of its guide rails. A clockwork cam opens the starting gate, releasing the first marble down a curved ramp and into the funnel. It circles inward, drops through the center, and lands on the lowered end of the seesaw, tipping it and releasing the second marble onto a separate track. The first marble rolls off the seesaw onto the lift platform and depresses a latch. A suspended counterweight descends, raising the platform until its edge meets an upper exit ramp. The marble rolls out, crosses a short jump onto a catch ramp, and enters the finishing cup. Meanwhile, the second marble follows a longer zigzag route and arrives in the same cup a moment later. The cup tips under their combined weight, drops both marbles into a collection tray, and returns against its stop.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/17_marble_course_runs.mp4",
+    "poster": "_posters/ours_gpt6/17_marble_course_runs.jpg",
+    "duration": 24.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/17_marble_course_runs.mp4",
+    "poster": "_posters/bare_gpt6/17_marble_course_runs.jpg",
+    "duration": 26.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/17_marble_course_runs.mp4",
+    "poster": "_posters/viga_gpt6/17_marble_course_runs.jpg",
+    "duration": 32.0
+   }
+  }
+ },
+ {
+  "id": "18",
+  "prompt": "Merge domino branches into a flag finish",
+  "objects": "Dominoes, ball, gate, levers, flag",
+  "full": "A branching domino circuit unfolds across a large tabletop, combining falling tiles with levers, sliding gates, and a weighted final platform. No people, animals, or robot characters appear. A wound clockwork striker releases and knocks over the first domino, starting a line that divides into two routes. The left branch climbs a series of shallow steps and ends by pushing a lever that withdraws a locking pin from a sliding gate. The right branch follows a longer curved path around a tower of wooden blocks and ends by tipping a small cup containing a steel ball. The ball rolls toward the gate, reaches it after the pin has been withdrawn, and pushes through onto a descending track. At the bottom, it strikes a paddle connected to a second domino line on a lower level. This line crosses a narrow bridge and knocks a hinged support away from beneath a weighted platform. The platform lowers slowly through a damped linkage, pulling a cord that raises a small flag. The final dominoes settle, the ball comes to rest in a pocket, and the raised flag remains visible above the completed circuit.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/18_domino_circuit_falls.mp4",
+    "poster": "_posters/ours_gpt6/18_domino_circuit_falls.jpg",
+    "duration": 33.9
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/18_domino_circuit_falls.mp4",
+    "poster": "_posters/bare_gpt6/18_domino_circuit_falls.jpg",
+    "duration": 25.4
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/18_domino_circuit_falls.mp4",
+    "poster": "_posters/viga_gpt6/18_domino_circuit_falls.jpg",
+    "duration": 42.0
+   }
+  }
+ },
+ {
+  "id": "19",
+  "prompt": "Sort six parcels and recover from a jam",
+  "objects": "Parcels, rollers, diverter, paddle",
+  "full": "A gravity-fed sorting machine processes six rigid parcels from a sloped loading rack into three collection lanes. No people, animals, or robot characters appear. The parcels have equal width but three different heights, with two parcels of each height mixed in the queue. A motor-driven escapement releases one parcel at a time onto a roller track. Each parcel passes beneath a height-sensing lever that positions a downstream diverter through a mechanical linkage, routing short, medium, and tall parcels into separate chutes. After the first two parcels have been sorted, the third turns slightly and catches between the guide rails. The drive continues through a slipping clutch until a cam-operated side paddle pushes the parcel square with the track. It moves forward, passes the height lever, and enters its collection lane. The remaining parcels follow through the same release and sorting cycle. Each lane’s end stop holds its two parcels in a short queue. When the loading rack becomes empty, a follower drops into the vacant feed position and disengages the drive clutch, leaving the escapement stopped and all six parcels sorted.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/19_parcel_sorter_sorts_six.mp4",
+    "poster": "_posters/ours_gpt6/19_parcel_sorter_sorts_six.jpg",
+    "duration": 48.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/19_parcel_sorter_sorts_six.mp4",
+    "poster": "_posters/bare_gpt6/19_parcel_sorter_sorts_six.jpg",
+    "duration": 32.5
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/19_parcel_sorter_sorts_six.mp4",
+    "poster": "_posters/viga_gpt6/19_parcel_sorter_sorts_six.jpg",
+    "duration": 48.0
+   }
+  }
+ },
+ {
+  "id": "20",
+  "prompt": "Repeat bucket tipping until a tank is full",
+  "objects": "Water, tanks, bucket, wheel, float",
+  "full": "A tabletop water mechanism transfers water from an elevated reservoir through a tipping bucket into a lower collection tank. No people, animals, or robot characters appear. The reservoir begins full, the bucket rests upright on a pivot, and the collection tank is empty. A spring-driven timer opens the reservoir valve, sending a narrow stream into the bucket. As the water rises, the bucket’s changing center of mass carries it past its tipping point, and it rotates forward to discharge into a broad funnel. A small counterweight returns the empty bucket upright, where it begins filling again. Water from the funnel turns a paddle wheel before draining into the lower tank. The bucket completes several fill-and-tip cycles, and the wheel starts with each discharge and slows between them. A float in the collection tank rises as water accumulates. Near the final level, the float pulls a linkage that closes the reservoir valve. The remaining water in the feed channel drains into the bucket, leaving it partly filled below its tipping threshold. The paddle wheel coasts to a stop, and the system settles with the upper valve closed and the lower tank full.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/20_tipping_bucket_fills_tank.mp4",
+    "poster": "_posters/ours_gpt6/20_tipping_bucket_fills_tank.jpg",
+    "duration": 44.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/20_tipping_bucket_fills_tank.mp4",
+    "poster": "_posters/bare_gpt6/20_tipping_bucket_fills_tank.jpg",
+    "duration": 18.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/20_tipping_bucket_fills_tank.mp4",
+    "poster": "_posters/viga_gpt6/20_tipping_bucket_fills_tank.jpg",
+    "duration": 30.0
+   }
+  }
+ },
+ {
+  "id": "21",
+  "prompt": "Fill, cap and label bottles with a label feed repair",
+  "objects": "Bottles, liquid, caps, labels, conveyor",
+  "full": "An automatic production line fills, caps, and labels a batch of six transparent bottles. No people, animals, or robot characters appear. Empty bottles queue on an infeed conveyor beside a liquid reservoir, a cap chute, and a label reel. A rotating star wheel separates the bottles and brings the first beneath a filling nozzle. The bottle stops, the nozzle lowers, and a measured portion of colored liquid enters before the nozzle rises and the star wheel advances. At the next station, a cap drops from the chute into a holder and a rotating head presses and tightens it onto the bottle. The bottle then passes between powered rollers that turn it against a dispensed label, wrapping the label around its body. As more bottles enter, filling, capping, and labelling occur simultaneously at different stations. One label feeds slightly short, causing the label station to pause while a tension arm takes up slack and advances the reel to the next registration mark. Processing resumes, and the last bottles pass through. All six collect behind an outfeed stop, the empty infeed sensor halts the indexing wheel, and the remaining stations finish their cycles before stopping.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/21_bottling_line_fills_six.mp4",
+    "poster": "_posters/ours_gpt6/21_bottling_line_fills_six.jpg",
+    "duration": 50.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/21_bottling_line_fills_six.mp4",
+    "poster": "_posters/bare_gpt6/21_bottling_line_fills_six.jpg",
+    "duration": 30.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/21_bottling_line_fills_six.mp4",
+    "poster": "_posters/viga_gpt6/21_bottling_line_fills_six.jpg",
+    "duration": 55.0
+   }
+  }
+ },
+ {
+  "id": "22",
+  "prompt": "Open a drawbridge for a boat and reset",
+  "objects": "Bridge, boat, barriers, gears, buoys",
+  "full": "An automated canal drawbridge opens for an unoccupied motorboat and closes again after it passes. No people, animals, or robot characters appear. The bridge begins horizontal and locked across the canal, with raised road barriers and the boat approaching slowly along the water. As the boat reaches an approach marker, warning lamps flash and the road barriers lower. Once both barriers reach their stops, locking bolts retract from the bridge deck. A geared drive turns the lifting shafts, raising the two bridge leaves while their counterweights descend into side housings. The boat slows near the opening and waits until the leaves reach their fully raised positions and the canal signal changes. It then travels between the piers, leaving a small wake that rocks two moored buoys. After its stern clears the far marker, the drive reverses and lowers both leaves toward the center. They settle onto their supports, the locking bolts slide into place, and the road barriers rise. The warning lamps go dark as the boat continues down the canal and the disturbed water gradually settles.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/22_drawbridge_opens_for_boat.mp4",
+    "poster": "_posters/ours_gpt6/22_drawbridge_opens_for_boat.jpg",
+    "duration": 54.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/22_drawbridge_opens_for_boat.mp4",
+    "poster": "_posters/bare_gpt6/22_drawbridge_opens_for_boat.jpg",
+    "duration": 32.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/22_drawbridge_opens_for_boat.mp4",
+    "poster": "_posters/viga_gpt6/22_drawbridge_opens_for_boat.jpg",
+    "duration": 36.0
+   }
+  }
+ },
+ {
+  "id": "23",
+  "prompt": "Drive a spring cart through linked obstacles",
+  "objects": "Cart, spring, ball, gate, ramps",
+  "full": "A spring-powered cart travels through a mechanical obstacle course on a tabletop track. No people, animals, or robot characters appear. The cart starts behind a retaining latch with its drive spring wound, carrying a steel ball in a shallow cradle. A timer releases the latch, and the cart rolls forward, climbs a gentle ramp, and passes over a hinged platform that tilts under its weight. As it descends the far side, a fixed guide engages a lever on the cart and opens the cradle. The ball drops into a chute and rolls ahead to a locked crossing gate. It lands in a weighted cup, lowering the cup and pulling the gate upward by a cord. The cart reaches the crossing, passes beneath the raised gate, and enters a curved section that turns it back toward the start. It crosses a rough strip that slows its wheels, then climbs a final short incline using the remaining spring energy. At the top, it rolls into a padded docking stop and engages a catch. The drive spring unwinds the last fraction through a slipping clutch, leaving the cart parked and the ball held in the lowered gate cup.",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/23_spring_cart_runs_course.mp4",
+    "poster": "_posters/ours_gpt6/23_spring_cart_runs_course.jpg",
+    "duration": 54.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/23_spring_cart_runs_course.mp4",
+    "poster": "_posters/bare_gpt6/23_spring_cart_runs_course.jpg",
+    "duration": 36.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/23_spring_cart_runs_course.mp4",
+    "poster": "_posters/viga_gpt6/23_spring_cart_runs_course.jpg",
+    "duration": 30.0
+   }
+  }
+ },
+ {
+  "id": "24",
+  "prompt": "Strike four times while the clock keeps running",
+  "objects": "Clock, weights, gears, pendulum, bell",
+  "full": "A weight-driven clock with exposed gears advances to the hour, strikes four times, and returns to normal running. No people, animals, or robot characters appear. The clock begins a short interval before four o’clock, with its pendulum swinging, its driving weights raised, and the hour-striking mechanism held by a latch. The escapement releases the gear train tooth by tooth as the minute hand approaches twelve. A cam on the motion works gradually lifts the striking release lever. At the hour, the lever clears its stop and releases a separate striking train, whose weight begins descending as a fly governor spins up. A pinned wheel lifts a hammer and lets it fall against a bell four times, with the hammer withdrawing after each impact. A counting mechanism advances with each strike and, after the fourth, allows the locking lever to drop into its stop. The striking train halts and the governor settles, while the main escapement and pendulum continue running. End with the hands showing just after four, the hammer at rest, and the timekeeping gears still advancing.\n\n---",
+  "clips": {
+   "ours_gpt6": {
+    "src": "ours_gpt6/24_clock_strikes_four.mp4",
+    "poster": "_posters/ours_gpt6/24_clock_strikes_four.jpg",
+    "duration": 32.0
+   },
+   "bare_gpt6": {
+    "src": "bare_gpt6/24_clock_strikes_four.mp4",
+    "poster": "_posters/bare_gpt6/24_clock_strikes_four.jpg",
+    "duration": 17.0
+   },
+   "viga_gpt6": {
+    "src": "viga_gpt6/24_clock_strikes_four.mp4",
+    "poster": "_posters/viga_gpt6/24_clock_strikes_four.jpg",
+    "duration": 20.0
+   }
+  }
+ }
+];
+const METHODS = [{"key": "ours_gpt6", "label": "Ours", "count": 24}, {"key": "bare_gpt6", "label": "Bare LLM", "count": 24}, {"key": "viga_gpt6", "label": "VIGA", "count": 24}];
+const SHOW_IDS = false;
+const HIGHLIGHT = "ours_gpt6";
+const SPEEDS = [1, 2, 3];
+
+const host = document.getElementById('scenes');
+const empty = document.getElementById('empty');
+const countEl = document.getElementById('count');
+const chipBox = document.getElementById('chips');
+const speedBox = document.getElementById('speed');
+let autoplay = true;
+let rate = 2;
+const active = new Set(METHODS.map(m => m.key));
+const rows = [];
+const flat = [];
+
+function fmt(s) {
+  if (s == null) return '';
+  const m = Math.floor(s / 60), r = Math.round(s % 60);
+  return m ? m + ':' + String(r).padStart(2, '0') : r.toFixed(0) + 's';
+}
+
+SPEEDS.forEach(sp => {
+  const b = document.createElement('button');
+  b.textContent = sp + '×';
+  b.setAttribute('aria-pressed', String(sp === rate));
+  b.setAttribute('aria-label', 'Play at ' + sp + ' times speed');
+  b.addEventListener('click', () => {
+    rate = sp;
+    [...speedBox.children].forEach((c, i) =>
+      c.setAttribute('aria-pressed', String(SPEEDS[i] === rate)));
+    applyRate();
+  });
+  speedBox.appendChild(b);
+});
+
+function applyRate() {
+  document.querySelectorAll('video').forEach(v => {
+    try { v.playbackRate = rate; } catch (e) {}
+  });
+}
+
+METHODS.forEach(m => {
+  const b = document.createElement('button');
+  b.className = 'chip' + (m.key === HIGHLIGHT ? ' is-ours' : '');
+  b.setAttribute('aria-pressed', 'true');
+  b.appendChild(document.createTextNode(m.label));
+  const n = document.createElement('span');
+  n.className = 'n'; n.textContent = m.count;
+  b.appendChild(n);
+  b.addEventListener('click', () => {
+    if (active.has(m.key)) active.delete(m.key); else active.add(m.key);
+    if (active.size === 0) METHODS.forEach(x => active.add(x.key));
+    [...chipBox.children].forEach((c, i) =>
+      c.setAttribute('aria-pressed', String(active.has(METHODS[i].key))));
+    relayout();
+    applyFilter();
+  });
+  chipBox.appendChild(b);
+});
+
+SCENES.forEach(sc => {
+  const sec = document.createElement('section');
+  sec.className = 'scene';
+  sec.dataset.hay = [sc.id, sc.prompt, sc.objects, sc.full].join(' ').toLowerCase();
+
+  const head = document.createElement('div');
+  head.className = 'shead';
+
+  if (SHOW_IDS) {
+    const sid = document.createElement('span');
+    sid.className = 'sid'; sid.textContent = sc.id;
+    head.appendChild(sid);
+  }
+
+  const body = document.createElement('div');
+  body.className = 'sbody';
+  const p = document.createElement('p');
+  p.className = 'prompt'; p.textContent = sc.prompt || sc.id;
+  body.appendChild(p);
+  if (sc.objects) {
+    const o = document.createElement('p');
+    o.className = 'objs'; o.textContent = sc.objects;
+    body.appendChild(o);
+  }
+  head.appendChild(body);
+
+  const ctl = document.createElement('div');
+  ctl.className = 'sctl';
+  const fullBtn = document.createElement('button');
+  fullBtn.textContent = 'Full prompt';
+  fullBtn.setAttribute('aria-label', 'Show the full prompt for "' + (sc.prompt || sc.id) + '"');
+  fullBtn.addEventListener('click', () => openPrompt(sc));
+  ctl.appendChild(fullBtn);
+  const replay = document.createElement('button');
+  replay.textContent = 'Replay';
+  ctl.appendChild(replay);
+  head.appendChild(ctl);
+  sec.appendChild(head);
+
+  const bar = document.createElement('div');
+  bar.className = 'bar';
+  const fill = document.createElement('i');
+  bar.appendChild(fill);
+  sec.appendChild(bar);
+
+  const cols = document.createElement('div');
+  cols.className = 'cols';
+  sec.appendChild(cols);
+
+  const cells = [];
+  METHODS.forEach(m => {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    cell.dataset.method = m.key;
+
+    const lab = document.createElement('div');
+    lab.className = 'clabel';
+    const nm = document.createElement('span');
+    nm.className = 'cname' + (m.key === HIGHLIGHT ? ' is-ours' : '');
+    nm.textContent = m.label;
+    lab.appendChild(nm);
+
+    const clip = sc.clips[m.key];
+    if (clip) {
+      const du = document.createElement('span');
+      du.className = 'cdur'; du.textContent = fmt(clip.duration);
+      lab.appendChild(du);
+    }
+    cell.appendChild(lab);
+
+    if (!clip) {
+      const miss = document.createElement('div');
+      miss.className = 'missing';
+      const b1 = document.createElement('b');
+      b1.textContent = 'No result';
+      miss.appendChild(b1);
+      const b2 = document.createElement('span');
+      b2.textContent = m.label + ' produced no clip for this prompt';
+      miss.appendChild(b2);
+      cell.appendChild(miss);
+      cols.appendChild(cell);
+      return;
+    }
+
+    const vw = document.createElement('div');
+    vw.className = 'vwrap';
+
+    const exp = document.createElement('button');
+    exp.className = 'expand';
+    exp.textContent = 'Expand';
+    exp.setAttribute('aria-label',
+      'Open ' + m.label + ' result for "' + (sc.prompt || sc.id) + '" larger');
+    vw.appendChild(exp);
+
+    const v = document.createElement('video');
+    v.src = clip.src;
+    if (clip.poster) v.poster = clip.poster;
+    v.muted = true; v.playsInline = true; v.preload = 'none';
+    v.setAttribute('muted', '');
+    vw.appendChild(v);
+
+    const endTag = document.createElement('span');
+    endTag.className = 'ended';
+    endTag.textContent = 'ended · ' + fmt(clip.duration);
+    vw.appendChild(endTag);
+
+    cell.appendChild(vw);
+    cols.appendChild(cell);
+
+    const fi = flat.length;
+    flat.push({ src: clip.src, poster: clip.poster, method: m.label, methodKey: m.key,
+                scene: sc.id, prompt: sc.prompt, duration: clip.duration, el: v });
+
+    v.addEventListener('ended', () => vw.classList.add('is-ended'));
+    v.addEventListener('play', () => { vw.classList.remove('is-ended'); v.playbackRate = rate; });
+    v.addEventListener('loadedmetadata', () => { v.playbackRate = rate; });
+    vw.addEventListener('click', e => { if (e.target !== exp) openLightbox(fi); });
+    exp.addEventListener('click', e => { e.stopPropagation(); openLightbox(fi); });
+
+    cells.push({ v, vw, duration: clip.duration || 0 });
+  });
+
+  host.appendChild(sec);
+
+  const row = { sec, cells, fill, longest: Math.max(0, ...cells.map(c => c.duration)),
+                timer: null, playing: false };
+  rows.push(row);
+
+  replay.addEventListener('click', () => startRow(row, true));
+});
+
+function visibleCells(row) {
+  return row.cells.filter(c => active.has(c.v.closest('.cell').dataset.method));
+}
+
+function startRow(row, force) {
+  const cs = visibleCells(row);
+  if (!cs.length) return;
+  cs.forEach(c => {
+    c.v.preload = 'auto';
+    try { c.v.currentTime = 0; } catch (e) {}
+    c.v.playbackRate = rate;
+    c.vw.classList.remove('is-ended');
+    if (autoplay || force) c.v.play().catch(() => {});
+  });
+  row.playing = true;
+  tick(row);
+}
+
+function stopRow(row) {
+  row.cells.forEach(c => c.v.pause());
+  row.playing = false;
+  if (row.timer) { clearInterval(row.timer); row.timer = null; }
+}
+
+function tick(row) {
+  if (row.timer) clearInterval(row.timer);
+  row.timer = setInterval(() => {
+    const cs = visibleCells(row);
+    if (!cs.length) return;
+    const t = Math.max(0, ...cs.map(c => c.v.currentTime || 0));
+    const span = Math.max(...cs.map(c => c.duration)) || row.longest || 1;
+    row.fill.style.width = Math.min(100, (t / span) * 100) + '%';
+    const allDone = cs.every(c => c.v.ended || c.v.currentTime >= c.duration - 0.15);
+    if (allDone && row.playing) {
+      clearInterval(row.timer); row.timer = null;
+      setTimeout(() => { if (row.playing && autoplay) startRow(row); }, 900);
+    }
+  }, 100);
+}
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    const row = rows[+en.target.dataset.row];
+    if (!row) return;
+    if (en.isIntersecting) { if (autoplay) startRow(row); }
+    else stopRow(row);
+  });
+}, { rootMargin: '120px 0px', threshold: 0.12 });
+rows.forEach((r, i) => { r.sec.dataset.row = i; io.observe(r.sec); });
+
+function relayout() {
+  const n = Math.max(1, active.size);
+  rows.forEach(r => {
+    r.sec.querySelector('.cols').style.gridTemplateColumns = 'repeat(' + n + ', minmax(0,1fr))';
+    [...r.sec.querySelectorAll('.cell')].forEach(c => {
+      const on = active.has(c.dataset.method);
+      c.style.display = on ? '' : 'none';
+      if (!on) { const v = c.querySelector('video'); if (v) v.pause(); }
+    });
+  });
+}
+relayout();
+
+document.getElementById('toggleAll').addEventListener('click', e => {
+  autoplay = !autoplay;
+  e.target.setAttribute('aria-pressed', String(autoplay));
+  e.target.textContent = 'Autoplay: ' + (autoplay ? 'on' : 'off');
+  rows.forEach(r => autoplay ? startRow(r) : stopRow(r));
+});
+
+const q = document.getElementById('q');
+function applyFilter() {
+  const term = q.value.trim().toLowerCase();
+  let shown = 0;
+  rows.forEach(r => {
+    const hit = !term || r.sec.dataset.hay.includes(term);
+    r.sec.classList.toggle('hide', !hit);
+    if (hit) shown++; else stopRow(r);
+  });
+  empty.hidden = shown !== 0;
+  const clips = SCENES.reduce((a, s) =>
+    a + METHODS.filter(m => active.has(m.key) && s.clips[m.key]).length, 0);
+  countEl.textContent = shown + ' of ' + SCENES.length + ' prompts · ' + clips + ' clips';
+}
+q.addEventListener('input', applyFilter);
+applyFilter();
+
+const pm = document.getElementById('pm');
+const pmBody = document.getElementById('pmbody');
+const pmCopy = document.getElementById('pmcopy');
+let pmText = '';
+
+function openPrompt(sc) {
+  const pmid = document.getElementById('pmid');
+  pmid.textContent = sc.id;
+  pmid.style.display = SHOW_IDS ? '' : 'none';
+  document.getElementById('pmtitle').textContent = sc.prompt || sc.id;
+  const objs = document.getElementById('pmobjs');
+  objs.textContent = sc.objects || '';
+  objs.style.display = sc.objects ? '' : 'none';
+  pmText = sc.full || '';
+  pmBody.textContent = pmText || 'No full prompt recorded for this scene.';
+  pmBody.classList.toggle('pm-none', !pmText);
+  pmCopy.style.display = pmText ? '' : 'none';
+  pmCopy.textContent = 'Copy';
+  if (!pm.open) pm.showModal();
+}
+document.getElementById('pmclose').addEventListener('click', () => pm.close());
+pmCopy.addEventListener('click', () => {
+  if (!pmText) return;
+  const done = () => { pmCopy.textContent = 'Copied'; setTimeout(() => { pmCopy.textContent = 'Copy'; }, 1400); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(pmText).then(done, fallbackCopy);
+  } else { fallbackCopy(); }
+  function fallbackCopy() {
+    const ta = document.createElement('textarea');
+    ta.value = pmText; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { pmCopy.textContent = 'Press ⌘C'; }
+    document.body.removeChild(ta);
+  }
+});
+
+const lb = document.getElementById('lb');
+const lbv = document.getElementById('lbv');
+const lbt = document.getElementById('lbt');
+const lbc = document.getElementById('lbc');
+let cur = 0;
+
+function openLightbox(i) {
+  cur = i;
+  const it = flat[i];
+  lbv.src = it.src;
+  if (it.poster) lbv.poster = it.poster;
+  lbt.textContent = '';
+  const mspan = document.createElement('span');
+  if (it.methodKey === HIGHLIGHT) mspan.className = 'm-ours';
+  mspan.textContent = it.method;
+  lbt.appendChild(mspan);
+  lbt.appendChild(document.createTextNode(' — ' +
+    (SHOW_IDS ? it.scene + ' · ' : '') + (it.prompt || it.scene)));
+  lbc.textContent = 'Clip length ' + fmt(it.duration) + ' · playing at ' + rate + '×';
+  if (!lb.open) lb.showModal();
+  lbv.playbackRate = rate;
+  lbv.play().catch(() => {});
+}
+lbv.addEventListener('loadedmetadata', () => { lbv.playbackRate = rate; });
+function step(d) {
+  const pool = flat
+    .map((f, i) => i)
+    .filter(i => active.has(flat[i].methodKey)
+                 && !flat[i].el.closest('.scene').classList.contains('hide'));
+  if (!pool.length) return;
+  const at = pool.indexOf(cur);
+  openLightbox(pool[(at + d + pool.length) % pool.length]);
+}
+document.getElementById('prev').addEventListener('click', () => step(-1));
+document.getElementById('next').addEventListener('click', () => step(1));
+document.getElementById('close').addEventListener('click', () => lb.close());
+lb.addEventListener('close', () => { lbv.pause(); lbv.removeAttribute('src'); lbv.load(); });
+document.addEventListener('keydown', e => {
+  if (!lb.open) return;
+  if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+  if (e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+});
+</script>
+<script>
+(() => {
+  // Interactive console: one master clock drives every method's clip for the selected prompt.
+  const CATS = [['all', 'All'], ['humanoid', 'Humanoid robot'], ['character', 'Human & animal'], ['mechanism', 'Mechanism']];
+  const catOf = id => (+id <= 8 ? 'humanoid' : +id <= 16 ? 'character' : 'mechanism');
+  const COLORS = { ours_gpt6: '#1d7a4f', bare_gpt6: '#6b7280', viga_gpt6: '#b7791f' };
+  // DyCraft's exported 4D scenes (GLB + camera cuts + storyboard key poses), keyed by scene id.
+  const SCENES3D = {'01': 'scenes3d/01_g1_scrambles_eggs/', '02': 'scenes3d/02_g1_assembles_office_chair/', '03': 'scenes3d/03_g1_loads_pottery_kiln/', '04': 'scenes3d/04_g1_mops_break_room/', '05': 'scenes3d/05_g1_carries_panel_through_doorway/', '06': 'scenes3d/06_g1_sorts_mailroom_post/', '07': 'scenes3d/07_g1_transfers_parts_after_interrupt/', '08': 'scenes3d/08_g1_carries_drinks_tray/', '09': 'scenes3d/09_movers_carry_piano_upstairs/', '10': 'scenes3d/10_barista_serves_takeaway_coffee/', '11': 'scenes3d/11_film_crew_sets_dolly_shot/', '12': 'scenes3d/12_lifter_fails_heavy_deadlift/', '13': 'scenes3d/13_dog_fetches_newspaper/', '14': 'scenes3d/14_crow_opens_puzzle_feeder/', '15': 'scenes3d/15_trainer_teaches_dog_to_stay/', '16': 'scenes3d/16_macaque_cracks_nut/', '17': 'scenes3d/17_marble_course_runs/', '18': 'scenes3d/18_domino_circuit_falls/', '19': 'scenes3d/19_parcel_sorter_sorts_six/', '20': 'scenes3d/20_tipping_bucket_fills_tank/', '21': 'scenes3d/21_bottling_line_fills_six/', '22': 'scenes3d/22_drawbridge_opens_for_boat/', '23': 'scenes3d/23_spring_cart_runs_course/', '24': 'scenes3d/24_clock_strikes_four/'};
+  const CX_SPEEDS = [0.5, 1, 2, 3];
+  const FRAME = 1 / 30;
+  const COARSE = matchMedia('(pointer: coarse)').matches;
+  const ICON_PLAY = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.7v14.6a1 1 0 0 0 1.52.85l11.8-7.3a1 1 0 0 0 0-1.7L8.52 3.85A1 1 0 0 0 7 4.7z"/></svg>';
+  const ICON_PAUSE = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
+
+  const root = document.getElementById('cx');
+  const el = id => document.getElementById(id);
+  const label = k => METHODS.find(m => m.key === k).label;
+  const st = { i: 0, t: 0, playing: false, rate: 2, loop: true, mode: '3d', cat: 'all', walls: false,
+               last: performance.now(), inView: false, started: false, scrubbing: false };
+  const shown = new Set(METHODS.map(m => m.key));
+
+  function clock(s) {
+    const m = Math.floor(s / 60), r = s - m * 60;
+    return m + ':' + (r < 10 ? '0' : '') + r.toFixed(1);
+  }
+
+  // One persistent <video> per method; DyCraft's plays in the 3D view's corner, the rest wait in the hold.
+  const players = {};
+  const tiles = {};
+  METHODS.forEach(m => {
+    const v = document.createElement('video');
+    v.muted = true; v.playsInline = true; v.preload = 'auto';
+    v.setAttribute('muted', '');
+    v.addEventListener('loadedmetadata', () => { v.playbackRate = st.rate; renderLanes(); });
+    players[m.key] = v;
+
+    const tile = document.createElement('div');
+    tile.className = 'cx-tile';
+    tile.innerHTML = '<div class="cx-tlab"><span class="cx-dot"></span><b></b><span class="s"></span></div>' +
+                     '<div class="cx-frame"><span class="cx-endtag"></span></div>';
+    tile.querySelector('.cx-dot').style.background = COLORS[m.key] || '#888';
+    const b = tile.querySelector('b');
+    b.textContent = m.label;
+    if (m.key === HIGHLIGHT) b.style.color = 'var(--ours)';
+    tile.querySelector('.cx-frame').addEventListener('click', () => setPlaying(!st.playing));
+    tiles[m.key] = tile;
+    el('cxGrid').appendChild(tile);
+  });
+
+  const scene = () => SCENES[st.i];
+  function dur(k) {
+    if (!scene().clips[k]) return 0;
+    const v = players[k];
+    return isFinite(v.duration) && v.duration > 0 ? v.duration : scene().clips[k].duration;
+  }
+  function activeKeys() {
+    const ks = st.mode === '3d' ? [HIGHLIGHT] : METHODS.map(m => m.key).filter(k => shown.has(k));
+    return ks.filter(k => scene().clips[k]);
+  }
+  const span = () => Math.max(0.1, ...activeKeys().map(dur),
+                              st.mode === '3d' && st.meta ? st.meta.cuts.duration : 0);
+
+  // ---- scene list ----
+  CATS.forEach(([key, name]) => {
+    const b = document.createElement('button');
+    b.textContent = name;
+    b.setAttribute('aria-pressed', String(key === st.cat));
+    b.addEventListener('click', () => {
+      st.cat = key;
+      [...el('cxCats').children].forEach((c, j) => c.setAttribute('aria-pressed', String(CATS[j][0] === key)));
+      [...el('cxList').children].forEach((li, j) => { li.hidden = key !== 'all' && catOf(SCENES[j].id) !== key; });
+    });
+    el('cxCats').appendChild(b);
+  });
+  SCENES.forEach((sc, j) => {
+    const li = document.createElement('li');
+    const b = document.createElement('button');
+    b.className = 'cx-item';
+    const img = document.createElement('img');
+    img.src = (sc.clips[HIGHLIGHT] || Object.values(sc.clips)[0]).poster;
+    img.alt = ''; img.loading = 'lazy';
+    const t = document.createElement('span');
+    t.className = 't'; t.textContent = sc.prompt;
+    const c = document.createElement('span');
+    c.className = 'c'; c.textContent = CATS.find(x => x[0] === catOf(sc.id))[1];
+    if (SCENES3D[sc.id]) {
+      const b3 = document.createElement('span');
+      b3.className = 'b3'; b3.textContent = '3D';
+      c.appendChild(b3);
+    }
+    t.appendChild(c);
+    b.append(img, t);
+    b.addEventListener('click', () => loadScene(j, true));
+    li.appendChild(b);
+    el('cxList').appendChild(li);
+  });
+
+  // ---- toolbar ----
+  CX_SPEEDS.forEach(sp => {
+    const b = document.createElement('button');
+    b.textContent = sp + '×';
+    b.setAttribute('aria-pressed', String(sp === st.rate));
+    b.addEventListener('click', () => setRate(sp));
+    el('cxSpeed').appendChild(b);
+  });
+  function setRate(sp) {
+    st.rate = sp;
+    [...el('cxSpeed').children].forEach((c, j) => c.setAttribute('aria-pressed', String(CX_SPEEDS[j] === sp)));
+    Object.values(players).forEach(v => { try { v.playbackRate = sp; } catch (e) {} });
+  }
+  el('cxLoop').addEventListener('click', e => {
+    st.loop = !st.loop;
+    e.currentTarget.setAttribute('aria-pressed', String(st.loop));
+  });
+  el('cxPlay').addEventListener('click', () => setPlaying(!st.playing));
+  // iPhones can't take a page element full screen
+  el('cxFs').hidden = !document.fullscreenEnabled;
+  el('cxFs').addEventListener('click', () => {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (root.requestFullscreen) root.requestFullscreen().catch(() => {});
+  });
+  el('cxMore').addEventListener('click', e => {
+    const open = el('cxPrompt').classList.toggle('open');
+    e.currentTarget.textContent = open ? 'Show less' : 'Show full prompt';
+  });
+
+  function setPlaying(p) {
+    if (p && st.t >= span() - 0.05) seek(0);
+    st.playing = p;
+    el('cxPlay').innerHTML = p ? ICON_PAUSE : ICON_PLAY;
+    el('cxPlay').setAttribute('aria-label', p ? 'Pause' : 'Play');
+  }
+
+  // ---- layout: the 3D scene with the film in the corner (the grid is the no-3D fallback) ----
+  function layout() {
+    const three = st.mode === '3d';
+    el('cxGrid').hidden = three;
+    el('cx3d').hidden = !three;
+    el('cxView').hidden = !three;
+    el('cxReset').hidden = !three;
+    el('cxWalls').hidden = !three || !(v3.cur && v3.cur.walls);
+    if (three) {
+      el('cxPip').appendChild(players[HIGHLIGHT]);
+      METHODS.forEach(m => { if (m.key !== HIGHLIGHT) el('cxHold').appendChild(players[m.key]); });
+      show3D(scene().id);
+    } else {
+      const ks = METHODS.map(m => m.key).filter(k => shown.has(k));
+      el('cxGrid').style.gridTemplateColumns = 'repeat(' + ks.length + ', minmax(0,1fr))';
+      METHODS.forEach(m => {
+        tiles[m.key].hidden = !shown.has(m.key);
+        tiles[m.key].querySelector('.cx-frame').prepend(players[m.key]);
+      });
+    }
+    renderLanes();
+  }
+
+  // ---- timeline lanes ----
+  const lanes = {};
+  METHODS.forEach(m => {
+    const b = document.createElement('button');
+    b.className = 'cx-lane-l';
+    b.innerHTML = '<span class="cx-dot"></span><span></span><span class="d"></span>';
+    b.firstChild.style.background = COLORS[m.key] || '#888';
+    b.children[1].textContent = m.label;
+    b.title = 'Show or hide ' + m.label;
+    b.addEventListener('click', () => {
+      if (st.mode === '3d') return;
+      if (shown.has(m.key)) { if (shown.size > 1) shown.delete(m.key); } else shown.add(m.key);
+      layout();
+    });
+    el('cxLabels').appendChild(b);
+    const tr = document.createElement('div');
+    tr.className = 'cx-track';
+    tr.innerHTML = '<i></i><u></u>';
+    tr.firstChild.style.background = tr.lastChild.style.background = COLORS[m.key] || '#888';
+    el('cxTracks').insertBefore(tr, el('cxPh'));
+    lanes[m.key] = { b, tr, full: tr.firstChild, prog: tr.lastChild };
+  });
+
+  function renderLanes() {
+    const S = span();
+    const act = activeKeys();
+    METHODS.forEach(m => {
+      const L = lanes[m.key], d = dur(m.key);
+      // the 3D view plays only DyCraft's film, so the baselines' lanes would just sit greyed out
+      L.b.hidden = L.tr.hidden = st.mode === '3d' && m.key !== HIGHLIGHT;
+      L.b.setAttribute('aria-pressed', String(act.includes(m.key)));
+      L.b.querySelector('.d').textContent = d ? fmt(d) : '—';
+      L.tr.classList.toggle('off', !act.includes(m.key));
+      L.full.style.width = Math.min(100, d / S * 100) + '%';
+    });
+    renderMarkers(S);
+    el('cxSpan').textContent = clock(S);
+    const tk = el('cxTicks');
+    tk.innerHTML = '';
+    // ticks at least ~42 px apart, so a phone-width timeline stays legible
+    const w = el('cxTracks').clientWidth || 900;
+    const stepS = [5, 10, 30, 60, 120].find(x => x / S * w >= 42) || 120;
+    for (let s = 0; s <= S - stepS * 0.4; s += stepS) {
+      const sp = document.createElement('span');
+      sp.style.left = (s / S * 100) + '%';
+      sp.textContent = fmt(s) || '0s';
+      tk.appendChild(sp);
+    }
+  }
+
+  new ResizeObserver(() => renderLanes()).observe(el('cxTracks'));
+  (() => {
+    const tr = el('cxTracks');
+    let resume = false;
+    const at = e => { const r = tr.getBoundingClientRect(); seek((e.clientX - r.left) / r.width * span()); };
+    tr.addEventListener('pointerdown', e => {
+      st.scrubbing = true; resume = st.playing; st.playing = false;
+      tr.setPointerCapture(e.pointerId); at(e);
+    });
+    tr.addEventListener('pointermove', e => { if (st.scrubbing) at(e); });
+    const end = () => { if (!st.scrubbing) return; st.scrubbing = false; if (resume) setPlaying(true); };
+    tr.addEventListener('pointerup', end);
+    tr.addEventListener('pointercancel', end);
+  })();
+
+  function seek(t) {
+    st.t = Math.max(0, Math.min(span(), t));
+    activeKeys().forEach(k => {
+      const v = players[k];
+      try { v.currentTime = Math.min(st.t, Math.max(0, dur(k) - 0.04)); } catch (e) {}
+    });
+  }
+
+  // ---- scene switching ----
+  function loadScene(j, user) {
+    st.i = (j + SCENES.length) % SCENES.length;
+    const sc = scene();
+    st.t = 0;
+    METHODS.forEach(m => {
+      const v = players[m.key], clip = sc.clips[m.key];
+      if (clip) { v.poster = clip.poster || ''; v.src = clip.src; v.playbackRate = st.rate; }
+      else { v.pause(); v.removeAttribute('src'); v.removeAttribute('poster'); v.load(); }
+      tiles[m.key].querySelector('.cx-endtag').textContent = clip ? 'ended · ' + fmt(clip.duration) : 'no result';
+    });
+    st.meta = null;
+    st.mode = SCENES3D[sc.id] ? '3d' : 'grid';
+    loadMeta(sc.id).then(m => { if (m && scene().id === sc.id) { st.meta = m; renderLanes(); } });
+    el('cxTitle').textContent = sc.prompt;
+    el('cxObjs').textContent = sc.objects || '';
+    el('cxPrompt').textContent = sc.full || '';
+    [...el('cxList').children].forEach((li, k) => {
+      const b = li.firstChild;
+      b.setAttribute('aria-current', String(k === st.i));
+      if (k === st.i && user) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    });
+    if (user) {
+      st.started = true;
+      try { history.replaceState(null, '', '#console-' + sc.id); } catch (e) {}
+      setPlaying(true);
+    }
+    layout();
+  }
+
+  // ---- storyboard key poses + shot cuts (from the exported scene) ----
+  const meta = {};
+  function loadMeta(id) {
+    const base = SCENES3D[id];
+    if (!base) return Promise.resolve(null);
+    if (!meta[id]) {
+      meta[id] = Promise.all([
+        fetch(base + 'cuts.json').then(r => r.json()),
+        fetch(base + 'keys.json').then(r => r.ok ? r.json() : []).catch(() => []),
+      ])
+        .then(([cuts, keys]) => ({ base, cuts, keys }))
+        .catch(() => null);
+    }
+    return meta[id];
+  }
+  function shotAt(t) {
+    const cs = st.meta.cuts.cuts;
+    let k = 0;
+    while (k + 1 < cs.length && cs[k + 1].t <= t + 1e-6) k++;
+    return k;
+  }
+  function keyAt(t) {
+    const fps = st.meta.cuts.fps, ks = st.meta.keys;
+    let k = -1;
+    while (k + 1 < ks.length && ks[k + 1].frame / fps <= t + 1e-6) k++;
+    return k;
+  }
+  function renderMarkers(S) {
+    const m = st.meta;
+    document.querySelectorAll('#cx [data-mk]').forEach(n => { n.hidden = !m; });
+    const sb = el('cxSb'), sh = el('cxShots');
+    sb.innerHTML = ''; sh.innerHTML = '';
+    v3.lastShot = v3.lastKey = -2;
+    if (!m) return;
+    const fps = m.cuts.fps, D = m.cuts.duration;
+    m.cuts.cuts.forEach((c, k) => {
+      const end = k + 1 < m.cuts.cuts.length ? m.cuts.cuts[k + 1].t : D;
+      const s = document.createElement('span');
+      s.style.left = (c.t / S * 100) + '%';
+      s.style.width = ((end - c.t) / S * 100) + '%';
+      s.textContent = s.title = c.camera.replace(/^Cam_/, '');
+      sh.appendChild(s);
+    });
+    m.keys.forEach(kf => {
+      const d = document.createElement('i');
+      const t = kf.frame / fps;
+      d.style.left = (t / S * 100) + '%';
+      d.addEventListener('pointerenter', () => showTip(kf, t, d));
+      d.addEventListener('pointerleave', () => { el('cxTip').hidden = true; });
+      sb.appendChild(d);
+    });
+  }
+  function showTip(kf, t, dot) {
+    const tip = el('cxTip'), tl = tip.parentElement;
+    tip.querySelector('img').src = st.meta.base + kf.img;
+    tip.querySelector('p').innerHTML = '';
+    tip.querySelector('p').append(kf.name.replace(/_/g, ' '), ' ',
+      Object.assign(document.createElement('span'), { textContent: '· ' + clock(t) + ' · f' + kf.frame }));
+    const a = dot.getBoundingClientRect(), b = tl.getBoundingClientRect();
+    const x = Math.max(95, Math.min(b.width - 95, a.left + a.width / 2 - b.left));
+    tip.style.left = x + 'px';
+    tip.style.bottom = (b.bottom - a.top) + 'px';
+    tip.style.top = 'auto';
+    tip.hidden = false;
+  }
+
+  // ---- 3D viewer (three.js, loaded on first use) ----
+  const v3 = { boot: null, cache: {}, id: null, cur: null, view: 'camera' };
+  function boot3D() {
+    if (v3.boot) return v3.boot;
+    v3.boot = (async () => {
+      const [THREE, { GLTFLoader }, { OrbitControls }, { MeshoptDecoder }, { RoomEnvironment }] = await Promise.all([
+        import('three'), import('three/addons/loaders/GLTFLoader.js'),
+        import('three/addons/controls/OrbitControls.js'),
+        import('three/addons/libs/meshopt_decoder.module.js'),
+        import('three/addons/environments/RoomEnvironment.js')]);
+      const canvas = el('cx3dCanvas');
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+      renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      const env = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+      const cam = new THREE.PerspectiveCamera(40, 16 / 9, 0.01, 1000);
+      const controls = new OrbitControls(cam, canvas);
+      controls.enableDamping = true;
+      controls.addEventListener('start', () => { if (v3.view === 'camera') setView('free'); });
+      // a touch in the film's view may be a scroll: keep it from the controls until it turns out sideways
+      let swipe = null;
+      canvas.addEventListener('pointerdown', e => {
+        if (e.pointerType !== 'touch' || v3.view !== 'camera' || v3.host !== el('cx3d')) return;
+        swipe = [e.clientX, e.clientY];
+        controls.enabled = false;
+      }, true);
+      canvas.addEventListener('pointermove', e => {
+        if (!swipe) return;
+        const dx = Math.abs(e.clientX - swipe[0]), dy = Math.abs(e.clientY - swipe[1]);
+        if (dx > 12 && dx > 1.5 * dy) { swipe = null; controls.enabled = true; setView('free'); }
+      }, true);
+      const unswipe = () => { if (swipe) { swipe = null; controls.enabled = v3.host === el('cx3d'); } };
+      canvas.addEventListener('pointerup', unswipe, true);
+      canvas.addEventListener('pointercancel', unswipe, true);
+      const loader = new GLTFLoader();
+      loader.setMeshoptDecoder(MeshoptDecoder);
+      const resize = () => {
+        const r = (v3.host || el('cx3d')).getBoundingClientRect();
+        if (!r.width) return;
+        renderer.setSize(r.width, r.height, false);
+        // a drag turns by its share of the canvas height: slow it down on a phone-sized canvas
+        controls.rotateSpeed = Math.min(1, r.height / 400);
+        cam.aspect = r.width / r.height;
+        cam.updateProjectionMatrix();
+      };
+      const ro = new ResizeObserver(resize);
+      ro.observe(el('cx3d'));
+      Object.assign(v3, { THREE, renderer, env, cam, controls, loader, resize, ro, host: el('cx3d') });
+      resize();
+    })();
+    return v3.boot;
+  }
+  // Mean wall thickness of a closed mesh (2 * volume / surface area), in world units.
+  function meshThickness(o) {
+    const THREE = v3.THREE;
+    const pos = o.geometry.attributes.position, idx = o.geometry.index;
+    const s = o.getWorldScale(new THREE.Vector3());
+    const a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), n = new THREE.Vector3();
+    const n3 = idx ? idx.count : pos.count;
+    let vol = 0, area = 0;
+    for (let i = 0; i < n3; i += 3) {
+      const [i0, i1, i2] = idx ? [idx.getX(i), idx.getX(i + 1), idx.getX(i + 2)] : [i, i + 1, i + 2];
+      a.fromBufferAttribute(pos, i0).multiply(s); b.fromBufferAttribute(pos, i1).multiply(s); c.fromBufferAttribute(pos, i2).multiply(s);
+      vol += a.dot(n.crossVectors(b, c)) / 6;
+      area += n.crossVectors(b.sub(a), c.sub(a)).length() / 2;
+    }
+    return area > 0 ? 2 * Math.abs(vol) / area : 0;
+  }
+  // Colour a palette-textured mesh actually shows: the texel under its first UV (palette blocks are flat).
+  function texelColor(o, m) {
+    const THREE = v3.THREE, img = m.map && m.map.image, uv = o.geometry.attributes.uv;
+    if (!img || !uv || img.width > 256) return null;
+    const cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+    const cx = cv.getContext('2d'); cx.drawImage(img, 0, 0);
+    const x = Math.min(img.width - 1, Math.floor(uv.getX(0) * img.width));
+    const y = Math.min(img.height - 1, Math.floor(uv.getY(0) * img.height));
+    const [r, g, b] = cx.getImageData(x, y, 1, 1).data;
+    return new THREE.Color().setRGB(r / 255, g / 255, b / 255, THREE.SRGBColorSpace).multiply(m.color);
+  }
+  function prepare(gltf, wallList, layers) {
+    const THREE = v3.THREE;
+    const scn = new THREE.Scene();
+    scn.background = new THREE.Color(0xe6e3dc);
+    scn.environment = v3.env;
+    scn.add(gltf.scene);
+    gltf.scene.updateMatrixWorld(true);
+    const glass = new Map();
+    gltf.scene.traverse(o => {
+      if (!o.isMesh) return;
+      o.castShadow = true; o.receiveShadow = true;
+      const mats = Array.isArray(o.material) ? o.material : [o.material];
+      // A few percent of transmission is a translucency tint on food or wax, not something to see through.
+      mats.forEach(m => { if (m.transmission > 0 && m.transmission < 0.1) m.transmission = 0; });
+      let thin = false, liquid = false;
+      if (mats.some(m => m.transmission > 0)) {
+        // a pane, not a ground plane: thickness ~ 2*volume/area works for tilted and curved panes alike
+        const w = new THREE.Box3().setFromObject(o).getSize(new THREE.Vector3());
+        const ground = w.y < 0.1 && Math.max(w.x, w.z) > 4;
+        const t = meshThickness(o), span = Math.max(w.x, w.y, w.z);
+        // a drink, water in a jar or tank; water-like IOR (glass is 1.43+) settles films and morphing pours
+        const watery = mats.some(m => m.transmission > 0 && m.ior < 1.4);
+        liquid = !ground && (span < 0.5 ? t >= 0.008 || watery : (t >= 0.025 || watery) && span < 1.5);
+        thin = !ground && !liquid && t < 0.025;
+      }
+      o.material = mats.map(m => {
+        if (m.transmission > 0) {
+          // Physical transmission reads as frosted fog in WebGL. Thin panes become plain clear glass;
+          // anything thicker (paving, stone) carried transmission only from flattened procedural shaders.
+          const key = m.uuid + (thin ? 'g' : liquid ? 'l' : 'o');
+          if (!glass.has(key)) {
+            const g = m.clone();
+            g.transmission = 0;
+            if (thin) {
+              Object.assign(g, { transparent: true, opacity: Math.min(m.opacity, 0.22),
+                                 roughness: Math.min(m.roughness, 0.1), depthWrite: false });
+              // a white film over both faces would bleach whatever sits behind (bottled drinks): keep the pane grey
+              g.color.multiplyScalar(0.5);
+            } else if (liquid) {
+              // Cycles darkens a liquid with depth (volume absorption); alpha blending over a bright room
+              // only lightens it. Square the colour for a body of liquid and let coloured drinks go nearly
+              // opaque (dark coffee too), while clear water stays see-through.
+              const c = texelColor(o, m);
+              if (c) { g.map = null; g.color.copy(c); }
+              g.color.multiply(g.color);
+              let hsl = g.color.getHSL({});
+              g.color.multiplyScalar(1 - 0.45 * hsl.s); hsl = g.color.getHSL({});
+              Object.assign(g, { transparent: true, opacity: 0.45 + 0.45 * Math.min(1, Math.max(hsl.s * hsl.l * 3, 1 - hsl.l * 2.5)), depthWrite: false });
+              g.envMapIntensity = 0.3; g.specularIntensity = 0.3; g.ior = 1.33;
+            }
+            else Object.assign(g, { transparent: false, opacity: 1, depthWrite: true });
+            g.userData.glass = thin || liquid;
+            glass.set(key, g);
+          }
+          return glass.get(key);
+        }
+        return m;
+      });
+      if (!Array.isArray(o.material) || o.material.length === 1) o.material = o.material[0];
+      if (thin) o.castShadow = false;
+      // drinks sit inside bottles and glasses; drawn after the pane, the glass no longer veils them
+      if (liquid) o.renderOrder = 2;
+      (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => {
+        m.side = THREE.DoubleSide;
+        // Blender's fabric sheen exports as full-strength white and washes cloth out; the baked colour already has it.
+        if (m.sheen > 0) m.sheen = 0;
+        // Procedural food shaders whose bake failed export as flat black (01's yolks and egg pour): use the film's colour.
+        const lost = LOST_COLOUR[m.name.replace(/\.\d+$/, '')];
+        if (lost && !m.map && m.color.getHex() === 0) m.color.setHex(lost);
+        // Uniformly metallic but very rough (imported character outfits): Cycles shows dull cloth, WebGL a bright metal.
+        if (m.metalness >= 0.5 && !m.metalnessMap && m.roughness > 0.7) m.metalness = 0;
+        // Avatar outfits ship without roughness maps at 0.5, which reads as latex under the env light.
+        if (o.isSkinnedMesh && !m.roughnessMap) m.roughness = Math.max(m.roughness, 0.75);
+        if (m.transmission > 0) {
+          // handled above
+        } else if (m.transparent && m.opacity >= 1 && m.map && !(m.map.image && m.map.image.height <= 16)) {
+          // Alpha comes only from the texture (feather cards): cut it out so depth sorting stays correct.
+          m.transparent = false;
+          m.alphaTest = 0.5;
+          m.depthWrite = true;
+        } else if (m.transparent && !m.userData.glass) {
+          // Partial opacity here came from Light Path shadow-ray tricks (ground, foliage), not real see-through surfaces.
+          m.transparent = false;
+          m.opacity = 1;
+          m.depthWrite = true;
+        }
+      });
+    });
+    const box = new THREE.Box3().setFromObject(gltf.scene);
+    const size = box.getSize(new THREE.Vector3()), mid = box.getCenter(new THREE.Vector3());
+    const R = Math.max(size.x, size.y, size.z) * 0.6;
+    scn.add(new THREE.HemisphereLight(0xffffff, 0x8a8f99, 0.6));
+    const sun = new THREE.DirectionalLight(0xffffff, 2.2);
+    sun.position.copy(mid).add(new THREE.Vector3(R * 0.6, R * 1.2, R * 0.45));
+    sun.target.position.copy(mid);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(2048, 2048);
+    Object.assign(sun.shadow.camera, { left: -R, right: R, top: R, bottom: -R, near: 0.01, far: R * 4 });
+    sun.shadow.bias = -0.0004;
+    sun.shadow.normalBias = 0.02;
+    scn.add(sun, sun.target);
+    const mixer = new THREE.AnimationMixer(gltf.scene);
+    const actions = gltf.animations.map(c => { const a = mixer.clipAction(c); a.play(); return a; });
+    const duration = Math.max(0.1, ...gltf.animations.map(c => c.duration));
+    // A skinned part exported with a broken bind (the phone strap in 10) trails a metre or more from the body it rides on.
+    mixer.update(0);
+    gltf.scene.updateMatrixWorld(true);
+    gltf.scene.traverse(o => { if (o.isSkinnedMesh && strayed(o)) o.visible = false; });
+    const cams = {};
+    gltf.scene.traverse(o => {
+      if (o.isCamera && o.name) cams[o.name] = o;
+      else if (o.isCamera && o.parent && o.parent.name) cams[o.parent.name] = o;
+    });
+    // Orbit pivot: centre of whatever the animation moves (the character or the mechanism).
+    const moving = new THREE.Box3();
+    gltf.animations.forEach(c => c.tracks.forEach(tr => {
+      const n = gltf.scene.getObjectByName(tr.name.split('.')[0]);
+      if (n) moving.expandByObject(n);
+    }));
+    const focus = moving.isEmpty() ? mid : moving.getCenter(new THREE.Vector3());
+    const reach = moving.isEmpty() ? size.length() * 0.25 : moving.getSize(new THREE.Vector3()).length();
+    frontLayers(gltf, layers);
+    return { scn, mixer, actions, duration, cams, focus, reach, walls: wallParts(gltf, wallList) };
+  }
+  // walls.json names the room's walls, skirting and ceiling (hidden whole) and any merged room
+  // shells, which keep only their floor-level faces. Windows, doors, shelves and fittings are not listed.
+  const LOST_COLOUR = { Food_yolk: 0xe8952c, Food_cooking: 0xe2b468 };
+  // layers.json names surface layers laid on another mesh at (or within millimetres of) the same depth,
+  // like 22's brick cladding on the wharf wall. The depth buffer can't settle such ties, so they flicker as
+  // the camera moves; polygon offset lets the named layer win them, one depth step forward plus slope.
+  function frontLayers(gltf, layers) {
+    if (!layers || !layers.front) return;
+    const front = new Set(layers.front), copies = new Map();
+    const pull = m => {
+      if (!copies.has(m)) copies.set(m, Object.assign(m.clone(), { polygonOffset: true, polygonOffsetFactor: -1, polygonOffsetUnits: -1 }));
+      return copies.get(m);
+    };
+    gltf.scene.traverse(o => {
+      if (!o.isMesh) return;
+      let n = o;
+      while (n && !n.userData.name) n = n.parent;
+      if (n && front.has(n.userData.name)) o.material = Array.isArray(o.material) ? o.material.map(pull) : pull(o.material);
+    });
+  }
+  function strayed(o) {
+    const THREE = v3.THREE, bones = new THREE.Box3(), mesh = new THREE.Box3(), p = new THREE.Vector3();
+    o.skeleton.bones.forEach(b => bones.expandByPoint(b.getWorldPosition(p)));
+    const n = o.geometry.attributes.position.count, step = Math.max(1, Math.floor(n / 400));
+    for (let i = 0; i < n; i += step) mesh.expandByPoint(o.getVertexPosition(i, p).applyMatrix4(o.matrixWorld));
+    return !bones.expandByScalar(0.5).intersectsBox(mesh);
+  }
+  function wallParts(gltf, list) {
+    if (!list) return null;
+    const THREE = v3.THREE, byName = {};
+    gltf.scene.traverse(o => { if (o.userData.name) byName[o.userData.name] = o; });
+    const hide = list.hide.map(n => byName[n]).filter(Boolean), cut = [];
+    const a = new THREE.Vector3(), b = new THREE.Vector3(), c = new THREE.Vector3(), n = new THREE.Vector3();
+    list.cut.forEach(name => (byName[name] || { traverse() {} }).traverse(o => {
+      if (!o.isMesh) return;
+      const g = o.geometry, pos = g.attributes.position;
+      const full = g.index || new THREE.BufferAttribute(Uint32Array.from({ length: pos.count }, (_, i) => i), 1);
+      if (!g.index) g.setIndex(full);
+      const keep = [];
+      for (let i = 0; i < full.count; i += 3) {
+        const t = [full.getX(i), full.getX(i + 1), full.getX(i + 2)];
+        a.fromBufferAttribute(pos, t[0]).applyMatrix4(o.matrixWorld);
+        b.fromBufferAttribute(pos, t[1]).applyMatrix4(o.matrixWorld);
+        c.fromBufferAttribute(pos, t[2]).applyMatrix4(o.matrixWorld);
+        n.crossVectors(b.clone().sub(a), c.clone().sub(a)).normalize();
+        if (Math.abs(n.y) > 0.7 && (a.y + b.y + c.y) / 3 < 0.5) keep.push(...t);
+      }
+      cut.push({ g, full, cut: new THREE.BufferAttribute(Uint32Array.from(keep), 1) });
+    }));
+    return hide.length || cut.length ? { hide, cut, off: false } : null;
+  }
+  function setWalls(c, off) {
+    const w = c.walls;
+    if (!w || w.off === off) return;
+    w.off = off;
+    w.hide.forEach(o => { o.visible = !off; });
+    w.cut.forEach(x => x.g.setIndex(off ? x.cut : x.full));
+  }
+  // The one WebGL canvas moves between hosts (this console, the Method figure) so the
+  // scene and its textures are only ever uploaded once.
+  function attach(host) {
+    if (!v3.renderer || v3.host === host) return;
+    host.prepend(v3.renderer.domElement);
+    v3.host = host;
+    v3.ro.observe(host);
+    v3.controls.enabled = host === el('cx3d');
+    touchAction();
+    v3.resize();
+  }
+  // Touch: over the film's view a vertical swipe still scrolls the page and a sideways one switches to
+  // free orbit, which takes every gesture. The Method figure only shows the canvas, so it scrolls.
+  function touchAction() {
+    if (v3.renderer) v3.renderer.domElement.style.touchAction = v3.host !== el('cx3d') ? 'auto' : v3.view === 'free' ? 'none' : 'pan-y';
+  }
+  function getScene(id, onProgress) {
+    if (!v3.cache[id]) {
+      const side = f => fetch(SCENES3D[id] + f).then(r => r.ok ? r.json() : null).catch(() => null);
+      v3.cache[id] = boot3D().then(() => Promise.all([new Promise((res, rej) =>
+        v3.loader.load(SCENES3D[id] + 'scene.glb', res, onProgress, rej)), side('walls.json'), side('layers.json')]))
+        .then(([g, w, l]) => prepare(g, w, l));
+      v3.cache[id].catch(() => { delete v3.cache[id]; });
+    }
+    return v3.cache[id];
+  }
+  function pose(c, t) {
+    const tt = Math.min(Math.max(0, t), c.duration - 1e-4);
+    c.actions.forEach(a => { a.time = tt; });
+    c.mixer.update(0);
+  }
+  window.Dy3D = {
+    load: id => getScene(id),
+    attach,
+    consoleBusy: () => st.mode === '3d' && st.inView,
+    // The Method figure borrows the canvas while it is the more visible of the two; the console's camera comes back unchanged.
+    lend(on) {
+      if (!v3.renderer || on === !!v3.lent) return;
+      v3.lent = on;
+      if (on) v3.saved = { p: v3.cam.position.clone(), q: v3.cam.quaternion.clone(), fov: v3.cam.fov };
+      else if (v3.saved) {
+        v3.cam.position.copy(v3.saved.p); v3.cam.quaternion.copy(v3.saved.q); v3.cam.fov = v3.saved.fov;
+        v3.cam.updateProjectionMatrix();
+      }
+    },
+    // place(cam, scene, THREE) positions the shared camera; called after the scene is posed at t.
+    render(c, t, place) {
+      if (!v3.renderer) return;
+      pose(c, t);
+      setWalls(c, false);
+      place(v3.cam, c, v3.THREE);
+      v3.cam.updateProjectionMatrix();
+      v3.renderer.render(c.scn, v3.cam);
+    },
+  };
+
+  async function show3D(id) {
+    const base = SCENES3D[id];
+    if (!base || v3.id === id) return;
+    v3.id = id; v3.cur = null;
+    el('cxWalls').hidden = true;
+    el('cxLoad').hidden = false;
+    el('cxLoadT').textContent = 'Loading the scene';
+    el('cxLoadB').style.width = '0';
+    try {
+      await boot3D();
+      attach(el('cx3d'));
+      const cur = await getScene(id, x => {
+        if (x.total && v3.id === id) el('cxLoadB').style.width = (x.loaded / x.total * 100) + '%';
+      });
+      await loadMeta(id);
+      if (v3.id !== id) return;
+      v3.cur = cur;
+      v3.lastShot = -1;
+      el('cxWalls').hidden = !cur.walls;
+      setView(v3.view, true);
+      el('cxLoad').hidden = true;
+    } catch (e) {
+      v3.id = null;
+      el('cxLoadT').textContent = 'Could not load the 3D scene';
+    }
+  }
+  function placeShotCamera() {
+    const c = v3.cur.cams[st.meta.cuts.cuts[shotAt(st.t)].camera];
+    if (!c) return;
+    c.updateWorldMatrix(true, false);
+    c.matrixWorld.decompose(v3.cam.position, v3.cam.quaternion, new v3.THREE.Vector3());
+    v3.cam.fov = c.fov;
+    filmClip(v3.cam, c);
+    v3.cam.updateProjectionMatrix();
+  }
+  // Depth precision falls off with distance² / near: a 1 cm near plane leaves the bricks on 22's wharf,
+  // a few millimetres off the wall behind them, flickering 30 m out. The film camera's own clip range
+  // (what Cycles rendered with) clips nothing the film shows; never go below 1 cm.
+  function filmClip(cam, src) {
+    cam.near = Math.max(0.01, src.near);
+    cam.far = Math.max(cam.near * 10, src.far);
+  }
+  // Free orbit: the near plane follows the orbit distance, so zooming out over a big set keeps its precision.
+  function orbitClip() {
+    v3.cam.near = Math.min(0.1, Math.max(0.01, v3.cam.position.distanceTo(v3.controls.target) / 200));
+    v3.cam.far = 1000;
+    v3.cam.updateProjectionMatrix();
+  }
+  function setView(v, init) {
+    v3.view = v;
+    [...el('cxView').children].forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
+    el('cx3d').classList.toggle('is-free', v === 'free');
+    el('cxHint').textContent = COARSE ? (v === 'free' ? 'Drag to orbit · pinch to zoom' : 'Swipe sideways to look around')
+      : v === 'free' ? 'Drag to orbit · scroll to zoom · WASD/QE to move' : 'Drag to orbit · WASD to move';
+    touchAction();
+    if (!v3.cur || !st.meta) return;
+    if (v === 'camera' || init) placeShotCamera();
+    if (v === 'free') {
+      const fwd = new v3.THREE.Vector3(0, 0, -1).applyQuaternion(v3.cam.quaternion);
+      const d = Math.max(0.2, v3.cam.position.distanceTo(v3.cur.focus));
+      v3.controls.target.copy(v3.cam.position).addScaledVector(fwd, d);
+      v3.controls.update();
+    }
+  }
+  el('cxView').addEventListener('click', e => { const b = e.target.closest('[data-view]'); if (b) setView(b.dataset.view); });
+  // Back to the current shot's camera, keeping the chosen view mode.
+  const resetCamera = () => setView(v3.view, true);
+  el('cxReset').addEventListener('click', resetCamera);
+  function toggleWalls() {
+    if (el('cxWalls').hidden) return;
+    st.walls = !st.walls;
+    el('cxWalls').setAttribute('aria-pressed', String(st.walls));
+    el('cxWalls').textContent = st.walls ? 'Show walls' : 'Hide walls';
+  }
+  el('cxWalls').addEventListener('click', toggleWalls);
+  // WASD flies the camera (Q/E down/up); the orbit target travels with it so dragging still turns around what's ahead.
+  const MOVE = { w: [0, 0, -1], s: [0, 0, 1], a: [-1, 0, 0], d: [1, 0, 0], q: [0, -1, 0], e: [0, 1, 0] };
+  const held = new Set();
+  let lastFly = 0;
+  function fly() {
+    const now = performance.now(), dt = Math.min(0.1, (now - lastFly) / 1000);
+    lastFly = now;
+    if (!held.size || !v3.cur) return;
+    if (v3.view === 'camera') setView('free');
+    const THREE = v3.THREE, dir = new THREE.Vector3();
+    held.forEach(k => dir.add(new THREE.Vector3(...MOVE[k])));
+    if (!dir.lengthSq()) return;
+    const up = dir.y; dir.y = 0;
+    dir.applyQuaternion(v3.cam.quaternion);
+    dir.y += up;
+    const speed = 0.8 * Math.max(0.3, v3.cam.position.distanceTo(v3.controls.target));
+    dir.normalize().multiplyScalar(speed * dt);
+    v3.cam.position.add(dir);
+    v3.controls.target.add(dir);
+  }
+  el('cxPip').addEventListener('click', () => el('cxPip').classList.toggle('big'));
+  function draw3D() {
+    const c = v3.cur;
+    if (!c || !st.meta) return;
+    attach(el('cx3d'));
+    pose(c, st.t);
+    setWalls(c, st.walls);
+    const shot = shotAt(st.t), key = keyAt(st.t);
+    fly();
+    if (v3.view === 'camera') placeShotCamera();
+    else { v3.controls.update(); orbitClip(); }
+    if (shot !== v3.lastShot) {
+      v3.lastShot = shot;
+      el('cxShotLab').textContent = 'Shot · ' + st.meta.cuts.cuts[shot].camera.replace(/^Cam_/, '');
+      [...el('cxShots').children].forEach((s, k) => s.classList.toggle('on', k === shot));
+    }
+    if (key !== v3.lastKey) {
+      v3.lastKey = key;
+      const kf = st.meta.keys[key];
+      el('cxKeyLab').textContent = kf ? 'Storyboard · ' + kf.name.replace(/_/g, ' ') : '';
+      [...el('cxSb').children].forEach((d, k) => d.classList.toggle('on', k === key));
+    }
+    v3.renderer.render(c.scn, v3.cam);
+  }
+
+  // ---- master clock ----
+  let lastNow = '', lastPh = '';
+  function frame(now) {
+    const dt = Math.min(0.1, (now - st.last) / 1000);
+    st.last = now;
+    const keys = activeKeys();
+    const S = span();
+    let stalled = false;
+    if (st.playing && st.inView) {
+      stalled = keys.some(k => st.t < dur(k) - 0.05 && players[k].readyState < 3 && !players[k].error);
+      if (!stalled) st.t += dt * st.rate;
+      if (st.t >= S) {
+        if (st.loop) st.t = 0;
+        else { st.t = S; setPlaying(false); }
+      }
+    }
+    el('cxBuf').hidden = !stalled;
+
+    const run = st.playing && st.inView;
+    METHODS.forEach(m => {
+      const v = players[m.key];
+      if (!keys.includes(m.key)) { if (!v.paused) v.pause(); lanes[m.key].prog.style.width = '0'; return; }
+      const d = dur(m.key);
+      const target = Math.min(st.t, Math.max(0, d - 0.04));
+      const ended = st.t >= d - 0.04;
+      if (run && !ended) {
+        if (v.paused) v.play().catch(() => {});
+        if (Math.abs(v.currentTime - target) > 0.3 + 0.1 * st.rate && !v.seeking) v.currentTime = target;
+      } else {
+        if (!v.paused) v.pause();
+        if (Math.abs(v.currentTime - target) > 0.04 && !v.seeking && v.readyState >= 1) v.currentTime = target;
+      }
+      const pct = Math.min(100, Math.min(st.t, d) / S * 100) + '%';
+      lanes[m.key].prog.style.width = pct;
+      const s = ended ? 'ended at ' + clock(d) : clock(st.t);
+      tiles[m.key].classList.toggle('is-ended', ended);
+      tiles[m.key].querySelector('.s').textContent = s;
+    });
+
+    const n = clock(st.t), ph = (st.t / S * 100).toFixed(2) + '%';
+    if (n !== lastNow) { el('cxNow').textContent = n; lastNow = n; }
+    if (ph !== lastPh) { el('cxPh').style.left = ph; lastPh = ph; }
+    if (st.mode === '3d' && st.inView && !v3.lent) draw3D();
+    requestAnimationFrame(frame);
+  }
+
+  // Play only while the console is on screen; start automatically the first time it appears.
+  new IntersectionObserver(es => {
+    es.forEach(e => {
+      st.inView = e.isIntersecting;
+      if (st.inView && !st.started) {
+        st.started = true;
+        setPlaying(true);
+      }
+    });
+  }, { threshold: 0.25 }).observe(root);
+
+  // ---- keyboard ----
+  document.addEventListener('keydown', e => {
+    if (!st.inView || document.querySelector('dialog[open]')) return;
+    if (e.target.closest && e.target.closest('input, textarea, select')) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key;
+    if (k === ' ') { e.preventDefault(); setPlaying(!st.playing); }
+    else if (k === 'ArrowLeft') { e.preventDefault(); seek(st.t - 2); }
+    else if (k === 'ArrowRight') { e.preventDefault(); seek(st.t + 2); }
+    else if (k === ',') { setPlaying(false); seek(st.t - FRAME); }
+    else if (k === '.') { setPlaying(false); seek(st.t + FRAME); }
+    else if (k === 'ArrowUp' || k === 'ArrowDown') {
+      e.preventDefault();
+      const vis = SCENES.map((s, j) => j).filter(j => !el('cxList').children[j].hidden);
+      const at = vis.indexOf(st.i);
+      loadScene(vis[((at < 0 ? 0 : at) + (k === 'ArrowDown' ? 1 : -1) + vis.length) % vis.length], true);
+    }
+    else if ((k === 'r' || k === 'R') && st.mode === '3d') resetCamera();
+    else if ((k === 'h' || k === 'H') && st.mode === '3d') toggleWalls();
+    else if (MOVE[k.toLowerCase()] && st.mode === '3d') { e.preventDefault(); held.add(k.toLowerCase()); }
+  });
+  document.addEventListener('keyup', e => { held.delete(e.key.toLowerCase()); });
+  window.addEventListener('blur', () => held.clear());
+
+  // Entry point for the rest of the page (results strip, storyboard filmstrip).
+  window.cxOpen = (id, opts = {}) => {
+    const j = SCENES.findIndex(s => s.id === id);
+    if (j < 0) return;
+    loadScene(j, true);
+    if (opts.t) seek(opts.t);
+    root.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const fromHash = location.hash.match(/^#console-(\d+)/);
+  const startIdx = fromHash ? Math.max(0, SCENES.findIndex(s => s.id === fromHash[1])) : 0;
+  setPlaying(false);
+  loadScene(startIdx, false);
+  layout();
+  if (fromHash) root.closest('section').scrollIntoView();
+  requestAnimationFrame(frame);
+})();
+</script>
+<script>
+// ---- Method figure: the seven DyCraft steps on one task, drawn with the console's shared 3D canvas ----
+(() => {
+  const el = id => document.getElementById(id);
+  const ID = '05', BASE = 'scenes3d/05_g1_carries_panel_through_doorway/';
+  const STEPS = {
+    prompt:  { ms: 6000, title: 'Prompt', text: 'The input is a short paragraph describing the action. Many details of the scene and the motion are left open.' },
+    rewrite: { ms: 8000, title: 'Prompt rewriting', text: 'Fresh-context rewriters expand the prompt into a scene brief and a motion brief. They pick an organizing principle for the scene and work out the constraints the motion has to meet.' },
+    cad:     { ms: 7200, title: 'CAD scene', text: 'The agent builds the static scene with a B-rep CAD interface, plus native Blender tools for characters and fluids. Nothing moves yet; here it is seen through the film’s cameras.' },
+    board:   { ms: 14000, title: '3D storyboard', text: 'Key poses are authored as complete static 3D scenes, rendered through the film’s cameras and verified one by one before any motion exists.' },
+    motion:  { ms: 18500, title: 'Motion authoring', text: 'Motion fills in each segment between two verified key poses, using tools such as footstep planning and IK for humanoids and rigid-body or fluid simulation for physics.' },
+    verify:  { ms: 8000, title: 'Verification', text: 'Verifiers check every frame for interpenetration, support, joint limits and the agent’s own assertions. A failing check blocks delivery until the agent repairs it.' },
+    film:    { ms: 14000, title: 'Film', text: 'Once every check passes, the agent renders the final film in Cycles. The Blender project stays editable.' },
+  };
+  const ORDER = Object.keys(STEPS), LIVE = new Set(['prompt', 'rewrite', 'cad', 'board', 'motion']);
+  const MOTION_RATE = 4, POSE_MS = 450, CAD_MS = 1800;
+  const view = el('mdView'), img = el('mdImg'), film = el('mdFilm'), tl = el('mdTl'), ph = el('mdPh');
+  const tabs = [...document.querySelectorAll('.md-step')], ovs = [...view.querySelectorAll('.md-ov')];
+  const md = { step: 'prompt', t0: performance.now(), auto: !matchMedia('(prefers-reduced-motion: reduce)').matches,
+               keys: null, cuts: null, scene: null, hold: -1, loading: false, lent: false };
+
+  const sc = SCENES.find(x => x.id === ID);
+  if (sc) {
+    el('mdPrompt').textContent = sc.full.replace(/\s*Use the existing [^.]*\./, ' […]');
+    el('mdPromptN').textContent = sc.full.split(/\s+/).length + ' words';
+  }
+  const fmt = t => Math.floor(t / 60) + ':' + String(Math.floor(t % 60)).padStart(2, '0');
+  const pct = t => (t / md.cuts.duration * 100) + '%';
+  const keyT = k => md.keys[k].frame / md.cuts.fps;
+  const keyAt = t => { let k = 0; md.keys.forEach((kf, i) => { if (kf.frame / md.cuts.fps <= t + 1e-6) k = i; }); return k; };
+  const cutAt = t => { let k = 0; md.cuts.cuts.forEach((c, i) => { if (c.t <= t + 1e-6) k = i; }); return md.cuts.cuts[k].camera; };
+  const nice = n => n.replace(/^cam_/, '').replace(/_/g, ' ');
+  const filmCam = (name, zoom = 1) => (cam, c, THREE) => {
+    const o = c.cams[name];
+    if (!o) return;
+    o.updateWorldMatrix(true, false);
+    o.matrixWorld.decompose(cam.position, cam.quaternion, new THREE.Vector3());
+    cam.fov = o.fov * zoom;
+    // the film camera's clip range, as in the console (keeps far-off surfaces from z-fighting)
+    cam.near = Math.max(0.01, o.near);
+    cam.far = Math.max(cam.near * 10, o.far);
+  };
+
+  Promise.all(['keys.json', 'cuts.json'].map(f => fetch(BASE + f).then(r => r.json()))).then(([keys, cuts]) => {
+    md.keys = keys; md.cuts = cuts;
+    md.cams = [...new Set(cuts.cuts.map(c => c.camera))];
+    keys.forEach((kf, k) => {
+      const d = document.createElement('i');
+      d.style.left = pct(kf.frame / cuts.fps);
+      d.title = 'Key pose ' + (k + 1) + ': ' + kf.name.replace(/_/g, ' ') + ' (' + (kf.frame / cuts.fps).toFixed(1) + ' s)';
+      d.addEventListener('click', () => { go('board', true); md.hold = k; });
+      tl.appendChild(d);
+    });
+    // The window motion check #77 covered, and the frames where it found the arm inside the torso.
+    [[5.0, 8.79, ''], [6.21, 7.33, 'bad']].forEach(([a, b, cls]) => {
+      const e = document.createElement('em');
+      e.className = cls; e.dataset.verify = '';
+      e.style.left = pct(a); e.style.width = ((b - a) / cuts.duration * 100) + '%';
+      tl.appendChild(e);
+    });
+    [[0, '0:00'], [cuts.duration, fmt(cuts.duration)]].forEach(([t, s], j) => {
+      const e = document.createElement('span');
+      e.textContent = s;
+      if (j) e.style.right = '0'; else e.style.left = '0';
+      tl.appendChild(e);
+    });
+    img.src = BASE + keys[0].img;
+    go(md.step, false);
+  }).catch(() => {});
+
+  function go(s, user) {
+    md.step = s; md.t0 = performance.now(); md.hold = -1;
+    if (user) setAuto(false);
+    tabs.forEach(b => {
+      b.setAttribute('aria-selected', String(b.dataset.s === s));
+      b.querySelector('u').style.width = '0';
+    });
+    view.dataset.stage = s;
+    ovs.forEach(o => { o.hidden = o.dataset.for !== s; });
+    film.hidden = s !== 'film';
+    if (s === 'film') { film.currentTime = 0; film.playbackRate = 2; } else film.pause();
+    tl.querySelectorAll('[data-verify]').forEach(e => { e.hidden = s !== 'verify'; });
+    el('mdTitle').textContent = (ORDER.indexOf(s) + 1) + '. ' + STEPS[s].title;
+    el('mdText').textContent = STEPS[s].text;
+  }
+  function setAuto(on) {
+    md.auto = on; md.t0 = performance.now();
+    el('mdAuto').setAttribute('aria-pressed', String(on));
+    el('mdAuto').textContent = 'Auto-advance: ' + (on ? 'on' : 'off');
+  }
+  tabs.forEach(b => b.addEventListener('click', () => go(b.dataset.s, true)));
+  el('mdAuto').addEventListener('click', () => setAuto(!md.auto));
+  film.addEventListener('loadedmetadata', () => { film.playbackRate = 2; });
+
+  // What the demo shows at this moment of the current step: animation time, camera and the HUD label.
+  function plan(e) {
+    const n = md.keys.length, D = md.cuts.duration;
+    switch (md.step) {
+      case 'prompt': return { t: 0, place: filmCam(md.cams[0]), lab: '' };
+      case 'rewrite': return { t: 0, place: filmCam(md.cams[0]), lab: '' };
+      case 'cad': {
+        const j = Math.floor(e * 1000 / CAD_MS) % md.cams.length, u = (e * 1000 % CAD_MS) / CAD_MS;
+        return { t: 0, place: filmCam(md.cams[j], 1.08 - 0.08 * u), lab: 't = 0 · camera ' + (j + 1) + '/' + md.cams.length + ' · ' + nice(md.cams[j]) };
+      }
+      case 'board': {
+        const k = md.hold >= 0 ? md.hold : Math.floor(e * 1000 / POSE_MS) % n, kf = md.keys[k];
+        return { t: keyT(k), key: k, img: kf.img, place: filmCam(kf.camera),
+                 lab: 'key pose ' + (k + 1) + '/' + n + ' · ' + kf.name.replace(/_/g, ' ') + ' · ' + keyT(k).toFixed(1) + ' s' };
+      }
+      case 'motion': {
+        const t = (e * MOTION_RATE) % D, k = keyAt(t), a = md.keys[k], b = md.keys[Math.min(n - 1, k + 1)];
+        return { t, key: k, img: a.img, place: filmCam(cutAt(t)),
+                 lab: t.toFixed(1) + ' s · ' + a.name.replace(/_/g, ' ') + ' → ' + b.name.replace(/_/g, ' ') + ' · ' + MOTION_RATE + '×' };
+      }
+      case 'verify': return { t: -1, lab: 'motion check · frames 120–211 (5.0–8.8 s)' };
+      default: return { t: film.currentTime || 0, lab: 'rendered film · ' + fmt(film.currentTime || 0) + ' / ' + fmt(D) + ' · 2×' };
+    }
+  }
+
+  const frac = e => {
+    const r = e && e.getBoundingClientRect();
+    if (!r || !r.height) return 0;
+    return Math.max(0, Math.min(r.bottom, innerHeight) - Math.max(r.top, 0)) / r.height;
+  };
+  function lend(on) {
+    if (on === md.lent || !window.Dy3D) return;
+    md.lent = on;
+    window.Dy3D.lend(on);
+  }
+
+  let lastLab = null, lastKey = -2, lastImg = '';
+  function frame(now) {
+    requestAnimationFrame(frame);
+    const dt = now - (md.last || now);
+    md.last = now;
+    const vis = frac(view);
+    if (!vis || !md.keys) {
+      md.t0 += dt;  // the current step resumes where it was when the figure scrolls back in
+      lend(false);
+      if (!film.paused) film.pause();
+      return;
+    }
+    if (!md.loading && window.Dy3D) {
+      md.loading = true;
+      window.Dy3D.load(ID).then(c => { md.scene = c; el('mdLoad').hidden = true; })
+        .catch(() => { el('mdLoad').textContent = '3D view unavailable; showing storyboard renders'; });
+    }
+    const e = Math.max(0, now - md.t0) / 1000;
+    if (md.auto) {
+      const p = e * 1000 / STEPS[md.step].ms;
+      if (p >= 1) { go(ORDER[(ORDER.indexOf(md.step) + 1) % ORDER.length], false); return; }
+      tabs[ORDER.indexOf(md.step)].querySelector('u').style.width = (p * 100) + '%';
+    }
+    if (md.step === 'film' && film.paused) film.play().catch(() => {});
+    const f = plan(e);
+    // The canvas goes to whichever of the console and this figure shows more of itself.
+    const live = !!md.scene && LIVE.has(md.step) &&
+      (!window.Dy3D.consoleBusy() || vis > frac(document.getElementById('cx3d')));
+    lend(live);
+    if (live) {
+      window.Dy3D.attach(view);
+      window.Dy3D.render(md.scene, f.t, f.place);
+      img.hidden = true;
+    } else {
+      img.hidden = !LIVE.has(md.step);
+      const src = f.img || md.keys[0].img;
+      if (src !== lastImg) { img.src = BASE + src; lastImg = src; }
+    }
+    const lab = f.lab + (LIVE.has(md.step) && md.step !== 'prompt' && md.step !== 'rewrite' ? (live ? ' · live 3D' : ' · storyboard render') : '');
+    if (lab !== lastLab) { el('mdLab').textContent = lab; lastLab = lab; }
+    ph.hidden = f.t < 0 || md.step === 'prompt' || md.step === 'rewrite';
+    if (!ph.hidden) ph.style.left = pct(f.t);
+    const key = f.key === undefined ? -1 : f.key;
+    if (key !== lastKey || md.step === 'motion' || md.step === 'film') {
+      lastKey = key;
+      [...tl.querySelectorAll('i')].forEach((d, k) => {
+        d.classList.toggle('on', md.step === 'board' && k === key);
+        d.classList.toggle('ahead', f.t >= 0 && keyT(k) > f.t + 1e-6 && (md.step === 'motion' || md.step === 'film'));
+      });
+    }
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
