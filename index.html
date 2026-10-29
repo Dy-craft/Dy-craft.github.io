@@ -408,7 +408,10 @@ b,strong{font-weight:600}
 .content{font-size:1.2rem;line-height:1.55;color:var(--ink2)}
 .content strong,.viewer-intro strong,.gallery-intro strong{color:var(--ink);font-weight:500}
 .viewer-intro,.gallery-intro{margin-bottom:2.5rem;font-size:1.2rem;line-height:1.5;color:var(--ink2)}
-.viewer-intro .viewer-note{border:none;padding:0;font-size:.95rem}
+.viewer-intro .viewer-note{display:flex;gap:10px;align-items:flex-start;width:fit-content;max-width:100%;margin:0 0 1rem;padding:12px 18px 12px 14px;
+  border:1px solid #f3d27a;border-radius:14px;background:#fff6d9;color:#5a4300;font-size:1rem;line-height:1.45}
+.viewer-intro .viewer-note svg{flex:none;width:20px;height:20px;margin-top:1px;color:#c27c00}
+.viewer-intro .viewer-note strong{color:#3d2d00;font-weight:600}
 .controls{font-size:.95rem}
 .controls summary{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:var(--surface-3);color:var(--ink);font-weight:500;list-style:none}
 .controls summary::-webkit-details-marker{display:none}
@@ -447,10 +450,44 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
 .md-step[aria-selected=true]{background:var(--ink);color:#fff}
 .md-step b{font-weight:500}
 .md-desc h3{font-weight:500}
+/* wide screens: the step's explanation stands beside the picture, so figure and text fit one screen */
+@media (min-width:901px){
+  .md-demo{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-areas:"view desc" "tl desc";column-gap:32px;padding:16px 28px 16px 16px}
+  .md-view{grid-area:view}
+  .md-tl{grid-area:tl}
+  .md-desc{grid-area:desc;flex-direction:column;align-items:flex-start;align-self:center;gap:14px;margin:0}
+  .md-desc h3{font-size:26px;line-height:1.15;letter-spacing:-.01em}
+  .md-desc p{flex:none;min-width:0;font-size:17px;line-height:1.55}
+}
 .cx-title{font-size:24px;font-weight:450;letter-spacing:-.005em}
 .cx-item{border-radius:12px}
 .cx-item img{border-radius:8px}
 .cx-item[aria-current=true]{background:var(--ours-tint);border-color:transparent}
+/* desktop: the whole viewer fits one screen below the bar */
+@media (min-width:901px){
+  .cx{padding:16px}
+  .cx-main{gap:10px}
+  .cx-head{flex-wrap:nowrap;align-items:center}
+  .cx-htxt{min-width:0}
+  .cx-title{font-size:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cx-objs{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .cx-tools{flex-wrap:nowrap}
+  #cx .wide{display:none}
+  #cx .narrow{display:inline}
+  /* everything else in the viewer takes about 270px; the scene keeps 16:9 until the screen runs short */
+  /* an explicit width, or the aspect ratio would hand the height cap on to the width and narrow the scene */
+  .cx-3d{width:100%;max-height:calc(100svh - var(--bar) - 270px);min-height:320px}
+  .cx-tl{padding-top:10px}
+  .cx-ctl{margin-bottom:6px}
+  .cx-lanes,.cx-tracks,#cxLabels{row-gap:3px!important}
+  .cx-lane-l,.cx-track{height:18px}
+  .cx-mrow,.cx-mlab,.cx-shots,.cx-sb{height:18px}
+  .cx-shots span{line-height:18px}
+  .cx-pbar{display:flex;gap:12px;align-items:baseline}
+  .cx-pbar .cx-prompt{flex:1;min-width:0;-webkit-line-clamp:1;line-clamp:1}
+  .cx-pbar .cx-prompt.open{-webkit-line-clamp:none;line-clamp:none}
+  .cx-more{flex:none}
+}
 .cx-track,.cx-shots{border-radius:6px}
 .prompt{font-size:22px;font-weight:450;letter-spacing:-.005em}
 .sid{border-radius:999px;background:#fff;padding:3px 10px}
@@ -659,6 +696,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
     <h2 class="title is-3">Interactive 4D Scene Viewer</h2>
     <div class="viewer-intro">
       <p>Each task&rsquo;s generated 4D scene, live in your browser. Watch through the film&rsquo;s cameras or switch to <strong>Free orbit</strong> and look around while it plays.</p>
+      <p class="viewer-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span><strong>Note:</strong> this is a real-time WebGL approximation. Liquids, glass and some procedural materials differ from the Cycles renders in the films.</span></p>
       <details class="controls">
         <summary>Controls</summary>
         <dl class="only-kbd">
@@ -672,7 +710,6 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
           <dt>Camera</dt><dd>swipe sideways for Free orbit, then drag to look, pinch to zoom, two fingers to pan</dd>
           <dt>Walls</dt><dd>indoor scenes open with walls hidden; <strong>Show walls</strong> brings them back</dd>
         </dl>
-        <p class="viewer-note">A real-time WebGL approximation: liquids, glass and some procedural materials differ from the Cycles renders in the films.</p>
       </details>
     </div>
     <div class="cx" id="cx">
@@ -727,7 +764,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
             <div class="cx-ticks" id="cxTicks"></div>
           </div>
         </div>
-        <div>
+        <div class="cx-pbar">
           <p class="cx-prompt" id="cxPrompt"></p>
           <button class="cx-more" id="cxMore">Show full prompt</button>
         </div>
@@ -808,8 +845,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
 </section>
 
 <footer class="site-footer">
-  <p>Anonymous submission &mdash; supplementary material.</p>
-  <p>This page is adapted from the <a href="https://github.com/nerfies/nerfies.github.io" rel="noreferrer">Nerfies</a> project page template, licensed under a <a href="http://creativecommons.org/licenses/by-sa/4.0/" rel="noreferrer">Creative Commons Attribution-ShareAlike 4.0 International License</a>. The 3D viewer uses <a href="https://threejs.org" rel="noreferrer">three.js</a>.</p>
+  <p>Anonymous submission &mdash; supplementary material. Page design adapted from the <a href="https://github.com/nerfies/nerfies.github.io" rel="noreferrer">Nerfies</a> template (<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noreferrer">CC BY-SA 4.0</a>).</p>
 </footer>
 
 <script type="module">
