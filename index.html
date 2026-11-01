@@ -2530,8 +2530,11 @@ document.addEventListener('keydown', e => {
     gltf.scene.updateMatrixWorld(true);
     const glass = new Map();
     gltf.scene.traverse(o => {
-      if (!o.isMesh) return;
+      if (!o.isMesh || o.userData.filter) return;
       o.castShadow = true; o.receiveShadow = true;
+      // three.js culls a skinned mesh by a bounding sphere taken once, at the first pose it is drawn in. A character
+      // that walks away keeps the sphere where it started, so its smaller parts (10's heads) drop out of the frame.
+      if (o.isSkinnedMesh) o.frustumCulled = false;
       const mats = Array.isArray(o.material) ? o.material : [o.material];
       // A few percent of transmission is a translucency tint on food or wax, not something to see through.
       mats.forEach(m => { if (m.transmission > 0 && m.transmission < 0.1) m.transmission = 0; });
@@ -2555,20 +2558,20 @@ document.addEventListener('keydown', e => {
             const g = m.clone();
             g.transmission = 0;
             if (thin) {
-              Object.assign(g, { transparent: true, opacity: Math.min(m.opacity, 0.22),
+              // clear glass reflects a few percent a face: at 0.22 a guard in front of the camera fogged the
+              // whole frame (21's labeller) and bottles read milky
+              Object.assign(g, { transparent: true, opacity: Math.min(m.opacity, 0.1),
                                  roughness: Math.min(m.roughness, 0.1), depthWrite: false });
               // a white film over both faces would bleach whatever sits behind (bottled drinks): keep the pane grey
               g.color.multiplyScalar(0.5);
             } else if (liquid) {
-              // Cycles darkens a liquid with depth (volume absorption); alpha blending over a bright room
-              // only lightens it. Square the colour for a body of liquid and let coloured drinks go nearly
-              // opaque (dark coffee too), while clear water stays see-through.
+              // Cycles shows what lies behind a drink, tinted by its surface colour at each face it passes (21's
+              // amber reads brown over the grey machine). A filter copy multiplies that in (added below); this lit
+              // layer keeps only the surface's highlights and a little body.
               const c = texelColor(o, m);
               if (c) { g.map = null; g.color.copy(c); }
-              g.color.multiply(g.color);
-              let hsl = g.color.getHSL({});
-              g.color.multiplyScalar(1 - 0.45 * hsl.s); hsl = g.color.getHSL({});
-              Object.assign(g, { transparent: true, opacity: 0.45 + 0.45 * Math.min(1, Math.max(hsl.s * hsl.l * 3, 1 - hsl.l * 2.5)), depthWrite: false });
+              g.userData.tint = g.color.clone();
+              Object.assign(g, { transparent: true, opacity: 0.2, depthWrite: false });
               g.envMapIntensity = 0.3; g.specularIntensity = 0.3; g.ior = 1.33;
             }
             else Object.assign(g, { transparent: false, opacity: 1, depthWrite: true });
@@ -2582,14 +2585,29 @@ document.addEventListener('keydown', e => {
       if (!Array.isArray(o.material) || o.material.length === 1) o.material = o.material[0];
       if (thin) o.castShadow = false;
       // drinks sit inside bottles and glasses; drawn after the pane, the glass no longer veils them
-      if (liquid) o.renderOrder = 2;
+      if (liquid) {
+        // the filter: what is behind times the tint, once per face (so twice through the body), unlit; it shares the
+        // geometry and the morph weights, so it pours and fills with the drink
+        const lit = Array.isArray(o.material) ? o.material : [o.material];
+        const filt = lit.map(m => {
+          const f = new THREE.MeshBasicMaterial({ color: m.userData.tint || 0xffffff, blending: THREE.MultiplyBlending,
+            premultipliedAlpha: true, transparent: true, depthWrite: false, side: THREE.DoubleSide, toneMapped: false });
+          f.userData.glass = true;
+          return f;
+        });
+        const f = new THREE.Mesh(o.geometry, Array.isArray(o.material) ? filt : filt[0]);
+        f.morphTargetInfluences = o.morphTargetInfluences;
+        f.morphTargetDictionary = o.morphTargetDictionary;
+        f.userData.filter = true;
+        f.renderOrder = 2;
+        f.raycast = () => {};
+        o.add(f);
+        o.renderOrder = 3;
+      }
       (Array.isArray(o.material) ? o.material : [o.material]).forEach(m => {
         m.side = THREE.DoubleSide;
         // Blender's fabric sheen exports as full-strength white and washes cloth out; the baked colour already has it.
         if (m.sheen > 0) m.sheen = 0;
-        // Procedural food shaders whose bake failed export as flat black (01's yolks and egg pour): use the film's colour.
-        const lost = LOST_COLOUR[m.name.replace(/\.\d+$/, '')];
-        if (lost && !m.map && m.color.getHex() === 0) m.color.setHex(lost);
         // Uniformly metallic but very rough (imported character outfits): Cycles shows dull cloth, WebGL a bright metal.
         if (m.metalness >= 0.5 && !m.metalnessMap && m.roughness > 0.7) m.metalness = 0;
         // Avatar outfits ship without roughness maps at 0.5, which reads as latex under the env light.
@@ -2625,10 +2643,6 @@ document.addEventListener('keydown', e => {
     const mixer = new THREE.AnimationMixer(gltf.scene);
     const actions = gltf.animations.map(c => { const a = mixer.clipAction(c); a.play(); return a; });
     const duration = Math.max(0.1, ...gltf.animations.map(c => c.duration));
-    // A skinned part exported with a broken bind (the phone strap in 10) trails a metre or more from the body it rides on.
-    mixer.update(0);
-    gltf.scene.updateMatrixWorld(true);
-    gltf.scene.traverse(o => { if (o.isSkinnedMesh && strayed(o)) o.visible = false; });
     const cams = {};
     gltf.scene.traverse(o => {
       if (o.isCamera && o.name) cams[o.name] = o;
@@ -2647,7 +2661,6 @@ document.addEventListener('keydown', e => {
   }
   // walls.json names the room's walls, skirting and ceiling (hidden whole) and any merged room
   // shells, which keep only their floor-level faces. Windows, doors, shelves and fittings are not listed.
-  const LOST_COLOUR = { Food_yolk: 0xe8952c, Food_cooking: 0xe2b468 };
   // layers.json names surface layers laid on another mesh at (or within millimetres of) the same depth,
   // like 22's brick cladding on the wharf wall. The depth buffer can't settle such ties, so they flicker as
   // the camera moves; polygon offset lets the named layer win them, one depth step forward plus slope.
@@ -2664,13 +2677,6 @@ document.addEventListener('keydown', e => {
       while (n && !n.userData.name) n = n.parent;
       if (n && front.has(n.userData.name)) o.material = Array.isArray(o.material) ? o.material.map(pull) : pull(o.material);
     });
-  }
-  function strayed(o) {
-    const THREE = v3.THREE, bones = new THREE.Box3(), mesh = new THREE.Box3(), p = new THREE.Vector3();
-    o.skeleton.bones.forEach(b => bones.expandByPoint(b.getWorldPosition(p)));
-    const n = o.geometry.attributes.position.count, step = Math.max(1, Math.floor(n / 400));
-    for (let i = 0; i < n; i += step) mesh.expandByPoint(o.getVertexPosition(i, p).applyMatrix4(o.matrixWorld));
-    return !bones.expandByScalar(0.5).intersectsBox(mesh);
   }
   function wallParts(gltf, list) {
     if (!list) return null;
@@ -2738,6 +2744,10 @@ document.addEventListener('keydown', e => {
     paths: SCENES3D,
     load: id => getScene(id),
     attach,
+    // aim(cam, cameraObject, cuts, name, t[, zoom]): a film camera at t, as the console's film view places it
+    aim: aimFilmCamera,
+    // pose(scene, t): the animation at t, without drawing (tooling: the motion check against the film's blend)
+    pose: (c, t) => pose(c, t),
     consoleBusy: () => st.mode === '3d' && st.inView,
     // The Method figure borrows the canvas while it is the more visible of the two; the console's camera comes back unchanged.
     lend(on) {
@@ -2787,13 +2797,33 @@ document.addEventListener('keydown', e => {
     }
   }
   function placeShotCamera() {
-    const c = v3.cur.cams[st.meta.cuts.cuts[shotAt(st.t)].camera];
+    const name = st.meta.cuts.cuts[shotAt(st.t)].camera, c = v3.cur.cams[name];
     if (!c) return;
-    c.updateWorldMatrix(true, false);
-    c.matrixWorld.decompose(v3.cam.position, v3.cam.quaternion, new v3.THREE.Vector3());
-    v3.cam.fov = c.fov;
-    filmClip(v3.cam, c);
+    aimFilmCamera(v3.cam, c, st.meta.cuts, name, st.t);
     v3.cam.updateProjectionMatrix();
+  }
+  // A film camera as the film saw it at t: its world transform, its fov and its clip range.
+  function aimFilmCamera(cam, o, cuts, name, t, zoom = 1) {
+    o.updateWorldMatrix(true, false);
+    o.matrixWorld.decompose(cam.position, cam.quaternion, new v3.THREE.Vector3());
+    cam.fov = fovAt(cuts, name, t, o.fov) * zoom;
+    filmClip(cam, o);
+    // nor a lens shift (01's CAM_cleanup_wide): cuts.json's {"shift": {camera: [x, y]}}, fractions of the frame
+    // (setViewOffset sets the aspect to fullWidth / fullHeight: keep the canvas's)
+    const sh = cuts && cuts.shift && cuts.shift[name], A = cam.aspect;
+    if (sh) cam.setViewOffset(A, 1, sh[0] * A, -sh[1], A, 1);
+    else if (cam.view) cam.clearViewOffset();
+  }
+  // glTF can move a camera but not zoom it: cuts.json carries the fov of zooming cameras over time
+  // ({"fov": {camera: [[t, degrees], ...]}}, e.g. 10's cam_order, 32.5 -> 46 mm); the rest keep their own.
+  function fovAt(cuts, name, t, own) {
+    const k = cuts && cuts.fov && cuts.fov[name];
+    if (!k) return own;
+    if (t <= k[0][0]) return k[0][1];
+    for (let i = 1; i < k.length; i++) {
+      if (t <= k[i][0]) { const [t0, a] = k[i - 1], [t1, b] = k[i]; return a + (b - a) * (t - t0) / (t1 - t0); }
+    }
+    return k[k.length - 1][1];
   }
   // Depth precision falls off with distance² / near: a 1 cm near plane leaves the bricks on 22's wharf,
   // a few millimetres off the wall behind them, flickering 30 m out. The film camera's own clip range
@@ -2804,6 +2834,7 @@ document.addEventListener('keydown', e => {
   }
   // Free orbit: the near plane follows the orbit distance, so zooming out over a big set keeps its precision.
   function orbitClip() {
+    if (v3.cam.view) v3.cam.clearViewOffset();          // a film camera's lens shift stays with the film view
     v3.cam.near = Math.min(0.1, Math.max(0.01, v3.cam.position.distanceTo(v3.controls.target) / 200));
     v3.cam.far = 1000;
     v3.cam.updateProjectionMatrix();
@@ -3011,15 +3042,10 @@ document.addEventListener('keydown', e => {
   const keyAt = t => { let k = 0; md.keys.forEach((kf, i) => { if (kf.frame / md.cuts.fps <= t + 1e-6) k = i; }); return k; };
   const cutAt = t => { let k = 0; md.cuts.cuts.forEach((c, i) => { if (c.t <= t + 1e-6) k = i; }); return md.cuts.cuts[k].camera; };
   const nice = n => n.replace(/^cam_/, '').replace(/_/g, ' ');
-  const filmCam = (name, zoom = 1) => (cam, c, THREE) => {
+  // the film camera at t, placed as the console places it (transform, fov, clip range)
+  const filmCam = (name, zoom = 1, t = 0) => (cam, c) => {
     const o = c.cams[name];
-    if (!o) return;
-    o.updateWorldMatrix(true, false);
-    o.matrixWorld.decompose(cam.position, cam.quaternion, new THREE.Vector3());
-    cam.fov = o.fov * zoom;
-    // the film camera's clip range, as in the console (keeps far-off surfaces from z-fighting)
-    cam.near = Math.max(0.01, o.near);
-    cam.far = Math.max(cam.near * 10, o.far);
+    if (o) window.Dy3D.aim(cam, o, md.cuts, name, t, zoom);
   };
 
   Promise.all(['keys.json', 'cuts.json'].map(f => fetch(BASE + f).then(r => r.json()))).then(([keys, cuts]) => {
@@ -3085,12 +3111,12 @@ document.addEventListener('keydown', e => {
       }
       case 'board': {
         const k = md.hold >= 0 ? md.hold : Math.floor(e * 1000 / POSE_MS) % n, kf = md.keys[k];
-        return { t: keyT(k), key: k, img: kf.img, place: filmCam(kf.camera),
+        return { t: keyT(k), key: k, img: kf.img, place: filmCam(kf.camera, 1, keyT(k)),
                  lab: 'key pose ' + (k + 1) + '/' + n + ' · ' + kf.name.replace(/_/g, ' ') + ' · ' + keyT(k).toFixed(1) + ' s' };
       }
       case 'motion': {
         const t = (e * MOTION_RATE) % D, k = keyAt(t), a = md.keys[k], b = md.keys[Math.min(n - 1, k + 1)];
-        return { t, key: k, img: a.img, place: filmCam(cutAt(t)),
+        return { t, key: k, img: a.img, place: filmCam(cutAt(t), 1, t),
                  lab: t.toFixed(1) + ' s · ' + a.name.replace(/_/g, ' ') + ' → ' + b.name.replace(/_/g, ' ') + ' · ' + MOTION_RATE + '×' };
       }
       case 'verify': return { t: -1, lab: 'motion check · frames 120–211 (5.0–8.8 s)' };

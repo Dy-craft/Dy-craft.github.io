@@ -38,6 +38,42 @@ function keepFloor(node) {
   }
 }
 
+// gltf-transform's resample keeps a rotation key only once the path to it reaches half a turn, so a steady spin can
+// end up with keys exactly half a turn apart, and slerp then turns either way round (19's recovery cam, 24's fly).
+// The same check (keyframe-resample 0.1.0), with kept rotation keys at most a quarter turn apart.
+function resampleQuarterTurn(input, output, interpolation, tolerance = 1e-4) {
+  const n = output.length / input.length, get = (i, o) => { for (let k = 0; k < n; k++) o[k] = output[i * n + k]; return o; };
+  const prev = new Array(n), value = new Array(n), next = new Array(n), tmp = new Array(n);
+  const eq = (a, b, tol = 0) => a.every((x, k) => Math.abs(x - b[k]) <= tol);
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2] + a[3] * b[3];
+  const angle = (a, b) => { const d = dot(a, b); return Math.acos(Math.min(1, Math.max(-1, 2 * d * d - 1))); };
+  const slerp = (a, b, t) => {
+    let c = dot(a, b), s = c < 0 ? -1 : 1; c = Math.abs(c);
+    let w0 = 1 - t, w1 = t;
+    if (1 - c > 1e-6) { const om = Math.acos(c), so = Math.sin(om); w0 = Math.sin((1 - t) * om) / so; w1 = Math.sin(t * om) / so; }
+    for (let k = 0; k < 4; k++) tmp[k] = w0 * a[k] + w1 * s * b[k];
+    return tmp;
+  };
+  const last = input.length - 1;
+  let w = 1;
+  for (let i = 1; i < last; ++i) {
+    const t0 = input[w - 1], t = input[i], t1 = input[i + 1], f = (t - t0) / (t1 - t0);
+    let keep = false;
+    if (t !== t1 && (i !== 1 || t !== input[0])) {
+      get(w - 1, prev); get(i, value); get(i + 1, next);
+      if (interpolation === 'slerp') keep = !eq(value, slerp(prev, next, f), tolerance) || angle(prev, value) + angle(value, next) >= Math.PI / 2;
+      else if (interpolation === 'lerp') keep = !eq(value, prev.map((x, k) => x * (1 - f) + next[k] * f), tolerance);
+      else keep = !eq(value, prev) || !eq(value, next);
+    }
+    if (keep) {
+      if (i !== w) { input[w] = input[i]; for (let k = 0; k < n; k++) output[w * n + k] = output[i * n + k]; }
+      w++;
+    }
+  }
+  if (last > 0) { input[w] = input[last]; for (let k = 0; k < n; k++) output[w * n + k] = output[last * n + k]; w++; }
+  return w;
+}
+
 let idxDoc;  // the document being built; keepFloor writes its new index accessors into it
 const dirs = readdirSync(root).filter(d => existsSync(pj(root, d, 'scene.glb')) && (!only.length || only.some(p => d.startsWith(p))));
 for (const d of dirs) {
@@ -54,7 +90,13 @@ for (const d of dirs) {
   }
   r.listCameras().forEach(c => c.dispose());
   // Morph targets (cooking food, pours) are most of the bytes and invisible at sandbox scale: keep the base shape.
-  r.listAnimations().forEach(a => a.listChannels().forEach(c => { if (c.getTargetPath() === 'weights') c.dispose(); }));
+  // (their samplers too: left behind, the per-frame weights of principal-shape morphs are megabytes)
+  r.listAnimations().forEach(a => a.listChannels().forEach(c => {
+    if (c.getTargetPath() !== 'weights') return;
+    const s = c.getSampler();
+    c.dispose();
+    if (s && !a.listChannels().some(o => o.getSampler() === s)) s.dispose();
+  }));
   r.listMeshes().forEach(m => { m.setWeights([]); m.listPrimitives().forEach(p => p.listTargets().forEach(t => t.dispose())); });
   // Textures become vertex colours; with UVs and normals gone, vertices weld and simplify properly.
   // Each vertex takes the colour under its UV. Small textures are palettes of flat blocks (the viewer's rule:
@@ -102,11 +144,7 @@ for (const d of dirs) {
     }
     prim.setAttribute('COLOR_0', doc.createAccessor().setType('VEC4').setArray(col).setBuffer(r.listBuffers()[0]));
   }
-  // materials the viewer recolours by hand because their colour came from a shader Blender could not export
-  const LOST = { Food_yolk: [0.807, 0.301, 0.025], Food_cooking: [0.761, 0.456, 0.138] };
   for (const m of r.listMaterials()) {
-    const lost = LOST[m.getName().replace(/\.\d+$/, '')];
-    if (lost) m.setBaseColorFactor([...lost, 1]);
     m.setBaseColorTexture(null).setNormalTexture(null).setMetallicRoughnessTexture(null)
       .setOcclusionTexture(null).setEmissiveTexture(null);
   }
@@ -121,7 +159,7 @@ for (const d of dirs) {
     simplify({ simplifier: MeshoptSimplifier, ratio: 0.05, error: 0.01, lockBorder: false }),
     palette({ min: 2 }),
     join({ keepNamed: false }),
-    resample({ tolerance: 0.002 }),
+    resample({ tolerance: 0.002, resample: resampleQuarterTurn }),
     prune(),
     meshopt({ encoder: MeshoptEncoder, level: 'medium' }),
   );

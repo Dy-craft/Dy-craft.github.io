@@ -336,5 +336,11 @@
    "t": 260.5833333333333,
    "camera": "CAM_cleanup_wide"
   }
- ]
+ ],
+ "shift": {
+  "CAM_cleanup_wide": [
+   -0.07993,
+   -0.17077
+  ]
+ }
 }
