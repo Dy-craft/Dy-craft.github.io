@@ -727,7 +727,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
         <p class="sb-load" id="sbLoad">Loading scenes&hellip;</p>
         <ol class="sb-keys" id="sbKeys" aria-label="Tasks"></ol>
       </div>
-      <figcaption>All 24 benchmark tasks, playing live. <span class="only-kbd">Click</span><span class="only-touch">Tap</span> a tile to open it in the viewer.</figcaption>
+      <figcaption><span class="only-kbd">Click</span><span class="only-touch">Tap</span> a tile to open it in the viewer.</figcaption>
     </figure>
   </div>
 </section>
@@ -770,8 +770,8 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
               <button data-view="camera" aria-pressed="true">Follow film camera</button>
               <button data-view="free" aria-pressed="false">Free camera</button>
             </div>
-            <button id="cxWalls" aria-pressed="true" title="Indoor scenes open with the walls and ceiling taken away; windows, doors, shelves and fittings stay (H)" hidden>Show walls</button>
-            <button id="cxReset" title="Put the camera back where the film's current shot sees it (R)">Reset camera</button>
+            <button id="cxWalls" aria-pressed="true" title="Show walls (H)" hidden>Show walls</button>
+            <button id="cxReset" title="Reset camera (R)">Reset camera</button>
             <button id="cxFs" aria-label="Full screen">Full screen</button>
           </div>
         </div>
@@ -781,7 +781,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
             <canvas id="cx3dCanvas" tabindex="0" aria-label="The generated 4D scene at the playhead; drag to look around"></canvas>
             <div class="cx-hud"><span id="cxShotLab"></span><span id="cxKeyLab"></span></div>
             <span class="cx-hint" id="cxHint">Drag to look around · WASD to move</span>
-            <div class="cx-pip" id="cxPip" title="Rendered film at the same moment (click to enlarge)"><b>Rendered film</b></div>
+            <div class="cx-pip" id="cxPip" title="Click to enlarge"><b>Rendered film</b></div>
             <div class="cx-load" id="cxLoad"><span id="cxLoadT">Loading the scene</span><i><b id="cxLoadB"></b></i></div>
           </div>
           <div class="cx-hold" id="cxHold"></div>
@@ -877,7 +877,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
 </div>
 
 <div id="scenes"></div>
-<div class="empty" id="empty" hidden>No scenes match the current filter.</div>
+<div class="empty" id="empty" hidden>No matches.</div>
 
   </div>
 </section>
@@ -1830,7 +1830,7 @@ const SCENES = [
   }
  }
 ];
-const METHODS = [{"key": "ours_gpt6", "label": "Ours", "count": 24}, {"key": "bare_gpt6", "label": "Bare LLM", "count": 24}, {"key": "viga_gpt6", "label": "VIGA", "count": 24}];
+const METHODS = [{"key": "ours_gpt6", "label": "DyCraft", "count": 24}, {"key": "bare_gpt6", "label": "Bare agent", "count": 24}, {"key": "viga_gpt6", "label": "VIGA", "count": 24}];
 const SHOW_IDS = false;
 const HIGHLIGHT = "ours_gpt6";
 const SPEEDS = [1, 2, 3];
@@ -2195,7 +2195,7 @@ function openLightbox(i) {
   lbt.appendChild(mspan);
   lbt.appendChild(document.createTextNode(' — ' +
     (SHOW_IDS ? it.scene + ' · ' : '') + (it.prompt || it.scene)));
-  lbc.textContent = 'Clip length ' + fmt(it.duration) + ' · playing at ' + rate + '×';
+  lbc.textContent = fmt(it.duration) + ' · ' + rate + '×';
   if (!lb.open) lb.showModal();
 }
 lbs.addEventListener('loadedmetadata', () => { lbs.playbackRate = rate; });
@@ -2327,11 +2327,6 @@ document.addEventListener('keydown', e => {
     t.className = 't'; t.textContent = sc.prompt;
     const c = document.createElement('span');
     c.className = 'c'; c.textContent = CATS.find(x => x[0] === catOf(sc.id))[1];
-    if (SCENES3D[sc.id]) {
-      const b3 = document.createElement('span');
-      b3.className = 'b3'; b3.textContent = '3D';
-      c.appendChild(b3);
-    }
     t.appendChild(c);
     b.append(img, t);
     b.addEventListener('click', () => loadScene(j, true));
@@ -3023,6 +3018,7 @@ document.addEventListener('keydown', e => {
     st.walls = !st.walls;
     el('cxWalls').setAttribute('aria-pressed', String(st.walls));
     el('cxWalls').textContent = st.walls ? 'Show walls' : 'Hide walls';
+    el('cxWalls').title = el('cxWalls').textContent + ' (H)';
   }
   el('cxWalls').addEventListener('click', toggleWalls);
   // WASD flies the camera (Q/E down/up); the orbit target travels with it so dragging still turns around what's ahead.
