@@ -3,9 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3P6LTRLGK6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3P6LTRLGK6');
+</script>
 <meta name="referrer" content="no-referrer">
 <title>DyCraft: An Agentic System for Long-Horizon 4D Scene Generation</title>
+<meta name="description" content="DyCraft: Minute-long 3D animations in Blender from text prompts, authored by coding agents.">
+<link rel="canonical" href="https://dy-craft.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dy-craft.github.io/">
+<meta property="og:title" content="DyCraft: An Agentic System for Long-Horizon 4D Scene Generation">
+<meta property="og:description" content="DyCraft: Minute-long 3D animations in Blender from text prompts, authored by coding agents.">
+<meta property="og:image" content="https://dy-craft.github.io/teaser/dycraft_teaser.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +40,6 @@ a:hover{color:var(--ink)}
 .publication-title{font-family:var(--font-display);font-size:3rem;font-weight:600;
   line-height:1.125;color:var(--ink);margin:0 0 1.5rem;letter-spacing:0}
 .publication-authors{font-family:var(--font-display);font-size:1.25rem;color:var(--ink2);margin:0 0 .35rem}
-.publication-venue{font-family:var(--font-display);font-size:1.05rem;color:var(--ink3);margin:0}
 .publication-links{margin-top:1.25rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
 .link-block a{display:inline-flex;align-items:center;gap:.5em;height:2.5em;padding:0 1.25em;
   border-radius:290486px;background:var(--accent);color:var(--on-accent);font-size:1rem;
@@ -157,22 +174,22 @@ button:hover{border-color:var(--fg2)}
 .count{color:var(--fg2);font-size:14px;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
 
 .scene{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
-  padding:18px 18px 20px;margin:0 0 26px}
+  padding:18px 18px 20px;margin:0 0 12px}
 .scene.hide{display:none}
-.shead{display:flex;gap:14px;align-items:flex-start;margin:0 0 14px}
+.shead{display:flex;gap:14px;align-items:flex-start;margin:0 0 10px}
 .sid{font:500 13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
   background:var(--chip);color:var(--fg2);padding:3px 8px;border-radius:5px;flex-shrink:0;margin-top:3px}
 .sbody{flex:1;min-width:0}
-.prompt{font-size:18px;font-weight:500;margin:0 0 5px;letter-spacing:-.005em}
+.prompt{font-size:18px;font-weight:500;margin:0 0 2px;letter-spacing:-.005em}
 .objs{font-size:14px;color:var(--fg2);margin:0}
 .sctl{display:flex;gap:7px;align-items:center;flex-shrink:0;margin-top:1px}
 .sctl button{height:32px;padding:0 12px;font-size:13px}
-.bar{height:3px;background:var(--rule2);border-radius:2px;overflow:hidden;margin:0 0 13px}
+.bar{height:3px;background:var(--rule2);border-radius:2px;overflow:hidden;margin:0 0 8px}
 .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .1s linear}
 
-.cols{display:grid;gap:14px}
+.cols{display:grid;gap:10px}
 .cell{min-width:0}
-.clabel{display:flex;align-items:baseline;gap:8px;margin:0 0 6px}
+.clabel{display:flex;align-items:baseline;gap:8px;margin:0 0 4px}
 .cname{font-size:15px;font-weight:500}
 .cname.is-ours{color:var(--ours);font-weight:600}
 .chip.is-ours[aria-pressed=true]{background:var(--ours-bd);border-color:var(--ours-bd);color:var(--on-ours,#fff)}
@@ -194,7 +211,16 @@ button:hover{border-color:var(--fg2)}
 
 dialog{border:none;border-radius:var(--radius);padding:0;max-width:96vw;max-height:96vh;background:var(--bg);color:var(--fg)}
 dialog::backdrop{background:rgba(0,0,0,.84)}
-.lb video{display:block;max-width:92vw;max-height:74vh;background:#000}
+.dlg-x{position:absolute;top:10px;right:10px;z-index:5;display:flex;align-items:center;justify-content:center;width:40px;height:40px;padding:0;border:none;border-radius:999px;background:var(--surface-3);color:var(--ink);cursor:pointer}
+.dlg-x svg{width:20px;height:20px}
+.dlg-x:hover{background:var(--rule)}
+#lb .dlg-x{background:rgba(0,0,0,.6);color:#fff}
+#lb .dlg-x:hover{background:rgba(0,0,0,.8)}
+#pm .pm-head{padding-right:44px}
+.lb-stage{position:relative;width:min(92vw,calc(74vh * 16 / 9));aspect-ratio:16/9;background:#000}
+.lb-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+#lbv{opacity:0;pointer-events:none;transition:opacity .2s}
+#lbv.on{opacity:1;pointer-events:auto}
 .lb .meta{padding:13px 16px 15px;display:flex;gap:14px;align-items:flex-start;justify-content:space-between}
 .lb .nav{display:flex;gap:8px;flex-shrink:0}
 .lb .title{font-size:16px;font-weight:500;margin:0 0 3px}
@@ -222,7 +248,6 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 /* ---- Interactive viewer: console tokens mapped onto the Nerfies palette ---- */
 .viewer-intro{max-width:960px;margin:0 auto 1.5rem;text-align:justify;color:var(--ink2)}
 .viewer-intro p{margin:0 0 .75em}
-.viewer-intro .viewer-note{font-size:.92em;color:var(--ink3);border-left:3px solid var(--rule);padding:.15em 0 .15em .8em;text-align:left}
 /* ---- Interactive comparison (console) ---- */
 .cx{display:grid;grid-template-columns:250px minmax(0,1fr);gap:16px;align-items:stretch;border:1px solid var(--rule);background:var(--sheet);padding:14px;color:var(--ink)}
 .cx:fullscreen{padding:18px;overflow:auto}
@@ -337,13 +362,6 @@ dialog::backdrop{background:rgba(0,0,0,.84)}
 }
 
 /* ---- Viewer controls, folded away under the intro ---- */
-.controls{margin:.5rem 0 0;font-size:.92rem;color:var(--ink3)}
-.controls summary{cursor:pointer;width:max-content;color:var(--ink);font-weight:500}
-.controls dl{grid-template-columns:max-content minmax(0,1fr);gap:6px 16px;margin:.75rem 0;text-align:left}
-.controls dl.only-kbd{display:grid}
-.controls dt{color:var(--ink);font-weight:500}
-.controls dd{margin:0}
-@media (pointer:coarse){ .controls dl.only-kbd{display:none} .controls dl.only-touch{display:grid} }
 
 /* ==== Look: white page, ink type in Google Sans Flex, cool-grey surfaces, pill controls, DyCraft in blue ==== */
 body{font-size:17px;line-height:1.5;color:var(--ink2);font-weight:400}
@@ -362,13 +380,18 @@ b,strong{font-weight:600}
 .publication-title{margin:0 0 1.25rem;font-weight:450;color:#fff;text-align:left}
 .publication-title .t-name{display:block;font-size:clamp(3.5rem,10vw,8.5rem);line-height:1;letter-spacing:-.025em;font-weight:500}
 .publication-title .t-sep{display:none}
-.publication-title .t-sub{display:block;max-width:30ch;margin-top:.75rem;font-size:clamp(1.4rem,2.6vw,2.25rem);
+.publication-title .t-sub{display:block;max-width:30ch;margin-top:.75rem;font-size:clamp(1.6rem,3.1vw,2.75rem);text-wrap:balance;
   line-height:1.12;letter-spacing:-.01em;color:#fff}
-.film-lead{max-width:52ch;margin:0 0 1.5rem;font-size:1.125rem;color:rgba(255,255,255,.72)}
-.publication-authors,.publication-venue{display:inline;font-size:.95rem;color:rgba(255,255,255,.72)}
-.publication-venue::before{content:'  \00b7  ';white-space:pre}
+.film-lead{max-width:none;margin:0 0 1.5rem;font-size:clamp(1.15rem,1.7vw,1.5rem);line-height:1.4;color:rgba(255,255,255,.8);text-wrap:balance}
+.publication-authors{margin:0 0 .45rem;font:450 clamp(1.05rem,1.45vw,1.3rem)/1.5 var(--font-body);color:rgba(255,255,255,.75);text-wrap:balance}
+.publication-authors .author{white-space:nowrap}
+.publication-authors a{color:#fff}
+.publication-authors a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px}
+.publication-authors sup,.publication-affils sup{font-size:.68em;margin-left:.12em;line-height:0}
+.publication-affils{display:flex;flex-wrap:wrap;gap:0 1.5em;margin:0;font-size:clamp(.95rem,1.2vw,1.1rem);color:rgba(255,255,255,.65)}
+.publication-affils sup{margin:0 .15em 0 0}
 .publication-links{justify-content:flex-start;gap:.5rem;margin-top:1.75rem}
-.link-block a{height:48px;padding:0 1.5rem;border-radius:999px;background:#fff;color:var(--ink);font:500 1rem/1 var(--font-body)}
+.link-block a{height:52px;padding:0 1.6rem;border-radius:999px;background:#fff;color:var(--ink);font:500 1.1rem/1 var(--font-body)}
 .link-block + .link-block a{background:rgba(255,255,255,.14);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .link-block a:hover{opacity:.88;color:var(--ink)}
 .link-block + .link-block a:hover{background:rgba(255,255,255,.24);color:#fff;opacity:1}
@@ -408,14 +431,16 @@ b,strong{font-weight:600}
 .content{font-size:1.2rem;line-height:1.55;color:var(--ink2)}
 .content strong,.viewer-intro strong,.gallery-intro strong{color:var(--ink);font-weight:500}
 .viewer-intro,.gallery-intro{margin-bottom:2.5rem;font-size:1.2rem;line-height:1.5;color:var(--ink2)}
-.viewer-intro .viewer-note{display:flex;gap:10px;align-items:flex-start;width:fit-content;max-width:100%;margin:0 0 1rem;padding:12px 18px 12px 14px;
-  border:1px solid #f3d27a;border-radius:14px;background:#fff6d9;color:#5a4300;font-size:1rem;line-height:1.45}
-.viewer-intro .viewer-note svg{flex:none;width:20px;height:20px;margin-top:1px;color:#c27c00}
-.viewer-intro .viewer-note strong{color:#3d2d00;font-weight:600}
-.controls{font-size:.95rem}
-.controls summary{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:999px;background:var(--surface-3);color:var(--ink);font-weight:500;list-style:none}
-.controls summary::-webkit-details-marker{display:none}
-#console .controls summary{background:#fff}
+#console .viewer-intro{max-width:none}
+#console .viewer-intro p{max-width:44rem}
+.keys{display:flex;flex-wrap:wrap;gap:10px 26px;margin:0;padding:0;list-style:none;font-size:1rem;line-height:1.3;color:var(--ink2)}
+.keys li{display:flex;align-items:center;gap:8px}
+.keys li.br{flex-basis:100%;height:0}
+.keys .kk{display:inline-flex;gap:3px}
+.keys kbd{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 7px;font:500 14px/1 var(--font-body);background:#fff;border:1px solid var(--rule);border-bottom-width:2px;border-radius:6px;color:var(--ink)}
+.keys.only-touch{display:none}
+@media (pointer:coarse){ .keys.only-kbd{display:none} .keys.only-touch{display:flex;flex-direction:column;gap:6px;font-size:.95rem} }
+.cx-note{margin:.75rem 0 0;font-size:.85rem;color:var(--ink3)}
 
 /* controls: pills, tonal when idle, ink when chosen */
 button,.chip{border-radius:999px;border-color:transparent;background:var(--surface-3);color:var(--ink);font-weight:450}
@@ -438,7 +463,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
 .cx{background:#fff;border:none;padding:20px;box-shadow:var(--shadow)}
 .md-demo,.scene{background:var(--surface-2);border:none}
 .md-demo{padding:14px}
-.scene{padding:24px}
+.scene{padding:16px 18px 18px}
 .md-view,.cx-3d,.cx-frame,.vwrap,.missing{border-radius:var(--radius-sm)}
 .cx-3d,.cx-frame,.vwrap{overflow:hidden}
 .cx-pip{border-radius:10px;border-width:3px}
@@ -489,9 +514,14 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
   .cx-more{flex:none}
 }
 .cx-track,.cx-shots{border-radius:6px}
-.prompt{font-size:22px;font-weight:450;letter-spacing:-.005em}
+.prompt{font-size:20px;font-weight:450;letter-spacing:-.005em}
 .sid{border-radius:999px;background:#fff;padding:3px 10px}
 .toolbar{top:var(--bar);border:none;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.bib-head{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.bib-head .title{margin:0}
+.bib-copy{height:32px;padding:0 14px;border:1px solid var(--rule);border-radius:999px;background:var(--surface);color:var(--ink2);font:500 13px/1 var(--font-body);cursor:pointer}
+.bib-copy:hover{color:var(--ink);background:var(--surface-2)}
+.bib{margin:0;padding:20px 24px;border-radius:var(--radius-sm);background:var(--surface-2);overflow-x:auto;font:400 14px/1.6 var(--mono);color:var(--ink)}
 .site-footer{background:var(--surface-2);text-align:left;padding:3rem 1.5rem 5rem;margin-top:6rem;color:var(--ink3)}
 .site-footer p{max-width:var(--page);font-size:.9rem}
 
@@ -503,8 +533,8 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
   :root{--bar:52px}
   .film-title{padding:0 16px 7svh}
   .film-lead{font-size:1rem;margin-bottom:1.1rem}
-  .publication-venue{display:block;margin-top:.35rem}
-  .publication-venue::before{content:none}
+  .publication-authors{font-size:.95rem}
+  .publication-affils{font-size:.85rem}
   .link-block a{height:40px;padding:0 1rem;font-size:.9rem}
   .topbar{gap:.75rem;padding:0 12px}
   .topbar-name{font-size:18px}
@@ -616,7 +646,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
   .toolbar > .speed,#toggleAll{order:2}
   #toggleAll{height:34px;flex:1}
   .count{order:3;flex:1 1 100%;margin:0;text-align:right;font-size:12.5px}
-  .scene{padding:12px;margin:0 -8px 18px;border-radius:10px}
+  .scene{padding:12px;margin:0 -8px 10px;border-radius:10px}
   .shead{flex-direction:column;gap:8px;margin-bottom:10px}
   .prompt{font-size:16px}
   .objs{font-size:13px}
@@ -626,7 +656,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
 
   /* dialogs fill the width */
   dialog{max-width:100vw}
-  .lb video{max-width:100vw;width:100vw;max-height:62vh}
+  .lb-stage{width:100vw;max-height:62vh}
   .lb .meta{flex-direction:column;gap:10px;padding:12px}
   .lb .nav{width:100%}
   .lb .nav button{flex:1}
@@ -646,14 +676,23 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
       <source src="teaser/dycraft_teaser.mp4" type="video/mp4">
     </video>
     <div class="film-title">
-      <h1 class="publication-title"><span class="t-name">DyCraft</span><span class="t-sep">: </span><span class="t-sub">An Agentic System for Long-Horizon 4D Scene Generation</span></h1>
-      <p class="film-lead">An end-to-end agentic system that generates long-horizon 4D (3D + time) scenes from text prompts.</p>
-      <p class="publication-authors">Anonymous Authors</p>
-      <p class="publication-venue">Paper under double-blind review</p>
+      <h1 class="publication-title"><span class="t-name">DyCraft</span><span class="t-sep">: </span><span class="t-sub">An Agentic System for Long&#8209;Horizon 4D Scene Generation</span></h1>
+      <p class="film-lead">Minute-long 3D animations in Blender from text prompts, authored by coding agents.</p>
+      <p class="publication-authors">
+        <span class="author"><a href="https://jefftan969.github.io/">Jeff Tan</a><sup>*,1</sup>,</span>
+        <span class="author"><a href="https://daihangpku.github.io/">Hang Dai</a><sup>*,1</sup>,</span>
+        <span class="author"><a href="https://zeqian-long.github.io/">Zeqian Long</a><sup>*,1</sup>,</span>
+        <span class="author"><a href="https://yanzhelyu.github.io/">Yanzhe Lyu</a><sup>1</sup>,</span>
+        <span class="author"><a href="https://rkjones4.github.io/">R. Kenny Jones</a><sup>1</sup>,</span>
+        <span class="author"><a href="https://www.elliottwu.com/">Shangzhe Wu</a><sup>2</sup>,</span>
+        <span class="author"><a href="https://chen-geng.com/">Chen Geng</a><sup>&dagger;,1</sup>,</span>
+        <span class="author"><a href="https://jiajunwu.com/">Jiajun Wu</a><sup>&dagger;,1</sup></span>
+      </p>
+      <p class="publication-affils"><span><sup>1</sup>Stanford University</span><span><sup>2</sup>University of Cambridge</span></p>
       <nav class="publication-links">
-        <span class="link-block"><a href="#console">Interactive viewer</a></span>
-        <span class="link-block"><a href="#method">Method</a></span>
-        <span class="link-block"><a href="#gallery">Video gallery</a></span>
+        <span class="link-block"><a href="https://arxiv.org/abs/2610.40754"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>arXiv</a></span>
+        <span class="link-block"><a href="https://github.com/jefftan969/dycraft"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>Code</a></span>
+        <span class="link-block"><a href="https://github.com/jefftan969/dycraft-films"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>Data</a></span>
       </nav>
     </div>
     <button class="film-cue" id="filmCue" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Scroll to explore</button>
@@ -667,6 +706,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
     <a href="#console">Viewer</a>
     <a href="#method">Method</a>
     <a href="#gallery">Gallery</a>
+    <a href="#bibtex">BibTeX</a>
   </div>
 </nav>
 
@@ -675,8 +715,9 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
     <div class="abs-text">
       <h2 class="title is-3">Abstract</h2>
       <div class="content">
-        <p>Coding agents can build convincing 3D scenes, but asked to animate them over a long horizon they script the whole motion in one pass, and the result is full of objects that pass through each other, float, or move unnaturally.</p>
-        <p><strong>DyCraft</strong> works the way an animator does. It plans the scene, builds it, then storyboards the key poses as static 3D scenes the agent can check one at a time, and fills in the motion between them. On 24 long-horizon tasks it produces substantially fewer physical errors than a native GPT-6 agent and prior agentic baselines, and human raters more often prefer its results.</p>
+        <p>Coding agents can build high-quality 3D scenes, but when asked to animate them over a long horizon, they default to scripting the whole motion in one pass, yielding unrealistic animations with objects that <strong>interpenetrate, float, and move unnaturally</strong>.</p>
+        <p><strong>DyCraft</strong> breaks the animation workflow into steps that coding agents can reliably solve. It plans and builds the scene, then <strong>storyboards key animation frames as static 3D scenes</strong> that the agent can verify before authoring the motion between them.</p>
+        <p>On 24 long-horizon animation tasks, it produces <strong>substantially fewer physical errors</strong> than a native GPT-6 agent and prior agentic baselines, and is <strong>preferred by human raters in over 70% of pairwise comparisons</strong>.</p>
       </div>
     </div>
     <figure class="abs-board">
@@ -695,22 +736,22 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
   <div class="container is-wide">
     <h2 class="title is-3">Interactive 4D Scene Viewer</h2>
     <div class="viewer-intro">
-      <p>Each task&rsquo;s generated 4D scene, live in your browser. Watch through the film&rsquo;s cameras or switch to <strong>Free orbit</strong> and look around while it plays.</p>
-      <p class="viewer-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 11v6M12 7.5v.01"/></svg><span><strong>Note:</strong> this is a real-time WebGL approximation. Liquids, glass and some procedural materials differ from the Cycles renders in the films.</span></p>
-      <details class="controls">
-        <summary>Controls</summary>
-        <dl class="only-kbd">
-          <dt>Timeline</dt><dd>drag to scrub; <kbd>Space</kbd> play/pause; <kbd>&larr;</kbd><kbd>&rarr;</kbd> seek; <kbd>,</kbd><kbd>.</kbd> step a frame</dd>
-          <dt>Tasks</dt><dd><kbd>&uarr;</kbd><kbd>&darr;</kbd></dd>
-          <dt>Camera</dt><dd><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> fly, <kbd>Q</kbd><kbd>E</kbd> down/up, <kbd>R</kbd> back to the film&rsquo;s shot</dd>
-          <dt>Walls</dt><dd>indoor scenes open with walls and ceiling hidden; <kbd>H</kbd> brings them back</dd>
-        </dl>
-        <dl class="only-touch">
-          <dt>Timeline</dt><dd>drag to scrub</dd>
-          <dt>Camera</dt><dd>swipe sideways for Free orbit, then drag to look, pinch to zoom, two fingers to pan</dd>
-          <dt>Walls</dt><dd>indoor scenes open with walls hidden; <strong>Show walls</strong> brings them back</dd>
-        </dl>
-      </details>
+      <ul class="keys only-kbd" aria-label="Controls">
+        <li><span class="kk"><kbd>Drag</kbd></span>look around</li>
+        <li><span class="kk"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span>move</li>
+        <li><span class="kk"><kbd>Q</kbd><kbd>E</kbd></span>down / up</li>
+        <li><span class="kk"><kbd>R</kbd></span>back to the film camera</li>
+        <li><span class="kk"><kbd>H</kbd></span>show walls and ceiling</li>
+        <li class="br" aria-hidden="true"></li>
+        <li><span class="kk"><kbd>Space</kbd></span>play / pause</li>
+        <li><span class="kk"><kbd>&larr;</kbd><kbd>&rarr;</kbd></span>seek</li>
+        <li><span class="kk"><kbd>,</kbd><kbd>.</kbd></span>step a frame</li>
+        <li><span class="kk"><kbd>&uarr;</kbd><kbd>&darr;</kbd></span>previous / next scene</li>
+      </ul>
+      <ul class="keys only-touch" aria-label="Touch controls">
+        <li>Drag sideways to look around, pinch to zoom, two fingers to move</li>
+        <li><strong>Show walls</strong> brings back walls and ceiling</li>
+      </ul>
     </div>
     <div class="cx" id="cx">
       <aside class="cx-side">
@@ -723,12 +764,11 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
         <div class="cx-head">
           <div class="cx-htxt">
             <p class="cx-title" id="cxTitle"></p>
-            <p class="cx-objs" id="cxObjs"></p>
           </div>
           <div class="cx-tools">
             <div class="cx-seg" id="cxView" hidden>
-              <button data-view="camera" aria-pressed="true"><span class="wide">Through the camera</span><span class="narrow">Film camera</span></button>
-              <button data-view="free" aria-pressed="false">Free orbit</button>
+              <button data-view="camera" aria-pressed="true">Follow film camera</button>
+              <button data-view="free" aria-pressed="false">Free camera</button>
             </div>
             <button id="cxWalls" aria-pressed="true" title="Indoor scenes open with the walls and ceiling taken away; windows, doors, shelves and fittings stay (H)" hidden>Show walls</button>
             <button id="cxReset" title="Put the camera back where the film's current shot sees it (R)">Reset camera</button>
@@ -738,9 +778,9 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
         <div class="cx-stage">
           <div class="cx-grid" id="cxGrid"></div>
           <div class="cx-3d" id="cx3d" hidden>
-            <canvas id="cx3dCanvas" tabindex="0" aria-label="The generated 4D scene at the playhead; drag to orbit"></canvas>
+            <canvas id="cx3dCanvas" tabindex="0" aria-label="The generated 4D scene at the playhead; drag to look around"></canvas>
             <div class="cx-hud"><span id="cxShotLab"></span><span id="cxKeyLab"></span></div>
-            <span class="cx-hint" id="cxHint">Drag to orbit · WASD to move</span>
+            <span class="cx-hint" id="cxHint">Drag to look around · WASD to move</span>
             <div class="cx-pip" id="cxPip" title="Rendered film at the same moment (click to enlarge)"><b>Rendered film</b></div>
             <div class="cx-load" id="cxLoad"><span id="cxLoadT">Loading the scene</span><i><b id="cxLoadB"></b></i></div>
           </div>
@@ -770,6 +810,7 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
         </div>
       </div>
     </div>
+    <p class="cx-note">Real-time WebGL preview: liquids, glass and some materials look different from the Cycles-rendered films.</p>
   </div>
   </div>
 </section>
@@ -827,9 +868,6 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
 <section class="section" id="gallery">
   <div class="container is-wide">
     <h2 class="title is-3">Video Gallery</h2>
-    <div class="gallery-intro">
-      <p>Every benchmark prompt, each method side by side. Clips in a row start together; one that finishes early holds its last frame. <span class="only-kbd">Click a clip to enlarge it.</span><span class="only-touch">Tap a clip to enlarge it.</span></p>
-    </div>
 <div class="toolbar">
   <div class="chips" id="chips"></div>
   <div class="speed" id="speed"></div>
@@ -844,8 +882,23 @@ kbd{background:#fff;border-color:var(--rule);color:var(--ink);border-radius:6px}
   </div>
 </section>
 
+<section class="section" id="bibtex">
+  <div class="container is-wide">
+    <div class="bib-head">
+      <h2 class="title is-3">BibTeX</h2>
+      <button class="bib-copy" id="bibCopy" type="button">Copy</button>
+    </div>
+<pre class="bib"><code id="bibText">@article{tan2026dycraft,
+  title   = {DyCraft: An Agentic System for Long-Horizon 4D Scene Generation},
+  author  = {Tan, Jeff and Dai, Hang and Long, Zeqian and Lyu, Yanzhe and Jones, R. Kenny and Wu, Shangzhe and Geng, Chen and Wu, Jiajun},
+  journal = {arXiv preprint arXiv:2610.40754},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
 <footer class="site-footer">
-  <p>Anonymous submission &mdash; supplementary material. Page design adapted from the <a href="https://github.com/nerfies/nerfies.github.io" rel="noreferrer">Nerfies</a> template (<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noreferrer">CC BY-SA 4.0</a>).</p>
+  <p>Page design adapted from the <a href="https://github.com/nerfies/nerfies.github.io" rel="noreferrer">Nerfies</a> template (<a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="noreferrer">CC BY-SA 4.0</a>).</p>
 </footer>
 
 <script type="module">
@@ -988,6 +1041,9 @@ async function place(t, gltf, indoor) {
       m.needsUpdate = true;
     });
   });
+  // compile its shaders off the main thread (KHR_parallel_shader_compile) before it is drawn: no hitch while scrolling
+  holder.updateMatrixWorld(true);
+  if (renderer.compileAsync) await renderer.compileAsync(holder, cam, scene).catch(() => {});
   t.group.add(holder);
   Object.assign(t, { model: holder, mixer, actions, duration, planes, offset: Math.random() * duration });
 }
@@ -998,10 +1054,24 @@ function clipTo(t) {
   t.planes[4].constant = y + 0.95;
 }
 
-// ---- loading: a few at a time, once the board is near the screen
-let loaded = 0, started = false;
+// ---- loading: two at a time, once the board is near the screen and the opening film is safe ----
+// On a slow connection the board would otherwise take the bandwidth the opening film needs, so it waits until that
+// film has a dozen seconds buffered ahead, has arrived whole, or is paused (scrolled away); at most 15 s.
+// Meshes decode in workers, so loading never blocks scrolling.
+if (!window.dyMeshoptWorkers) { MeshoptDecoder.useWorkers(2); window.dyMeshoptWorkers = true; }
+function teaserSafe() {
+  const v = document.getElementById('teaser');
+  if (!v || v.error || v.paused || !(v.duration > 0)) return !v || v.error || v.paused;
+  const b = v.buffered, t = v.currentTime;
+  for (let i = 0; i < b.length; i++)
+    if (b.start(i) <= t + 0.1 && b.end(i) >= Math.min(v.duration, t + 12) - 0.1) return true;
+  return false;
+}
+let loaded = 0, started = false, waitedFrom = 0;
 function startLoading() {
   if (started) return;
+  waitedFrom = waitedFrom || performance.now();
+  if (!teaserSafe() && performance.now() - waitedFrom < 15000) { setTimeout(startLoading, 400); return; }
   started = true;
   const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
   const queue = tiles.slice();
@@ -1019,7 +1089,7 @@ function startLoading() {
         next();
       });
   };
-  for (let i = 0; i < 4; i++) next();
+  for (let i = 0; i < 2; i++) next();
 }
 
 // ---- camera: a three-quarter view of the whole board, swaying gently; the pointer adds a little parallax
@@ -1168,8 +1238,12 @@ requestAnimationFrame(frame);
 </script>
 
 <dialog id="lb">
+  <button class="dlg-x" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <div class="lb">
-    <video id="lbv" controls loop playsinline></video>
+    <div class="lb-stage">
+      <video id="lbs" muted loop playsinline controls></video>
+      <video id="lbv" muted loop playsinline></video>
+    </div>
     <div class="meta">
       <div>
         <p class="title" id="lbt"></p>
@@ -1185,6 +1259,7 @@ requestAnimationFrame(frame);
 </dialog>
 
 <dialog id="pm">
+  <button class="dlg-x" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   <div class="pm-in">
     <div class="pm-head">
       <span class="sid" id="pmid"></span>
@@ -1835,11 +1910,6 @@ SCENES.forEach(sc => {
   const p = document.createElement('p');
   p.className = 'prompt'; p.textContent = sc.prompt || sc.id;
   body.appendChild(p);
-  if (sc.objects) {
-    const o = document.createElement('p');
-    o.className = 'objs'; o.textContent = sc.objects;
-    body.appendChild(o);
-  }
   head.appendChild(body);
 
   const ctl = document.createElement('div');
@@ -1910,9 +1980,10 @@ SCENES.forEach(sc => {
       'Open ' + m.label + ' result for "' + (sc.prompt || sc.id) + '" larger');
     vw.appendChild(exp);
 
+    // No src and no poster yet: the poster arrives as the row nears the screen, the film once the row is on it.
     const v = document.createElement('video');
-    v.src = clip.src;
-    if (clip.poster) v.poster = clip.poster;
+    v.dataset.src = clip.src;
+    if (clip.poster) v.dataset.poster = clip.poster;
     v.muted = true; v.playsInline = true; v.preload = 'none';
     v.setAttribute('muted', '');
     vw.appendChild(v);
@@ -1951,10 +2022,19 @@ function visibleCells(row) {
   return row.cells.filter(c => active.has(c.v.closest('.cell').dataset.method));
 }
 
+// The tiles play small copies; an enlarged clip opens the 1080p copy (<method>/1080p/<film>).
+const fullRes = src => src.replace(/^([^/]+)\//, '$1/1080p/');
+
+function showPosters(row) {
+  row.cells.forEach(c => { if (c.v.dataset.poster && !c.v.getAttribute('poster')) c.v.poster = c.v.dataset.poster; });
+}
+
 function startRow(row, force) {
   const cs = visibleCells(row);
   if (!cs.length) return;
+  showPosters(row);
   cs.forEach(c => {
+    if (!c.v.getAttribute('src')) c.v.src = c.v.dataset.src;
     c.v.preload = 'auto';
     try { c.v.currentTime = 0; } catch (e) {}
     c.v.playbackRate = rate;
@@ -1965,10 +2045,18 @@ function startRow(row, force) {
   tick(row);
 }
 
-function stopRow(row) {
-  row.cells.forEach(c => c.v.pause());
+// Leaving the screen also cancels a film's download unless it has arrived whole, so a scroll through the gallery
+// never leaves rows downloading behind the one being watched.
+function stopRow(row, cancel) {
+  row.cells.forEach(c => {
+    c.v.pause();
+    if (!cancel || !c.v.getAttribute('src')) return;
+    const b = c.v.buffered, whole = b.length === 1 && b.start(0) === 0 && b.end(0) >= (c.v.duration || Infinity) - 0.1;
+    if (!whole) { c.v.removeAttribute('src'); c.v.load(); }
+  });
   row.playing = false;
   if (row.timer) { clearInterval(row.timer); row.timer = null; }
+  if (row.wait) { clearTimeout(row.wait); row.wait = null; }
 }
 
 function tick(row) {
@@ -1987,15 +2075,21 @@ function tick(row) {
   }, 100);
 }
 
+// A row starts once it has stayed on screen for a moment, so scrolling past it downloads nothing.
 const io = new IntersectionObserver(entries => {
   entries.forEach(en => {
     const row = rows[+en.target.dataset.row];
     if (!row) return;
-    if (en.isIntersecting) { if (autoplay) startRow(row); }
-    else stopRow(row);
+    row.onScreen = en.isIntersecting;
+    if (en.isIntersecting) {
+      if (autoplay && !row.wait) row.wait = setTimeout(() => { row.wait = null; startRow(row); }, 250);
+    } else stopRow(row, true);
   });
-}, { rootMargin: '120px 0px', threshold: 0.12 });
-rows.forEach((r, i) => { r.sec.dataset.row = i; io.observe(r.sec); });
+}, { rootMargin: '0px', threshold: 0.12 });
+const near = new IntersectionObserver(entries => {
+  entries.forEach(en => { if (en.isIntersecting) { showPosters(rows[+en.target.dataset.row]); near.unobserve(en.target); } });
+}, { rootMargin: '150% 0px' });
+rows.forEach((r, i) => { r.sec.dataset.row = i; io.observe(r.sec); near.observe(r.sec); });
 
 function relayout() {
   const n = Math.max(1, active.size);
@@ -2014,7 +2108,7 @@ document.getElementById('toggleAll').addEventListener('click', e => {
   autoplay = !autoplay;
   e.target.setAttribute('aria-pressed', String(autoplay));
   e.target.textContent = 'Autoplay: ' + (autoplay ? 'on' : 'off');
-  rows.forEach(r => autoplay ? startRow(r) : stopRow(r));
+  rows.forEach(r => autoplay && r.onScreen ? startRow(r) : stopRow(r));
 });
 
 const q = document.getElementById('q');
@@ -2045,8 +2139,8 @@ function openPrompt(sc) {
   pmid.style.display = SHOW_IDS ? '' : 'none';
   document.getElementById('pmtitle').textContent = sc.prompt || sc.id;
   const objs = document.getElementById('pmobjs');
-  objs.textContent = sc.objects || '';
-  objs.style.display = sc.objects ? '' : 'none';
+  objs.textContent = '';
+  objs.style.display = 'none';
   pmText = sc.full || '';
   pmBody.textContent = pmText || 'No full prompt recorded for this scene.';
   pmBody.classList.toggle('pm-none', !pmText);
@@ -2055,6 +2149,12 @@ function openPrompt(sc) {
   if (!pm.open) pm.showModal();
 }
 document.getElementById('pmclose').addEventListener('click', () => pm.close());
+document.querySelectorAll('dialog').forEach(d => {
+  d.querySelector('.dlg-x').addEventListener('click', () => d.close());
+  let downOnBackdrop = false;
+  d.addEventListener('pointerdown', e => { downOnBackdrop = e.target === d; });
+  d.addEventListener('click', e => { if (e.target === d && downOnBackdrop) d.close(); downOnBackdrop = false; });
+});
 pmCopy.addEventListener('click', () => {
   if (!pmText) return;
   const done = () => { pmCopy.textContent = 'Copied'; setTimeout(() => { pmCopy.textContent = 'Copy'; }, 1400); };
@@ -2071,16 +2171,23 @@ pmCopy.addEventListener('click', () => {
 });
 
 const lb = document.getElementById('lb');
-const lbv = document.getElementById('lbv');
+const lbv = document.getElementById('lbv'), lbs = document.getElementById('lbs');
 const lbt = document.getElementById('lbt');
 const lbc = document.getElementById('lbc');
 let cur = 0;
 
+// An enlarged clip starts at once on the small copy its tile already loaded (lbs). The 1080p copy (lbv) loads
+// underneath and takes over from the same moment once it can play; without one, the small copy just carries on.
 function openLightbox(i) {
   cur = i;
   const it = flat[i];
-  lbv.src = it.src;
-  if (it.poster) lbv.poster = it.poster;
+  lbv.classList.remove('on'); lbv.controls = false; lbv.pause();
+  lbs.src = it.src; lbs.controls = true;
+  if (it.poster) lbs.poster = it.poster;
+  lbs.playbackRate = rate;
+  lbs.play().catch(() => {});
+  const full = fullRes(it.src);
+  if (full !== it.src) { lbv.src = full; lbv.preload = 'auto'; lbv.dataset.want = full; } else { lbv.removeAttribute('src'); lbv.load(); }
   lbt.textContent = '';
   const mspan = document.createElement('span');
   if (it.methodKey === HIGHLIGHT) mspan.className = 'm-ours';
@@ -2090,10 +2197,28 @@ function openLightbox(i) {
     (SHOW_IDS ? it.scene + ' · ' : '') + (it.prompt || it.scene)));
   lbc.textContent = 'Clip length ' + fmt(it.duration) + ' · playing at ' + rate + '×';
   if (!lb.open) lb.showModal();
-  lbv.playbackRate = rate;
-  lbv.play().catch(() => {});
 }
+lbs.addEventListener('loadedmetadata', () => { lbs.playbackRate = rate; });
 lbv.addEventListener('loadedmetadata', () => { lbv.playbackRate = rate; });
+function takeover() {
+  if (!lb.open || lbv.classList.contains('on') || lbv.dataset.want !== lbv.getAttribute('src')) return;
+  if (lbv.seeking || lbv.readyState < 3) return;
+  const t = lbs.currentTime, b = lbv.buffered;
+  let near = false;                       // is the small copy's moment already buffered in the 1080p copy?
+  for (let k = 0; k < b.length; k++) if (b.start(k) <= t && t + 0.5 < b.end(k)) near = true;
+  if (Math.abs(lbv.currentTime - t) > 0.15) {
+    lbv.currentTime = near ? t + 0.05 * rate : Math.min(t + 0.75 * rate, (lbv.duration || 1e9) - 0.1);
+    return;
+  }
+  lbv.play().then(() => {
+    if (!lb.open || lbv.dataset.want !== lbv.getAttribute('src')) return;
+    lbv.classList.add('on'); lbv.controls = true;
+    lbs.pause(); lbs.controls = false;
+  }).catch(() => {});
+}
+lbv.addEventListener('canplay', takeover);
+lbv.addEventListener('seeked', takeover);
+lbv.addEventListener('progress', takeover);
 function step(d) {
   const pool = flat
     .map((f, i) => i)
@@ -2106,7 +2231,10 @@ function step(d) {
 document.getElementById('prev').addEventListener('click', () => step(-1));
 document.getElementById('next').addEventListener('click', () => step(1));
 document.getElementById('close').addEventListener('click', () => lb.close());
-lb.addEventListener('close', () => { lbv.pause(); lbv.removeAttribute('src'); lbv.load(); });
+lb.addEventListener('close', () => {
+  [lbv, lbs].forEach(v => { v.pause(); v.removeAttribute('src'); v.load(); });
+  lbv.classList.remove('on'); delete lbv.dataset.want;
+});
 document.addEventListener('keydown', e => {
   if (!lb.open) return;
   if (e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
@@ -2145,7 +2273,7 @@ document.addEventListener('keydown', e => {
   const tiles = {};
   METHODS.forEach(m => {
     const v = document.createElement('video');
-    v.muted = true; v.playsInline = true; v.preload = 'auto';
+    v.muted = true; v.playsInline = true; v.preload = 'metadata';   // 'auto' only while it is shown (frame())
     v.setAttribute('muted', '');
     v.addEventListener('loadedmetadata', () => { v.playbackRate = st.rate; renderLanes(); });
     players[m.key] = v;
@@ -2258,7 +2386,7 @@ document.addEventListener('keydown', e => {
     if (three) {
       el('cxPip').appendChild(players[HIGHLIGHT]);
       METHODS.forEach(m => { if (m.key !== HIGHLIGHT) el('cxHold').appendChild(players[m.key]); });
-      show3D(scene().id);
+      if (st.armed) show3D(scene().id);
     } else {
       const ks = METHODS.map(m => m.key).filter(k => shown.has(k));
       el('cxGrid').style.gridTemplateColumns = 'repeat(' + ks.length + ', minmax(0,1fr))';
@@ -2344,21 +2472,23 @@ document.addEventListener('keydown', e => {
   }
 
   // ---- scene switching ----
+  // Until the viewer is armed (about a screen away, or opened from elsewhere on the page) a scene shows its text
+  // only: its 3D scene and films would otherwise compete with the opening film on a slow connection.
   function loadScene(j, user) {
+    if (user) st.armed = true;
     st.i = (j + SCENES.length) % SCENES.length;
     const sc = scene();
     st.t = 0;
     METHODS.forEach(m => {
       const v = players[m.key], clip = sc.clips[m.key];
-      if (clip) { v.poster = clip.poster || ''; v.src = clip.src; v.playbackRate = st.rate; }
+      if (clip && st.armed) { v.poster = clip.poster || ''; v.src = clip.src; v.playbackRate = st.rate; }
       else { v.pause(); v.removeAttribute('src'); v.removeAttribute('poster'); v.load(); }
       tiles[m.key].querySelector('.cx-endtag').textContent = clip ? 'ended · ' + fmt(clip.duration) : 'no result';
     });
     st.meta = null;
     st.mode = SCENES3D[sc.id] ? '3d' : 'grid';
-    loadMeta(sc.id).then(m => { if (m && scene().id === sc.id) { st.meta = m; renderLanes(); } });
+    if (st.armed) loadMeta(sc.id).then(m => { if (m && scene().id === sc.id) { st.meta = m; renderLanes(); } });
     el('cxTitle').textContent = sc.prompt;
-    el('cxObjs').textContent = sc.objects || '';
     el('cxPrompt').textContent = sc.full || '';
     [...el('cxList').children].forEach((li, k) => {
       const b = li.firstChild;
@@ -2449,6 +2579,7 @@ document.addEventListener('keydown', e => {
         import('three/addons/controls/OrbitControls.js'),
         import('three/addons/libs/meshopt_decoder.module.js'),
         import('three/addons/environments/RoomEnvironment.js')]);
+      if (!window.dyMeshoptWorkers) { MeshoptDecoder.useWorkers(2); window.dyMeshoptWorkers = true; }  // decode off the main thread
       const canvas = el('cx3dCanvas');
       const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
       renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
@@ -2459,7 +2590,8 @@ document.addEventListener('keydown', e => {
       const env = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
       const cam = new THREE.PerspectiveCamera(40, 16 / 9, 0.01, 1000);
       const controls = new OrbitControls(cam, canvas);
-      controls.enableDamping = true;
+      controls.enableDamping = false;   // no drift after a drag
+      controls.enableRotate = false;    // a drag looks around instead (below); zoom and pan stay with the controls
       controls.addEventListener('start', () => { if (v3.view === 'camera') setView('free'); });
       // a touch in the film's view may be a scroll: keep it from the controls until it turns out sideways
       let swipe = null;
@@ -2476,14 +2608,39 @@ document.addEventListener('keydown', e => {
       const unswipe = () => { if (swipe) { swipe = null; controls.enabled = v3.host === el('cx3d'); } };
       canvas.addEventListener('pointerup', unswipe, true);
       canvas.addEventListener('pointercancel', unswipe, true);
+      // Drag to look around: the camera turns where it stands and the scene follows the pointer, as if grabbed.
+      // The orbit target is kept straight ahead at its distance, so zoom, pan and WASD keep their scale.
+      const pointers = new Set();
+      let look = null;
+      canvas.addEventListener('pointerdown', e => {
+        pointers.add(e.pointerId);
+        look = pointers.size === 1 && (e.pointerType !== 'mouse' || e.button === 0) ? [e.clientX, e.clientY] : null;
+      });
+      canvas.addEventListener('pointermove', e => {
+        if (!look) return;
+        const dx = e.clientX - look[0], dy = e.clientY - look[1];
+        look = [e.clientX, e.clientY];
+        if (pointers.size !== 1 || !controls.enabled || v3.host !== el('cx3d') || (!dx && !dy)) return;
+        if (v3.view === 'camera') setView('free');
+        const k = THREE.MathUtils.degToRad(cam.fov) / Math.max(1, canvas.clientHeight);
+        const eu = new THREE.Euler().setFromQuaternion(cam.quaternion, 'YXZ');
+        eu.y += dx * k;
+        eu.x = Math.max(-1.5, Math.min(1.5, eu.x + dy * k));
+        eu.z = 0;
+        cam.quaternion.setFromEuler(eu);
+        const d = Math.max(0.2, cam.position.distanceTo(controls.target));
+        controls.target.copy(cam.position).add(new THREE.Vector3(0, 0, -d).applyQuaternion(cam.quaternion));
+        controls.update();
+      });
+      const lift = e => { pointers.delete(e.pointerId); if (!pointers.size) look = null; };
+      canvas.addEventListener('pointerup', lift);
+      canvas.addEventListener('pointercancel', lift);
       const loader = new GLTFLoader();
       loader.setMeshoptDecoder(MeshoptDecoder);
       const resize = () => {
         const r = (v3.host || el('cx3d')).getBoundingClientRect();
         if (!r.width) return;
         renderer.setSize(r.width, r.height, false);
-        // a drag turns by its share of the canvas height: slow it down on a phone-sized canvas
-        controls.rotateSpeed = Math.min(1, r.height / 400);
         cam.aspect = r.width / r.height;
         cam.updateProjectionMatrix();
       };
@@ -2784,6 +2941,8 @@ document.addEventListener('keydown', e => {
       const cur = await getScene(id, x => {
         if (x.total && v3.id === id) el('cxLoadB').style.width = (x.loaded / x.total * 100) + '%';
       });
+      // shaders compile in the background while the loading bar is still up, so the first frame does not freeze
+      if (!cur.compiled && v3.renderer.compileAsync) { await v3.renderer.compileAsync(cur.scn, v3.cam).catch(() => {}); cur.compiled = true; }
       await loadMeta(id);
       if (v3.id !== id) return;
       v3.cur = cur;
@@ -2843,8 +3002,8 @@ document.addEventListener('keydown', e => {
     v3.view = v;
     [...el('cxView').children].forEach(b => b.setAttribute('aria-pressed', String(b.dataset.view === v)));
     el('cx3d').classList.toggle('is-free', v === 'free');
-    el('cxHint').textContent = COARSE ? (v === 'free' ? 'Drag to orbit · pinch to zoom' : 'Swipe sideways to look around')
-      : v === 'free' ? 'Drag to orbit · scroll to zoom · WASD/QE to move' : 'Drag to orbit · WASD to move';
+    el('cxHint').textContent = COARSE ? (v === 'free' ? 'Drag to look around · pinch to zoom' : 'Drag sideways to look around')
+      : v === 'free' ? 'Drag to look around · scroll to zoom · WASD/QE to move' : 'Drag to look around · WASD to move';
     touchAction();
     if (!v3.cur || !st.meta) return;
     if (v === 'camera' || init) placeShotCamera();
@@ -2933,6 +3092,7 @@ document.addEventListener('keydown', e => {
     METHODS.forEach(m => {
       const v = players[m.key];
       if (!keys.includes(m.key)) { if (!v.paused) v.pause(); lanes[m.key].prog.style.width = '0'; return; }
+      if (v.preload !== 'auto' && st.armed) v.preload = 'auto';
       const d = dur(m.key);
       const target = Math.min(st.t, Math.max(0, d - 0.04));
       const ended = st.t >= d - 0.04;
@@ -3003,8 +3163,18 @@ document.addEventListener('keydown', e => {
 
   const fromHash = location.hash.match(/^#console-(\d+)/);
   const startIdx = fromHash ? Math.max(0, SCENES.findIndex(s => s.id === fromHash[1])) : 0;
+  st.armed = !!fromHash;
   setPlaying(false);
   loadScene(startIdx, false);
+  if (!st.armed) {
+    const arm = new IntersectionObserver(es => {
+      if (!es.some(e => e.isIntersecting) || st.armed) return;
+      st.armed = true;
+      arm.disconnect();
+      loadScene(st.i, false);
+    }, { rootMargin: '100% 0px' });
+    arm.observe(root);
+  }
   layout();
   if (fromHash) root.closest('section').scrollIntoView();
   requestAnimationFrame(frame);
@@ -3086,6 +3256,7 @@ document.addEventListener('keydown', e => {
     ovs.forEach(o => { o.hidden = o.dataset.for !== s; });
     film.hidden = s !== 'film';
     if (s === 'film') { film.currentTime = 0; film.playbackRate = 2; } else film.pause();
+    if (s === 'verify' || s === 'film') film.preload = 'auto';     // buffer one step ahead, so the film starts at once
     tl.querySelectorAll('[data-verify]').forEach(e => { e.hidden = s !== 'verify'; });
     el('mdTitle').textContent = (ORDER.indexOf(s) + 1) + '. ' + STEPS[s].title;
     el('mdText').textContent = STEPS[s].text;
@@ -3188,6 +3359,13 @@ document.addEventListener('keydown', e => {
   }
   requestAnimationFrame(frame);
 })();
+</script>
+<script>
+document.getElementById('bibCopy').addEventListener('click', e => {
+  const b = e.currentTarget, t = document.getElementById('bibText').textContent;
+  const done = () => { b.textContent = 'Copied'; setTimeout(() => { b.textContent = 'Copy'; }, 1400); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, () => {});
+});
 </script>
 </body>
 </html>
